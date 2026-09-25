@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Mail, MapPin, Menu, Phone, ShieldCheck } from "lucide-react";
+import { ArrowRight, MapPin, Menu, ShieldCheck } from "lucide-react";
 import { type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -43,10 +43,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
 
           <div className="hidden items-center gap-3 md:flex">
             <Button asChild variant="coastal" size="sm">
-              <a href="tel:+34000000000">
-                <Phone aria-hidden="true" />
-                Appeler
-              </a>
+              <Link to="/contact">Contact</Link>
             </Button>
           </div>
 
@@ -72,13 +69,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
           </div>
           <div className="space-y-3 text-sm text-primary-foreground/80">
             <p className="font-semibold text-primary-foreground">Contact</p>
-            <a
-              className="flex items-center gap-2 hover:text-primary-foreground"
-              href="mailto:contact@solveigprestigeservice.com"
-            >
-              <Mail size={16} aria-hidden="true" />
-              contact@solveigprestigeservice.com
-            </a>
+            <p>Coordonnées à ajouter pour recevoir les demandes propriétaires.</p>
             <p className="flex items-center gap-2">
               <MapPin size={16} aria-hidden="true" />
               Marbella & Mijas
