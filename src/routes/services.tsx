@@ -1,22 +1,22 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { BadgeCheck, BedDouble, ClipboardCheck, KeyRound, Sparkles, Wrench } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, BadgeCheck, BedDouble, ClipboardCheck, KeyRound, Sparkles, Wrench } from "lucide-react";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services de gestion locative — Solveig’s Prestige Service" },
+      { title: "Services de gestion locative à Marbella & Mijas — Solveig’s Prestige Service" },
       {
         name: "description",
         content:
-          "Accueil, préparation, intendance, coordination ménage et suivi propriétaire pour locations à Marbella et Mijas.",
+          "Gestion de propriété, conciergerie privée, location saisonnière, housekeeping et maintenance à Marbella, Mijas et sur la Costa del Sol.",
       },
-      { property: "og:title", content: "Services de gestion locative — Solveig’s Prestige Service" },
+      { property: "og:title", content: "Services — Solveig’s Prestige Service" },
       {
         property: "og:description",
         content:
-          "Des services complets pour protéger votre propriété et offrir une expérience haut de gamme aux voyageurs.",
+          "Un accompagnement premium pour protéger votre propriété, accueillir vos voyageurs et simplifier chaque séjour.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -26,36 +26,12 @@ export const Route = createFileRoute("/services")({
 });
 
 const offers = [
-  {
-    icon: KeyRound,
-    title: "Check-in & check-out",
-    text: "Accueil personnalisé, remise des clés, présentation du bien et contrôle de sortie.",
-  },
-  {
-    icon: Sparkles,
-    title: "Ménage & linge",
-    text: "Coordination de prestataires fiables, inspection finale et préparation soignée des espaces.",
-  },
-  {
-    icon: BedDouble,
-    title: "Mise en scène du séjour",
-    text: "Derniers détails, consommables, ambiance fraîche et impression immédiate de qualité.",
-  },
-  {
-    icon: Wrench,
-    title: "Maintenance légère",
-    text: "Identification rapide des besoins, suivi des interventions et protection du standing du bien.",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Contrôles propriétaires",
-    text: "Visites régulières, photos de suivi et compte rendu clair pour les propriétaires à distance.",
-  },
-  {
-    icon: BadgeCheck,
-    title: "Relation voyageurs",
-    text: "Communication attentive, gestion des demandes courantes et continuité de service locale.",
-  },
+  { icon: KeyRound, number: "01", title: "Gestion de propriété", text: "Présence locale, contrôles, coordination et suivi pour les propriétaires qui ne sont pas toujours sur place.", link: "/gestion-propriete" },
+  { icon: Sparkles, number: "02", title: "Conciergerie privée", text: "Accueil, assistance et organisation sur mesure pour propriétaires et voyageurs.", link: "/conciergerie" },
+  { icon: BedDouble, number: "03", title: "Location saisonnière", text: "Préparation, arrivées, séjours, départs et coordination terrain avec une vraie exigence de détail.", link: "/location-saisonniere" },
+  { icon: Wrench, number: "04", title: "Housekeeping & maintenance", text: "Ménage, linge, contrôle qualité, consommables et interventions légères.", link: "/services/housekeeping" },
+  { icon: ClipboardCheck, number: "05", title: "Contrôles propriétaires", text: "Visites, points de vigilance et comptes rendus clairs pour garder le contrôle à distance.", link: "/gestion-propriete" },
+  { icon: BadgeCheck, number: "06", title: "Relation voyageurs", text: "Une communication attentive et une continuité de service locale pendant les séjours.", link: "/conciergerie" },
 ];
 
 function ServicesPage() {
@@ -68,27 +44,35 @@ function ServicesPage() {
       />
 
       <section className="bg-background">
-        <div className="mx-auto grid max-w-7xl gap-5 px-5 py-20 sm:px-8 md:grid-cols-2 lg:grid-cols-3 lg:px-10">
-          {offers.map((offer) => {
-            const Icon = offer.icon;
-            return (
-              <article key={offer.title} className="border border-border bg-card p-7 shadow-soft">
-                <Icon className="text-coast" size={30} aria-hidden="true" />
-                <h2 className="mt-7 text-xl font-bold text-card-foreground">{offer.title}</h2>
-                <p className="mt-3 leading-7 text-muted-foreground">{offer.text}</p>
-              </article>
-            );
-          })}
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+          <div className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2 lg:grid-cols-3">
+            {offers.map((offer) => {
+              const Icon = offer.icon;
+              return (
+                <Link key={offer.title} to={offer.link} className="group bg-card p-8 transition-colors hover:bg-surface sm:p-9">
+                  <div className="flex items-start justify-between">
+                    <span className="font-display text-2xl text-gold">{offer.number}</span>
+                    <span className="flex size-11 items-center justify-center rounded-full border border-border text-coast transition-all group-hover:border-coast group-hover:bg-coast group-hover:text-coast-foreground">
+                      <Icon size={20} aria-hidden="true" />
+                    </span>
+                  </div>
+                  <h2 className="mt-14 font-display text-3xl font-semibold">{offer.title}</h2>
+                  <p className="mt-3 leading-7 text-muted-foreground">{offer.text}</p>
+                  <span className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground group-hover:text-foreground">
+                    Découvrir <ArrowRight size={15} aria-hidden="true" />
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
         </div>
       </section>
 
       <section className="bg-surface">
-        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-20 sm:px-8 lg:grid-cols-3 lg:px-10">
-          <div className="lg:col-span-1">
-            <p className="text-sm font-bold uppercase tracking-normal text-gold">Méthode</p>
-            <h2 className="mt-4 font-display text-5xl font-semibold leading-tight text-balance">
-              Un cadre clair, adapté à chaque propriété.
-            </h2>
+        <div className="mx-auto grid max-w-7xl gap-8 px-5 py-20 sm:px-8 lg:grid-cols-3 lg:px-10 lg:py-28">
+          <div>
+            <p className="text-sm font-bold uppercase tracking-[0.16em] text-gold">Méthode</p>
+            <h2 className="mt-4 font-display text-5xl font-semibold leading-tight text-balance">Un cadre clair, adapté à chaque propriété.</h2>
           </div>
           <div className="grid gap-4 lg:col-span-2">
             {["Audit du bien et des attentes", "Routine de préparation sur mesure", "Suivi terrain et compte rendu", "Optimisation continue de l’expérience"].map(
