@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, MapPin, Menu, ShieldCheck } from "lucide-react";
+import { ArrowRight, MapPin, ShieldCheck } from "lucide-react";
 import { type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -47,8 +47,8 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
             </Button>
           </div>
 
-          <Button variant="ghost" size="icon" className="md:hidden" aria-label="Ouvrir le menu">
-            <Menu aria-hidden="true" />
+          <Button asChild variant="coastal" size="sm" className="md:hidden">
+            <Link to="/contact">Contact</Link>
           </Button>
         </div>
       </header>

@@ -2,7 +2,6 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Clock, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
 
 import { PageHero, SolveigLayout } from "@/components/SolveigLayout";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -62,11 +61,9 @@ function ContactPage() {
             <p className="mt-5 text-lg leading-8 text-primary-foreground/78">
               Ajoutez ici le numéro, l’email ou le lien WhatsApp de Solveig pour transformer cette page en point de contact direct.
             </p>
-            <div className="mt-8 grid gap-3 sm:grid-cols-2">
-              <Button variant="secondary" size="xl">Téléphone</Button>
-              <Button variant="coastal" size="xl" className="bg-background/12 text-primary-foreground hover:bg-background/20 hover:text-primary-foreground">
-                WhatsApp
-              </Button>
+            <div className="mt-8 grid gap-3 text-sm font-semibold text-primary-foreground/78 sm:grid-cols-2">
+              <div className="border border-primary-foreground/18 bg-background/12 p-5">Téléphone</div>
+              <div className="border border-primary-foreground/18 bg-background/12 p-5">WhatsApp</div>
             </div>
           </div>
         </div>
