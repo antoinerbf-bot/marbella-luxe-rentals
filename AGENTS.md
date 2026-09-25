@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Use a premium Mediterranean design system for Solveig’s Prestige Service so every page feels aligned with Marbella and Mijas property management.
