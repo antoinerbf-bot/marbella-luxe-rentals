@@ -3,6 +3,7 @@ import { ArrowRight, Clock3, MapPin, MessageCircle, ShieldCheck, Sparkles } from
 
 import { PageHero, SolveigLayout } from "@/components/SolveigLayout";
 import { Button } from "@/components/ui/button";
+import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -53,7 +54,7 @@ function ContactPage() {
         description="Que vous soyez propriétaire absent, investisseur ou à la recherche d’un accompagnement pour vos locations, commençons par comprendre vos besoins."
       />
 
-      <section className="bg-background">
+      <section className="bg-background">\n        <div className="mx-auto max-w-[1440px] px-5 pt-8 sm:px-8 lg:px-12 lg:pt-12"><div className="relative overflow-hidden rounded-[2rem] bg-primary text-white shadow-elegant"><img src={villaImage} alt="Villa de prestige sur la Costa del Sol" className="absolute inset-0 h-full w-full object-cover opacity-45" /><div className="absolute inset-0 bg-gradient-to-r from-primary via-primary/70 to-transparent" /><div className="relative max-w-3xl p-8 sm:p-12 lg:p-16"><p className="text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Solveig’s Prestige Service</p><h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] md:text-7xl">Une conversation peut commencer simplement.</h2><p className="mt-6 max-w-xl leading-7 text-white/65">Votre propriété, votre rythme, vos priorités. Donnez-nous le contexte ; nous vous aiderons à définir le niveau de présence pertinent.</p></div></div></div>
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
           <div className="grid gap-5 md:grid-cols-3">
             {reasons.map((item) => {
