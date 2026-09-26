@@ -151,139 +151,98 @@ function Index() {
   const locale = useSolveigLocale();
   const c = copy[locale];
 
+  const serviceIcons = [Home, Sparkles, KeyRound, ShieldCheck];
+
   return (
     <SolveigLayout>
-      <section className="relative isolate min-h-[100svh] overflow-hidden bg-primary text-white">
+      <section className="relative min-h-[92svh] overflow-hidden bg-primary text-white">
         <div className="absolute inset-0">
-          <img src={media.hero} alt="Villa de prestige sur la Costa del Sol" className="h-full w-full scale-[1.035] object-cover animate-[heroZoom_16s_ease-out_forwards]" />
-          <video className="absolute inset-0 hidden h-full w-full object-cover lg:block" autoPlay muted loop playsInline poster={villaImage}>
-            <source src="/solveig-hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(8,35,31,.96)_0%,rgba(8,35,31,.72)_38%,rgba(8,35,31,.15)_100%)]" />
-          <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(8,35,31,.94)_0%,transparent_48%,rgba(8,35,31,.2)_100%)]" />
-          <div className="absolute inset-0 opacity-20 [background-image:linear-gradient(rgba(255,255,255,.15)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,.15)_1px,transparent_1px)] [background-size:90px_90px] mix-blend-overlay" />
+          <img src={media.hero} alt="Villa méditerranéenne de prestige à Marbella" className="h-full w-full object-cover" />
+          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(35,26,18,.28),rgba(35,26,18,.42)_45%,rgba(35,26,18,.76))]" />
+          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(35,26,18,.38),transparent_65%)]" />
+          <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(135deg,transparent_49.7%,rgba(255,255,255,.12)_50%,transparent_50.3%)] [background-size:110px_110px]" />
         </div>
 
-        <div className="relative mx-auto flex min-h-[100svh] max-w-[1440px] flex-col justify-between px-5 pb-8 pt-32 sm:px-8 lg:px-12 lg:pb-10">
-          <div className="flex items-center justify-between text-[9px] font-bold uppercase tracking-[0.24em] text-white/65">
-            <span>{c.eyebrow}</span>
-            <span className="hidden sm:block">Discreet · Local · Personal</span>
+        <div className="relative mx-auto flex min-h-[92svh] max-w-[1500px] flex-col items-center justify-center px-5 py-28 text-center sm:px-8">
+          <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-white/75">{c.eyebrow}</p>
+          <div className="mt-7 flex size-20 items-center justify-center rounded-full border border-white/45 bg-white/10 backdrop-blur-md">
+            <span className="font-display text-3xl italic">S</span>
+          </div>
+          <h1 className="mt-7 max-w-5xl font-display text-5xl font-medium leading-[.95] tracking-[-.02em] sm:text-6xl md:text-[5.7rem]">
+            {c.hero}
+          </h1>
+          <p className="mt-7 max-w-2xl text-sm leading-7 text-white/82 sm:text-base">{c.intro}</p>
+
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
+            <Button asChild variant="secondary" size="lg" className="rounded-full px-7"><Link to="/contact">{c.primary}</Link></Button>
+            <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/30 bg-white/10 px-7 text-white backdrop-blur hover:bg-white/20 hover:text-white"><Link to="/services">{c.secondary}</Link></Button>
           </div>
 
-          <div className="max-w-6xl pb-5 lg:pb-12">
-            <p className="mb-7 flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white/72">
-              <span className="h-px w-12 bg-gold" />Solveig’s Prestige Service
-            </p>
-            <h1 className="font-display text-[4.15rem] font-semibold leading-[.76] tracking-[-.035em] sm:text-7xl md:text-[8.3rem] lg:text-[9.5rem]">
-              {c.hero}
-            </h1>
-            <p className="mt-9 max-w-2xl text-base leading-7 text-white/76 sm:text-lg sm:leading-8">{c.intro}</p>
-
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Button asChild variant="secondary" size="xl" className="group">
-                <Link to="/contact">{c.primary}<ArrowRight className="transition-transform group-hover:translate-x-1" /></Link>
-              </Button>
-              <Button asChild variant="coastal" size="xl" className="border border-white/25 bg-white/10 text-white backdrop-blur-md hover:bg-white/18 hover:text-white">
-                <Link to="/services">{c.secondary}</Link>
-              </Button>
-            </div>
+          <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/65">
+            <span>Marbella</span><span>·</span><span>Mijas</span><span>·</span><span>Costa del Sol</span>
           </div>
-
-          <div className="grid gap-4 border-t border-white/18 pt-5 sm:grid-cols-3">
-            {[
-              ["01","Présence locale","Local presence"],
-              ["02","Service sur mesure","Tailored service"],
-              ["03","Marbella & Mijas","Costa del Sol"],
-            ].map(([n, fr, en]) => (
-              <div key={n} className="flex gap-4 sm:border-r sm:border-white/12 last:border-0">
-                <span className="font-display text-2xl text-gold">{n}</span>
-                <div><p className="text-xs font-bold">{locale === "fr" ? fr : locale === "es" ? fr : en}</p><p className="mt-1 text-[10px] text-white/48">{locale === "fr" ? en : "Solveig’s Prestige Service"}</p></div>
-              </div>
-            ))}
-          </div>
-
-          <a href="#services" className="absolute bottom-9 right-8 hidden items-center gap-3 text-[9px] font-bold uppercase tracking-[0.22em] text-white/55 lg:flex">
-            {c.scroll}<ArrowDown size={15} className="animate-bounce" />
-          </a>
         </div>
+
+        <a href="#services" className="absolute bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/65">{c.scroll}<ArrowDown size={14} /></a>
       </section>
 
-      <TrustStrip />
+      <section className="bg-surface">
+        <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 lg:py-28">
+          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-gold">{c.serviceEyebrow}</p>
+          <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-medium leading-[.98] sm:text-5xl md:text-6xl">{c.serviceTitle}</h2>
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-muted-foreground">{c.serviceIntro}</p>
+        </div>
 
-      <section id="services" className="bg-background">
-        <div className="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-          <div className="grid gap-10 lg:grid-cols-[.72fr_1.28fr] lg:items-end">
-            <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{c.serviceEyebrow}</p>
-              <h2 className="mt-5 font-display text-5xl font-semibold leading-[.88] tracking-tight md:text-7xl lg:text-[6.6rem]">{c.serviceTitle}</h2>
-            </div>
-            <div className="max-w-xl lg:justify-self-end">
-              <p className="text-lg leading-8 text-muted-foreground">{c.serviceIntro}</p>
-              <Link to="/services" className="mt-7 inline-flex items-center gap-2 text-xs font-bold uppercase tracking-[0.15em] text-foreground underline decoration-gold decoration-2 underline-offset-8">{c.allServices}<ChevronRight size={16} /></Link>
-            </div>
-          </div>
-
-          <div className="mt-16 grid gap-5 lg:grid-cols-2">
-            {c.services.map(([number, title, text, link, image]) => (
-              <Link key={title} to={link as never} className="group relative min-h-[520px] overflow-hidden rounded-[2rem] bg-primary text-white shadow-elegant">
-                <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-[1400ms] group-hover:scale-[1.07]" aria-hidden="true" />
-                <div className="absolute inset-0 bg-[linear-gradient(0deg,rgba(5,28,25,.95),rgba(5,28,25,.12)_70%)]" />
-                <div className="absolute inset-0 opacity-0 transition duration-700 group-hover:opacity-100 bg-[radial-gradient(circle_at_80%_20%,rgba(214,174,92,.22),transparent_28%)]" />
-                <div className="relative flex min-h-[520px] flex-col justify-between p-7 sm:p-10">
-                  <div className="flex items-start justify-between"><span className="font-display text-2xl text-gold">{number}</span><span className="flex size-12 items-center justify-center rounded-full border border-white/25 bg-black/10 backdrop-blur-md transition group-hover:border-gold group-hover:bg-gold group-hover:text-gold-foreground"><Sparkles size={19} /></span></div>
-                  <div className="max-w-xl">
-                    <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.2em] text-gold">{number} / Solveig</p>
-                    <h3 className="font-display text-4xl font-semibold leading-none sm:text-5xl">{title}</h3>
-                    <p className="mt-5 max-w-lg text-sm leading-7 text-white/68">{text}</p>
-                    <span className="mt-7 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white">Découvrir <ArrowRight size={15} className="transition-transform group-hover:translate-x-1" /></span>
-                  </div>
+        <div id="services" className="mx-auto grid max-w-7xl gap-4 px-5 pb-20 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:pb-28">
+          {c.services.map(([number,title,text,link,image], i) => {
+            const Icon = serviceIcons[i];
+            return (
+              <Link key={title} to={link as never} className="group rounded-[1.35rem] border border-border bg-card p-5 transition duration-500 hover:-translate-y-1 hover:shadow-elegant">
+                <div className="flex items-center justify-between">
+                  <span className="flex size-10 items-center justify-center rounded-full bg-coast/10 text-coast"><Icon size={17} /></span>
+                  <span className="font-display text-xl text-gold/70">{number}</span>
                 </div>
+                <div className="mt-5 overflow-hidden rounded-xl">
+                  <img src={image} alt="" className="aspect-[1.2] w-full object-cover transition duration-700 group-hover:scale-105" aria-hidden="true" />
+                </div>
+                <h3 className="mt-5 font-display text-2xl font-medium">{title}</h3>
+                <p className="mt-2 text-xs leading-6 text-muted-foreground">{text}</p>
+                <span className="mt-5 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.18em] text-foreground">{locale === "fr" ? "Découvrir" : locale === "en" ? "Discover" : "Descubrir"} <ArrowRight size={13} /></span>
               </Link>
-            ))}
+            );
+          })}
+        </div>
+      </section>
+
+      <section className="bg-background">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:py-28">
+          <div className="overflow-hidden rounded-[1.5rem]">
+            <img src={media.oldTown} alt="Marbella, Plaza de los Naranjos" className="aspect-[4/3] w-full object-cover transition duration-1000 hover:scale-105" />
+          </div>
+          <div className="lg:pl-8">
+            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">{c.propertyEyebrow}</p>
+            <h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.propertyTitle}</h2>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground">{c.propertyText}</p>
+            <ul className="mt-7 grid gap-3 sm:grid-cols-2">{c.propertyPoints.map(item => <li key={item} className="flex gap-2 text-xs leading-6"><Check size={15} className="mt-1 shrink-0 text-coast" />{item}</li>)}</ul>
+            <Button asChild variant="prestige" size="lg" className="mt-8 rounded-full"><Link to="/gestion-propriete">{c.propertyCta}<ArrowRight /></Link></Button>
           </div>
         </div>
       </section>
 
-      <section className="overflow-hidden bg-surface">
-        <div className="mx-auto grid max-w-[1440px] gap-16 px-5 py-24 sm:px-8 lg:grid-cols-[1.08fr_.92fr] lg:items-center lg:px-12 lg:py-36">
-          <div className="relative">
-            <div className="absolute -left-5 -top-5 z-10 rounded-full border border-gold/55 bg-background/92 px-5 py-3 text-[9px] font-bold uppercase tracking-[0.18em] shadow-soft backdrop-blur">Marbella · Mijas</div>
-            <div className="overflow-hidden rounded-[2rem] shadow-elegant">
-              <img src={villaImage} alt="Villa méditerranéenne de prestige" className="aspect-[4/3] w-full object-cover transition duration-1000 hover:scale-[1.025]" />
-            </div>
-            <div className="absolute -bottom-7 right-5 max-w-[250px] rounded-2xl border border-border bg-background/96 p-5 shadow-elegant backdrop-blur sm:right-8">
-              <p className="font-display text-2xl font-semibold">Discrétion.</p>
-              <p className="mt-1 text-xs leading-5 text-muted-foreground">Précision. Réactivité. Sens du détail.</p>
-            </div>
-          </div>
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{c.propertyEyebrow}</p>
-            <h2 className="mt-5 font-display text-5xl font-semibold leading-[.88] tracking-tight md:text-7xl">{c.propertyTitle}</h2>
-            <p className="mt-7 max-w-xl text-lg leading-8 text-muted-foreground">{c.propertyText}</p>
-            <ul className="mt-8 space-y-4">{c.propertyPoints.map((item) => <li key={item} className="flex gap-3 text-sm font-semibold"><Check className="mt-0.5 shrink-0 text-coast" size={18} />{item}</li>)}</ul>
-            <Button asChild variant="prestige" size="xl" className="mt-9"><Link to="/gestion-propriete">{c.propertyCta}<ArrowRight /></Link></Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-primary text-white">
-        <div className="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-          <div className="grid gap-12 lg:grid-cols-[.75fr_1.25fr] lg:items-end">
+      <section className="bg-coast/90 text-white">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
+          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
             <div>
-              <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{c.placeEyebrow}</p>
-              <h2 className="mt-5 font-display text-6xl font-semibold leading-[.85] md:text-[7rem]">{c.placeTitle}</h2>
-              <p className="mt-7 max-w-md text-base leading-7 text-white/62">{c.placeText}</p>
+              <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/65">{c.placeEyebrow}</p>
+              <h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.placeTitle}</h2>
+              <p className="mt-6 max-w-md text-sm leading-7 text-white/72">{c.placeText}</p>
+              <Link to="/zones" className="mt-7 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white">{locale === "fr" ? "Explorer le territoire" : locale === "en" ? "Explore the area" : "Explorar el territorio"} <ArrowRight size={14} /></Link>
             </div>
             <div className="grid gap-3 sm:grid-cols-3">
-              {c.places.map(([name, text, image]) => (
-                <Link key={name} to="/zones" className="group relative min-h-[360px] overflow-hidden rounded-[1.5rem] border border-white/10">
-                  <img src={image} alt="" className="absolute inset-0 h-full w-full object-cover transition duration-1000 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/30 to-transparent" />
-                  <div className="relative flex h-full flex-col justify-end p-6">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-gold">Costa del Sol</span>
-                    <h3 className="mt-2 font-display text-3xl font-semibold">{name}</h3>
-                    <p className="mt-2 text-xs leading-5 text-white/62">{text}</p>
-                  </div>
+              {c.places.map(([name,text,image]) => (
+                <Link key={name} to="/zones" className="group overflow-hidden rounded-[1.25rem] bg-white/10">
+                  <div className="overflow-hidden"><img src={image} alt={name} className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" /></div>
+                  <div className="p-5"><h3 className="font-display text-2xl">{name}</h3><p className="mt-2 text-xs leading-5 text-white/65">{text}</p></div>
                 </Link>
               ))}
             </div>
@@ -291,36 +250,26 @@ function Index() {
         </div>
       </section>
 
-      <section className="bg-background">
-        <div className="mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-36">
-          <div className="max-w-4xl">
-            <p className="text-[11px] font-bold uppercase tracking-[0.2em] text-gold">{c.whyEyebrow}</p>
-            <h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] md:text-7xl">{c.whyTitle}</h2>
-            <p className="mt-7 max-w-2xl text-lg leading-8 text-muted-foreground">{c.whyText}</p>
+      <section className="bg-surface">
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
+          <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
+            <div><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">{c.whyEyebrow}</p><h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.whyTitle}</h2></div>
+            <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">{c.whyText}</p>
           </div>
-          <div className="mt-16 grid gap-px overflow-hidden rounded-[1.5rem] border border-border bg-border md:grid-cols-3">
-            {c.why.map(([number,title,text]) => (
-              <article key={number} className="group bg-card p-8 transition hover:bg-surface md:p-10">
-                <span className="font-display text-4xl text-gold/75 group-hover:text-gold">{number}</span>
-                <h3 className="mt-14 font-display text-4xl font-semibold">{title}</h3>
-                <p className="mt-3 leading-7 text-muted-foreground">{text}</p>
-              </article>
-            ))}
+          <div className="mt-12 grid gap-3 md:grid-cols-3">
+            {c.why.map(([n,t,d]) => <article key={n} className="rounded-[1.25rem] border border-border bg-background p-7"><span className="font-display text-3xl text-gold">{n}</span><h3 className="mt-10 font-display text-2xl">{t}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{d}</p></article>)}
           </div>
         </div>
       </section>
 
-      <section className="relative overflow-hidden bg-surface">
-        <div className="absolute inset-0 opacity-20 [background-image:radial-gradient(circle_at_20%_50%,rgba(28,88,78,.35),transparent_30%),radial-gradient(circle_at_80%_30%,rgba(214,174,92,.28),transparent_25%)]" />
-        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-5 py-24 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-end lg:px-12 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold"><MessageCircle size={15} />Marbella & Mijas</p>
-            <h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] md:text-7xl">{c.finalTitle}</h2>
-            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">{c.finalText}</p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <Button asChild variant="prestige" size="xl"><Link to="/contact">{c.primary}<ArrowRight /></Link></Button>
-            <Button asChild variant="coastal" size="xl"><Link to="/services"><CalendarCheck />{c.secondary}</Link></Button>
+      <section className="bg-primary text-primary-foreground">
+        <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 lg:py-28">
+          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">Solveig’s Prestige Service</p>
+          <h2 className="mx-auto mt-5 max-w-4xl font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.finalTitle}</h2>
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-primary-foreground/65">{c.finalText}</p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3">
+            <Button asChild variant="secondary" size="lg" className="rounded-full"><Link to="/contact">{c.primary}<ArrowRight /></Link></Button>
+            <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white"><Link to="/services">{c.secondary}</Link></Button>
           </div>
         </div>
       </section>
@@ -329,4 +278,3 @@ function Index() {
     </SolveigLayout>
   );
 }
-
