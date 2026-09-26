@@ -1,11 +1,11 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "solveig-prestige-service",
+  "name": "marbella-luxe-rentals",
   "compatibility_date": "2026-09-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": ".output/server/index.mjs",
+  "main": "dist/server/index.mjs",
   "assets": {
-    "directory": ".output/public"
+    "directory": "dist/client"
   },
   "observability": {
     "enabled": true
