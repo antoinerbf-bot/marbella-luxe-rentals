@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ServiceDetailPage } from "@/components/ServiceDetailPage";
+import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
 export const Route = createFileRoute("/gestion-propriete")({
   head: () => ({ meta: [
@@ -16,6 +17,6 @@ export const Route = createFileRoute("/gestion-propriete")({
     points={["Visites et contrôles réguliers adaptés à votre rythme.", "Coordination des interventions et prestataires locaux.", "Préparation du logement avant votre arrivée ou celle de vos invités.", "Communication claire avec comptes rendus et suivi des besoins."]}
     steps={["Définir le niveau de présence souhaité et les priorités du bien.", "Mettre en place une routine de contrôle et les interlocuteurs nécessaires.", "Anticiper les interventions plutôt que subir les urgences.", "Vous tenir informé avec une communication simple et régulière."]}
     cta="Vous souhaitez un relais fiable pour votre propriété à Marbella ou Mijas ?"
-    image="/src/assets/marbella-prestige-villa.jpg"
+    image={villaImage}
   />,
 });
