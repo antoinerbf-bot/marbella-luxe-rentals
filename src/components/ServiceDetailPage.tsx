@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
 import { Button } from "@/components/ui/button";
-import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
 type ServiceDetailProps = {
   eyebrow: string;
@@ -13,6 +12,7 @@ type ServiceDetailProps = {
   points: string[];
   steps: string[];
   cta: string;
+  image: string;
 };
 
 export function ServiceDetailPage({
@@ -23,6 +23,7 @@ export function ServiceDetailPage({
   points,
   steps,
   cta,
+  image,
 }: ServiceDetailProps) {
   return (
     <SolveigLayout>
@@ -33,7 +34,7 @@ export function ServiceDetailPage({
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
             <div className="group relative overflow-hidden rounded-[1.5rem] shadow-elegant">
               <img
-                src={villaImage}
+                src={image}
                 alt="Villa de prestige sur la Costa del Sol"
                 width={1600}
                 height={1104}
