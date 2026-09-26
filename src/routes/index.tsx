@@ -18,7 +18,7 @@ import { Button } from "@/components/ui/button";
 import { ContactBand, SolveigLayout, TrustStrip, useSolveigLocale } from "@/components/SolveigLayout";
 import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
-const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://solveigconciergeriemarbella.vercel.app";
+const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://marbella-luxe-rentals.antoinerbf.workers.dev";
 
 const media = {
   hero: villaImage,
