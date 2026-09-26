@@ -12,3 +12,5 @@ Allow: /
 
 User-agent: *
 Allow: /
+
+Sitemap: https://solveigconciergeriemarbella.vercel.app/sitemap.xml

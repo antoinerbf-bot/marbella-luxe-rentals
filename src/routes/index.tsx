@@ -40,8 +40,11 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Solveig’s Prestige Service — Marbella & Mijas" },
       { property: "og:description", content: "A discreet local presence for exceptional properties on the Costa del Sol." },
       { property: "og:type", content: "website" },
+      { name: "robots", content: "index, follow, max-image-preview:large, max-video-preview:-1" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
+    links: [{ rel: "canonical", href: siteUrl }],
+    scripts: [{ type: "application/ld+json", children: JSON.stringify({ "@context": "https://schema.org", "@type": "WebSite", name: "Solveig’s Prestige Service", url: siteUrl, description: "Gestion de propriété, conciergerie privée et location saisonnière à Marbella, Mijas et sur la Costa del Sol.", publisher: { "@type": "Organization", name: "Solveig’s Prestige Service", telephone: "+34623626724", email: "solveighybord@gmail.com", areaServed: ["Marbella","Mijas","Costa del Sol"] } }) }],
   }),
   component: Index,
 });
@@ -151,130 +154,69 @@ const copy = {
 function Index() {
   const locale = useSolveigLocale();
   const c = copy[locale];
-
-  const serviceIcons = [Home, Sparkles, KeyRound, ShieldCheck];
+  const extraServices = {
+    fr: [["05", "Contrôles propriétaires", "Un regard local régulier, adapté au rythme de votre propriété.", "/gestion-propriete", ShieldCheck], ["06", "Relation voyageurs", "Une présence avant, pendant et après le séjour.", "/conciergerie", Sparkles]],
+    en: [["05", "Owner checks", "A regular local eye, adapted to your property’s rhythm.", "/gestion-propriete", ShieldCheck], ["06", "Guest relations", "A discreet local presence before, during and after every stay.", "/conciergerie", Sparkles]],
+    es: [["05", "Controles de propietarios", "Una mirada local regular, adaptada al ritmo de la propiedad.", "/gestion-propriete", ShieldCheck], ["06", "Relación con huéspedes", "Una presencia discreta antes, durante y después.", "/conciergerie", Sparkles]],
+  } as const;
+  const services = [...c.services, ...extraServices[locale]];
 
   return (
     <SolveigLayout>
-      <section className="relative min-h-[92svh] overflow-hidden bg-primary text-white">
-        <div className="absolute inset-0">
-          <img src={media.hero} alt="Villa méditerranéenne de prestige à Marbella" className="h-full w-full object-cover" />
-          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(35,26,18,.28),rgba(35,26,18,.42)_45%,rgba(35,26,18,.76))]" />
-          <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(35,26,18,.38),transparent_65%)]" />
-          <div className="absolute inset-0 opacity-25 [background-image:linear-gradient(135deg,transparent_49.7%,rgba(255,255,255,.12)_50%,transparent_50.3%)] [background-size:110px_110px]" />
-        </div>
+      <style>{"@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap'); .glass-nav .font-display,footer .font-display{font-family:Allura,cursive;font-weight:400}.glass-nav .font-display{font-size:1.65rem}.solveig-custom-wordmark{font-family:Allura,cursive;font-size:clamp(2.7rem,5vw,4.8rem);line-height:.8;letter-spacing:-.02em;color:#fff7e8;text-shadow:0 5px 24px rgba(0,0,0,.28)}.solveig-custom-sub{margin-top:.7rem;font:700 .42rem/1 var(--font-body);letter-spacing:.42em;color:#dcc9aa}.solveig-service-card{min-height:330px;border:1px solid rgba(75,60,43,.13);border-radius:1.35rem;background:rgba(255,255,255,.86);padding:1.55rem;box-shadow:0 22px 65px -48px rgba(53,39,28,.45);transition:transform .55s cubic-bezier(.2,.75,.2,1),box-shadow .55s ease}.solveig-service-card:hover{transform:translateY(-8px);box-shadow:0 30px 75px -45px rgba(53,39,28,.55)}.solveig-service-icon{display:flex;width:2.7rem;height:2.7rem;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(79,127,128,.2);background:rgba(127,210,220,.16);color:#4f7f80}.solveig-parallax{position:relative;overflow:hidden}.solveig-parallax img{height:110%;width:100%;object-fit:cover;transform:scale(1.08);animation:solveigParallax linear both;animation-timeline:view();animation-range:entry 0% cover 100%}@keyframes solveigParallax{from{transform:scale(1.08) translateY(-2%)}to{transform:scale(1.08) translateY(2%)}}.solveig-destination{position:relative;min-height:470px;overflow:hidden;border-radius:1.6rem}@media(prefers-reduced-motion:reduce){.solveig-service-card{transition:none}.solveig-parallax img{animation:none}}"}</style>
 
-        <div className="relative mx-auto flex min-h-[92svh] max-w-[1500px] flex-col items-center justify-center px-5 py-28 text-center sm:px-8">
-          <p className="text-[10px] font-bold uppercase tracking-[0.32em] text-white/75">{c.eyebrow}</p>
-          <div className="mt-7 flex size-20 items-center justify-center rounded-full border border-white/45 bg-white/10 backdrop-blur-md">
-            <span className="font-display text-3xl italic">S</span>
-          </div>
-          <h1 className="mt-7 max-w-5xl font-display text-5xl font-medium leading-[.95] tracking-[-.02em] sm:text-6xl md:text-[5.7rem]">
-            {c.hero}
-          </h1>
-          <p className="mt-7 max-w-2xl text-sm leading-7 text-white/82 sm:text-base">{c.intro}</p>
-
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-            <Button asChild variant="secondary" size="lg" className="rounded-full px-7"><Link to="/contact">{c.primary}</Link></Button>
-            <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/30 bg-white/10 px-7 text-white backdrop-blur hover:bg-white/20 hover:text-white"><Link to="/services">{c.secondary}</Link></Button>
-          </div>
-
-          <div className="mt-8 flex flex-wrap justify-center gap-x-7 gap-y-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/65">
-            <span>Marbella</span><span>·</span><span>Mijas</span><span>·</span><span>Costa del Sol</span>
-          </div>
-        </div>
-
-        <a href="#services" className="absolute bottom-7 left-1/2 flex -translate-x-1/2 items-center gap-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/65">{c.scroll}<ArrowDown size={14} /></a>
-      </section>
-
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 lg:py-28">
-          <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-gold">{c.serviceEyebrow}</p>
-          <h2 className="mx-auto mt-4 max-w-3xl font-display text-4xl font-medium leading-[.98] sm:text-5xl md:text-6xl">{c.serviceTitle}</h2>
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-muted-foreground">{c.serviceIntro}</p>
-        </div>
-
-        <div id="services" className="mx-auto grid max-w-7xl gap-4 px-5 pb-20 sm:px-8 md:grid-cols-2 lg:grid-cols-4 lg:pb-28">
-          {c.services.map(([number,title,text,link,image], i) => {
-            const Icon = serviceIcons[i];
-            return (
-              <Link key={title} to={link as never} className="group rounded-[1.35rem] border border-border bg-card p-5 transition duration-500 hover:-translate-y-1 hover:shadow-elegant">
-                <div className="flex items-center justify-between">
-                  <span className="flex size-10 items-center justify-center rounded-full bg-coast/10 text-coast"><Icon size={17} /></span>
-                  <span className="font-display text-xl text-gold/70">{number}</span>
-                </div>
-                <div className="mt-5 overflow-hidden rounded-xl">
-                  <img src={image} alt="" className="aspect-[1.2] w-full object-cover transition duration-700 group-hover:scale-105" aria-hidden="true" />
-                </div>
-                <h3 className="mt-5 font-display text-2xl font-medium">{title}</h3>
-                <p className="mt-2 text-xs leading-6 text-muted-foreground">{text}</p>
-                <span className="mt-5 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[0.18em] text-foreground">{locale === "fr" ? "Découvrir" : locale === "en" ? "Discover" : "Descubrir"} <ArrowRight size={13} /></span>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="bg-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[1fr_1.05fr] lg:items-center lg:py-28">
-          <div className="overflow-hidden rounded-[1.5rem]">
-            <img src={media.oldTown} alt="Marbella, Plaza de los Naranjos" className="aspect-[4/3] w-full object-cover transition duration-1000 hover:scale-105" />
-          </div>
-          <div className="lg:pl-8">
-            <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">{c.propertyEyebrow}</p>
-            <h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.propertyTitle}</h2>
-            <p className="mt-6 max-w-xl text-sm leading-7 text-muted-foreground">{c.propertyText}</p>
-            <ul className="mt-7 grid gap-3 sm:grid-cols-2">{c.propertyPoints.map(item => <li key={item} className="flex gap-2 text-xs leading-6"><Check size={15} className="mt-1 shrink-0 text-coast" />{item}</li>)}</ul>
-            <Button asChild variant="prestige" size="lg" className="mt-8 rounded-full"><Link to="/gestion-propriete">{c.propertyCta}<ArrowRight /></Link></Button>
-          </div>
-        </div>
-      </section>
-
-      <section className="bg-coast/90 text-white">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-          <div className="grid gap-10 lg:grid-cols-[.8fr_1.2fr] lg:items-center">
-            <div>
-              <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-white/65">{c.placeEyebrow}</p>
-              <h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.placeTitle}</h2>
-              <p className="mt-6 max-w-md text-sm leading-7 text-white/72">{c.placeText}</p>
-              <Link to="/zones" className="mt-7 inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.18em] text-white">{locale === "fr" ? "Explorer le territoire" : locale === "en" ? "Explore the area" : "Explorar el territorio"} <ArrowRight size={14} /></Link>
+      <section className="relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white">
+        <div className="absolute inset-0 scale-[1.035] hero-kenburns"><img src={media.hero} alt="Villa de prestige à Marbella sur la Costa del Sol" className="h-full w-full object-cover" fetchPriority="high" decoding="async" /></div>
+        <video className="absolute inset-0 h-full w-full object-cover opacity-80" autoPlay muted loop playsInline poster={media.hero} preload="metadata" aria-hidden="true"><source src="/solveig-hero.mp4" type="video/mp4" /></video>
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,27,20,.34),rgba(37,27,20,.22)_35%,rgba(37,27,20,.76))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_10%,rgba(24,18,13,.34)_100%)]" />
+        <div className="absolute inset-0 opacity-[.14] hero-grid" />
+        <div className="relative mx-auto flex min-h-[100svh] max-w-[1440px] flex-col items-center justify-center px-5 pb-20 pt-32 text-center sm:px-8">
+          <div className="hero-fade-in max-w-5xl">
+            <div className="mb-7 flex flex-col items-center"><span className="solveig-custom-wordmark">Solveig’s</span><span className="solveig-custom-sub">PRESTIGE SERVICE</span></div>
+            <p className="text-[9px] font-bold uppercase tracking-[0.34em] text-white/72 sm:text-[10px]">{c.eyebrow}</p>
+            <h1 className="mt-7 font-display text-[3.4rem] font-medium leading-[.86] tracking-[-.025em] text-balance sm:text-6xl md:text-[6.4rem]">{c.hero}</h1>
+            <p className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-white/78 sm:text-base">{c.intro}</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+              <Button asChild variant="secondary" size="lg" className="rounded-full px-6 shadow-xl"><Link to="/contact">{c.reserve}</Link></Button>
+              <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/25 bg-white/10 px-6 text-white backdrop-blur-xl hover:bg-white/20 hover:text-white"><Link to="/services">{c.quote}</Link></Button>
+              <a href="tel:+34623626724" className="inline-flex h-11 items-center justify-center rounded-full border border-white/25 bg-black/10 px-6 text-sm font-semibold backdrop-blur-xl transition hover:bg-white/15">{c.call}</a>
             </div>
-            <div className="grid gap-3 sm:grid-cols-3">
-              {c.places.map(([name,text,image]) => (
-                <Link key={name} to="/zones" className="group overflow-hidden rounded-[1.25rem] bg-white/10">
-                  <div className="overflow-hidden"><img src={image} alt={name} className="aspect-[4/5] w-full object-cover transition duration-700 group-hover:scale-105" /></div>
-                  <div className="p-5"><h3 className="font-display text-2xl">{name}</h3><p className="mt-2 text-xs leading-5 text-white/65">{text}</p></div>
-                </Link>
-              ))}
-            </div>
+            <div className="mt-7 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/58"><span>Marbella</span><span>·</span><span>Mijas</span><span>·</span><span>Costa del Sol</span></div>
+          </div>
+        </div>
+        <a href="#services" className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/62" aria-label={c.scroll}><span>{c.scroll}</span><ArrowDown size={15} className="animate-bounce" /></a>
+      </section>
+
+      <section id="services" className="relative bg-[#f7f0e3]">
+        <div className="absolute inset-0 soft-grid opacity-40" />
+        <div className="relative mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28">
+          <div className="grid gap-8 lg:grid-cols-[.75fr_1.25fr] lg:items-end"><div><p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#b28a50]">{c.servicesEyebrow}</p><h2 className="mt-4 font-display text-5xl font-medium leading-[.9] text-[#34271e] sm:text-6xl md:text-7xl">{c.servicesTitle}</h2></div><p className="max-w-xl text-sm leading-7 text-[#66584c] lg:justify-self-end">{c.servicesIntro}</p></div>
+          <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {services.map(([number,title,text,link,Icon], index) => <Link key={title} to={link as never} className={"solveig-service-card group " + (index === 1 ? "md:translate-y-8 " : "") + (index === 4 ? "lg:-translate-y-4" : "")}><div className="flex items-start justify-between"><span className="solveig-service-icon"><Icon size={17} /></span><span className="font-display text-3xl text-[#b9935a]/65">{number}</span></div><div className="mt-8"><h3 className="font-display text-3xl font-medium text-[#34271e]">{title}</h3><p className="mt-3 text-xs leading-6 text-[#74665a]">{text}</p><span className="mt-6 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[.2em] text-[#4f7f80]">Découvrir <ArrowRight size={13} /></span></div></Link>)}
           </div>
         </div>
       </section>
 
-      <section className="bg-surface">
-        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:py-28">
-          <div className="grid gap-10 lg:grid-cols-2 lg:items-end">
-            <div><p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">{c.whyEyebrow}</p><h2 className="mt-4 font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.whyTitle}</h2></div>
-            <p className="max-w-xl text-sm leading-7 text-muted-foreground lg:justify-self-end">{c.whyText}</p>
-          </div>
-          <div className="mt-12 grid gap-3 md:grid-cols-3">
-            {c.why.map(([n,t,d]) => <article key={n} className="rounded-[1.25rem] border border-border bg-background p-7"><span className="font-display text-3xl text-gold">{n}</span><h3 className="mt-10 font-display text-2xl">{t}</h3><p className="mt-2 text-sm leading-6 text-muted-foreground">{d}</p></article>)}
-          </div>
+      <section className="relative overflow-hidden bg-[#7fd2dc] text-[#173b3d]">
+        <div className="absolute inset-0 aqua-grid opacity-40" />
+        <div className="relative mx-auto grid max-w-[1440px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[.9fr_1.1fr] lg:items-center lg:px-12 lg:py-32">
+          <div className="max-w-xl"><p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#e5c17b]">{c.featureEyebrow}</p><h2 className="mt-5 font-display text-5xl font-medium leading-[.9] sm:text-6xl md:text-7xl">{c.featureTitle}</h2><p className="mt-6 text-sm leading-7 text-[#285b5f]/85">{c.featureText}</p><ul className="mt-7 grid gap-3 sm:grid-cols-2">{c.featurePoints.map(item => <li key={item} className="flex items-start gap-2 text-xs font-semibold"><Check size={15} />{item}</li>)}</ul><Button asChild variant="prestige" size="lg" className="mt-8 rounded-full"><Link to="/gestion-propriete">{c.featureCta}<ArrowRight /></Link></Button></div>
+          <div className="grid grid-cols-[1.35fr_.65fr] gap-3 sm:gap-4"><div className="solveig-parallax row-span-2 min-h-[430px] rounded-[1.6rem]"><img src={media.hero} alt="Villa de prestige à Marbella" loading="lazy" /></div><div className="solveig-parallax min-h-[205px] rounded-[1.6rem]"><img src={media.oldTown} alt="Marbella historique" loading="lazy" /></div><div className="solveig-parallax min-h-[205px] rounded-[1.6rem]"><img src={media.mijas} alt="Mijas, Andalousie" loading="lazy" /></div></div>
         </div>
       </section>
 
-      <section className="bg-primary text-primary-foreground">
-        <div className="mx-auto max-w-7xl px-5 py-20 text-center sm:px-8 lg:py-28">
-          <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-gold">Solveig’s Prestige Service</p>
-          <h2 className="mx-auto mt-5 max-w-4xl font-display text-4xl font-medium leading-[.95] sm:text-5xl md:text-6xl">{c.finalTitle}</h2>
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-primary-foreground/65">{c.finalText}</p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
-            <Button asChild variant="secondary" size="lg" className="rounded-full"><Link to="/contact">{c.primary}<ArrowRight /></Link></Button>
-            <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/20 bg-white/10 text-white hover:bg-white/20 hover:text-white"><Link to="/services">{c.secondary}</Link></Button>
-          </div>
-        </div>
+      <section className="relative bg-[#fbf6eb]">
+        <div className="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-32"><div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#b28a50]">{c.destinationEyebrow}</p><h2 className="mt-4 font-display text-5xl font-medium leading-[.9] text-[#34271e] sm:text-6xl md:text-7xl">{c.destinationTitle}</h2><p className="mt-6 max-w-xl text-sm leading-7 text-[#74665a]">{c.destinationText}</p></div><div className="mt-14 grid gap-4 md:grid-cols-3">{c.places.map(([name,text,image], index) => <Link key={name} to="/zones" className={"solveig-destination group " + (index === 1 ? "md:translate-y-10" : "")}><div className="solveig-parallax absolute inset-0"><img src={image} alt={name} loading="lazy" /></div><div className="absolute inset-0 bg-gradient-to-t from-[#2d2119]/85 via-[#2d2119]/20 to-transparent" /><div className="relative flex min-h-[470px] flex-col justify-end p-7 text-white"><span className="text-[9px] font-bold uppercase tracking-[.2em] text-[#e8c986]">Costa del Sol</span><h3 className="mt-2 font-display text-4xl">{name}</h3><p className="mt-2 max-w-sm text-xs leading-6 text-white/72">{text}</p><span className="mt-5 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[.18em]">Explorer <ArrowRight size={13} /></span></div></Link>)}</div></div>
       </section>
 
+      <section className="relative overflow-hidden bg-[#33251b] text-[#f8efdf]">
+        <div className="solveig-parallax absolute inset-0 opacity-25"><img src={media.coast} alt="Costa del Sol" loading="lazy" /></div><div className="absolute inset-0 bg-[#33251b]/78" />
+        <div className="relative mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-32"><div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end"><div><p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#e5c17b]">{c.signatureEyebrow}</p><h2 className="mt-5 font-display text-5xl font-medium leading-[.9] sm:text-6xl md:text-7xl">{c.signatureTitle}</h2><p className="mt-6 max-w-lg text-sm leading-7 text-white/66">{c.signatureText}</p></div><div className="grid gap-px overflow-hidden rounded-[1.5rem] border border-white/10 bg-white/10 md:grid-cols-3">{c.signaturePoints.map(([n,t,d]) => <article key={n} className="bg-[#33251b]/75 p-7 backdrop-blur-sm"><span className="font-display text-3xl text-[#e2bd75]">{n}</span><h3 className="mt-9 font-display text-3xl">{t}</h3><p className="mt-2 text-xs leading-6 text-white/58">{d}</p></article>)}</div></div></div>
+      </section>
+
+      <section className="bg-[#f7f0e3]"><div className="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-28"><div className="relative overflow-hidden rounded-[2rem] bg-[#34271e] px-7 py-16 text-center text-[#f8efdf] shadow-elegant sm:px-12 lg:py-24"><div className="absolute inset-0 opacity-30 [background-image:radial-gradient(circle_at_50%_10%,rgba(224,188,116,.45),transparent_30%)]" /><div className="relative mx-auto max-w-4xl"><div className="flex flex-col items-center"><span className="solveig-custom-wordmark">Solveig’s</span><span className="solveig-custom-sub">PRESTIGE SERVICE</span></div><p className="mt-8 text-[10px] font-bold uppercase tracking-[.26em] text-[#e5c17b]">{c.finalEyebrow}</p><h2 className="mt-5 font-display text-5xl font-medium leading-[.9] sm:text-6xl md:text-7xl">{c.finalTitle}</h2><p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-white/65">{c.finalText}</p><div className="mt-8 flex flex-wrap justify-center gap-3"><a href="https://wa.me/34623626724" target="_blank" rel="noreferrer" className="inline-flex h-12 items-center justify-center rounded-full bg-[#f4e7d1] px-7 text-sm font-semibold text-[#34271e]">WhatsApp</a><a href="mailto:solveighybord@gmail.com" className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 px-7 text-sm font-semibold">Email</a><a href="tel:+34623626724" className="inline-flex h-12 items-center justify-center rounded-full border border-white/25 px-7 text-sm font-semibold">+34 623 626 724</a></div></div></div></div></section>
+      <a href="https://wa.me/34623626724" target="_blank" rel="noreferrer" className="fixed bottom-5 right-5 z-[60] flex size-14 items-center justify-center rounded-full bg-[#2e8068] text-white shadow-2xl ring-2 ring-white/30 transition hover:-translate-y-1 hover:scale-105" aria-label="WhatsApp Solveig"><MessageCircle size={21} /></a>
       <ContactBand />
     </SolveigLayout>
   );

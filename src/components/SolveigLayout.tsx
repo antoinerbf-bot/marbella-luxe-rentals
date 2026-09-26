@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Globe2, Menu, MessageCircle, X } from "lucide-react";
+import { ArrowRight, Check, Globe2, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -10,6 +10,8 @@ const navigation = [
   { label: "Marbella & Mijas", to: "/zones" },
   { label: "Contact", to: "/contact" },
 ] as const;
+
+const contact = { phone: "+34 623 626 724", tel: "tel:+34623626724", whatsapp: "https://wa.me/34623626724", email: "solveighybord@gmail.com", mailto: "mailto:solveighybord@gmail.com" };
 
 const languages = [
   { code: "fr", label: "FR", name: "Français" },
@@ -52,6 +54,13 @@ function LanguageSwitcher({ mobile = false }: { mobile?: boolean }) {
       {!mobile && <span className="sr-only">{label}</span>}
     </div>
   );
+}
+
+export function Logo({ light = false, large = false }: { light?: boolean; large?: boolean }) {
+  return <span className={`solveig-logo flex flex-col items-center ${light ? "text-[#fff7e8]" : "text-foreground"}`}>
+    <span className={`solveig-wordmark font-display leading-none ${large ? "text-5xl" : "text-3xl"}`}>Solveig’s</span>
+    <span className={`mt-2 text-[7px] font-bold uppercase tracking-[0.38em] ${light ? "text-[#d9c8ab]" : "text-muted-foreground"}`}>PRESTIGE SERVICE</span>
+  </span>;
 }
 
 export function useSolveigLocale() {
@@ -128,16 +137,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
       <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto mt-3 max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="glass-nav flex min-h-[68px] items-center justify-between gap-4 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:pl-5">
-            <Link to="/" className="group flex shrink-0 items-center gap-3" aria-label="Solveig's Prestige Service — Accueil" onClick={() => setMenuOpen(false)}>
-              <span className="relative flex size-10 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-lg">
-                <span className="font-display text-lg font-semibold">S</span>
-                <span className="absolute -bottom-0.5 -right-0.5 size-2 rounded-full bg-gold ring-2 ring-background" />
-              </span>
-              <span className="hidden leading-none sm:block">
-                <span className="block font-display text-[1.3rem] font-semibold tracking-tight">Solveig’s</span>
-                <span className="mt-1 block text-[8px] font-bold uppercase tracking-[0.24em] text-muted-foreground">Prestige Service</span>
-              </span>
-            </Link>
+            <Link to="/" className="group flex shrink-0 items-center" aria-label="Solveig’s Prestige Service — Accueil" onClick={() => setMenuOpen(false)}><Logo /></Link>
 
             <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
               {navigation.map((item) => (
@@ -153,7 +153,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
             </nav>
 
             <div className="flex items-center gap-2">
-              <div className="hidden sm:block"><LanguageSwitcher /></div>
+              <div className="hidden sm:block"><LanguageSwitcher /></div><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hidden size-10 items-center justify-center rounded-full border border-border bg-background/70 text-[#2e8068] transition hover:-translate-y-0.5 md:flex" aria-label="WhatsApp"><MessageCircle size={18} /></a>
               <Button asChild variant="prestige" size="sm" className="hidden md:inline-flex">
                 <Link to="/contact">
                   {copy.project}
@@ -207,14 +207,9 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
         <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10">
           <div className="grid gap-14 lg:grid-cols-[1.25fr_.75fr_.75fr]">
             <div>
-              <div className="flex items-center gap-3">
-                <span className="flex size-11 items-center justify-center rounded-full border border-gold/60 bg-white/5 font-display text-lg">S</span>
-                <div>
-                  <p className="font-display text-3xl font-semibold">Solveig’s</p>
-                  <p className="text-[9px] font-bold uppercase tracking-[0.2em] text-primary-foreground/55">Prestige Service</p>
-                </div>
-              </div>
+              <Logo light large />
               <p className="mt-7 max-w-xl text-sm leading-7 text-primary-foreground/68">{copy.footer}</p>
+              <div className="mt-7 flex flex-wrap gap-2"><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="footer-contact"><MessageCircle size={15} />WhatsApp</a><a href={contact.tel} className="footer-contact"><Phone size={15} />{contact.phone}</a><a href={contact.mailto} className="footer-contact"><Mail size={15} />{contact.email}</a></div>
               <Link to="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground hover:text-gold">
                 {copy.firstContact}<ArrowRight size={15} />
               </Link>
@@ -244,8 +239,8 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
       </footer>
 
       <a
-        href="#contact"
-        aria-label={copy.contact}
+        href={contact.whatsapp} target="_blank" rel="noreferrer"
+        aria-label="WhatsApp Solveig"
         className="fixed bottom-5 right-5 z-40 flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-2xl ring-1 ring-white/15 transition-transform hover:scale-105"
       >
         <MessageCircle size={22} />
@@ -297,7 +292,7 @@ export function ContactBand() {
         <div className="max-w-4xl">
           <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-primary-foreground/60"><span className="h-px w-10 bg-gold" />Premier échange</p>
           <h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] text-balance md:text-7xl">Votre propriété mérite une présence à sa hauteur.</h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/65">Décrivez-nous votre bien, votre rythme de présence et vos attentes. Nous construirons le niveau d’accompagnement adapté.</p>
+          <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/65">Décrivez-nous votre bien, votre rythme de présence et vos attentes. Nous construirons le niveau d’accompagnement adapté.</p><div className="mt-7 flex flex-wrap gap-2"><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="footer-contact bg-white/10"><MessageCircle size={15} />WhatsApp</a><a href={contact.tel} className="footer-contact bg-white/10"><Phone size={15} />{contact.phone}</a><a href={contact.mailto} className="footer-contact bg-white/10"><Mail size={15} />{contact.email}</a></div>
         </div>
         <Button asChild variant="secondary" size="xl" className="group">
           <Link to="/contact">Demander un échange <ArrowRight className="transition-transform group-hover:translate-x-1" /></Link>

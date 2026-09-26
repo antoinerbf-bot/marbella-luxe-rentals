@@ -1,0 +1,10 @@
+{
+  "name": "Solveig’s Prestige Service",
+  "short_name": "Solveig’s",
+  "description": "Gestion de propriété, conciergerie privée et location saisonnière à Marbella, Mijas et sur la Costa del Sol.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#f7f0e3",
+  "theme_color": "#34271e",
+  "lang": "fr"
+}
