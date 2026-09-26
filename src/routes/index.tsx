@@ -205,7 +205,8 @@ function Index() {
                   <img src={villaImage} alt="" width={1600} height={1104} loading="lazy" className="absolute inset-0 h-full w-full scale-105 object-cover transition-transform duration-1000 group-hover:scale-110" aria-hidden="true" />
                   <div className="absolute inset-0 bg-primary/45" />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/40 to-transparent" />
-                  <div className="relative flex min-h-[430px] flex-col justify-between p-7 sm:p-9"><div className="flex items-start justify-between">
+                  <div className="relative flex min-h-[430px] flex-col justify-between p-7 sm:p-9">
+                    <div className="flex items-start justify-between">
                     <span className="font-display text-2xl text-gold">{service.number}</span>
                     <span className="flex size-12 items-center justify-center rounded-full border border-border text-coast transition-all group-hover:border-gold group-hover:bg-gold group-hover:text-gold-foreground">
                       <Icon size={21} aria-hidden="true" />
@@ -218,6 +219,7 @@ function Index() {
                   <span className="absolute bottom-9 right-9 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold transition-colors group-hover:text-gold">
                     Découvrir <ArrowRight size={15} aria-hidden="true" />
                   </span>
+                  </div>
                 </Link>
               );
             })}
