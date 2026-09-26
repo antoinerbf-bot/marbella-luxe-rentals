@@ -16,5 +16,6 @@ export const Route = createFileRoute("/services/housekeeping")({
     points={["Coordination du ménage et du linge selon les standards du bien.", "Contrôle qualité avant l’arrivée des voyageurs ou des propriétaires.", "Suivi des consommables et des petits besoins courants.", "Identification et coordination rapide des interventions nécessaires."]}
     steps={["Définir vos standards de qualité et vos priorités.", "Organiser les passages et contrôles autour du calendrier du bien.", "Identifier immédiatement les écarts ou interventions nécessaires.", "Valider que le logement est prêt avant chaque utilisation."]}
     cta="Votre propriété mérite un niveau de préparation irréprochable ?"
+    image="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mijas_Pueblo_from_the_south_(Mijas,_Dec_2012).jpg"
   />,
 });
