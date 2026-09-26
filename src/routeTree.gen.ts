@@ -24,7 +24,7 @@ const ZonesRoute = ZonesRouteImport.update({ id: '/zones', path: '/zones', getPa
 const GestionProprieteRoute = GestionProprieteRouteImport.update({ id: '/gestion-propriete', path: '/gestion-propriete', getParentRoute: () => rootRouteImport } as any)
 const ConciergerieRoute = ConciergerieRouteImport.update({ id: '/conciergerie', path: '/conciergerie', getParentRoute: () => rootRouteImport } as any)
 const LocationSaisonniereRoute = LocationSaisonniereRouteImport.update({ id: '/location-saisonniere', path: '/location-saisonniere', getParentRoute: () => rootRouteImport } as any)
-const HousekeepingRoute = HousekeepingRouteImport.update({ id: '/services/housekeeping', path: '/services/housekeeping', getParentRoute: () => rootRouteImport } as any)
+const HousekeepingRoute = HousekeepingRouteImport.update({ id: '/services/housekeeping', path: '/housekeeping', getParentRoute: () => ServicesRoute } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -80,10 +80,12 @@ declare module '@tanstack/react-router' {
   }
 }
 
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren({ HousekeepingRoute })
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute,
   ContactRoute,
-  ServicesRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   ZonesRoute,
   GestionProprieteRoute,
   ConciergerieRoute,
