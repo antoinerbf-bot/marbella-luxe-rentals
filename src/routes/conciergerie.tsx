@@ -16,5 +16,6 @@ export const Route = createFileRoute("/conciergerie")({
     points={["Accueil et assistance adaptés au profil de chaque séjour.", "Coordination des demandes courantes et des intervenants locaux.", "Préparation attentive du logement avant l’arrivée.", "Une relation humaine, réactive et discrète."]}
     steps={["Comprendre vos habitudes, vos attentes et celles de vos invités.", "Préparer les détails qui rendent l’arrivée immédiate et naturelle.", "Rester disponible pendant le séjour selon le niveau d’accompagnement choisi.", "Clore chaque séjour avec le même niveau d’attention."]}
     cta="Parlons du niveau de service que vous souhaitez offrir."
+    image="https://commons.wikimedia.org/wiki/Special:Redirect/file/Marbella_-_Plaza_de_los_Naranjos_8.jpg"
   />,
 });
