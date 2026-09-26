@@ -7,10 +7,6 @@
   "engines": {
     "bun": "1.2.15"
   },
-  "packageManager": "bun@1.2.15",
-  "engines": {
-    "bun": "1.2.15"
-  },
   "scripts": {
     "dev": "vite dev",
     "build": "vite build",
@@ -48,7 +44,7 @@
     "@radix-ui/react-switch": "^1.2.6",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/react-toggle": "^1.1.10",
-    "@radix-ui/react-toggle-group": "^1.1.10",
+    "@radix-ui/react-toggle-group": "^1.1.11",
     "@radix-ui/react-tooltip": "^1.2.8",
     "@tailwindcss/vite": "^4.2.1",
     "@tanstack/react-query": "^5.101.1",
