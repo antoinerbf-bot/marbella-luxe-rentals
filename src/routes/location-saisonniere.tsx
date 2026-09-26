@@ -16,5 +16,6 @@ export const Route = createFileRoute("/location-saisonniere")({
     points={["Préparation complète entre deux séjours.", "Check-in, check-out et contrôle du logement.", "Coordination ménage, linge, consommables et maintenance légère.", "Suivi local pour les propriétaires qui ne vivent pas sur place."]}
     steps={["Établir les standards de préparation propres à votre propriété.", "Préparer le logement et contrôler chaque détail avant l’arrivée.", "Accompagner le séjour avec une présence adaptée.", "Contrôler le bien après le départ et préparer la suite."]}
     cta="Vous souhaitez louer votre propriété avec une présence locale de confiance ?"
+    image="https://commons.wikimedia.org/wiki/Special:Redirect/file/PLAYAS_DE_MIJAS.jpg"
   />,
 });
