@@ -12,7 +12,7 @@ import { useEffect, type ReactNode } from "react";
 import appCss from "../styles.css?url";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 
-const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://solveigconciergeriemarbella.vercel.app";
+const SITE_URL = import.meta.env.VITE_SITE_URL ?? "https://marbella-luxe-rentals.antoinerbf.workers.dev";
 
 function NotFoundComponent() {
   return (
