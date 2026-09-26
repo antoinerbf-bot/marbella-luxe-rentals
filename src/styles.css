@@ -186,3 +186,50 @@
 @utility shadow-soft {
   box-shadow: var(--shadow-soft);
 }
+
+@keyframes heroZoom {
+  from { transform: scale(1.035); }
+  to { transform: scale(1.09); }
+}
+
+@keyframes floatSoft {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
+}
+
+.glass-nav {
+  background: color-mix(in oklab, var(--background) 78%, transparent);
+  backdrop-filter: blur(22px) saturate(140%);
+}
+
+.mobile-menu {
+  animation: menuIn .22s ease-out both;
+}
+
+@keyframes menuIn {
+  from { opacity: 0; transform: translateY(-8px) scale(.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+::selection {
+  background: color-mix(in oklab, var(--gold) 65%, transparent);
+  color: var(--foreground);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
