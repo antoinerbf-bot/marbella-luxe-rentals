@@ -1,22 +1,23 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Clock, MapPin, MessageCircle, ShieldCheck } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { ArrowRight, Clock3, MapPin, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
 
 import { PageHero, SolveigLayout } from "@/components/SolveigLayout";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
     meta: [
-      { title: "Contact — Solveig’s Prestige Service" },
+      { title: "Contact — Solveig’s Prestige Service | Marbella & Mijas" },
       {
         name: "description",
         content:
-          "Contactez Solveig’s Prestige Service pour une gestion locative sur mesure à Marbella, Mijas et alentours.",
+          "Échangez avec Solveig’s Prestige Service au sujet de votre propriété à Marbella, Mijas ou sur la Costa del Sol.",
       },
       { property: "og:title", content: "Contact — Solveig’s Prestige Service" },
       {
         property: "og:description",
         content:
-          "Demandez un premier échange pour confier votre bien à une gestion locative locale et premium.",
+          "Parlons de votre propriété, de vos attentes et du niveau de présence locale dont vous avez besoin.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -25,45 +26,102 @@ export const Route = createFileRoute("/contact")({
   component: ContactPage,
 });
 
+const reasons = [
+  {
+    icon: MapPin,
+    title: "Une présence sur le terrain",
+    text: "Marbella, Mijas, Mijas Costa et les secteurs voisins sont au cœur de notre accompagnement.",
+  },
+  {
+    icon: Clock3,
+    title: "Un premier échange simple",
+    text: "Commencez par nous expliquer votre bien, votre situation et ce que vous souhaitez déléguer.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "Une approche confidentielle",
+    text: "Chaque propriété a ses contraintes. Nous privilégions un accompagnement discret et réellement sur mesure.",
+  },
+];
+
 function ContactPage() {
   return (
     <SolveigLayout>
       <PageHero
-        eyebrow="Contact"
+        eyebrow="Premier échange"
         title="Parlons de votre propriété à Marbella ou Mijas."
-        description="Un premier échange permet d’évaluer les besoins du bien, les attentes des voyageurs et le niveau d’accompagnement souhaité."
+        description="Que vous soyez propriétaire absent, investisseur ou à la recherche d’un accompagnement pour vos locations, commençons par comprendre vos besoins."
       />
 
       <section className="bg-background">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-10">
-          <div className="space-y-5">
-            {[
-              { icon: MapPin, title: "Secteur", text: "Marbella, Mijas, Mijas Costa et alentours." },
-              { icon: Clock, title: "Premier retour", text: "Réponse rapide pour cadrer vos besoins et disponibilités." },
-              { icon: ShieldCheck, title: "Approche", text: "Discrétion, précision et standards premium." },
-            ].map((item) => {
+        <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
+          <div className="grid gap-5 md:grid-cols-3">
+            {reasons.map((item) => {
               const Icon = item.icon;
               return (
-                <div key={item.title} className="border border-border bg-card p-6 shadow-soft">
+                <article key={item.title} className="border border-border bg-card p-7 shadow-soft">
                   <Icon className="text-coast" size={24} aria-hidden="true" />
-                  <h2 className="mt-5 text-lg font-bold">{item.title}</h2>
-                  <p className="mt-2 leading-7 text-muted-foreground">{item.text}</p>
-                </div>
+                  <h2 className="mt-7 font-display text-3xl font-semibold">{item.title}</h2>
+                  <p className="mt-3 leading-7 text-muted-foreground">{item.text}</p>
+                </article>
               );
             })}
           </div>
 
-          <div className="bg-primary p-8 text-primary-foreground shadow-elegant md:p-10">
-            <MessageCircle size={32} aria-hidden="true" />
-            <h2 className="mt-8 font-display text-5xl font-semibold leading-tight text-balance">
-              Coordonnées à intégrer
-            </h2>
-            <p className="mt-5 text-lg leading-8 text-primary-foreground/78">
-              Ajoutez ici le numéro, l’email ou le lien WhatsApp de Solveig pour transformer cette page en point de contact direct.
-            </p>
-            <div className="mt-8 grid gap-3 text-sm font-semibold text-primary-foreground/78 sm:grid-cols-2">
-              <div className="border border-primary-foreground/18 bg-background/12 p-5">Téléphone</div>
-              <div className="border border-primary-foreground/18 bg-background/12 p-5">WhatsApp</div>
+          <div className="mt-16 grid overflow-hidden rounded-2xl border border-border bg-primary shadow-elegant lg:grid-cols-[0.85fr_1.15fr]">
+            <div className="relative overflow-hidden p-8 text-primary-foreground md:p-12">
+              <div className="absolute -right-24 -top-24 size-72 rounded-full border border-gold/25" />
+              <div className="absolute -bottom-28 -left-24 size-72 rounded-full border border-primary-foreground/10" />
+              <div className="relative">
+                <Sparkles className="text-gold" size={28} aria-hidden="true" />
+                <p className="mt-10 text-sm font-bold uppercase tracking-[0.16em] text-primary-foreground/60">
+                  Votre projet
+                </p>
+                <h2 className="mt-4 font-display text-5xl font-semibold leading-[0.95]">
+                  Parlons de ce qui compte vraiment.
+                </h2>
+                <p className="mt-6 leading-7 text-primary-foreground/70">
+                  Type de propriété, localisation, fréquence d’occupation, location saisonnière, besoins d’entretien ou simple présence à distance : quelques éléments suffisent pour commencer.
+                </p>
+                <div className="mt-8 space-y-3 text-sm text-primary-foreground/80">
+                  {["Votre localisation", "Votre niveau de présence souhaité", "Vos priorités et contraintes"].map((item) => (
+                    <div key={item} className="flex items-center gap-3">
+                      <span className="flex size-6 items-center justify-center rounded-full border border-gold/50 text-gold">✓</span>
+                      {item}
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div id="demande" className="bg-background p-8 md:p-12">
+              <p className="text-sm font-bold uppercase tracking-[0.16em] text-gold">Choisir la suite</p>
+              <h2 className="mt-4 font-display text-4xl font-semibold leading-tight">
+                Vous préférez commencer par un échange ou par nos services ?
+              </h2>
+              <p className="mt-4 leading-7 text-muted-foreground">
+                Les coordonnées directes de Solveig seront intégrées ici dès qu’elles auront été fournies, afin que les boutons téléphone, email et WhatsApp soient de vrais liens et non des informations fictives.
+              </p>
+
+              <div className="mt-8 grid gap-3">
+                <Button asChild variant="prestige" size="xl">
+                  <Link to="/services">
+                    Explorer les services
+                    <ArrowRight aria-hidden="true" />
+                  </Link>
+                </Button>
+                <Button asChild variant="coastal" size="xl">
+                  <Link to="/zones">
+                    Découvrir Marbella & Mijas
+                    <MapPin aria-hidden="true" />
+                  </Link>
+                </Button>
+              </div>
+
+              <div className="mt-8 flex items-start gap-3 border-t border-border pt-6 text-xs leading-5 text-muted-foreground">
+                <MessageCircle className="mt-0.5 shrink-0 text-coast" size={17} aria-hidden="true" />
+                <span>Pas de numéro inventé, pas de faux formulaire : la prochaine étape sera de brancher les coordonnées officielles et le canal WhatsApp réel.</span>
+              </div>
             </div>
           </div>
         </div>
