@@ -111,7 +111,7 @@ function Index() {
               <span className="h-px w-10 bg-gold" />
               Une présence locale, une exigence internationale
             </p>
-            <h1 className="max-w-5xl font-display text-6xl font-semibold leading-[0.86] tracking-[-0.025em] text-balance sm:text-7xl lg:text-[8.5rem]">
+            <h1 className="max-w-5xl font-display text-[3.7rem] font-semibold leading-[0.82] tracking-[-0.025em] text-balance sm:text-6xl lg:text-[7.3rem] xl:text-[8.2rem]">
               Your property.
               <br />
               <span className="text-gold">Perfectly cared for.</span>
@@ -121,7 +121,7 @@ function Index() {
               qu’une simple gestion : de la présence, du goût, de la discrétion et une vraie maîtrise du terrain.
             </p>
 
-            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 grid max-w-4xl gap-7 lg:grid-cols-[1fr_auto] lg:items-end">
               <Button asChild variant="secondary" size="xl" className="group">
                 <Link to="/contact">
                   Parlons de votre propriété
@@ -193,26 +193,26 @@ function Index() {
             </div>
           </div>
 
-          <div className="mt-16 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-2">
+          <div className="mt-14 grid gap-4 lg:grid-cols-2">
             {services.map((service) => {
               const Icon = service.icon;
               return (
                 <Link
                   key={service.title}
                   to={service.link}
-                  className="group relative min-h-[330px] bg-card p-8 transition-colors hover:bg-surface sm:p-10"
+                  className="group relative relative min-h-[430px] overflow-hidden rounded-[1.5rem] bg-primary p-0 text-primary-foreground shadow-elegant"
                 >
-                  <div className="flex items-start justify-between">
+                  <div className="relative flex min-h-[430px] flex-col justify-between p-7 sm:p-9"><div className="flex items-start justify-between">
                     <span className="font-display text-2xl text-gold">{service.number}</span>
                     <span className="flex size-12 items-center justify-center rounded-full border border-border text-coast transition-all group-hover:border-coast group-hover:bg-coast group-hover:text-coast-foreground">
                       <Icon size={21} aria-hidden="true" />
                     </span>
                   </div>
-                  <div className="mt-20 max-w-md">
-                    <h3 className="font-display text-4xl font-semibold text-card-foreground">{service.title}</h3>
+                  <div className="mt-auto max-w-lg">
+                    <h3 className="font-display text-4xl font-semibold text-primary-foreground">{service.title}</h3>
                     <p className="mt-4 leading-7 text-muted-foreground">{service.text}</p>
                   </div>
-                  <span className="absolute bottom-9 right-9 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-muted-foreground transition-colors group-hover:text-foreground">
+                  <span className="absolute bottom-9 right-9 flex items-center gap-2 text-xs font-bold uppercase tracking-[0.14em] text-gold transition-colors group-hover:text-gold">
                     Découvrir <ArrowRight size={15} aria-hidden="true" />
                   </span>
                 </Link>
