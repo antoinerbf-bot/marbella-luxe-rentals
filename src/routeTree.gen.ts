@@ -54,9 +54,9 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesHousekeepingRoute = ServicesHousekeepingRouteImport.update({
-  id: '/housekeeping',
-  path: '/housekeeping',
-  getParentRoute: () => ServicesRoute,
+  id: '/services/housekeeping',
+  path: '/services/housekeeping',
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
@@ -130,6 +130,7 @@ export interface RootRouteChildren {
   GestionProprieteRoute: typeof GestionProprieteRoute
   LocationSaisonniereRoute: typeof LocationSaisonniereRoute
   ZonesRoute: typeof ZonesRoute
+  ServicesHousekeepingRoute: typeof ServicesHousekeepingRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
 
@@ -186,10 +187,10 @@ declare module '@tanstack/react-router' {
     }
     '/services/housekeeping': {
       id: '/services/housekeeping'
-      path: '/housekeeping'
+      path: '/services/housekeeping'
       fullPath: '/services/housekeeping'
       preLoaderRoute: typeof ServicesHousekeepingRouteImport
-      parentRoute: typeof ServicesRoute
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -201,6 +202,7 @@ const rootRouteChildren: RootRouteChildren = {
   GestionProprieteRoute: GestionProprieteRoute,
   LocationSaisonniereRoute: LocationSaisonniereRoute,
   ZonesRoute: ZonesRoute,
+  ServicesHousekeepingRoute: ServicesHousekeepingRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }
 export const routeTree = rootRouteImport
