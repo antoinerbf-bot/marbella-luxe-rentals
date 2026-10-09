@@ -1,4 +1,4 @@
-name: Diagnose Vercel build
+name: Diagnose Vercel build (after route fix)
 on:
   pull_request:
     branches: [main]
