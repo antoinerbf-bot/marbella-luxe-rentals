@@ -12,6 +12,8 @@ import {
   ShieldCheck,
   Sparkles,
   Waves,
+  CalendarDays,
+  Wrench,
 } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
