@@ -10,18 +10,37 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ConciergerieRouteImport } from './routes/conciergerie'
 import { Route as ContactRouteImport } from './routes/contact'
+import { Route as GestionProprieteRouteImport } from './routes/gestion-propriete'
+import { Route as LocationSaisonniereRouteImport } from './routes/location-saisonniere'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as ZonesRouteImport } from './routes/zones'
+import { Route as ServicesHousekeepingRouteImport } from './routes/services/housekeeping'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConciergerieRoute = ConciergerieRouteImport.update({
+  id: '/conciergerie',
+  path: '/conciergerie',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GestionProprieteRoute = GestionProprieteRouteImport.update({
+  id: '/gestion-propriete',
+  path: '/gestion-propriete',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationSaisonniereRoute = LocationSaisonniereRouteImport.update({
+  id: '/location-saisonniere',
+  path: '/location-saisonniere',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -34,38 +53,83 @@ const ZonesRoute = ZonesRouteImport.update({
   path: '/zones',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesHousekeepingRoute = ServicesHousekeepingRouteImport.update({
+  id: '/housekeeping',
+  path: '/housekeeping',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/gestion-propriete': typeof GestionProprieteRoute
+  '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/services': typeof ServicesRouteWithChildren
   '/zones': typeof ZonesRoute
+  '/services/housekeeping': typeof ServicesHousekeepingRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/gestion-propriete': typeof GestionProprieteRoute
+  '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/services': typeof ServicesRouteWithChildren
   '/zones': typeof ZonesRoute
+  '/services/housekeeping': typeof ServicesHousekeepingRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
-  '/services': typeof ServicesRoute
+  '/gestion-propriete': typeof GestionProprieteRoute
+  '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/services': typeof ServicesRouteWithChildren
   '/zones': typeof ZonesRoute
+  '/services/housekeeping': typeof ServicesHousekeepingRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/contact' | '/services' | '/zones'
+  fullPaths:
+    | '/'
+    | '/conciergerie'
+    | '/contact'
+    | '/gestion-propriete'
+    | '/location-saisonniere'
+    | '/services'
+    | '/zones'
+    | '/services/housekeeping'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/contact' | '/services' | '/zones'
-  id: '__root__' | '/' | '/contact' | '/services' | '/zones'
+  to:
+    | '/'
+    | '/conciergerie'
+    | '/contact'
+    | '/gestion-propriete'
+    | '/location-saisonniere'
+    | '/services'
+    | '/zones'
+    | '/services/housekeeping'
+  id:
+    | '__root__'
+    | '/'
+    | '/conciergerie'
+    | '/contact'
+    | '/gestion-propriete'
+    | '/location-saisonniere'
+    | '/services'
+    | '/zones'
+    | '/services/housekeeping'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ConciergerieRoute: typeof ConciergerieRoute
   ContactRoute: typeof ContactRoute
-  ServicesRoute: typeof ServicesRoute
+  GestionProprieteRoute: typeof GestionProprieteRoute
+  LocationSaisonniereRoute: typeof LocationSaisonniereRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
   ZonesRoute: typeof ZonesRoute
 }
 
@@ -78,11 +142,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conciergerie': {
+      id: '/conciergerie'
+      path: '/conciergerie'
+      fullPath: '/conciergerie'
+      preLoaderRoute: typeof ConciergerieRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
       fullPath: '/contact'
       preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/gestion-propriete': {
+      id: '/gestion-propriete'
+      path: '/gestion-propriete'
+      fullPath: '/gestion-propriete'
+      preLoaderRoute: typeof GestionProprieteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/location-saisonniere': {
+      id: '/location-saisonniere'
+      path: '/location-saisonniere'
+      fullPath: '/location-saisonniere'
+      preLoaderRoute: typeof LocationSaisonniereRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -99,13 +184,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ZonesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/housekeeping': {
+      id: '/services/housekeeping'
+      path: '/housekeeping'
+      fullPath: '/services/housekeeping'
+      preLoaderRoute: typeof ServicesHousekeepingRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
 
+interface ServicesRouteChildren {
+  ServicesHousekeepingRoute: typeof ServicesHousekeepingRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesHousekeepingRoute: ServicesHousekeepingRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ConciergerieRoute: ConciergerieRoute,
   ContactRoute: ContactRoute,
-  ServicesRoute: ServicesRoute,
+  GestionProprieteRoute: GestionProprieteRoute,
+  LocationSaisonniereRoute: LocationSaisonniereRoute,
+  ServicesRoute: ServicesRouteWithChildren,
   ZonesRoute: ZonesRoute,
 }
 export const routeTree = rootRouteImport
