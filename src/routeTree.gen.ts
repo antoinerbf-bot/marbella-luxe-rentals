@@ -15,8 +15,8 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GestionProprieteRouteImport } from './routes/gestion-propriete'
 import { Route as LocationSaisonniereRouteImport } from './routes/location-saisonniere'
 import { Route as ZonesRouteImport } from './routes/zones'
-import { Route as ServicesIndexRouteImport } from './routes/services/index'
-import { Route as ServicesHousekeepingRouteImport } from './routes/services/housekeeping'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesHousekeepingRouteImport } from './routes/services.housekeeping'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
