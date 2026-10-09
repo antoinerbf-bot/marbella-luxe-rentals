@@ -3,9 +3,8 @@
   "private": true,
   "sideEffects": false,
   "type": "module",
-  "packageManager": "bun@1.2.15",
   "engines": {
-    "bun": "1.2.15"
+    "node": ">=20"
   },
   "scripts": {
     "dev": "vite dev",
