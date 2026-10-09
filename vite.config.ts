@@ -1,23 +1,34 @@
-import { defineConfig } from "@lovable.dev/vite-tanstack-config";
+import { defineConfig as defineViteConfig } from "vite";
+import { defineConfig as defineLovableConfig } from "@lovable.dev/vite-tanstack-config";
+import { nitro } from "nitro/vite";
 
 /**
- * Production target: Cloudflare Workers.
- * Keep the build target explicit so GitHub -> Cloudflare is deterministic.
+ * Vercel production target.
+ * The Lovable wrapper normally configures Cloudflare for its own environment;
+ * disable its Nitro invocation here and explicitly build a Vercel Nitro output.
  */
-export default defineConfig({
-  tanstackStart: {
-    server: { entry: "server" },
-  },
-  nitro: {
-    preset: "cloudflare-module",
-    output: {
-      dir: "dist",
-      serverDir: "dist/server",
-      publicDir: "dist/client",
+export default defineViteConfig(async (env) => {
+  const config = await defineLovableConfig({
+    tanstackStart: {
+      server: { entry: "server" },
     },
-    cloudflare: {
-      nodeCompat: true,
-      deployConfig: true,
-    },
-  },
+    // @ts-expect-error The wrapper accepts this at runtime, but its published type may lag.
+    nitro: false,
+  })(env);
+
+  if (env.command === "build") {
+    config.plugins = [
+      ...(config.plugins ?? []),
+      nitro({
+        preset: "vercel",
+        output: {
+          dir: ".vercel/output",
+          serverDir: ".vercel/output/functions/__server.func",
+          publicDir: ".vercel/output/static",
+        },
+      }),
+    ];
+  }
+
+  return config;
 });
