@@ -5,7 +5,7 @@ import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout
 import { Button } from "@/components/ui/button";
 import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
-export const Route = createFileRoute("/services")({
+export const Route = createFileRoute("/services/")({
   head: () => ({
     meta: [
       { title: "Services de gestion locative à Marbella & Mijas — Solveig’s Prestige Service" },
