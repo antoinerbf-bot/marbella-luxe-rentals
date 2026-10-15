@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowUpRight, ChevronDown, Languages } from "lucide-react";
+import { ArrowRight, ChevronDown, Languages } from "lucide-react";
 
 import { useSolveigLocale, type AppLocale } from "@/lib/locale";
 
@@ -63,13 +63,7 @@ const menuCopy: Record<
   },
 };
 
-export function UniverseLanguageMenu({
-  universe,
-  compact = false,
-}: {
-  universe: AppUniverse;
-  compact?: boolean;
-}) {
+export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
   const locale = useSolveigLocale();
   const copy = menuCopy[locale];
   const otherHref = universe === "costa" ? "/locations-maroc" : "/";
@@ -87,22 +81,40 @@ export function UniverseLanguageMenu({
   };
 
   return (
-    <div className="flex shrink-0 items-center gap-2">
+    <div className="flex shrink-0 items-center gap-1.5 sm:gap-2">
       <Link
         to={otherHref}
         aria-label={`${copy.explore}: ${otherLabel}`}
         title={`${copy.explore}: ${otherLabel}`}
-        className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-[#9a6b34]/35 bg-[#8e5638] px-3.5 text-[11px] font-bold text-[#fff9ef] shadow-[0_8px_24px_-14px_rgba(61,36,20,.8)] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9b781] hover:bg-[#70422e] hover:shadow-[0_12px_28px_-14px_rgba(61,36,20,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 sm:px-4 sm:text-xs"
+        className={`group inline-flex min-h-10 items-center gap-1.5 rounded-2xl border px-2 py-1.5 shadow-[0_7px_20px_-13px_rgba(52,39,30,.65)] transition duration-300 hover:-translate-y-0.5 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#c6a56f] focus-visible:ring-offset-2 sm:min-h-11 sm:gap-2 sm:px-3 ${
+          universe === "costa"
+            ? "border-[#a66b47]/35 bg-[linear-gradient(135deg,#fffaf1,#f1e3d0)] text-[#68452f] hover:border-[#a66b47]/65 hover:shadow-[0_12px_28px_-14px_rgba(100,57,34,.5)]"
+            : "border-[#577b6b]/35 bg-[linear-gradient(135deg,#fbf8ed,#e7eee3)] text-[#385b4d] hover:border-[#577b6b]/65 hover:shadow-[0_12px_28px_-14px_rgba(45,86,68,.4)]"
+        }`}
       >
-        <span aria-hidden="true" className="text-base leading-none">
+        <span
+          aria-hidden="true"
+          className={`grid size-7 shrink-0 place-items-center rounded-full text-base shadow-inner transition-transform duration-500 group-hover:rotate-[12deg] sm:size-8 sm:text-lg ${
+            universe === "costa" ? "bg-[#ead2b8]" : "bg-[#d7e5d8]"
+          }`}
+        >
           {otherFlag}
         </span>
-        <span className={compact ? "hidden min-[430px]:inline" : ""}>{otherLabel}</span>
-        {compact && <span className="min-[430px]:hidden">{shortLabel}</span>}
-        <ArrowUpRight
-          size={14}
+        <span className="flex min-w-0 flex-col items-start leading-tight">
+          <span className="hidden text-[7px] font-bold uppercase tracking-[.16em] opacity-65 min-[430px]:block sm:text-[8px]">
+            {copy.explore}
+          </span>
+          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[430px]:block sm:text-[11px]">
+            {otherLabel}
+          </span>
+          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[370px]:inline min-[430px]:hidden">
+            {shortLabel}
+          </span>
+        </span>
+        <ArrowRight
+          size={13}
           aria-hidden="true"
-          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
+          className="shrink-0 transition-transform group-hover:translate-x-0.5"
         />
       </Link>
 
@@ -131,19 +143,22 @@ export function UniverseLanguageMenu({
       >
         <summary
           aria-label={`${copy.chooseLanguage}. ${copy.language}: ${selectedLanguage.label}`}
-          className="flex min-h-10 cursor-pointer list-none items-center gap-1.5 rounded-full border border-white/60 bg-white/75 px-2.5 text-[10px] font-bold text-[#493a2a] shadow-sm transition hover:border-[#b28a50]/50 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden sm:gap-2 sm:px-3"
+          className="flex min-h-10 cursor-pointer list-none items-center gap-1 rounded-2xl border border-[#b28a50]/30 bg-[#fffdf8]/90 px-2 text-[10px] font-bold text-[#594833] shadow-sm transition hover:border-[#b28a50]/60 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden sm:min-h-11 sm:gap-1.5 sm:px-2.5"
         >
           <Languages
-            size={14}
+            size={13}
             aria-hidden="true"
             className="hidden text-[#9a7a4e] min-[370px]:block"
           />
-          <span aria-hidden="true" className="text-base leading-none">
+          <span
+            aria-hidden="true"
+            className="inline-block text-base leading-none transition-transform duration-300 group-hover:-rotate-6 sm:text-lg"
+          >
             {selectedLanguage.flag}
           </span>
-          <span>{selectedLanguage.native}</span>
+          <span className="hidden sm:inline">{selectedLanguage.native}</span>
           <ChevronDown
-            size={13}
+            size={12}
             aria-hidden="true"
             className="transition-transform duration-300 group-open:rotate-180"
           />
@@ -151,12 +166,12 @@ export function UniverseLanguageMenu({
 
         <div
           dir={locale === "ar" ? "rtl" : "ltr"}
-          className="absolute right-0 z-[70] mt-2 w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)]"
+          className="absolute right-0 z-[70] mt-2 w-[min(19rem,calc(100vw-1.5rem))] origin-top-right rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)]"
         >
           <p className="px-2 pb-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#9a7a4e]">
             {copy.language}
           </p>
-          <div className="grid grid-cols-2 gap-1">
+          <div className="grid grid-cols-2 gap-1.5">
             {localeOptions.map((option) => (
               <button
                 key={option.code}
@@ -165,16 +180,16 @@ export function UniverseLanguageMenu({
                 onClick={(event) =>
                   changeLocale(option.code, event.currentTarget.closest("details"))
                 }
-                className={`flex min-h-10 items-center gap-2 rounded-xl px-3 text-start text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] ${
+                className={`flex min-h-11 items-center gap-2 rounded-xl px-3 text-start text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] ${
                   locale === option.code
                     ? "bg-[#e9ddc9] text-[#453321]"
                     : "text-[#76634f] hover:bg-[#f6eddf]"
                 }`}
               >
-                <span aria-hidden="true" className="text-base">
+                <span aria-hidden="true" className="text-lg leading-none">
                   {option.flag}
                 </span>
-                {option.label}
+                <span className="min-w-0 truncate">{option.label}</span>
               </button>
             ))}
           </div>
