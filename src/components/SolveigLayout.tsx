@@ -1,78 +1,53 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Compass, Globe2, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { ArrowRight, Check, Globe2, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
+import { UniverseLanguageMenu } from "@/components/UniverseLanguageMenu";
+import { useSolveigLocale, type AppLocale } from "@/lib/locale";
 
 const navigation = [
-  { label: "Accueil", to: "/" },
-  { label: "Services", to: "/services" },
-  { label: "Marbella & Mijas", to: "/zones" },
-  { label: "Contact", to: "/contact" },
+  { label: "home", to: "/" },
+  { label: "navServices", to: "/services" },
+  { label: "zones", to: "/zones" },
+  { label: "contact", to: "/contact" },
 ] as const;
 
-const contact = { phone: "+34 623 626 724", tel: "tel:+34623626724", whatsapp: "https://wa.me/34623626724", email: "solveighybord@gmail.com", mailto: "mailto:solveighybord@gmail.com" };
+const contact = {
+  phone: "+34 623 626 724",
+  tel: "tel:+34623626724",
+  email: "solveighybord@gmail.com",
+  mailto: "mailto:solveighybord@gmail.com",
+};
 
-const languages = [
-  { code: "fr", label: "FR", name: "Français" },
-  { code: "en", label: "EN", name: "English" },
-  { code: "es", label: "ES", name: "Español" },
-] as const;
+const whatsappMessages: Record<AppLocale, string> = {
+  fr: "Bonjour, je souhaite discuter de la gestion de mon bien à Marbella ou Mijas.",
+  en: "Hello, I’d like to discuss property management in Marbella or Mijas.",
+  es: "Hola, me gustaría hablar sobre la gestión de mi propiedad en Marbella o Mijas.",
+  ar: "مرحباً، أود التحدث عن إدارة عقاري في ماربيا أو ميخاس.",
+};
 
-function getLocale() {
-  if (typeof window === "undefined") return "fr";
-  const saved = window.localStorage.getItem("solveig-locale");
-  if (saved === "en" || saved === "es" || saved === "fr") return saved;
-  return "fr";
-}
-
-function LanguageSwitcher({ mobile = false }: { mobile?: boolean }) {
-  const [locale, setLocale] = useState(getLocale);
-
-  const changeLocale = (value: string) => {
-    setLocale(value);
-    window.localStorage.setItem("solveig-locale", value);
-    window.dispatchEvent(new CustomEvent("solveig-locale-change", { detail: value }));
-  };
-
-  const label = locale === "en" ? "EN" : locale === "es" ? "ES" : "FR";
-
-  return (
-    <div className={mobile ? "grid grid-cols-3 gap-2" : "flex items-center rounded-full border border-border bg-background/70 p-1"}>
-      {languages.map((language) => (
-        <button
-          key={language.code}
-          type="button"
-          onClick={() => changeLocale(language.code)}
-          aria-pressed={locale === language.code}
-          className={`rounded-full px-3 py-2 text-[10px] font-bold uppercase tracking-[0.14em] transition-all ${locale === language.code ? "bg-primary text-primary-foreground shadow-sm" : "text-muted-foreground hover:text-foreground"}`}
-          title={language.name}
-        >
-          {language.label}
-        </button>
-      ))}
-      {!mobile && <span className="sr-only">{label}</span>}
-    </div>
-  );
+function getWhatsappLink(locale: AppLocale) {
+  return `https://wa.me/34623626724?text=${encodeURIComponent(whatsappMessages[locale])}`;
 }
 
 export function Logo({ light = false, large = false }: { light?: boolean; large?: boolean }) {
-  return <span className={`solveig-logo flex flex-col items-center ${light ? "text-[#fff7e8]" : "text-foreground"}`}>
-    <span className={`solveig-wordmark font-display leading-none ${large ? "text-5xl" : "text-3xl"}`}>Solveig’s</span>
-    <span className={`mt-2 text-[7px] font-bold uppercase tracking-[0.38em] ${light ? "text-[#d9c8ab]" : "text-muted-foreground"}`}>PRESTIGE SERVICE</span>
-  </span>;
-}
-
-export function useSolveigLocale() {
-  const [locale, setLocale] = useState(getLocale);
-
-  useEffect(() => {
-    const handler = (event: Event) => setLocale((event as CustomEvent<string>).detail);
-    window.addEventListener("solveig-locale-change", handler);
-    return () => window.removeEventListener("solveig-locale-change", handler);
-  }, []);
-
-  return locale as "fr" | "en" | "es";
+  return (
+    <span
+      className={`solveig-logo flex flex-col items-center ${light ? "text-[#fff7e8]" : "text-foreground"}`}
+    >
+      <span
+        className={`solveig-wordmark font-display leading-none ${large ? "text-5xl" : "text-3xl"}`}
+      >
+        Solveig’s
+      </span>
+      <span
+        className={`mt-2 text-[7px] font-bold uppercase tracking-[0.38em] ${light ? "text-[#d9c8ab]" : "text-muted-foreground"}`}
+      >
+        PRESTIGE SERVICE
+      </span>
+    </span>
+  );
 }
 
 const shellCopy = {
@@ -85,13 +60,20 @@ const shellCopy = {
     explore: "Explorer",
     contact: "Nous contacter",
     territory: "Marbella · Mijas · Costa del Sol",
-    footer: "Gestion de propriété, conciergerie privée et location saisonnière pour les propriétaires qui veulent une présence locale fiable sur la Costa del Sol.",
+    footer:
+      "Gestion de propriété, conciergerie privée et location saisonnière pour les propriétaires qui veulent une présence locale fiable sur la Costa del Sol.",
     firstContact: "Organiser un premier échange",
     services: "Nos services",
     property: "Gestion de propriété",
     concierge: "Conciergerie privée",
     seasonal: "Location saisonnière",
     housekeeping: "Housekeeping & maintenance",
+    home: "Accueil",
+    navServices: "Services",
+    zones: "Marbella & Mijas",
+    discreetService: "Service discret et sur mesure",
+    languages: "FR · EN · ES · AR",
+    whatsapp: "WhatsApp",
   },
   en: {
     project: "Discuss your property",
@@ -102,13 +84,20 @@ const shellCopy = {
     explore: "Explore",
     contact: "Get in touch",
     territory: "Marbella · Mijas · Costa del Sol",
-    footer: "Private property management, concierge and seasonal rental support for owners who expect a reliable local presence on the Costa del Sol.",
+    footer:
+      "Private property management, concierge and seasonal rental support for owners who expect a reliable local presence on the Costa del Sol.",
     firstContact: "Arrange a first conversation",
     services: "Our services",
     property: "Property management",
     concierge: "Private concierge",
     seasonal: "Seasonal rentals",
     housekeeping: "Housekeeping & maintenance",
+    home: "Home",
+    navServices: "Services",
+    zones: "Marbella & Mijas",
+    discreetService: "Discreet, tailored service",
+    languages: "FR · EN · ES · AR",
+    whatsapp: "WhatsApp",
   },
   es: {
     project: "Hablemos de su propiedad",
@@ -119,23 +108,56 @@ const shellCopy = {
     explore: "Explorar",
     contact: "Contactar",
     territory: "Marbella · Mijas · Costa del Sol",
-    footer: "Gestión de propiedades, conserjería privada y alquileres de temporada para propietarios que buscan una presencia local fiable en la Costa del Sol.",
+    footer:
+      "Gestión de propiedades, conserjería privada y alquileres de temporada para propietarios que buscan una presencia local fiable en la Costa del Sol.",
     firstContact: "Organizar una primera conversación",
     services: "Nuestros servicios",
     property: "Gestión de propiedad",
     concierge: "Conserjería privada",
     seasonal: "Alquiler de temporada",
     housekeeping: "Housekeeping & mantenimiento",
+    home: "Inicio",
+    navServices: "Servicios",
+    zones: "Marbella y Mijas",
+    discreetService: "Servicio discreto y a medida",
+    languages: "FR · EN · ES · AR",
+    whatsapp: "WhatsApp",
+  },
+  ar: {
+    project: "لنتحدث عن مشروعك",
+    morocco: "إقامات في المغرب",
+    discoverMorocco: "اكتشف المغرب",
+    menu: "القائمة",
+    close: "إغلاق",
+    explore: "اكتشف",
+    contact: "تواصل معنا",
+    territory: "ماربيا · ميخاس · كوستا ديل سول",
+    footer:
+      "إدارة العقارات وخدمات الكونسيرج والتأجير الموسمي مع حضور محلي موثوق على كوستا ديل سول.",
+    firstContact: "رتّب محادثة أولى",
+    services: "خدماتنا",
+    property: "إدارة العقارات",
+    concierge: "كونسيرج خاص",
+    seasonal: "إيجارات موسمية",
+    housekeeping: "التنظيف والصيانة",
+    home: "الرئيسية",
+    navServices: "الخدمات",
+    zones: "ماربيا وميخاس",
+    discreetService: "خدمة خاصة وسرية",
+    languages: "FR · EN · ES · AR",
+    whatsapp: "واتساب",
   },
 } as const;
 
 export function SolveigLayout({ children }: { children: ReactNode }) {
   const locale = useSolveigLocale();
   const copy = shellCopy[locale];
+  const whatsappLink = getWhatsappLink(locale);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    document.documentElement.lang = locale;
+    document.documentElement.lang = locale === "ar" ? "ar-MA" : locale;
+    document.documentElement.dir = locale === "ar" ? "rtl" : "ltr";
   }, [locale]);
 
   return (
@@ -143,7 +165,14 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
       <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto mt-3 max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="glass-nav flex min-h-[68px] items-center justify-between gap-4 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:pl-5">
-            <Link to="/" className="group flex shrink-0 items-center" aria-label="Solveig’s Prestige Service — Accueil" onClick={() => setMenuOpen(false)}><Logo /></Link>
+            <Link
+              to="/"
+              className="group flex shrink-0 items-center"
+              aria-label="Solveig’s Prestige Service — Accueil"
+              onClick={() => setMenuOpen(false)}
+            >
+              <Logo />
+            </Link>
 
             <nav className="hidden items-center gap-1 xl:flex" aria-label="Navigation principale">
               {navigation.map((item) => (
@@ -153,22 +182,24 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
                   activeProps={{ className: "bg-primary text-primary-foreground" }}
                   className="rounded-full px-3 py-2.5 text-[12px] font-semibold text-muted-foreground transition-all hover:bg-primary/8 hover:text-foreground"
                 >
-                  {item.to === "/locations-maroc" ? copy.morocco : item.label}
+                  {copy[item.label]}
                 </Link>
               ))}
             </nav>
 
             <div className="flex items-center gap-2">
-              <div className="hidden sm:block"><LanguageSwitcher /></div>
-              <Link
-                to="/locations-maroc"
-                className="hidden min-h-10 items-center gap-2 rounded-full border border-[#b28a50]/30 bg-[#f5eddf] px-3 text-[11px] font-bold text-[#755633] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b28a50]/60 hover:bg-[#efe2cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 sm:inline-flex"
+              <div>
+                <UniverseLanguageMenu universe="costa" compact />
+              </div>
+              <a
+                href={whatsappLink}
+                target="_blank"
+                rel="noreferrer"
+                className="hidden size-10 items-center justify-center rounded-full border border-border bg-background/70 text-[#2e8068] transition hover:-translate-y-0.5 md:flex"
+                aria-label={copy.whatsapp}
               >
-                <Compass size={15} aria-hidden="true" className="text-[#a77b3e]" />
-                <span className="xl:hidden">Maroc</span>
-                <span className="hidden xl:inline">{copy.morocco}</span>
-              </Link>
-              <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hidden size-10 items-center justify-center rounded-full border border-border bg-background/70 text-[#2e8068] transition hover:-translate-y-0.5 md:flex" aria-label="WhatsApp"><MessageCircle size={18} /></a>
+                <MessageCircle size={18} />
+              </a>
               <Button asChild variant="prestige" size="sm" className="hidden md:inline-flex">
                 <Link to="/contact">
                   {copy.project}
@@ -197,21 +228,9 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
                     onClick={() => setMenuOpen(false)}
                     className="rounded-2xl px-4 py-4 text-base font-semibold transition-colors hover:bg-surface"
                   >
-                    {item.label}
+                    {copy[item.label]}
                   </Link>
                 ))}
-              </div>
-              <Link
-                to="/locations-maroc"
-                onClick={() => setMenuOpen(false)}
-                className="mt-3 flex min-h-12 items-center gap-3 rounded-2xl border border-[#b28a50]/25 bg-[#f5eddf] px-4 py-3 text-sm font-bold text-[#755633] transition hover:bg-[#efe2cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50]"
-              >
-                <Compass size={17} aria-hidden="true" className="text-[#a77b3e]" />
-                {copy.discoverMorocco}
-                <ArrowRight size={15} aria-hidden="true" className="ml-auto" />
-              </Link>
-              <div className="mt-3 border-t border-border pt-4">
-                <LanguageSwitcher mobile />
               </div>
               <Button asChild variant="prestige" size="xl" className="mt-3 w-full">
                 <Link to="/contact" onClick={() => setMenuOpen(false)}>
@@ -232,27 +251,66 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
           <div className="grid gap-14 lg:grid-cols-[1.25fr_.75fr_.75fr]">
             <div>
               <Logo light large />
-              <p className="mt-7 max-w-xl text-sm leading-7 text-primary-foreground/68">{copy.footer}</p>
-              <div className="mt-7 flex flex-wrap gap-2"><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="footer-contact"><MessageCircle size={15} />WhatsApp</a><a href={contact.tel} className="footer-contact"><Phone size={15} />{contact.phone}</a><a href={contact.mailto} className="footer-contact"><Mail size={15} />{contact.email}</a></div>
-              <Link to="/contact" className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground hover:text-gold">
-                {copy.firstContact}<ArrowRight size={15} />
+              <p className="mt-7 max-w-xl text-sm leading-7 text-primary-foreground/68">
+                {copy.footer}
+              </p>
+              <div className="mt-7 flex flex-wrap gap-2">
+                <a href={whatsappLink} target="_blank" rel="noreferrer" className="footer-contact">
+                  <MessageCircle size={15} />
+                  WhatsApp
+                </a>
+                <a href={contact.tel} className="footer-contact">
+                  <Phone size={15} />
+                  {contact.phone}
+                </a>
+                <a href={contact.mailto} className="footer-contact">
+                  <Mail size={15} />
+                  {contact.email}
+                </a>
+              </div>
+              <Link
+                to="/contact"
+                className="mt-7 inline-flex items-center gap-2 text-sm font-semibold text-primary-foreground hover:text-gold"
+              >
+                {copy.firstContact}
+                <ArrowRight size={15} />
               </Link>
             </div>
 
             <div className="space-y-3 text-sm text-primary-foreground/65">
-              <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold">{copy.services}</p>
-              <Link to="/gestion-propriete" className="block hover:text-white">{copy.property}</Link>
-              <Link to="/conciergerie" className="block hover:text-white">{copy.concierge}</Link>
-              <Link to="/location-saisonniere" className="block hover:text-white">{copy.seasonal}</Link>
-              <Link to="/services/housekeeping" className="block hover:text-white">{copy.housekeeping}</Link>
-              <Link to="/locations-maroc" className="block hover:text-white">{copy.morocco}</Link>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+                {copy.services}
+              </p>
+              <Link to="/gestion-propriete" className="block hover:text-white">
+                {copy.property}
+              </Link>
+              <Link to="/conciergerie" className="block hover:text-white">
+                {copy.concierge}
+              </Link>
+              <Link to="/location-saisonniere" className="block hover:text-white">
+                {copy.seasonal}
+              </Link>
+              <Link to="/services/housekeeping" className="block hover:text-white">
+                {copy.housekeeping}
+              </Link>
+              <Link to="/locations-maroc" className="block hover:text-white">
+                {copy.morocco}
+              </Link>
             </div>
 
             <div className="space-y-4 text-sm text-primary-foreground/65">
-              <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold">{copy.territory}</p>
-              <p className="leading-7">Marbella · Mijas · Mijas Costa · La Cala · Calahonda · Riviera del Sol</p>
-              <div className="flex items-center gap-2 text-primary-foreground/80"><Check size={15} className="text-gold" /> Service discret et sur mesure</div>
-              <div className="flex items-center gap-2 text-primary-foreground/80"><Globe2 size={15} className="text-gold" /> FR · EN · ES</div>
+              <p className="mb-5 text-xs font-bold uppercase tracking-[0.18em] text-gold">
+                {copy.territory}
+              </p>
+              <p className="leading-7">
+                Marbella · Mijas · Mijas Costa · La Cala · Calahonda · Riviera del Sol
+              </p>
+              <div className="flex items-center gap-2 text-primary-foreground/80">
+                <Check size={15} className="text-gold" /> {copy.discreetService}
+              </div>
+              <div className="flex items-center gap-2 text-primary-foreground/80">
+                <Globe2 size={15} className="text-gold" /> {copy.languages}
+              </div>
             </div>
           </div>
 
@@ -264,8 +322,10 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
       </footer>
 
       <a
-        href={contact.whatsapp} target="_blank" rel="noreferrer"
-        aria-label="WhatsApp Solveig"
+        href={whatsappLink}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={copy.whatsapp}
         className="fixed bottom-5 right-5 z-40 flex size-14 items-center justify-center rounded-full bg-primary text-primary-foreground shadow-2xl ring-1 ring-white/15 transition-transform hover:scale-105"
       >
         <MessageCircle size={22} />
@@ -274,16 +334,31 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
   );
 }
 
-export function PageHero({ eyebrow, title, description }: { eyebrow: string; title: string; description: string }) {
+export function PageHero({
+  eyebrow,
+  title,
+  description,
+}: {
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
   return (
     <section className="relative overflow-hidden bg-surface pt-28">
       <div className="pointer-events-none absolute -right-20 -top-20 size-96 rounded-full bg-gold/10 blur-3xl" />
       <div className="pointer-events-none absolute -left-28 bottom-0 size-96 rounded-full bg-coast/10 blur-3xl" />
       <div className="relative mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
         <div className="max-w-5xl">
-          <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold"><span className="h-px w-10 bg-gold" />{eyebrow}</p>
-          <h1 className="mt-6 font-display text-5xl font-semibold leading-[.88] tracking-[-.025em] text-balance sm:text-7xl md:text-[6.5rem]">{title}</h1>
-          <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">{description}</p>
+          <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-gold">
+            <span className="h-px w-10 bg-gold" />
+            {eyebrow}
+          </p>
+          <h1 className="mt-6 font-display text-5xl font-semibold leading-[.88] tracking-[-.025em] text-balance sm:text-7xl md:text-[6.5rem]">
+            {title}
+          </h1>
+          <p className="mt-8 max-w-2xl text-lg leading-8 text-muted-foreground md:text-xl">
+            {description}
+          </p>
         </div>
       </div>
     </section>
@@ -299,9 +374,15 @@ export function TrustStrip() {
           ["02", "Standards premium", "Chaque détail compte"],
           ["03", "Suivi propriétaire", "Une communication claire à distance"],
         ].map(([number, title, text]) => (
-          <div key={number} className="flex gap-4 border-b border-border py-6 last:border-0 md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0">
+          <div
+            key={number}
+            className="flex gap-4 border-b border-border py-6 last:border-0 md:border-b-0 md:border-r md:px-7 md:first:pl-0 md:last:border-r-0"
+          >
             <span className="font-display text-xl text-gold">{number}</span>
-            <div><p className="text-sm font-bold">{title}</p><p className="mt-1 text-xs text-muted-foreground">{text}</p></div>
+            <div>
+              <p className="text-sm font-bold">{title}</p>
+              <p className="mt-1 text-xs text-muted-foreground">{text}</p>
+            </div>
           </div>
         ))}
       </div>
@@ -310,17 +391,78 @@ export function TrustStrip() {
 }
 
 export function ContactBand() {
+  const locale = useSolveigLocale();
+  const whatsappLink = getWhatsappLink(locale);
+  const text = {
+    fr: {
+      eyebrow: "Premier échange",
+      title: "Votre propriété mérite une présence à sa hauteur.",
+      description:
+        "Décrivez-nous votre bien, votre rythme de présence et vos attentes. Nous construirons le niveau d’accompagnement adapté.",
+      action: "Demander un échange",
+    },
+    en: {
+      eyebrow: "A first conversation",
+      title: "Your property deserves a presence to match.",
+      description:
+        "Tell us about your property, how often you are here and what you expect. We’ll shape the right level of support.",
+      action: "Arrange a conversation",
+    },
+    es: {
+      eyebrow: "Una primera conversación",
+      title: "Su propiedad merece una presencia a su altura.",
+      description:
+        "Cuéntenos cómo es su propiedad, cuándo está presente y qué espera. Definiremos el acompañamiento adecuado.",
+      action: "Solicitar una conversación",
+    },
+    ar: {
+      eyebrow: "محادثة أولى",
+      title: "عقارك يستحق حضوراً يليق به.",
+      description:
+        "أخبرنا عن عقارك وأوقات حضورك وما تتوقعه من الخدمة. سنحدد مستوى الدعم المناسب لك.",
+      action: "رتّب محادثة",
+    },
+  }[locale];
+
   return (
     <section id="contact" className="relative overflow-hidden bg-primary text-primary-foreground">
       <div className="absolute inset-0 [background-image:radial-gradient(circle_at_85%_15%,rgba(211,174,96,.24),transparent_26%),linear-gradient(115deg,transparent,rgba(255,255,255,.04))]" />
       <div className="relative mx-auto grid max-w-7xl gap-10 px-5 py-24 sm:px-8 lg:grid-cols-[1fr_auto] lg:items-end lg:px-10 lg:py-32">
         <div className="max-w-4xl">
-          <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-primary-foreground/60"><span className="h-px w-10 bg-gold" />Premier échange</p>
-          <h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] text-balance md:text-7xl">Votre propriété mérite une présence à sa hauteur.</h2>
-          <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/65">Décrivez-nous votre bien, votre rythme de présence et vos attentes. Nous construirons le niveau d’accompagnement adapté.</p><div className="mt-7 flex flex-wrap gap-2"><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="footer-contact bg-white/10"><MessageCircle size={15} />WhatsApp</a><a href={contact.tel} className="footer-contact bg-white/10"><Phone size={15} />{contact.phone}</a><a href={contact.mailto} className="footer-contact bg-white/10"><Mail size={15} />{contact.email}</a></div>
+          <p className="flex items-center gap-3 text-[11px] font-bold uppercase tracking-[0.2em] text-primary-foreground/60">
+            <span className="h-px w-10 bg-gold" />
+            {text.eyebrow}
+          </p>
+          <h2 className="mt-5 font-display text-5xl font-semibold leading-[.9] text-balance md:text-7xl">
+            {text.title}
+          </h2>
+          <p className="mt-6 max-w-xl text-base leading-7 text-primary-foreground/65">
+            {text.description}
+          </p>
+          <div className="mt-7 flex flex-wrap gap-2">
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noreferrer"
+              className="footer-contact bg-white/10"
+            >
+              <MessageCircle size={15} />
+              WhatsApp
+            </a>
+            <a href={contact.tel} className="footer-contact bg-white/10">
+              <Phone size={15} />
+              {contact.phone}
+            </a>
+            <a href={contact.mailto} className="footer-contact bg-white/10">
+              <Mail size={15} />
+              {contact.email}
+            </a>
+          </div>
         </div>
         <Button asChild variant="secondary" size="xl" className="group">
-          <Link to="/contact">Demander un échange <ArrowRight className="transition-transform group-hover:translate-x-1" /></Link>
+          <Link to="/contact">
+            {text.action} <ArrowRight className="transition-transform group-hover:translate-x-1" />
+          </Link>
         </Button>
       </div>
     </section>

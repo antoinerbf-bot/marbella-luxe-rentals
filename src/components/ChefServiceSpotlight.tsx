@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, ChefHat, Check } from "lucide-react";
+import { ArrowRight, ChefHat, Check, MessageCircle } from "lucide-react";
 
-import { useSolveigLocale } from "@/components/SolveigLayout";
+import { useSolveigLocale } from "@/lib/locale";
 import { Button } from "@/components/ui/button";
 import image from "@/assets/chef-culinary-archive-01.jpg";
 
@@ -13,7 +13,10 @@ const copy = {
       "Dans l’intimité de votre villa, savourez un repas imaginé selon vos envies et préparé sur place. Vous profitez de vos invités ; nous nous occupons du reste.",
     benefits: ["Un menu pensé pour vous", "Le plaisir de recevoir sans contraintes"],
     action: "Découvrir le chef à domicile",
-    imageAlt: "Un repas préparé dans une cuisine lumineuse",
+    contact: "Parler de mon dîner",
+    imageAlt: "Photographie issue des archives culinaires de Dominique Hybord",
+    whatsappMessage:
+      "Bonjour, je souhaite organiser un dîner avec un chef à domicile à Marbella ou Mijas.",
   },
   en: {
     eyebrow: "The art of hosting · Marbella · Mijas",
@@ -22,7 +25,9 @@ const copy = {
       "Enjoy a meal created around your tastes and prepared in the privacy of your villa. Spend time with your guests while we take care of the rest.",
     benefits: ["A menu created around you", "The pleasure of hosting, made effortless"],
     action: "Discover the private chef experience",
-    imageAlt: "A meal being prepared in a bright kitchen",
+    contact: "Discuss my dinner",
+    imageAlt: "Photograph from Dominique Hybord’s culinary archive",
+    whatsappMessage: "Hello, I would like to arrange a private chef dinner in Marbella or Mijas.",
   },
   es: {
     eyebrow: "El arte de recibir · Marbella · Mijas",
@@ -31,7 +36,21 @@ const copy = {
       "Disfrute de una comida pensada según sus gustos y preparada en la intimidad de su villa. Comparta el momento con sus invitados; nosotros nos ocupamos del resto.",
     benefits: ["Un menú pensado para usted", "El placer de recibir sin preocupaciones"],
     action: "Descubrir el chef a domicilio",
-    imageAlt: "Preparación de una comida en una cocina luminosa",
+    contact: "Hablar de mi cena",
+    imageAlt: "Fotografía del archivo culinario de Dominique Hybord",
+    whatsappMessage:
+      "Hola, me gustaría organizar una cena con chef a domicilio en Marbella o Mijas.",
+  },
+  ar: {
+    eyebrow: "فنّ الضيافة · ماربيا · ميخاس",
+    title: "ماذا لو أتى الطاهي إلى منزلك؟",
+    description:
+      "استمتع بوجبة تُعدّ وفق أذواقك وفي خصوصية فيلتك. عش اللحظة مع ضيوفك، ودعنا نهتم بكل ما عداها.",
+    benefits: ["قائمة طعام مصممة لك", "ضيافة ممتعة بلا عناء"],
+    action: "اكتشف تجربة الطاهي الخاص",
+    contact: "لنتحدث عن أمسيتك",
+    imageAlt: "صورة من أرشيف الطهي لدومينيك هيبور",
+    whatsappMessage: "مرحباً، أود تنظيم عشاء مع طاهٍ خاص في ماربيا أو ميخاس.",
   },
 } as const;
 
@@ -74,9 +93,18 @@ export function ChefServiceSpotlight() {
               <ArrowRight aria-hidden="true" />
             </Link>
           </Button>
+          <a
+            href={`https://wa.me/34623626724?text=${encodeURIComponent(content.whatsappMessage)}`}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-4 inline-flex min-h-11 w-fit items-center gap-2 rounded-full px-2 text-xs font-semibold text-[#4f7f70] transition hover:text-[#315d50] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#4f7f70]"
+          >
+            <MessageCircle size={15} aria-hidden="true" />
+            {content.contact}
+          </a>
         </div>
 
-        <div className="relative min-h-64 md:min-h-full">
+        <div className="relative min-h-64 overflow-hidden md:min-h-full">
           <img
             src={image}
             alt={content.imageAlt}
@@ -84,6 +112,33 @@ export function ChefServiceSpotlight() {
             decoding="async"
             className="absolute inset-0 size-full object-cover"
           />
+          <svg
+            aria-hidden="true"
+            viewBox="0 0 240 180"
+            className="culinary-motif pointer-events-none absolute right-3 top-2 w-[40%] max-w-52 text-[#fff5dc]/85 drop-shadow-lg sm:right-6 sm:top-5"
+            fill="none"
+            stroke="currentColor"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          >
+            <circle cx="132" cy="91" r="54" strokeWidth="2" />
+            <circle cx="132" cy="91" r="43" strokeWidth="1" />
+            <circle cx="116" cy="79" r="11" strokeWidth="2" />
+            <circle cx="145" cy="102" r="12" strokeWidth="2" />
+            <path
+              d="M116 68c-4-8-2-13 3-17 3 6 3 11-3 17Zm2 0c7-7 12-9 18-7-5 7-10 9-18 7Z"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M142 90c5-7 11-9 16-6-4 7-9 9-16 6Zm3 2c8-4 13-3 17 2-7 4-12 3-17-2Z"
+              strokeWidth="1.5"
+            />
+            <path
+              d="M37 37v54m-8-54v20m16-20v20m-8 14v45m164-85v48m-7-48v17c0 9 14 9 14 0V21"
+              strokeWidth="2"
+            />
+            <path d="M25 145c24-12 40-12 59 0m75 0c17-11 32-12 52-5" strokeWidth="1.2" />
+          </svg>
           <div className="absolute inset-0 bg-gradient-to-t from-[#2d2119]/35 via-transparent to-transparent" />
           <p className="absolute bottom-5 left-5 rounded-full border border-white/35 bg-[#2d2119]/40 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-sm sm:bottom-7 sm:left-7">
             Solveig’s Prestige Service

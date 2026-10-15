@@ -113,7 +113,11 @@
   --sidebar-accent-foreground: oklch(0.259 0.036 72.28);
   --sidebar-border: oklch(0.846 0.032 82.64);
   --sidebar-ring: oklch(0.554 0.069 185.04);
-  --gradient-hero: linear-gradient(135deg, color-mix(in oklab, var(--primary) 94%, transparent), color-mix(in oklab, var(--coast) 74%, transparent));
+  --gradient-hero: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 94%, transparent),
+    color-mix(in oklab, var(--coast) 74%, transparent)
+  );
   --gradient-soft: linear-gradient(180deg, var(--background), var(--surface));
   --shadow-elegant: 0 24px 70px -36px color-mix(in oklab, var(--primary) 52%, transparent);
   --shadow-soft: 0 18px 55px -42px color-mix(in oklab, var(--foreground) 36%, transparent);
@@ -188,13 +192,22 @@
 }
 
 @keyframes heroZoom {
-  from { transform: scale(1.035); }
-  to { transform: scale(1.09); }
+  from {
+    transform: scale(1.035);
+  }
+  to {
+    transform: scale(1.09);
+  }
 }
 
 @keyframes floatSoft {
-  0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -8px, 0); }
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(0, -8px, 0);
+  }
 }
 
 .glass-nav {
@@ -203,12 +216,57 @@
 }
 
 .mobile-menu {
-  animation: menuIn .22s ease-out both;
+  animation: menuIn 0.22s ease-out both;
 }
 
 @keyframes menuIn {
-  from { opacity: 0; transform: translateY(-8px) scale(.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes waveDrift {
+  0%,
+  100% {
+    transform: translateX(-1.2%);
+  }
+  50% {
+    transform: translateX(1.2%);
+  }
+}
+
+@keyframes palmSway {
+  0%,
+  100% {
+    transform: rotate(-1deg);
+  }
+  50% {
+    transform: rotate(1deg);
+  }
+}
+
+.coastal-wave path:first-child {
+  animation: waveDrift 11s ease-in-out infinite;
+  transform-origin: center;
+}
+
+.coastal-wave path:last-child {
+  animation: waveDrift 15s ease-in-out infinite reverse;
+  transform-origin: center;
+}
+
+.coastal-palm {
+  transform-origin: bottom center;
+  animation: palmSway 8s ease-in-out infinite;
+}
+
+.culinary-motif {
+  animation: floatSoft 7s ease-in-out infinite;
 }
 
 ::selection {
@@ -225,11 +283,15 @@ body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
+    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
 }
