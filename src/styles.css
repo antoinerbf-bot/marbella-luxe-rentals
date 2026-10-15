@@ -179,6 +179,132 @@
   background-image: var(--gradient-hero);
 }
 
+.scroll-parallax-frame {
+  position: relative;
+  overflow: hidden;
+  overflow: clip;
+  isolation: isolate;
+}
+
+.scroll-parallax-frame.absolute {
+  position: absolute;
+}
+
+.scroll-parallax-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.12) translate3d(0, var(--scroll-parallax-offset, 0px), 0);
+}
+
+.glass-nav .font-display,
+footer .font-display {
+  font-family: Allura, cursive;
+  font-weight: 400;
+}
+
+.glass-nav .font-display {
+  font-size: 1.65rem;
+}
+
+.solveig-custom-wordmark {
+  color: #fff7e8;
+  font-family: Allura, cursive;
+  font-size: clamp(2.7rem, 5vw, 4.8rem);
+  letter-spacing: -0.02em;
+  line-height: 0.8;
+  text-shadow: 0 5px 24px oklch(0 0 0 / 28%);
+}
+
+.solveig-custom-sub {
+  margin-top: 0.7rem;
+  color: #dcc9aa;
+  font: 700 0.42rem/1 var(--font-body);
+  letter-spacing: 0.42em;
+}
+
+.solveig-service-card {
+  min-height: 330px;
+  border: 1px solid oklch(0.35 0.035 67 / 13%);
+  border-radius: 1.35rem;
+  background: oklch(0.992 0.008 90 / 86%);
+  padding: 1.55rem;
+  box-shadow: 0 22px 65px -48px oklch(0.34 0.038 68 / 45%);
+  transition:
+    transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1),
+    box-shadow 0.55s ease;
+}
+
+.solveig-service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 30px 75px -45px oklch(0.34 0.038 68 / 55%);
+}
+
+.solveig-service-icon {
+  display: flex;
+  width: 2.7rem;
+  height: 2.7rem;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid oklch(0.55 0.07 190 / 20%);
+  border-radius: 999px;
+  background: oklch(0.82 0.08 205 / 16%);
+  color: oklch(0.55 0.07 190);
+}
+
+.solveig-destination {
+  position: relative;
+  min-height: 470px;
+  overflow: hidden;
+  border-radius: 1.6rem;
+}
+
+.hero-kenburns {
+  animation: heroZoom 24s ease-in-out infinite alternate;
+}
+
+.hero-fade-in {
+  animation: hero-fade-in 900ms ease-out both;
+}
+
+.hero-grid,
+.soft-grid,
+.aqua-grid {
+  background-size: 52px 52px;
+  pointer-events: none;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(to right, oklch(1 0 0 / 9%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(1 0 0 / 9%) 1px, transparent 1px);
+  mask-image: linear-gradient(to bottom, black, transparent 90%);
+}
+
+.soft-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.35 0.035 67 / 6%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.35 0.035 67 / 6%) 1px, transparent 1px);
+}
+
+.aqua-grid {
+  background-image:
+    linear-gradient(to right, oklch(0.3 0.06 195 / 7%) 1px, transparent 1px),
+    linear-gradient(to bottom, oklch(0.3 0.06 195 / 7%) 1px, transparent 1px);
+}
+
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @utility bg-gradient-soft {
   background-image: var(--gradient-soft);
 }
@@ -286,6 +412,15 @@ body {
   html {
     scroll-behavior: auto;
   }
+
+  .scroll-parallax-image {
+    transform: scale(1.03) !important;
+  }
+
+  .solveig-service-card {
+    transition: none;
+  }
+
   *,
   *::before,
   *::after {

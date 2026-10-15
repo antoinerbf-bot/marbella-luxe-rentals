@@ -14,6 +14,7 @@ import {
 import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
 import { Button } from "@/components/ui/button";
 import { useSolveigLocale } from "@/lib/locale";
+import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import chefArchiveOne from "@/assets/chef-culinary-archive-01.jpg";
 import chefArchiveTwo from "@/assets/chef-culinary-archive-02.jpg";
 import chefArchiveThree from "@/assets/chef-culinary-archive-03.jpg";
@@ -395,11 +396,13 @@ function ChefAtHomePage() {
   return (
     <SolveigLayout>
       <section className="relative isolate flex min-h-[min(820px,100svh)] items-end overflow-hidden bg-primary text-white">
-        <img
+        <ScrollParallaxImage
           src={chefImage}
           alt={content.archiveAlt}
           fetchPriority="high"
-          className="absolute inset-0 -z-20 h-full w-full object-cover object-center"
+          loading="eager"
+          className="absolute inset-0 -z-20"
+          imageClassName="object-center"
         />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(90deg,rgba(25,48,44,.82)_0%,rgba(25,48,44,.55)_48%,rgba(25,48,44,.1)_100%),linear-gradient(0deg,rgba(20,36,33,.62),transparent_55%)]" />
         <div className="mx-auto w-full max-w-[1440px] px-5 pb-16 pt-40 sm:px-8 sm:pb-24 lg:px-12 lg:pb-28">
@@ -504,12 +507,12 @@ function ChefAtHomePage() {
                     : "min-h-[158px] sm:min-h-[218px]"
                 }`}
               >
-                <img
+                <ScrollParallaxImage
                   src={image}
                   alt={`${content.archiveAlt}, ${year}`}
                   loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 size-full object-cover transition-transform duration-700 hover:scale-[1.035]"
+                  className="absolute inset-0"
+                  imageClassName="transition-[filter] duration-700 hover:brightness-105"
                 />
               </figure>
             ))}

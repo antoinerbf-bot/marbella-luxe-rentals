@@ -101,20 +101,20 @@ export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
           {otherFlag}
         </span>
         <span className="flex min-w-0 flex-col items-start leading-tight">
-          <span className="hidden text-[7px] font-bold uppercase tracking-[.16em] opacity-65 min-[430px]:block sm:text-[8px]">
+          <span className="hidden text-[7px] font-bold uppercase tracking-[.16em] opacity-65 min-[480px]:block sm:text-[8px]">
             {copy.explore}
           </span>
-          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[430px]:block sm:text-[11px]">
+          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[480px]:block sm:text-[11px]">
             {otherLabel}
           </span>
-          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[370px]:inline min-[430px]:hidden">
+          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[370px]:inline min-[480px]:hidden">
             {shortLabel}
           </span>
         </span>
         <ArrowRight
           size={13}
           aria-hidden="true"
-          className="shrink-0 transition-transform group-hover:translate-x-0.5"
+          className="hidden shrink-0 transition-transform group-hover:translate-x-0.5 min-[480px]:block"
         />
       </Link>
 
@@ -148,7 +148,7 @@ export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
           <Languages
             size={13}
             aria-hidden="true"
-            className="hidden text-[#9a7a4e] min-[370px]:block"
+            className="hidden text-[#9a7a4e] min-[480px]:block"
           />
           <span
             aria-hidden="true"
@@ -166,7 +166,7 @@ export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
 
         <div
           dir={locale === "ar" ? "rtl" : "ltr"}
-          className="absolute right-0 z-[70] mt-2 w-[min(19rem,calc(100vw-1.5rem))] origin-top-right rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)]"
+          className="absolute right-[-1.5rem] z-[70] mt-2 w-[min(19rem,calc(100vw-4rem))] origin-top-right rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)] min-[375px]:right-[-1rem] sm:right-0"
         >
           <p className="px-2 pb-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#9a7a4e]">
             {copy.language}

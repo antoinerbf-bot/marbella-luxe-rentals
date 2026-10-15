@@ -10,6 +10,7 @@ import { Link } from "@tanstack/react-router";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
 import { useSolveigLocale } from "@/lib/locale";
+import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import { Button } from "@/components/ui/button";
 
 type ServiceDetailProps = {
@@ -55,7 +56,8 @@ export function ServiceDetailPage({
       ctaText:
         "Décrivez simplement votre propriété et votre niveau d’attente. Nous pourrons ensuite définir le périmètre le plus pertinent.",
       contact: "Parler de votre projet",
-      nextContact: "Choisir mon prochain contact",
+      nextContact: "Écrire sur WhatsApp",
+      whatsappMessage: "Bonjour, je souhaite échanger au sujet de votre service pour ma propriété.",
     },
     en: {
       imageAlt: "Prestige villa on the Costa del Sol",
@@ -77,7 +79,8 @@ export function ServiceDetailPage({
       ctaText:
         "Tell us about your property and the level of support you expect. We can then define the scope that makes the most sense.",
       contact: "Discuss your property",
-      nextContact: "Choose how to get in touch",
+      nextContact: "Message us on WhatsApp",
+      whatsappMessage: "Hello, I would like to discuss your service for my property.",
     },
     es: {
       imageAlt: "Villa de prestigio en la Costa del Sol",
@@ -99,7 +102,8 @@ export function ServiceDetailPage({
       ctaText:
         "Cuéntenos cómo es su propiedad y qué nivel de atención espera. A partir de ahí, podremos definir el alcance más adecuado.",
       contact: "Hablar de su proyecto",
-      nextContact: "Elegir cómo contactar",
+      nextContact: "Escribir por WhatsApp",
+      whatsappMessage: "Hola, me gustaría hablar sobre su servicio para mi propiedad.",
     },
     ar: {
       imageAlt: "فيلا فاخرة على كوستا ديل سول",
@@ -119,10 +123,12 @@ export function ServiceDetailPage({
       accompaniment: "دعم مصمم وفق احتياجاتك",
       ctaText: "أخبرنا عن عقارك ومستوى العناية الذي تتوقعه، وسنحدد معاً نطاق الخدمة الأنسب.",
       contact: "لنتحدث عن عقارك",
-      nextContact: "اختر وسيلة التواصل",
+      nextContact: "تواصل عبر واتساب",
+      whatsappMessage: "مرحباً، أود الاستفسار عن خدماتكم للعناية بعقاري.",
     },
   }[locale];
   const standards = [copy.presence, copy.method, copy.attention];
+  const whatsappLink = `https://wa.me/34623626724?text=${encodeURIComponent(copy.whatsappMessage)}`;
 
   return (
     <SolveigLayout>
@@ -131,20 +137,19 @@ export function ServiceDetailPage({
       <section className="bg-background">
         <div className="mx-auto max-w-7xl px-5 py-20 sm:px-8 lg:px-10 lg:py-28">
           <div className="grid gap-12 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
-            <div className="group relative overflow-hidden rounded-[1.5rem] shadow-elegant">
-              <img
-                src={image}
-                alt={copy.imageAlt}
-                width={1600}
-                height={1104}
-                className="aspect-[4/3] w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-primary/55 via-transparent to-transparent" />
-              <div className="absolute bottom-5 left-5 flex items-center gap-2 rounded-full border border-white/20 bg-primary/45 px-4 py-2 text-[10px] font-bold uppercase tracking-[0.15em] text-white backdrop-blur-md">
-                <span className="size-1.5 rounded-full bg-gold" />
-                Marbella · Mijas · Costa del Sol
+            <ScrollParallaxImage
+              src={image}
+              alt={copy.imageAlt}
+              loading="eager"
+              className="group aspect-[4/3] rounded-[1.5rem] shadow-elegant"
+              imageClassName="transition-[filter] duration-700 group-hover:brightness-105"
+            >
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-primary/55 via-transparent to-transparent" />
+              <div className="absolute inset-x-4 bottom-4 flex items-center gap-2 rounded-full border border-white/20 bg-primary/45 px-3 py-2 text-[9px] font-bold uppercase tracking-[0.12em] text-white backdrop-blur-md sm:inset-x-auto sm:bottom-5 sm:left-5 sm:px-4 sm:text-[10px] sm:tracking-[0.15em]">
+                <span className="size-1.5 shrink-0 rounded-full bg-gold" />
+                <span className="truncate">Marbella · Mijas · Costa del Sol</span>
               </div>
-            </div>
+            </ScrollParallaxImage>
 
             <div>
               <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.16em] text-gold">
@@ -235,10 +240,10 @@ export function ServiceDetailPage({
                   </Link>
                 </Button>
                 <Button asChild variant="coastal" size="xl">
-                  <Link to="/contact">
+                  <a href={whatsappLink} target="_blank" rel="noreferrer">
                     <MessageCircle aria-hidden="true" />
                     {copy.nextContact}
-                  </Link>
+                  </a>
                 </Button>
               </div>
             </div>
