@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { ChevronDown, Compass } from "lucide-react";
+import { ArrowUpRight, ChevronDown, Languages } from "lucide-react";
+
 import { useSolveigLocale, type AppLocale } from "@/lib/locale";
 
 export type { AppLocale } from "@/lib/locale";
@@ -9,61 +10,73 @@ const localeOptions: { code: AppLocale; flag: string; label: string; native: str
   { code: "fr", flag: "🇫🇷", label: "Français", native: "FR" },
   { code: "en", flag: "🇬🇧", label: "English", native: "EN" },
   { code: "es", flag: "🇪🇸", label: "Español", native: "ES" },
-  { code: "ar", flag: "🇲🇦", label: "العربية (المغرب)", native: "AR" },
+  { code: "ar", flag: "🇲🇦", label: "العربية · المغرب", native: "AR" },
 ];
 
 const menuCopy: Record<
   AppLocale,
-  { costa: string; morocco: string; switch: string; language: string; aria: string }
+  {
+    morocco: string;
+    costa: string;
+    shortMorocco: string;
+    shortCosta: string;
+    explore: string;
+    language: string;
+    chooseLanguage: string;
+  }
 > = {
   fr: {
-    costa: "Costa del Sol",
     morocco: "Maisons du Maroc",
-    switch: "Changer d’univers",
+    costa: "Costa del Sol",
+    shortMorocco: "Maroc",
+    shortCosta: "Costa",
+    explore: "Découvrir l’autre univers",
     language: "Langue",
-    aria: "Choisir une destination ou une langue",
+    chooseLanguage: "Choisir une langue",
   },
   en: {
-    costa: "Costa del Sol",
     morocco: "Morocco stays",
-    switch: "Explore another world",
+    costa: "Costa del Sol",
+    shortMorocco: "Morocco",
+    shortCosta: "Costa",
+    explore: "Discover the other destination",
     language: "Language",
-    aria: "Choose a destination or language",
+    chooseLanguage: "Choose a language",
   },
   es: {
-    costa: "Costa del Sol",
     morocco: "Estancias en Marruecos",
-    switch: "Cambiar de universo",
+    costa: "Costa del Sol",
+    shortMorocco: "Marruecos",
+    shortCosta: "Costa",
+    explore: "Descubrir el otro destino",
     language: "Idioma",
-    aria: "Elegir destino o idioma",
+    chooseLanguage: "Elegir idioma",
   },
   ar: {
+    morocco: "إقامات في المغرب",
     costa: "كوستا ديل سول",
-    morocco: "إقامات المغرب",
-    switch: "اكتشف عالماً آخر",
+    shortMorocco: "المغرب",
+    shortCosta: "كوستا",
+    explore: "اكتشف الوجهة الأخرى",
     language: "اللغة",
-    aria: "اختر الوجهة أو اللغة",
+    chooseLanguage: "اختر اللغة",
   },
 };
 
 export function UniverseLanguageMenu({
   universe,
-  mobile = false,
   compact = false,
 }: {
   universe: AppUniverse;
-  mobile?: boolean;
   compact?: boolean;
 }) {
   const locale = useSolveigLocale();
   const copy = menuCopy[locale];
   const otherHref = universe === "costa" ? "/locations-maroc" : "/";
   const otherLabel = universe === "costa" ? copy.morocco : copy.costa;
+  const shortLabel = universe === "costa" ? copy.shortMorocco : copy.shortCosta;
   const otherFlag = universe === "costa" ? "🇲🇦" : "🇪🇸";
-  const compactLabel = {
-    costa: { fr: "Costa", en: "Coast", es: "Costa", ar: "كوستا" },
-    morocco: { fr: "Maroc", en: "Morocco", es: "Marruecos", ar: "المغرب" },
-  }[universe][locale];
+  const selectedLanguage = localeOptions.find((option) => option.code === locale)!;
 
   const changeLocale = (nextLocale: AppLocale, details: HTMLDetailsElement | null) => {
     window.localStorage.setItem("solveig-locale", nextLocale);
@@ -74,100 +87,99 @@ export function UniverseLanguageMenu({
   };
 
   return (
-    <details
-      className={`universe-language-menu group relative ${mobile ? "w-full" : ""}`}
-      dir="ltr"
-      onMouseEnter={(event) => {
-        if (!mobile) event.currentTarget.open = true;
-      }}
-      onMouseLeave={(event) => {
-        if (!mobile && !event.currentTarget.contains(document.activeElement)) {
-          event.currentTarget.open = false;
-        }
-      }}
-      onKeyDown={(event) => {
-        if (event.key === "Escape") {
-          event.currentTarget.open = false;
-          event.currentTarget.querySelector("summary")?.focus();
-        }
-      }}
-    >
-      <summary
-        aria-label={`${copy.aria}: ${universe === "costa" ? copy.costa : copy.morocco}`}
-        dir={locale === "ar" ? "rtl" : "ltr"}
-        className={`flex min-h-10 cursor-pointer list-none items-center justify-center gap-2 rounded-full border border-[#b28a50]/35 bg-[#f7f0e3] px-3 text-[11px] font-bold text-[#634c31] shadow-sm transition duration-300 hover:-translate-y-0.5 hover:border-[#b28a50]/70 hover:bg-[#efe2cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden ${
-          mobile ? "w-full justify-between rounded-2xl px-4 py-3 text-sm" : ""
-        }`}
+    <div className="flex shrink-0 items-center gap-2">
+      <Link
+        to={otherHref}
+        aria-label={`${copy.explore}: ${otherLabel}`}
+        title={`${copy.explore}: ${otherLabel}`}
+        className="group inline-flex min-h-10 items-center gap-2 rounded-full border border-[#9a6b34]/35 bg-[#8e5638] px-3.5 text-[11px] font-bold text-[#fff9ef] shadow-[0_8px_24px_-14px_rgba(61,36,20,.8)] transition duration-300 hover:-translate-y-0.5 hover:border-[#d9b781] hover:bg-[#70422e] hover:shadow-[0_12px_28px_-14px_rgba(61,36,20,.8)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 sm:px-4 sm:text-xs"
       >
-        <span className="flex items-center gap-2">
-          <span aria-hidden="true" className="text-base leading-none">
-            {universe === "costa" ? "🇪🇸" : "🇲🇦"}
-          </span>
-          <span className={compact ? "min-[375px]:hidden" : ""}>
-            {compact ? compactLabel : universe === "costa" ? copy.costa : copy.morocco}
-          </span>
-          {compact && (
-            <span className="hidden min-[375px]:inline">
-              {universe === "costa" ? copy.costa : copy.morocco}
-            </span>
-          )}
+        <span aria-hidden="true" className="text-base leading-none">
+          {otherFlag}
         </span>
-        <ChevronDown
-          size={15}
+        <span className={compact ? "hidden min-[430px]:inline" : ""}>{otherLabel}</span>
+        {compact && <span className="min-[430px]:hidden">{shortLabel}</span>}
+        <ArrowUpRight
+          size={14}
           aria-hidden="true"
-          className="shrink-0 transition-transform duration-300 group-open:rotate-180"
+          className="transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5"
         />
-      </summary>
+      </Link>
 
-      <div
-        dir={locale === "ar" ? "rtl" : "ltr"}
-        className={`universe-language-popover absolute z-[70] mt-2 w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)] ${
-          mobile ? "static mt-2 w-full shadow-none" : "right-0"
-        }`}
+      <details
+        className="language-picker group relative"
+        dir="ltr"
+        onMouseEnter={(event) => {
+          if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+            event.currentTarget.open = true;
+          }
+        }}
+        onMouseLeave={(event) => {
+          if (
+            window.matchMedia("(hover: hover) and (pointer: fine)").matches &&
+            !event.currentTarget.contains(document.activeElement)
+          ) {
+            event.currentTarget.open = false;
+          }
+        }}
+        onKeyDown={(event) => {
+          if (event.key === "Escape") {
+            event.currentTarget.open = false;
+            event.currentTarget.querySelector("summary")?.focus();
+          }
+        }}
       >
-        <p className="px-2 pb-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#9a7a4e]">
-          {copy.switch}
-        </p>
-        <Link
-          to={otherHref}
-          onClick={(event) => {
-            const details = event.currentTarget.closest("details");
-            if (details) details.open = false;
-          }}
-          className="flex min-h-11 items-center gap-3 rounded-xl px-3 py-2.5 text-sm font-semibold transition hover:bg-[#f6eddf] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50]"
+        <summary
+          aria-label={`${copy.chooseLanguage}. ${copy.language}: ${selectedLanguage.label}`}
+          className="flex min-h-10 cursor-pointer list-none items-center gap-1.5 rounded-full border border-white/60 bg-white/75 px-2.5 text-[10px] font-bold text-[#493a2a] shadow-sm transition hover:border-[#b28a50]/50 hover:bg-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 [&::-webkit-details-marker]:hidden sm:gap-2 sm:px-3"
         >
-          <span aria-hidden="true" className="text-lg">
-            {otherFlag}
+          <Languages
+            size={14}
+            aria-hidden="true"
+            className="hidden text-[#9a7a4e] min-[370px]:block"
+          />
+          <span aria-hidden="true" className="text-base leading-none">
+            {selectedLanguage.flag}
           </span>
-          {otherLabel}
-          <Compass size={15} aria-hidden="true" className="ml-auto text-[#a77b3e]" />
-        </Link>
+          <span>{selectedLanguage.native}</span>
+          <ChevronDown
+            size={13}
+            aria-hidden="true"
+            className="transition-transform duration-300 group-open:rotate-180"
+          />
+        </summary>
 
-        <div className="my-2 border-t border-[#806747]/15" />
-        <p className="px-2 pb-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#9a7a4e]">
-          {copy.language}
-        </p>
-        <div className="grid grid-cols-2 gap-1">
-          {localeOptions.map((option) => (
-            <button
-              key={option.code}
-              type="button"
-              aria-pressed={locale === option.code}
-              onClick={(event) => changeLocale(option.code, event.currentTarget.closest("details"))}
-              className={`flex min-h-10 items-center gap-2 rounded-xl px-3 text-start text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] ${
-                locale === option.code
-                  ? "bg-[#e9ddc9] text-[#453321]"
-                  : "text-[#76634f] hover:bg-[#f6eddf]"
-              }`}
-            >
-              <span aria-hidden="true" className="text-base">
-                {option.flag}
-              </span>
-              {option.label}
-            </button>
-          ))}
+        <div
+          dir={locale === "ar" ? "rtl" : "ltr"}
+          className="absolute right-0 z-[70] mt-2 w-[min(19rem,calc(100vw-2rem))] rounded-2xl border border-[#b28a50]/20 bg-[#fffdf8] p-3 text-[#493a2a] shadow-[0_24px_70px_-30px_rgba(39,28,17,.5)]"
+        >
+          <p className="px-2 pb-2 text-[9px] font-bold uppercase tracking-[.18em] text-[#9a7a4e]">
+            {copy.language}
+          </p>
+          <div className="grid grid-cols-2 gap-1">
+            {localeOptions.map((option) => (
+              <button
+                key={option.code}
+                type="button"
+                aria-pressed={locale === option.code}
+                onClick={(event) =>
+                  changeLocale(option.code, event.currentTarget.closest("details"))
+                }
+                className={`flex min-h-10 items-center gap-2 rounded-xl px-3 text-start text-xs font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] ${
+                  locale === option.code
+                    ? "bg-[#e9ddc9] text-[#453321]"
+                    : "text-[#76634f] hover:bg-[#f6eddf]"
+                }`}
+              >
+                <span aria-hidden="true" className="text-base">
+                  {option.flag}
+                </span>
+                {option.label}
+              </button>
+            ))}
+          </div>
         </div>
-      </div>
-    </details>
+      </details>
+    </div>
   );
 }
