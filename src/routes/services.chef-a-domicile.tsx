@@ -13,9 +13,12 @@ import {
 
 import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
 import { Button } from "@/components/ui/button";
+import chefArchiveOne from "@/assets/chef-culinary-archive-01.jpg";
+import chefArchiveTwo from "@/assets/chef-culinary-archive-02.jpg";
+import chefArchiveThree from "@/assets/chef-culinary-archive-03.jpg";
+import chefArchiveFour from "@/assets/chef-culinary-archive-04.jpg";
 
-const chefImage =
-  "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=2000&q=90";
+const chefImage = chefArchiveOne;
 const whatsappLink =
   "https://wa.me/34623626724?text=Bonjour%2C%20je%20souhaite%20imaginer%20une%20exp%C3%A9rience%20de%20chef%20%C3%A0%20domicile%20%C3%A0%20Marbella%20ou%20Mijas.";
 
@@ -178,6 +181,57 @@ function ChefAtHomePage() {
                 <p className="mt-3 text-sm leading-6 text-muted-foreground">{text}</p>
               </article>
             ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="overflow-hidden bg-[#f1e6d5]">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[.85fr_1.15fr] lg:items-center lg:gap-16 lg:px-12 lg:py-28">
+          <div className="max-w-xl">
+            <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#987543]">
+              Une histoire de cuisine
+            </p>
+            <h2 className="mt-5 font-display text-5xl font-medium leading-[.92] text-[#34271e] text-balance md:text-6xl">
+              Quarante ans de métier, le goût du partage.
+            </h2>
+            <p className="mt-6 text-sm leading-7 text-[#66584c] sm:text-base">
+              Dominique Hybord entre en apprentissage à 14 ans et fait ses premières armes à Paris,
+              avant de poursuivre son parcours dans des maisons reconnues, dont l’Auberge du Père
+              Bise à Talloires. À Cevins, son village natal, il ouvre ensuite La Fleur de Sel.
+              Quarante années de carrière ont été saluées par la presse.
+            </p>
+            <p className="mt-5 border-l-2 border-[#b9935a] pl-4 text-sm leading-6 text-[#74665a]">
+              Aujourd’hui, ce savoir-faire et cette générosité inspirent une cuisine à savourer chez
+              vous, à Marbella ou Mijas.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 gap-3 sm:gap-4">
+            {[
+              { image: chefArchiveTwo, year: "2016" },
+              { image: chefArchiveThree, year: "2024" },
+              { image: chefArchiveFour, year: "2019" },
+            ].map(({ image, year }, index) => (
+              <figure
+                key={image}
+                className={`relative overflow-hidden rounded-2xl bg-[#d6c6ae] ${
+                  index === 0
+                    ? "row-span-2 min-h-[330px] sm:min-h-[450px]"
+                    : "min-h-[158px] sm:min-h-[218px]"
+                }`}
+              >
+                <img
+                  src={image}
+                  alt={`Photographie des archives de cuisine de Dominique Hybord, ${year}`}
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 size-full object-cover transition-transform duration-700 hover:scale-[1.035]"
+                />
+              </figure>
+            ))}
+            <p className="col-span-2 text-right text-[9px] font-semibold uppercase tracking-[.18em] text-[#806b55]">
+              Archives photographiques du chef
+            </p>
           </div>
         </div>
       </section>

@@ -3,9 +3,7 @@ import { ArrowRight, ChefHat, Check } from "lucide-react";
 
 import { useSolveigLocale } from "@/components/SolveigLayout";
 import { Button } from "@/components/ui/button";
-
-const image =
-  "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1600&q=85";
+import image from "@/assets/chef-culinary-archive-01.jpg";
 
 const copy = {
   fr: {
