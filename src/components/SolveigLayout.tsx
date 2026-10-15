@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 const navigation = [
   { label: "Accueil", to: "/" },
   { label: "Services", to: "/services" },
+  { label: "Gastronomie française", to: "/gastronomie-francaise" },
   { label: "Marbella & Mijas", to: "/zones" },
   { label: "Contact", to: "/contact" },
 ] as const;
