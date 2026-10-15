@@ -1,7 +1,15 @@
-import { ArrowRight, Check, ChevronRight, MessageCircle, ShieldCheck, Sparkles } from "lucide-react";
+import {
+  ArrowRight,
+  Check,
+  ChevronRight,
+  MessageCircle,
+  ShieldCheck,
+  Sparkles,
+} from "lucide-react";
 import { Link } from "@tanstack/react-router";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
+import { useSolveigLocale } from "@/lib/locale";
 import { Button } from "@/components/ui/button";
 
 type ServiceDetailProps = {
@@ -25,6 +33,97 @@ export function ServiceDetailPage({
   cta,
   image,
 }: ServiceDetailProps) {
+  const locale = useSolveigLocale();
+  const copy = {
+    fr: {
+      imageAlt: "Villa de prestige sur la Costa del Sol",
+      approach: "L’approche Solveig",
+      presence: ["Présence", "Locale et concrète"],
+      method: ["Méthode", "Claire et documentée"],
+      attention: ["Attention", "Sur mesure"],
+      methodTitle: "Notre méthode",
+      methodHeading: (
+        <>
+          Simple pour vous.
+          <br />
+          Précise sur le terrain.
+        </>
+      ),
+      methodText:
+        "Une organisation lisible, des routines adaptées à votre propriété et une attention constante aux détails qui font la différence.",
+      accompaniment: "Accompagnement sur mesure",
+      ctaText:
+        "Décrivez simplement votre propriété et votre niveau d’attente. Nous pourrons ensuite définir le périmètre le plus pertinent.",
+      contact: "Parler de votre projet",
+      nextContact: "Choisir mon prochain contact",
+    },
+    en: {
+      imageAlt: "Prestige villa on the Costa del Sol",
+      approach: "The Solveig approach",
+      presence: ["Presence", "Local and hands-on"],
+      method: ["Method", "Clear and documented"],
+      attention: ["Care", "Tailored to you"],
+      methodTitle: "How we work",
+      methodHeading: (
+        <>
+          Straightforward for you.
+          <br />
+          Thorough on the ground.
+        </>
+      ),
+      methodText:
+        "A clear plan, routines tailored to your property and consistent attention to the details that make a difference.",
+      accompaniment: "Tailored support",
+      ctaText:
+        "Tell us about your property and the level of support you expect. We can then define the scope that makes the most sense.",
+      contact: "Discuss your property",
+      nextContact: "Choose how to get in touch",
+    },
+    es: {
+      imageAlt: "Villa de prestigio en la Costa del Sol",
+      approach: "El enfoque Solveig",
+      presence: ["Presencia", "Local y cercana"],
+      method: ["Método", "Claro y documentado"],
+      attention: ["Atención", "A su medida"],
+      methodTitle: "Nuestra forma de trabajar",
+      methodHeading: (
+        <>
+          Sencillo para usted.
+          <br />
+          Preciso sobre el terreno.
+        </>
+      ),
+      methodText:
+        "Una organización clara, rutinas adaptadas a su propiedad y atención constante a los detalles que marcan la diferencia.",
+      accompaniment: "Acompañamiento a medida",
+      ctaText:
+        "Cuéntenos cómo es su propiedad y qué nivel de atención espera. A partir de ahí, podremos definir el alcance más adecuado.",
+      contact: "Hablar de su proyecto",
+      nextContact: "Elegir cómo contactar",
+    },
+    ar: {
+      imageAlt: "فيلا فاخرة على كوستا ديل سول",
+      approach: "نهج Solveig",
+      presence: ["الحضور", "محلي وفعلي"],
+      method: ["المنهج", "واضح وموثق"],
+      attention: ["العناية", "مصممة وفق احتياجاتك"],
+      methodTitle: "منهجية العمل",
+      methodHeading: (
+        <>
+          سهولة في التعامل.
+          <br />
+          ودقة في المتابعة الميدانية.
+        </>
+      ),
+      methodText: "تنظيم واضح وروتين يناسب عقارك واهتمام مستمر بالتفاصيل التي تصنع الفرق.",
+      accompaniment: "دعم مصمم وفق احتياجاتك",
+      ctaText: "أخبرنا عن عقارك ومستوى العناية الذي تتوقعه، وسنحدد معاً نطاق الخدمة الأنسب.",
+      contact: "لنتحدث عن عقارك",
+      nextContact: "اختر وسيلة التواصل",
+    },
+  }[locale];
+  const standards = [copy.presence, copy.method, copy.attention];
+
   return (
     <SolveigLayout>
       <PageHero eyebrow={eyebrow} title={title} description={description} />
@@ -35,7 +134,7 @@ export function ServiceDetailPage({
             <div className="group relative overflow-hidden rounded-[1.5rem] shadow-elegant">
               <img
                 src={image}
-                alt="Villa de prestige sur la Costa del Sol"
+                alt={copy.imageAlt}
                 width={1600}
                 height={1104}
                 className="aspect-[4/3] w-full object-cover transition-transform duration-1000 group-hover:scale-[1.04]"
@@ -50,7 +149,7 @@ export function ServiceDetailPage({
             <div>
               <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.16em] text-gold">
                 <span className="h-px w-8 bg-gold" />
-                L’approche Solveig
+                {copy.approach}
               </p>
               <h2 className="mt-5 font-display text-5xl font-semibold leading-[0.94] text-balance md:text-6xl">
                 {intro}
@@ -67,11 +166,7 @@ export function ServiceDetailPage({
           </div>
 
           <div className="mt-14 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
-            {[
-              ["Présence", "Locale et concrète"],
-              ["Méthode", "Claire et documentée"],
-              ["Attention", "Sur mesure"],
-            ].map(([title, text]) => (
+            {standards.map(([title, text]) => (
               <div key={title} className="bg-card p-6">
                 <p className="text-xs font-bold uppercase tracking-[0.14em] text-gold">{title}</p>
                 <p className="mt-2 font-display text-2xl font-semibold">{text}</p>
@@ -87,26 +182,29 @@ export function ServiceDetailPage({
             <div>
               <p className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.16em] text-gold">
                 <Sparkles size={16} aria-hidden="true" />
-                Notre méthode
+                {copy.methodTitle}
               </p>
               <h2 className="mt-5 font-display text-5xl font-semibold leading-[0.95] md:text-6xl">
-                Simple pour vous.
-                <br />
-                Précise sur le terrain.
+                {copy.methodHeading}
               </h2>
-              <p className="mt-6 max-w-md leading-7 text-muted-foreground">
-                Une organisation lisible, des routines adaptées à votre propriété et une attention constante aux détails qui font la différence.
-              </p>
+              <p className="mt-6 max-w-md leading-7 text-muted-foreground">{copy.methodText}</p>
             </div>
 
             <div className="space-y-0 border-t border-border">
               {steps.map((step, index) => (
-                <div key={step} className="group grid gap-4 border-b border-border py-7 sm:grid-cols-[90px_1fr_auto] sm:items-center">
+                <div
+                  key={step}
+                  className="group grid gap-4 border-b border-border py-7 sm:grid-cols-[90px_1fr_auto] sm:items-center"
+                >
                   <span className="font-display text-4xl font-semibold text-gold/80 transition-colors group-hover:text-gold">
                     0{index + 1}
                   </span>
                   <p className="text-lg font-semibold leading-8 text-foreground">{step}</p>
-                  <ChevronRight className="hidden text-coast transition-transform group-hover:translate-x-1 sm:block" size={19} aria-hidden="true" />
+                  <ChevronRight
+                    className="hidden text-coast transition-transform group-hover:translate-x-1 sm:block"
+                    size={19}
+                    aria-hidden="true"
+                  />
                 </div>
               ))}
             </div>
@@ -122,24 +220,24 @@ export function ServiceDetailPage({
               <div className="max-w-2xl">
                 <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-[0.14em] text-gold">
                   <ShieldCheck size={18} aria-hidden="true" />
-                  Accompagnement sur mesure
+                  {copy.accompaniment}
                 </div>
-                <h2 className="mt-4 font-display text-4xl font-semibold leading-tight md:text-5xl">{cta}</h2>
-                <p className="mt-4 leading-7 text-muted-foreground">
-                  Décrivez simplement votre propriété et votre niveau d’attente. Nous pourrons ensuite définir le périmètre le plus pertinent.
-                </p>
+                <h2 className="mt-4 font-display text-4xl font-semibold leading-tight md:text-5xl">
+                  {cta}
+                </h2>
+                <p className="mt-4 leading-7 text-muted-foreground">{copy.ctaText}</p>
               </div>
               <div className="flex shrink-0 flex-col gap-3 sm:flex-row md:flex-col">
                 <Button asChild variant="prestige" size="xl">
                   <Link to="/contact">
-                    Parler de votre projet
+                    {copy.contact}
                     <ArrowRight aria-hidden="true" />
                   </Link>
                 </Button>
                 <Button asChild variant="coastal" size="xl">
                   <Link to="/contact">
                     <MessageCircle aria-hidden="true" />
-                    Choisir mon prochain contact
+                    {copy.nextContact}
                   </Link>
                 </Button>
               </div>
