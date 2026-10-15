@@ -1,4 +1,3 @@
-// Vercel retry after deployment-rate-limit window.
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDown,
