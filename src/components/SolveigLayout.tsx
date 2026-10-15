@@ -189,7 +189,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
 
             <div className="flex items-center gap-2">
               <div>
-                <UniverseLanguageMenu universe="costa" compact />
+                <UniverseLanguageMenu universe="costa" />
               </div>
               <a
                 href={whatsappLink}
