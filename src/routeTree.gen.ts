@@ -10,17 +10,25 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as ConciergerieRouteImport } from './routes/conciergerie'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as GestionProprieteRouteImport } from './routes/gestion-propriete'
 import { Route as LocationSaisonniereRouteImport } from './routes/location-saisonniere'
+import { Route as LocationsMarocRouteImport } from './routes/locations-maroc'
 import { Route as ZonesRouteImport } from './routes/zones'
 import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as ServicesChefADomicileRouteImport } from './routes/services.chef-a-domicile'
 import { Route as ServicesHousekeepingRouteImport } from './routes/services.housekeeping'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ConciergerieRoute = ConciergerieRouteImport.update({
@@ -43,6 +51,11 @@ const LocationSaisonniereRoute = LocationSaisonniereRouteImport.update({
   path: '/location-saisonniere',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LocationsMarocRoute = LocationsMarocRouteImport.update({
+  id: '/locations-maroc',
+  path: '/locations-maroc',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ZonesRoute = ZonesRouteImport.update({
   id: '/zones',
   path: '/zones',
@@ -53,6 +66,11 @@ const ServicesIndexRoute = ServicesIndexRouteImport.update({
   path: '/services/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesChefADomicileRoute = ServicesChefADomicileRouteImport.update({
+  id: '/services/chef-a-domicile',
+  path: '/services/chef-a-domicile',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesHousekeepingRoute = ServicesHousekeepingRouteImport.update({
   id: '/services/housekeeping',
   path: '/services/housekeeping',
@@ -61,32 +79,41 @@ const ServicesHousekeepingRoute = ServicesHousekeepingRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
   '/gestion-propriete': typeof GestionProprieteRoute
   '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/locations-maroc': typeof LocationsMarocRoute
   '/zones': typeof ZonesRoute
+  '/services/chef-a-domicile': typeof ServicesChefADomicileRoute
   '/services/housekeeping': typeof ServicesHousekeepingRoute
   '/services/': typeof ServicesIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
   '/gestion-propriete': typeof GestionProprieteRoute
   '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/locations-maroc': typeof LocationsMarocRoute
   '/zones': typeof ZonesRoute
+  '/services/chef-a-domicile': typeof ServicesChefADomicileRoute
   '/services/housekeeping': typeof ServicesHousekeepingRoute
   '/services': typeof ServicesIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
   '/conciergerie': typeof ConciergerieRoute
   '/contact': typeof ContactRoute
   '/gestion-propriete': typeof GestionProprieteRoute
   '/location-saisonniere': typeof LocationSaisonniereRoute
+  '/locations-maroc': typeof LocationsMarocRoute
   '/zones': typeof ZonesRoute
+  '/services/chef-a-domicile': typeof ServicesChefADomicileRoute
   '/services/housekeeping': typeof ServicesHousekeepingRoute
   '/services/': typeof ServicesIndexRoute
 }
@@ -94,42 +121,54 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
     | '/conciergerie'
     | '/contact'
     | '/gestion-propriete'
     | '/location-saisonniere'
+    | '/locations-maroc'
     | '/zones'
+    | '/services/chef-a-domicile'
     | '/services/housekeeping'
     | '/services/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog'
     | '/conciergerie'
     | '/contact'
     | '/gestion-propriete'
     | '/location-saisonniere'
+    | '/locations-maroc'
     | '/zones'
+    | '/services/chef-a-domicile'
     | '/services/housekeeping'
     | '/services'
   id:
     | '__root__'
     | '/'
+    | '/blog'
     | '/conciergerie'
     | '/contact'
     | '/gestion-propriete'
     | '/location-saisonniere'
+    | '/locations-maroc'
     | '/zones'
+    | '/services/chef-a-domicile'
     | '/services/housekeeping'
     | '/services/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRoute
   ConciergerieRoute: typeof ConciergerieRoute
   ContactRoute: typeof ContactRoute
   GestionProprieteRoute: typeof GestionProprieteRoute
   LocationSaisonniereRoute: typeof LocationSaisonniereRoute
+  LocationsMarocRoute: typeof LocationsMarocRoute
   ZonesRoute: typeof ZonesRoute
+  ServicesChefADomicileRoute: typeof ServicesChefADomicileRoute
   ServicesHousekeepingRoute: typeof ServicesHousekeepingRoute
   ServicesIndexRoute: typeof ServicesIndexRoute
 }
@@ -141,6 +180,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/conciergerie': {
@@ -171,6 +217,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LocationSaisonniereRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/locations-maroc': {
+      id: '/locations-maroc'
+      path: '/locations-maroc'
+      fullPath: '/locations-maroc'
+      preLoaderRoute: typeof LocationsMarocRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/zones': {
       id: '/zones'
       path: '/zones'
@@ -185,6 +238,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/chef-a-domicile': {
+      id: '/services/chef-a-domicile'
+      path: '/services/chef-a-domicile'
+      fullPath: '/services/chef-a-domicile'
+      preLoaderRoute: typeof ServicesChefADomicileRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services/housekeeping': {
       id: '/services/housekeeping'
       path: '/services/housekeeping'
@@ -197,11 +257,14 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRoute,
   ConciergerieRoute: ConciergerieRoute,
   ContactRoute: ContactRoute,
   GestionProprieteRoute: GestionProprieteRoute,
   LocationSaisonniereRoute: LocationSaisonniereRoute,
+  LocationsMarocRoute: LocationsMarocRoute,
   ZonesRoute: ZonesRoute,
+  ServicesChefADomicileRoute: ServicesChefADomicileRoute,
   ServicesHousekeepingRoute: ServicesHousekeepingRoute,
   ServicesIndexRoute: ServicesIndexRoute,
 }

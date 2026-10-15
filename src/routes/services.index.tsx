@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, BadgeCheck, BedDouble, ClipboardCheck, KeyRound, MessageCircle, Sparkles, Wrench } from "lucide-react";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
+import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
 import { Button } from "@/components/ui/button";
 import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
@@ -71,6 +72,8 @@ function ServicesPage() {
           </div>
         </div>
       </section>
+
+      <ChefServiceSpotlight />
 
       <section className="bg-surface">
         <div className="mx-auto grid max-w-[1440px] gap-14 px-5 py-24 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:px-12 lg:py-32">

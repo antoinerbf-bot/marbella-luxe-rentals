@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { ArrowRight, Check, Globe2, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
+import { ArrowRight, Check, Compass, Globe2, Mail, Menu, MessageCircle, Phone, X } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
 
 import { Button } from "@/components/ui/button";
@@ -78,6 +78,8 @@ export function useSolveigLocale() {
 const shellCopy = {
   fr: {
     project: "Parlons de votre projet",
+    morocco: "Séjours au Maroc",
+    discoverMorocco: "Découvrir le Maroc",
     menu: "Menu",
     close: "Fermer",
     explore: "Explorer",
@@ -93,6 +95,8 @@ const shellCopy = {
   },
   en: {
     project: "Discuss your property",
+    morocco: "Stays in Morocco",
+    discoverMorocco: "Discover Morocco",
     menu: "Menu",
     close: "Close",
     explore: "Explore",
@@ -108,6 +112,8 @@ const shellCopy = {
   },
   es: {
     project: "Hablemos de su propiedad",
+    morocco: "Estancias en Marruecos",
+    discoverMorocco: "Descubrir Marruecos",
     menu: "Menú",
     close: "Cerrar",
     explore: "Explorar",
@@ -139,21 +145,30 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
           <div className="glass-nav flex min-h-[68px] items-center justify-between gap-4 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:pl-5">
             <Link to="/" className="group flex shrink-0 items-center" aria-label="Solveig’s Prestige Service — Accueil" onClick={() => setMenuOpen(false)}><Logo /></Link>
 
-            <nav className="hidden items-center gap-1 lg:flex" aria-label="Navigation principale">
+            <nav className="hidden items-center gap-1 xl:flex" aria-label="Navigation principale">
               {navigation.map((item) => (
                 <Link
                   key={item.to}
                   to={item.to}
                   activeProps={{ className: "bg-primary text-primary-foreground" }}
-                  className="rounded-full px-4 py-2.5 text-[12px] font-semibold text-muted-foreground transition-all hover:bg-primary/8 hover:text-foreground"
+                  className="rounded-full px-3 py-2.5 text-[12px] font-semibold text-muted-foreground transition-all hover:bg-primary/8 hover:text-foreground"
                 >
-                  {item.label}
+                  {item.to === "/locations-maroc" ? copy.morocco : item.label}
                 </Link>
               ))}
             </nav>
 
             <div className="flex items-center gap-2">
-              <div className="hidden sm:block"><LanguageSwitcher /></div><a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hidden size-10 items-center justify-center rounded-full border border-border bg-background/70 text-[#2e8068] transition hover:-translate-y-0.5 md:flex" aria-label="WhatsApp"><MessageCircle size={18} /></a>
+              <div className="hidden sm:block"><LanguageSwitcher /></div>
+              <Link
+                to="/locations-maroc"
+                className="hidden min-h-10 items-center gap-2 rounded-full border border-[#b28a50]/30 bg-[#f5eddf] px-3 text-[11px] font-bold text-[#755633] shadow-sm transition hover:-translate-y-0.5 hover:border-[#b28a50]/60 hover:bg-[#efe2cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50] focus-visible:ring-offset-2 sm:inline-flex"
+              >
+                <Compass size={15} aria-hidden="true" className="text-[#a77b3e]" />
+                <span className="xl:hidden">Maroc</span>
+                <span className="hidden xl:inline">{copy.morocco}</span>
+              </Link>
+              <a href={contact.whatsapp} target="_blank" rel="noreferrer" className="hidden size-10 items-center justify-center rounded-full border border-border bg-background/70 text-[#2e8068] transition hover:-translate-y-0.5 md:flex" aria-label="WhatsApp"><MessageCircle size={18} /></a>
               <Button asChild variant="prestige" size="sm" className="hidden md:inline-flex">
                 <Link to="/contact">
                   {copy.project}
@@ -165,7 +180,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
                 onClick={() => setMenuOpen((open) => !open)}
                 aria-expanded={menuOpen}
                 aria-label={menuOpen ? copy.close : copy.menu}
-                className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground lg:hidden"
+                className="flex size-11 items-center justify-center rounded-full bg-primary text-primary-foreground xl:hidden"
               >
                 {menuOpen ? <X size={18} /> : <Menu size={18} />}
               </button>
@@ -173,7 +188,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
           </div>
 
           {menuOpen && (
-            <div className="mobile-menu mt-2 rounded-[1.5rem] border border-border bg-background/96 p-4 shadow-2xl backdrop-blur-2xl lg:hidden">
+            <div className="mobile-menu mt-2 rounded-[1.5rem] border border-border bg-background/96 p-4 shadow-2xl backdrop-blur-2xl xl:hidden">
               <div className="grid gap-1">
                 {navigation.map((item) => (
                   <Link
@@ -186,6 +201,15 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
                   </Link>
                 ))}
               </div>
+              <Link
+                to="/locations-maroc"
+                onClick={() => setMenuOpen(false)}
+                className="mt-3 flex min-h-12 items-center gap-3 rounded-2xl border border-[#b28a50]/25 bg-[#f5eddf] px-4 py-3 text-sm font-bold text-[#755633] transition hover:bg-[#efe2cc] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#b28a50]"
+              >
+                <Compass size={17} aria-hidden="true" className="text-[#a77b3e]" />
+                {copy.discoverMorocco}
+                <ArrowRight size={15} aria-hidden="true" className="ml-auto" />
+              </Link>
               <div className="mt-3 border-t border-border pt-4">
                 <LanguageSwitcher mobile />
               </div>
@@ -221,6 +245,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
               <Link to="/conciergerie" className="block hover:text-white">{copy.concierge}</Link>
               <Link to="/location-saisonniere" className="block hover:text-white">{copy.seasonal}</Link>
               <Link to="/services/housekeeping" className="block hover:text-white">{copy.housekeeping}</Link>
+              <Link to="/locations-maroc" className="block hover:text-white">{copy.morocco}</Link>
             </div>
 
             <div className="space-y-4 text-sm text-primary-foreground/65">
