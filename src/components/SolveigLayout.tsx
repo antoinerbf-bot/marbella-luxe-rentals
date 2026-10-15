@@ -164,7 +164,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
       <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto mt-3 max-w-[1440px] px-4 sm:px-6 lg:px-8">
-          <div className="glass-nav flex min-h-[68px] items-center justify-between gap-4 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:pl-5">
+          <div className="glass-nav flex min-h-[68px] items-center justify-between gap-2 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:gap-4 sm:pl-5">
             <Link
               to="/"
               className="group flex shrink-0 items-center"
@@ -187,7 +187,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
               ))}
             </nav>
 
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 sm:gap-2">
               <div>
                 <UniverseLanguageMenu universe="costa" />
               </div>

@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { ArrowRight, ChefHat, Check, MessageCircle } from "lucide-react";
 
 import { useSolveigLocale } from "@/lib/locale";
+import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import { Button } from "@/components/ui/button";
 import image from "@/assets/chef-culinary-archive-01.jpg";
 
@@ -104,14 +105,7 @@ export function ChefServiceSpotlight() {
           </a>
         </div>
 
-        <div className="relative min-h-64 overflow-hidden md:min-h-full">
-          <img
-            src={image}
-            alt={content.imageAlt}
-            loading="lazy"
-            decoding="async"
-            className="absolute inset-0 size-full object-cover"
-          />
+        <ScrollParallaxImage src={image} alt={content.imageAlt} className="min-h-64 md:min-h-full">
           <svg
             aria-hidden="true"
             viewBox="0 0 240 180"
@@ -139,11 +133,11 @@ export function ChefServiceSpotlight() {
             />
             <path d="M25 145c24-12 40-12 59 0m75 0c17-11 32-12 52-5" strokeWidth="1.2" />
           </svg>
-          <div className="absolute inset-0 bg-gradient-to-t from-[#2d2119]/35 via-transparent to-transparent" />
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2d2119]/35 via-transparent to-transparent" />
           <p className="absolute bottom-5 left-5 rounded-full border border-white/35 bg-[#2d2119]/40 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-sm sm:bottom-7 sm:left-7">
             Solveig’s Prestige Service
           </p>
-        </div>
+        </ScrollParallaxImage>
       </div>
     </section>
   );

@@ -3,15 +3,11 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDown,
   ArrowRight,
-  CalendarCheck,
   Check,
   ChevronRight,
-  Home,
   KeyRound,
   MessageCircle,
-  ShieldCheck,
   Sparkles,
-  Waves,
   CalendarDays,
   Wrench,
 } from "lucide-react";
@@ -20,6 +16,7 @@ import { Button } from "@/components/ui/button";
 import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
 import { useSolveigLocale } from "@/lib/locale";
 import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
+import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
 const SITE_URL =
@@ -32,13 +29,6 @@ const media = {
   mijas:
     "https://commons.wikimedia.org/wiki/Special:Redirect/file/Mijas_Pueblo_from_the_south_(Mijas,_Dec_2012).jpg",
   coast: "https://commons.wikimedia.org/wiki/Special:Redirect/file/PLAYAS_DE_MIJAS.jpg",
-};
-
-const serviceImages = {
-  property: villaImage,
-  concierge: media.oldTown,
-  seasonal: media.coast,
-  housekeeping: media.mijas,
 };
 
 export const Route = createFileRoute("/")({
@@ -718,88 +708,21 @@ function Index() {
   const locale = useSolveigLocale();
   const c = copy[locale];
   const whatsappLink = `https://wa.me/34623626724?text=${encodeURIComponent(c.whatsappMessage)}`;
-  const extraServices = {
-    fr: [
-      [
-        "05",
-        "Contrôles propriétaires",
-        "Un regard local régulier, adapté au rythme de votre propriété.",
-        "/gestion-propriete",
-        ShieldCheck,
-      ],
-      [
-        "06",
-        "Relation voyageurs",
-        "Une présence avant, pendant et après le séjour.",
-        "/conciergerie",
-        Sparkles,
-      ],
-    ],
-    en: [
-      [
-        "05",
-        "Owner checks",
-        "A regular local eye, adapted to your property’s rhythm.",
-        "/gestion-propriete",
-        ShieldCheck,
-      ],
-      [
-        "06",
-        "Guest relations",
-        "A discreet local presence before, during and after every stay.",
-        "/conciergerie",
-        Sparkles,
-      ],
-    ],
-    es: [
-      [
-        "05",
-        "Controles de propietarios",
-        "Una mirada local regular, adaptada al ritmo de la propiedad.",
-        "/gestion-propriete",
-        ShieldCheck,
-      ],
-      [
-        "06",
-        "Relación con huéspedes",
-        "Una presencia discreta antes, durante y después.",
-        "/conciergerie",
-        Sparkles,
-      ],
-    ],
-    ar: [
-      [
-        "05",
-        "متابعة المالك",
-        "متابعة محلية منتظمة تناسب إيقاع عقارك.",
-        "/gestion-propriete",
-        ShieldCheck,
-      ],
-      ["06", "رعاية الضيوف", "حضور محلي قبل الإقامة وأثناءها وبعدها.", "/conciergerie", Sparkles],
-    ],
-  } as const;
-  const services = [...c.services, ...extraServices[locale]];
+  const services = c.services;
 
   return (
     <SolveigLayout>
-      <style>
-        {
-          "@import url('https://fonts.googleapis.com/css2?family=Allura&display=swap'); .glass-nav .font-display,footer .font-display{font-family:Allura,cursive;font-weight:400}.glass-nav .font-display{font-size:1.65rem}.solveig-custom-wordmark{font-family:Allura,cursive;font-size:clamp(2.7rem,5vw,4.8rem);line-height:.8;letter-spacing:-.02em;color:#fff7e8;text-shadow:0 5px 24px rgba(0,0,0,.28)}.solveig-custom-sub{margin-top:.7rem;font:700 .42rem/1 var(--font-body);letter-spacing:.42em;color:#dcc9aa}.solveig-service-card{min-height:330px;border:1px solid rgba(75,60,43,.13);border-radius:1.35rem;background:rgba(255,255,255,.86);padding:1.55rem;box-shadow:0 22px 65px -48px rgba(53,39,28,.45);transition:transform .55s cubic-bezier(.2,.75,.2,1),box-shadow .55s ease}.solveig-service-card:hover{transform:translateY(-8px);box-shadow:0 30px 75px -45px rgba(53,39,28,.55)}.solveig-service-icon{display:flex;width:2.7rem;height:2.7rem;align-items:center;justify-content:center;border-radius:999px;border:1px solid rgba(79,127,128,.2);background:rgba(127,210,220,.16);color:#4f7f80}.solveig-parallax{position:relative;overflow:hidden}.solveig-parallax img{height:110%;width:100%;object-fit:cover;transform:scale(1.08);animation:solveigParallax linear both;animation-timeline:view();animation-range:entry 0% cover 100%}@keyframes solveigParallax{from{transform:scale(1.08) translateY(-2%)}to{transform:scale(1.08) translateY(2%)}}.solveig-destination{position:relative;min-height:470px;overflow:hidden;border-radius:1.6rem}@media(prefers-reduced-motion:reduce){.solveig-service-card{transition:none}.solveig-parallax img{animation:none}}"
-        }
-      </style>
-
       <section className="relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white">
-        <div className="absolute inset-0 scale-[1.035] hero-kenburns">
-          <img
-            src={media.hero}
-            alt="Villa de prestige à Marbella sur la Costa del Sol"
-            className="h-full w-full object-cover"
-            fetchPriority="high"
-            decoding="async"
-          />
-        </div>
+        <ScrollParallaxImage
+          src={media.hero}
+          alt="Villa de prestige à Marbella sur la Costa del Sol"
+          loading="eager"
+          fetchPriority="high"
+          className="hero-kenburns absolute inset-0 scale-[1.035]"
+          imageClassName="h-full w-full"
+        />
         <video
-          className="absolute inset-0 h-full w-full object-cover opacity-80"
+          className="absolute inset-0 h-full w-full object-cover opacity-65"
           autoPlay
           muted
           loop
@@ -896,16 +819,8 @@ function Index() {
             </p>
           </div>
           <div className="mt-14 grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {services.map(([number, title, text, link, Icon], index) => (
-              <Link
-                key={title}
-                to={link as never}
-                className={
-                  "solveig-service-card group " +
-                  (index === 1 ? "md:translate-y-8 " : "") +
-                  (index === 4 ? "lg:-translate-y-4" : "")
-                }
-              >
+            {services.map(([number, title, text, link, Icon]) => (
+              <Link key={title} to={link} className="solveig-service-card group">
                 <div className="flex items-start justify-between">
                   <span className="solveig-service-icon">
                     <Icon size={17} />
@@ -952,15 +867,21 @@ function Index() {
             </Button>
           </div>
           <div className="grid grid-cols-[1.35fr_.65fr] gap-3 sm:gap-4">
-            <div className="solveig-parallax row-span-2 min-h-[430px] rounded-[1.6rem]">
-              <img src={media.hero} alt="Villa de prestige à Marbella" loading="lazy" />
-            </div>
-            <div className="solveig-parallax min-h-[205px] rounded-[1.6rem]">
-              <img src={media.oldTown} alt="Marbella historique" loading="lazy" />
-            </div>
-            <div className="solveig-parallax min-h-[205px] rounded-[1.6rem]">
-              <img src={media.mijas} alt="Mijas, Andalousie" loading="lazy" />
-            </div>
+            <ScrollParallaxImage
+              src={media.hero}
+              alt="Villa de prestige à Marbella"
+              className="row-span-2 min-h-[300px] rounded-[1.6rem] sm:min-h-[430px]"
+            />
+            <ScrollParallaxImage
+              src={media.oldTown}
+              alt="Marbella historique"
+              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
+            />
+            <ScrollParallaxImage
+              src={media.mijas}
+              alt="Mijas, Andalousie"
+              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
+            />
           </div>
         </div>
       </section>
@@ -1001,9 +922,12 @@ function Index() {
                 to="/zones"
                 className={"solveig-destination group " + (index === 1 ? "md:translate-y-10" : "")}
               >
-                <div className="solveig-parallax absolute inset-0">
-                  <img src={image} alt={name} loading="lazy" />
-                </div>
+                <ScrollParallaxImage
+                  src={image}
+                  alt=""
+                  className="absolute inset-0"
+                  imageClassName="transition-[filter] duration-700 group-hover:brightness-110"
+                />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#2d2119]/85 via-[#2d2119]/20 to-transparent" />
                 <div className="relative flex min-h-[470px] flex-col justify-end p-7 text-white">
                   <span className="text-[9px] font-bold uppercase tracking-[.2em] text-[#e8c986]">
@@ -1022,9 +946,7 @@ function Index() {
       </section>
 
       <section className="relative overflow-hidden bg-[#33251b] text-[#f8efdf]">
-        <div className="solveig-parallax absolute inset-0 opacity-25">
-          <img src={media.coast} alt="Costa del Sol" loading="lazy" />
-        </div>
+        <ScrollParallaxImage src={media.coast} alt="" className="absolute inset-0 opacity-25" />
         <div className="absolute inset-0 bg-[#33251b]/78" />
         <div className="relative mx-auto max-w-[1440px] px-5 py-24 sm:px-8 lg:px-12 lg:py-32">
           <div className="grid gap-12 lg:grid-cols-[.8fr_1.2fr] lg:items-end">

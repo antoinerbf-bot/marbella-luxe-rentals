@@ -1,18 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import {
-  ArrowRight,
-  BadgeCheck,
-  BedDouble,
-  ClipboardCheck,
-  KeyRound,
-  MessageCircle,
-  Sparkles,
-  Wrench,
-} from "lucide-react";
+import { ArrowRight, BadgeCheck, KeyRound, MessageCircle, Sparkles, Wrench } from "lucide-react";
 
 import { ContactBand, PageHero, SolveigLayout } from "@/components/SolveigLayout";
 import { useSolveigLocale } from "@/lib/locale";
 import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
+import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import { Button } from "@/components/ui/button";
 import villaImage from "@/assets/marbella-prestige-villa.jpg";
 
@@ -51,8 +43,6 @@ const offers = [
   { icon: Sparkles, link: "/conciergerie", image: images.concierge },
   { icon: BadgeCheck, link: "/location-saisonniere", image: images.seasonal },
   { icon: Wrench, link: "/services/housekeeping", image: images.housekeeping },
-  { icon: ClipboardCheck, link: "/gestion-propriete", image: images.property },
-  { icon: BedDouble, link: "/conciergerie", image: images.concierge },
 ];
 
 const copy = {
@@ -298,11 +288,11 @@ function ServicesPage() {
                   to={offer.link}
                   className="group relative min-h-[410px] overflow-hidden rounded-[1.7rem] bg-primary text-white"
                 >
-                  <img
+                  <ScrollParallaxImage
                     src={offer.image}
                     alt=""
-                    className="absolute inset-0 h-full w-full object-cover transition duration-[1200ms] group-hover:scale-110"
-                    aria-hidden="true"
+                    className="absolute inset-0"
+                    imageClassName="transition-[filter] duration-700 group-hover:brightness-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-primary via-primary/55 to-primary/5" />
                   <div className="relative flex min-h-[410px] flex-col justify-between p-7 sm:p-9">
