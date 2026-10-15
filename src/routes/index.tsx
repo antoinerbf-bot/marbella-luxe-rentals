@@ -267,6 +267,29 @@ function Index() {
         </div>
       </section>
 
+      <section className="relative overflow-hidden bg-[#f3eee3]">
+        <div className="mx-auto grid max-w-[1440px] gap-10 px-5 py-20 sm:px-8 lg:grid-cols-[.8fr_1.2fr] lg:items-center lg:px-12 lg:py-28">
+          <div>
+            <p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#b28a50]">Une signature française</p>
+            <h2 className="mt-4 font-display text-5xl font-medium leading-[.92] text-[#34271e] sm:text-6xl">L’art de recevoir, jusque dans l’assiette.</h2>
+            <p className="mt-6 max-w-lg text-sm leading-7 text-[#74665a]">Pour aller au-delà du séjour, découvrez une approche de l’hospitalité inspirée du savoir-faire culinaire français : dîners privés, moments de partage et expériences pensées autour de vos invités.</p>
+            <Link to="/gastronomie-francaise" className="mt-7 inline-flex items-center gap-2 rounded-full bg-[#314c43] px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-[#243a33]">Découvrir la gastronomie française <ArrowRight size={15} /></Link>
+          </div>
+          <div className="grid gap-3 sm:grid-cols-2">
+            <article className="rounded-[1.5rem] bg-white/75 p-7 sm:p-8">
+              <span className="font-display text-3xl text-[#b28a50]">01</span>
+              <h3 className="mt-7 font-display text-3xl font-medium text-[#34271e]">Dîners privés</h3>
+              <p className="mt-3 text-xs leading-6 text-[#74665a]">Une table pensée pour votre villa, votre occasion et vos convives.</p>
+            </article>
+            <article className="rounded-[1.5rem] bg-[#dfe8df] p-7 sm:mt-8 sm:p-8">
+              <span className="font-display text-3xl text-[#b28a50]">02</span>
+              <h3 className="mt-7 font-display text-3xl font-medium text-[#34271e]">Culture culinaire française</h3>
+              <p className="mt-3 text-xs leading-6 text-[#5b665d]">Le goût du détail, le sens du service et l’art de recevoir.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section className="relative bg-[#fbf6eb]">
         <div className="mx-auto max-w-[1440px] px-5 py-20 sm:px-8 lg:px-12 lg:py-32"><div className="max-w-3xl"><p className="text-[10px] font-bold uppercase tracking-[.26em] text-[#b28a50]">{c.destinationEyebrow}</p><h2 className="mt-4 font-display text-5xl font-medium leading-[.9] text-[#34271e] sm:text-6xl md:text-7xl">{c.destinationTitle}</h2><p className="mt-6 max-w-xl text-sm leading-7 text-[#74665a]">{c.destinationText}</p></div><div className="mt-14 grid gap-4 md:grid-cols-3">{c.places.map(([name,text,image], index) => <Link key={name} to="/zones" className={"solveig-destination group " + (index === 1 ? "md:translate-y-10" : "")}><div className="solveig-parallax absolute inset-0"><img src={image} alt={name} loading="lazy" /></div><div className="absolute inset-0 bg-gradient-to-t from-[#2d2119]/85 via-[#2d2119]/20 to-transparent" /><div className="relative flex min-h-[470px] flex-col justify-end p-7 text-white"><span className="text-[9px] font-bold uppercase tracking-[.2em] text-[#e8c986]">Costa del Sol</span><h3 className="mt-2 font-display text-4xl">{name}</h3><p className="mt-2 max-w-sm text-xs leading-6 text-white/72">{text}</p><span className="mt-5 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[.18em]">Explorer <ArrowRight size={13} /></span></div></Link>)}</div></div>
       </section>
