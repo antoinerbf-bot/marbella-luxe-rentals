@@ -83,6 +83,20 @@ const copy = {
           "Le plus beau souvenir d’une réception tient souvent à cela : le temps passé ensemble, sans regarder l’heure ni se préoccuper de la cuisine.",
         ],
       },
+      "chef-a-domicile-marbella-mijas": {
+        category: "L’art de recevoir",
+        title: "Chef à domicile à Marbella : une expérience privée dans votre villa",
+        excerpt: "Un dîner imaginé autour de vos envies, une cuisine de saison et le plaisir de recevoir dans l’intimité de votre villa sur la Costa del Sol.",
+        imageAlt: "Préparation d’un repas dans une cuisine lumineuse",
+        paragraphs: [
+          "Séjourner dans une villa à Marbella ou à Mijas permet de profiter de la Costa del Sol à son propre rythme. Faire venir un chef à domicile prolonge cette liberté : le repas se déroule chez vous, dans un cadre familier, sans interrompre le moment passé avec vos proches.",
+          "L’expérience commence par un échange autour de l’occasion, du nombre de convives, des préférences et des éventuelles contraintes alimentaires. Ces informations permettent d’imaginer un format adapté, qu’il s’agisse d’un dîner à deux, d’un repas en famille ou d’une réception privée.",
+          "Dominique Hybord commence son apprentissage à 14 ans, se forme notamment à Paris et poursuit son expérience dans des maisons reconnues, dont l’Auberge du Père Bise à Talloires. Il ouvre ensuite La Fleur de Sel à Cevins, son village natal. Cette histoire culinaire nourrit aujourd’hui une approche centrée sur le savoir-faire et le plaisir de partager.",
+          "Pour préparer une demande, précisez la date envisagée, le lieu du repas et le type d’occasion. Vous pouvez également indiquer vos préférences, allergies ou besoins alimentaires afin que ces éléments soient pris en compte dès le premier échange. La disponibilité et les conditions sont confirmées séparément.",
+          "À Marbella, Mijas et dans les environs, un chef privé permet de faire de la table un moment central du séjour. L’objectif : une expérience culinaire pensée pour votre occasion et le plaisir d’être pleinement présent auprès de vos invités."
+        ],
+      },
+
     },
   },
   en: {
@@ -140,6 +154,20 @@ const copy = {
           "Often, the loveliest memory of a gathering is simply the time spent together, without watching the clock or worrying about the cooking.",
         ],
       },
+      "chef-a-domicile-marbella-mijas": {
+        category: "The art of hospitality",
+        title: "Private chef in Marbella: a dining experience in your villa",
+        excerpt: "A menu shaped around your wishes, seasonal cooking and the pleasure of hosting in the privacy of your Costa del Sol villa.",
+        imageAlt: "Preparing a meal in a light-filled kitchen",
+        paragraphs: [
+          "Staying in a villa in Marbella or Mijas lets you enjoy the Costa del Sol at your own pace. Bringing in a private chef extends that freedom: the meal takes place in your own space, without interrupting time with family or friends.",
+          "The experience starts with a conversation about the occasion, guest count, preferences and any dietary requirements. These details help shape a suitable format, whether it is dinner for two, a family meal or a private reception.",
+          "Dominique Hybord began his apprenticeship at 14, trained in Paris and continued his career in established kitchens, including Auberge du Père Bise in Talloires. He later opened La Fleur de Sel in Cevins, his home village. His culinary story informs an approach centred on craft and the pleasure of sharing a meal.",
+          "To enquire, share your preferred date, meal location and occasion. You can also mention preferences, allergies or dietary needs so they can be discussed from the outset. Availability and arrangements are confirmed separately.",
+          "In Marbella, Mijas and nearby areas, a private chef can make the table a highlight of your stay: a culinary experience considered around your occasion, while you remain present with your guests."
+        ],
+      },
+
     },
   },
   es: {
@@ -197,6 +225,20 @@ const copy = {
           "A menudo, el mejor recuerdo de una reunión es sencillamente el tiempo compartido, sin mirar el reloj ni preocuparse por la cocina.",
         ],
       },
+      "chef-a-domicile-marbella-mijas": {
+        category: "El arte de recibir",
+        title: "Chef a domicilio en Marbella: una experiencia privada en su villa",
+        excerpt: "Un menú pensado según sus preferencias, cocina de temporada y el placer de recibir en la intimidad de su villa en la Costa del Sol.",
+        imageAlt: "Preparación de una comida en una cocina luminosa",
+        paragraphs: [
+          "Alojarse en una villa en Marbella o Mijas permite disfrutar de la Costa del Sol a su propio ritmo. Contar con un chef a domicilio prolonga esa libertad: la comida se disfruta en casa, sin interrumpir el tiempo con familiares y amigos.",
+          "La experiencia comienza con una conversación sobre la ocasión, el número de comensales, las preferencias y las necesidades alimentarias. Así se puede imaginar un formato adecuado, desde una cena para dos hasta una comida familiar o una recepción privada.",
+          "Dominique Hybord comenzó su aprendizaje a los 14 años, se formó en París y continuó su trayectoria en cocinas reconocidas, entre ellas Auberge du Père Bise en Talloires. Más tarde abrió La Fleur de Sel en Cevins, su pueblo natal. Su recorrido inspira una cocina basada en el oficio y el placer de compartir.",
+          "Para realizar una consulta, indique la fecha prevista, el lugar y el tipo de ocasión. También puede compartir preferencias, alergias o necesidades alimentarias para hablar de ellas desde el primer contacto. La disponibilidad y las condiciones se confirman por separado.",
+          "En Marbella, Mijas y sus alrededores, un chef privado puede convertir la mesa en uno de los momentos especiales de la estancia, con una experiencia pensada para la ocasión y para que disfrute de sus invitados."
+        ],
+      },
+
     },
   },
   ar: {
@@ -252,6 +294,20 @@ const copy = {
           "غالباً ما تكون أجمل ذكرى للقاء هي الوقت الذي أمضيناه معاً، من دون استعجال أو انشغال بأمور المطبخ.",
         ],
       },
+      "chef-a-domicile-marbella-mijas": {
+        category: "فن الضيافة",
+        title: "طاهٍ خاص في ماربيا: تجربة طعام داخل الفيلا",
+        excerpt: "قائمة تناسب رغباتك، ومكونات موسمية، ومتعة استقبال ضيوفك في خصوصية فيلتك على كوستا ديل سول.",
+        imageAlt: "تحضير وجبة في مطبخ مضيء",
+        paragraphs: [
+          "تمنحك الإقامة في فيلا في ماربيا أو ميخاس فرصة الاستمتاع بكوستا ديل سول وفق إيقاعك الخاص. ويضيف الطاهي الخاص مزيداً من الراحة، إذ تُقدّم الوجبة في مكان إقامتك من دون أن تنشغل عن العائلة والأصدقاء.",
+          "تبدأ التجربة بالحديث عن المناسبة وعدد الضيوف والتفضيلات والاحتياجات الغذائية. تساعد هذه التفاصيل على تصور صيغة مناسبة، سواء لعشاء لشخصين أو وجبة عائلية أو استقبال خاص.",
+          "بدأ دومينيك هيبور تدريبه المهني في الرابعة عشرة، وتدرّب في باريس وواصل مسيرته في مطابخ معروفة، منها أوبيرج دو بير بيز في تالوار. ثم افتتح لا فلور دو سيل في قريته سيفان. وتلهم هذه المسيرة نهجاً يركز على الحرفة ومتعة مشاركة الطعام.",
+          "للاستفسار، اذكر التاريخ المقترح ومكان الوجبة ونوع المناسبة. ويمكنك أيضاً مشاركة تفضيلاتك أو الحساسية أو الاحتياجات الغذائية لمناقشتها منذ البداية. يتم تأكيد التوفر والتفاصيل بشكل منفصل.",
+          "في ماربيا وميخاس والمناطق القريبة، يمكن للطاهي الخاص أن يجعل المائدة من أجمل لحظات الإقامة، بتجربة تناسب مناسبتك وتتيح لك الاستمتاع بوقتك مع ضيوفك."
+        ],
+      },
+
     },
   },
 } as const;
