@@ -763,19 +763,14 @@ function Index() {
           <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
         </nav>
         <div className="solveig-cinematic-center">
-          <svg className="solveig-cinematic-monogram" viewBox="0 0 220 170" role="img" aria-label="Monogramme SP entrelacé avec branche d’olivier">
-            <defs><linearGradient id="solveigGold" x1="0" y1="0" x2="0.9" y2="1"><stop offset="0" stopColor="#f4dfa5"/><stop offset=".45" stopColor="#c29a52"/><stop offset="1" stopColor="#f0d28c"/></linearGradient></defs>
-            <g fill="none" stroke="url(#solveigGold)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M29 145C45 121 52 88 53 29C68 61 84 87 112 113"/>
-              <path d="M41 125C26 120 19 108 21 94C35 100 42 111 44 123"/>
-              <path d="M48 91C34 82 32 68 37 56C49 65 52 77 50 89"/>
-              <path d="M53 57C48 44 55 30 65 23C69 37 64 50 57 59"/>
-              <path d="M62 72C76 78 84 92 85 104"/>
-              <path d="M31 144C53 149 72 148 91 141"/>
-            </g>
-            <text x="49" y="128" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="118" fontWeight="400" letterSpacing="-17">S</text>
-            <text x="91" y="143" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="119" fontWeight="400" letterSpacing="-17">P</text>
-          </svg>
+          <img
+            className="solveig-cinematic-monogram"
+            src="/sp-logo.svg"
+            alt="Monogramme SP de Solveig’s Prestige Service"
+            width={180}
+            height={130}
+            fetchPriority="high"
+          />
           <h1>SOLVEIG’S</h1>
           <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
           <span className="solveig-cinematic-rule" />
@@ -811,7 +806,7 @@ function Index() {
             {services.map(([number, title, text, to, Icon], index) => (
               <Link key={to} to={to} className="solveig-service-card group">
                 <div className="solveig-service-image-wrap">
-                  <img src={[media.hero, "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85", "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85", "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=85"][index]} alt="" loading="lazy" className="solveig-service-image" />
+                  <img src={["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=88"][index]} alt="" loading="lazy" className="solveig-service-image" />
                   <span className="solveig-service-image-number">{number}</span>
                 </div>
                 <div className="solveig-service-card-content">
