@@ -759,7 +759,7 @@ function Index() {
           </Link>
           <Link to="/services/housekeeping" className="solveig-hero-service">
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42V22M24 29C9 29 5 18 5 10c12 0 19 7 19 19M24 24C24 11 31 5 43 5c0 13-6 21-19 21M24 36C14 36 9 30 8 23c10 0 16 5 16 13" /></svg>
-            <span>Assistance<br />lifestyle</span><span className="solveig-service-arrow">↗</span>
+            <span>Chef<br />à domicile</span><span className="solveig-service-arrow">↗</span>
           </Link>
         </nav>
         <a href="#services" className="solveig-hero-scroll" aria-label={c.scroll}><span>Défiler pour découvrir</span><ArrowDown size={15} /></a>
