@@ -297,3 +297,22 @@ body { overflow-x: hidden; }
   .solveig-reference-hotspots a { height: 100% !important; min-height: 0 !important; }
   .solveig-hero-reference > a[aria-label] { display: none; }
 }
+
+
+/* Homepage hero: responsive artwork and accessible real service links. */
+.solveig-hero-reference { height: 100svh; min-height: 680px; }
+.solveig-reference-art { object-fit: cover; object-position: center; }
+.solveig-reference-hotspots { height: 23%; }
+.solveig-hotspot { display:block; min-width:0; border-radius:8px; outline-offset:-5px; transition:background .2s ease; }
+.solveig-hotspot:hover { background:rgba(214,174,92,.10); }
+.solveig-hotspot:focus-visible { outline:2px solid #f2d18d; background:rgba(214,174,92,.12); }
+.solveig-hero-scroll { bottom: max(10px, env(safe-area-inset-bottom)); color:transparent; font-size:1px; }
+@media (max-width: 767px) {
+  .solveig-hero-reference { height:auto; min-height:0; overflow:visible; background:#172d3a; }
+  .solveig-reference-art { position:relative; inset:auto; display:block; width:100%; height:auto; object-fit:contain; object-position:top center; }
+  .solveig-reference-hotspots { position:relative; inset:auto; height:auto; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px; padding:12px; background:#172d3a; }
+  .solveig-hotspot { min-height:68px; display:flex; align-items:center; justify-content:center; border:1px solid rgba(220,190,130,.55); border-radius:10px; background:rgba(255,255,255,.045); }
+  .solveig-hotspot::after { content:"Découvrir ↗"; color:#f5e7c9; font:600 11px/1.2 system-ui,sans-serif; letter-spacing:.06em; text-transform:uppercase; }
+  .solveig-hotspot:active { background:rgba(214,174,92,.18); }
+  .solveig-hero-scroll { display:none; }
+}
