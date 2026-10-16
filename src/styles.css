@@ -424,10 +424,21 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 /* Hotfix from actual iPhone screenshot: the supplied reference artwork already
    contains the brand lockup, navigation and service labels. Do not draw them twice. */
 @media (max-width: 767px) {
-  .solveig-cinematic-home { height:auto !important; min-height:0 !important; aspect-ratio: 9 / 16; padding:0 !important; }
+  .solveig-cinematic-home {
+    width:100% !important;
+    height:auto !important;
+    min-height:0 !important;
+    aspect-ratio: 2 / 3;
+    padding:0 !important;
+    background:#172f3b;
+  }
   .solveig-cinematic-backdrop {
-    inset:0 !important; background-size:100% 100% !important; background-position:center !important;
-    transform:none !important; animation:none !important;
+    inset:0 !important;
+    background-size:contain !important;
+    background-repeat:no-repeat !important;
+    background-position:center top !important;
+    transform:none !important;
+    animation:none !important;
   }
   .solveig-cinematic-shade { display:none !important; }
   .solveig-cinematic-header,
