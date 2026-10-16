@@ -1131,3 +1131,63 @@ body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
   .solveig-cinematic-services a { padding: 8px 6px; }
   .solveig-service-image-wrap { height: 180px; }
 }
+
+
+/* Reference fidelity: no duplicate wordmark in the upper-left corner. */
+.solveig-cinematic-header { justify-content: flex-end; }
+.solveig-cinematic-nav { margin-inline-start: auto; }
+.solveig-cinematic-backdrop {
+  background-size: cover !important;
+  background-position: center center !important;
+  transform: none !important;
+  animation: none !important;
+  will-change: auto !important;
+}
+.solveig-cinematic-shade {
+  background:
+    linear-gradient(180deg, rgba(7,20,28,.34) 0%, rgba(8,24,31,.06) 18%, rgba(8,24,31,0) 48%, rgba(8,17,22,.52) 100%),
+    linear-gradient(90deg, rgba(8,19,26,.02), transparent 42%, rgba(8,19,26,.04));
+}
+.solveig-cinematic-center {
+  top: 43% !important;
+  width: min(590px, 78vw) !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+}
+.solveig-cinematic-monogram {
+  width: clamp(140px, 14vw, 190px) !important;
+  max-height: 148px !important;
+  margin: 0 auto 0 !important;
+  filter: drop-shadow(0 2px 5px rgba(0,0,0,.32)) !important;
+}
+.solveig-cinematic-center h1 {
+  color: #fff9ed !important;
+  text-shadow: 0 2px 10px rgba(0,0,0,.38) !important;
+  letter-spacing: .04em;
+}
+.solveig-cinematic-subtitle,
+.solveig-cinematic-region {
+  color: #fff1d3 !important;
+  text-shadow: 0 2px 8px rgba(0,0,0,.42) !important;
+}
+.solveig-cinematic-tagline {
+  color: #fffaf0 !important;
+  text-shadow: 0 2px 9px rgba(0,0,0,.5) !important;
+}
+.solveig-cinematic-home .solveig-mini-brand { display:none !important; }
+.solveig-cinematic-home .solveig-cinematic-header { padding-inline: clamp(20px,4vw,64px); }
+.solveig-cinematic-home .solveig-cinematic-header nav { margin-left:auto; }
+.solveig-cinematic-home + section .aqua-grid { display:none; }
+.solveig-cinematic-home + section { background:#f7f0e3 !important; }
+.solveig-cinematic-home + section > div.relative { max-width:1000px; }
+.solveig-cinematic-home + section .grid.gap-10 { grid-template-columns:minmax(0,1fr) !important; }
+.solveig-cinematic-home + section h2 { max-width:900px; }
+@media(max-width:767px) {
+  .solveig-cinematic-center { top:auto !important; width:calc(100% - 36px) !important; }
+  .solveig-cinematic-monogram { width:clamp(126px,34vw,160px) !important; max-height:118px !important; }
+  .solveig-cinematic-home .solveig-cinematic-header { justify-content:flex-end; }
+}
