@@ -428,7 +428,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
     width:100% !important;
     height:auto !important;
     min-height:0 !important;
-    aspect-ratio: 2 / 3;
+    aspect-ratio: 16 / 9;
     padding:0 !important;
     background:#172f3b;
   }
