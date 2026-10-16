@@ -5,7 +5,7 @@ import { UniverseLanguageMenu } from "@/components/UniverseLanguageMenu";
 import { useSolveigLocale } from "@/lib/locale";
 const copy = {
   fr: {
-    descriptor: "Appartements · Villas · Séjours de charme",
+    descriptor: "Univers marocain · Séjours de charme",
     navigation: "Navigation Maroc",
     spirit: "L’esprit",
     destinations: "Destinations",
@@ -18,7 +18,7 @@ const copy = {
     imagine: "Imaginer mon séjour",
   },
   en: {
-    descriptor: "Apartments · Villas · Memorable stays",
+    descriptor: "Moroccan universe · Memorable stays",
     navigation: "Morocco navigation",
     spirit: "The spirit",
     destinations: "Destinations",
@@ -31,7 +31,7 @@ const copy = {
     imagine: "Plan my stay",
   },
   es: {
-    descriptor: "Apartamentos · Villas · Estancias con encanto",
+    descriptor: "Universo marroquí · Estancias con encanto",
     navigation: "Navegación de Marruecos",
     spirit: "El espíritu",
     destinations: "Destinos",
@@ -44,7 +44,7 @@ const copy = {
     imagine: "Imaginar mi estancia",
   },
   ar: {
-    descriptor: "شقق · فلل · إقامات مميزة",
+    descriptor: "العالم المغربي · إقامات مميزة",
     navigation: "التنقل في المغرب",
     spirit: "روح المكان",
     destinations: "الوجهات",
@@ -73,7 +73,7 @@ export function MoroccoStayLayout({ children }: { children: ReactNode }) {
         <div className="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-4 rounded-2xl border border-white/45 bg-[#fbf6eb]/90 px-4 py-3 shadow-[0_14px_50px_-34px_rgba(35,25,17,.7)] backdrop-blur-xl sm:rounded-full sm:px-6">
           <a href="#accueil-maroc" className="flex min-h-10 flex-col justify-center">
             <span className="font-display text-2xl font-semibold leading-none text-[#493123] sm:text-3xl">
-              Maisons du Maroc
+              Solveig’s Prestige Service
             </span>
             <span className="mt-1.5 text-[8px] font-bold uppercase tracking-[.22em] text-[#967547]">
               {text.descriptor}
@@ -121,7 +121,7 @@ export function MoroccoStayLayout({ children }: { children: ReactNode }) {
       <footer className="bg-[#30251e] text-[#fbf6eb]">
         <div className="mx-auto flex max-w-[1440px] flex-col gap-8 px-5 py-12 sm:px-8 md:flex-row md:items-end md:justify-between lg:px-12">
           <div>
-            <p className="font-display text-3xl">Maisons du Maroc</p>
+            <p className="font-display text-3xl">Solveig’s Prestige Service</p>
             <p className="mt-2 max-w-lg text-xs leading-6 text-white/65">{text.footer}</p>
           </div>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs">
