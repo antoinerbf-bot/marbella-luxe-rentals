@@ -61,7 +61,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "author", content: "Solveig's Prestige Service" },
       { property: "og:type", content: "website" },
       { property: "og:site_name", content: "Solveig’s Prestige Service" },
-      { property: "og:image", content: `${SITE_URL}/og-solveig.svg` },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=85" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Solveig’s Prestige Service — villa de prestige à Marbella" },
