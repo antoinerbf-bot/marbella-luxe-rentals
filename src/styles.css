@@ -419,18 +419,3 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
   .solveig-cinematic-backdrop,.solveig-cinematic-center {animation:none!important}
   .solveig-cinematic-services a {transition:none!important}
 }
-
-.solveig-cinematic-home .solveig-mini-brand { display:none !important; }
-.solveig-cinematic-home .solveig-cinematic-header { padding-inline: clamp(20px,4vw,64px); }
-.solveig-cinematic-home .solveig-cinematic-header nav { margin-left:auto; }
-.solveig-cinematic-home + section .aqua-grid { display:none; }
-.solveig-cinematic-home + section { background:#f7f0e3 !important; }
-.solveig-cinematic-home + section > div.relative { max-width:1000px; }
-.solveig-cinematic-home + section .grid.gap-10 { grid-template-columns:minmax(0,1fr) !important; }
-.solveig-cinematic-home + section h2 { max-width:900px; }
-@media(max-width:767px) {
-  .solveig-cinematic-center { top:auto !important; width:calc(100% - 36px) !important; }
-  .solveig-cinematic-monogram { width:clamp(126px,34vw,160px) !important; max-height:118px !important; }
-  .solveig-cinematic-home .solveig-cinematic-header { justify-content:flex-end; }
-}
-
