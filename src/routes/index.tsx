@@ -754,7 +754,7 @@ function Index() {
             <Link to="/contact">CONTACT</Link>
           </nav>
           <div className="solveig-cinematic-actions">
-            <Link to="/locations-maroc" className="solveig-outline-control"><span>🇲🇦</span><span>UNIVERS MAROCAIN</span></Link>
+            <Link to="/locations-maroc" className="solveig-outline-control"><span className="solveig-morocco-flag" aria-hidden="true">🇲🇦</span><span className="solveig-morocco-label">UNIVERS MAROCAIN</span></Link>
             <div className="solveig-locale-control"><UniverseLanguageMenu universe="costa" /></div>
             <button type="button" className="solveig-mobile-menu" aria-label="Ouvrir le menu" onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
           </div>
@@ -763,17 +763,18 @@ function Index() {
           <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
         </nav>
         <div className="solveig-cinematic-center">
-          <svg className="solveig-cinematic-monogram" viewBox="0 0 180 170" role="img" aria-label="Monogramme SP doré entrelacé avec branche d’olivier">
-            <defs><linearGradient id="solveigGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#e8c47a"/><stop offset=".48" stopColor="#a87932"/><stop offset="1" stopColor="#d8b365"/></linearGradient></defs>
-            <g fill="none" stroke="url(#solveigGold)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M37 136C52 113 57 85 57 40C68 68 82 91 103 111"/>
-              <path d="M48 117C35 112 28 102 29 89C41 94 48 104 51 115"/>
-              <path d="M55 87C43 79 40 66 45 55C55 63 59 74 57 85"/>
-              <path d="M58 56C53 44 59 32 68 25C72 37 68 49 62 57"/>
-              <path d="M62 72C74 77 81 88 82 99"/>
+          <svg className="solveig-cinematic-monogram" viewBox="0 0 220 170" role="img" aria-label="Monogramme SP entrelacé avec branche d’olivier">
+            <defs><linearGradient id="solveigGold" x1="0" y1="0" x2="0.9" y2="1"><stop offset="0" stopColor="#f4dfa5"/><stop offset=".45" stopColor="#c29a52"/><stop offset="1" stopColor="#f0d28c"/></linearGradient></defs>
+            <g fill="none" stroke="url(#solveigGold)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M29 145C45 121 52 88 53 29C68 61 84 87 112 113"/>
+              <path d="M41 125C26 120 19 108 21 94C35 100 42 111 44 123"/>
+              <path d="M48 91C34 82 32 68 37 56C49 65 52 77 50 89"/>
+              <path d="M53 57C48 44 55 30 65 23C69 37 64 50 57 59"/>
+              <path d="M62 72C76 78 84 92 85 104"/>
+              <path d="M31 144C53 149 72 148 91 141"/>
             </g>
-            <text x="39" y="128" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="116" fontWeight="400" letterSpacing="-15">S</text>
-            <text x="72" y="143" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="119" fontWeight="400" letterSpacing="-15">P</text>
+            <text x="49" y="128" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="118" fontWeight="400" letterSpacing="-17">S</text>
+            <text x="91" y="143" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="119" fontWeight="400" letterSpacing="-17">P</text>
           </svg>
           <h1>SOLVEIG’S</h1>
           <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
