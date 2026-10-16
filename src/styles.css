@@ -454,3 +454,14 @@ body {
 @keyframes solveigLineIn { from {opacity:0;transform:translateY(10px)} to {opacity:1;transform:translateY(0)} }
 @media(max-width:640px) { .solveig-hero-services { inset-inline:.65rem; bottom:2.5rem; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:0; } .solveig-hero-service { min-height:5.2rem; gap:.3rem; font-size:.58rem; } .solveig-hero-service:nth-child(3) {border-top:1px solid #e8d2a655} .solveig-hero-service:nth-child(4) {border-top:1px solid #e8d2a655} .solveig-hero-service:nth-child(3) {border-left:0} .solveig-hero-service svg {width:1.55rem;height:1.55rem} .solveig-hero-scroll {display:none} .solveig-hero-support {max-width:24rem} }
 @media(prefers-reduced-motion:reduce) { .solveig-hero-copy,.solveig-hero-statement span {animation:none!important} .solveig-hero-service,.solveig-hero-service svg {transition:none!important} }
+
+/* Screenshot-matched composition refinement */
+.solveig-hero-copy{width:min(100%,54rem);transform:translateY(-1.5vh)}
+.solveig-hero-monogram{font-size:clamp(4.1rem,7vw,6.5rem);margin-bottom:-.35rem}
+.solveig-hero-location{margin-top:1rem;color:#34271e;text-shadow:0 1px 10px #fff7;font-size:.67rem;letter-spacing:.36em}
+.solveig-hero-statement{margin-top:1.45rem;max-width:50rem;color:#2d251f;font-family:Georgia,'Times New Roman',serif;font-size:clamp(1.15rem,2vw,1.55rem);font-weight:400;line-height:1.3;text-shadow:0 1px 8px #fff8;gap:0}
+.solveig-hero-statement span{display:inline}.solveig-hero-statement span+span::before{content:' '}
+.solveig-hero-services{bottom:2.1rem;max-width:800px;inset-inline:50%;width:calc(100% - 3rem);transform:translateX(-50%);background:linear-gradient(180deg,#211a1400,#211a1430);backdrop-filter:none}
+.solveig-hero-service{min-height:6.2rem;font-size:.64rem;letter-spacing:.1em}.solveig-hero-service svg{width:2.4rem;height:2.4rem}
+.solveig-hero-scroll{bottom:2.3rem;right:max(1rem,calc((100% - 1420px)/2))}
+@media(max-width:640px){.solveig-hero-copy{transform:translateY(-5vh)}.solveig-hero-monogram{font-size:4.2rem}.solveig-hero-location{color:#fff7e8;text-shadow:0 1px 8px #24180d}.solveig-hero-statement{color:#fffaf1;font-size:1.15rem;text-shadow:0 2px 12px #24180d}.solveig-hero-services{width:calc(100% - 1.25rem);bottom:1.2rem}.solveig-hero-service{min-height:4.8rem;padding:.4rem .2rem;font-size:.54rem}}
