@@ -1,1 +1,32 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630"><rect width="1200" height="630" fill="#34271e"/><circle cx="970" cy="100" r="260" fill="#b9935a" opacity=".18"/><text x="600" y="285" text-anchor="middle" fill="#fff7e8" font-family="Georgia,serif" font-size="76" font-style="italic">Solveig’s</text><text x="600" y="350" text-anchor="middle" fill="#d9c8ab" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="8">PRESTIGE SERVICE</text><text x="600" y="420" text-anchor="middle" fill="#f8efdf" font-family="Georgia,serif" font-size="28">Gestion de propriété · Marbella · Mijas</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4ead8"/><stop offset="1" stop-color="#d6c19d"/></linearGradient>
+    <linearGradient id="sea" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#829b9a"/><stop offset="1" stop-color="#c0cfbf"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="#34271e"/>
+  <circle cx="930" cy="180" r="270" fill="#b9935a" opacity=".12"/>
+  <rect x="0" y="440" width="1200" height="190" fill="url(#sea)" opacity=".9"/>
+  <path d="M0 478 Q170 438 330 478 T660 478 T990 478 T1320 478" fill="none" stroke="#f8efdf" stroke-width="3" opacity=".6"/>
+  <g transform="translate(650 112)">
+    <path d="M40 190 L205 60 L370 190" fill="#f7f0e3" stroke="#b9935a" stroke-width="8" stroke-linejoin="round"/>
+    <rect x="70" y="190" width="270" height="190" rx="2" fill="#f7f0e3"/>
+    <rect x="98" y="225" width="58" height="78" rx="28" fill="#879a91"/>
+    <rect x="253" y="225" width="58" height="78" rx="28" fill="#879a91"/>
+    <rect x="182" y="255" width="58" height="125" fill="#a97f51"/>
+    <circle cx="225" cy="319" r="3" fill="#f7f0e3"/>
+    <path d="M52 190 H358" stroke="#b9935a" stroke-width="7"/>
+    <path d="M35 385 H375" stroke="#f7f0e3" stroke-width="12" stroke-linecap="round"/>
+    <path d="M15 408 H395" stroke="#b9935a" stroke-width="5" stroke-linecap="round"/>
+    <path d="M0 430 Q30 405 60 430 T120 430 T180 430 T240 430 T300 430 T360 430 T420 430" fill="none" stroke="#f7f0e3" stroke-width="5" opacity=".8"/>
+    <g fill="#6f8170"><circle cx="22" cy="300" r="28"/><circle cx="10" cy="274" r="23"/><circle cx="34" cy="264" r="22"/></g>
+    <path d="M22 385 V315" stroke="#8e6846" stroke-width="8"/>
+  </g>
+  <g fill="#fff7e8">
+    <text x="82" y="190" font-family="Georgia,serif" font-size="62" font-style="italic">Solveig’s</text>
+    <text x="86" y="237" font-family="Arial,sans-serif" font-size="17" font-weight="700" letter-spacing="6" fill="#d9c8ab">PRESTIGE SERVICE</text>
+    <path d="M86 264 H440" stroke="#b9935a" stroke-width="2"/>
+    <text x="82" y="322" font-family="Georgia,serif" font-size="30">Gestion de propriété</text>
+    <text x="82" y="365" font-family="Georgia,serif" font-size="30">Marbella · Mijas · Costa del Sol</text>
+  </g>
+  <text x="84" y="570" font-family="Arial,sans-serif" font-size="13" letter-spacing="3" fill="#34271e">PROPERTY · CONCIERGE · SEASONAL RENTALS</text>
+</svg>
