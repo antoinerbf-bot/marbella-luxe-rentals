@@ -863,3 +863,51 @@ body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
  .solveig-cinematic-services svg {width:22px !important;height:22px !important}
  .solveig-cinematic-services i {width:21px !important;height:21px !important}
 }
+
+
+/* Final polish: preserve the Moroccan universe control and strengthen the visual hierarchy. */
+.solveig-cinematic-actions { flex-shrink:0; }
+.solveig-outline-control {
+  display:inline-flex !important;align-items:center !important;justify-content:center !important;
+  gap:8px !important;white-space:nowrap !important;
+  min-height:36px !important;padding:9px 13px !important;
+  border:1px solid rgba(239,211,155,.78) !important;
+  color:#fff8e8 !important;background:rgba(15,27,31,.24) !important;
+  text-shadow:0 1px 8px rgba(0,0,0,.6);
+}
+.solveig-morocco-flag {display:inline-block !important;font-size:15px !important;line-height:1 !important}
+.solveig-morocco-label {display:inline-block !important;font-size:9px !important;letter-spacing:.1em !important}
+.solveig-cinematic-backdrop {background-position:center 48% !important; background-size:cover !important;}
+.solveig-cinematic-center { top:41% !important; }
+.solveig-cinematic-monogram {
+  width:clamp(155px,15vw,190px) !important;
+  height:clamp(126px,13vw,165px) !important;
+  margin-bottom:0 !important;
+  filter:drop-shadow(0 2px 4px rgba(16,20,20,.22)) !important;
+}
+.solveig-cinematic-center h1 { letter-spacing:.005em !important; }
+.solveig-cinematic-subtitle { letter-spacing:.27em !important; }
+@media(min-width:768px) {
+ .solveig-cinematic-center { top:42% !important; }
+ .solveig-cinematic-services { bottom:22px !important; }
+}
+@media(max-width:767px) {
+ .solveig-cinematic-backdrop {
+   background-size:auto 100% !important;
+   background-position:44% top !important;
+ }
+ .solveig-cinematic-center { margin-top:clamp(24px,4vh,38px) !important; }
+ .solveig-cinematic-monogram { width:118px !important;height:96px !important; }
+ .solveig-cinematic-center h1 { font-size:clamp(40px,10.8vw,52px) !important; }
+ .solveig-cinematic-region { margin-top:15px !important; }
+ .solveig-cinematic-tagline { margin-top:10px !important; }
+ .solveig-outline-control {
+   width:auto !important;min-width:30px !important;max-width:36px !important;
+   height:31px !important;min-height:31px !important;padding:0 7px !important;
+   overflow:visible !important;border-radius:3px !important;
+ }
+ .solveig-morocco-flag {font-size:14px !important}
+ .solveig-morocco-label {display:none !important}
+ .solveig-cinematic-actions {gap:5px !important}
+ .solveig-locale-control {max-width:66px !important}
+}
