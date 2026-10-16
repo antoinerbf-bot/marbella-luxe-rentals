@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 
 import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
+import { ChefInquiryFunnel } from "@/components/ChefInquiryFunnel";
 import { Button } from "@/components/ui/button";
 import { useSolveigLocale } from "@/lib/locale";
 import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
@@ -495,10 +496,10 @@ function ChefAtHomePage() {
 
           <div className="grid grid-cols-2 gap-3 sm:gap-4">
             {[
-              { image: chefArchiveTwo, year: "2016" },
-              { image: chefArchiveThree, year: "2024" },
-              { image: chefArchiveFour, year: "2019" },
-            ].map(({ image, year }, index) => (
+              chefArchiveTwo,
+              chefArchiveThree,
+              chefArchiveFour,
+            ].map((image, index) => (
               <figure
                 key={image}
                 className={`relative overflow-hidden rounded-2xl bg-[#d6c6ae] ${
@@ -509,7 +510,7 @@ function ChefAtHomePage() {
               >
                 <ScrollParallaxImage
                   src={image}
-                  alt={`${content.archiveAlt}, ${year}`}
+                  alt={content.archiveAlt}
                   loading="lazy"
                   className="absolute inset-0"
                   imageClassName="transition-[filter] duration-700 hover:brightness-105"
@@ -592,6 +593,8 @@ function ChefAtHomePage() {
           </div>
         </div>
       </section>
+
+      <ChefInquiryFunnel />
 
       <section className="bg-surface px-5 pb-20 sm:px-8 lg:px-12 lg:pb-28">
         <div className="mx-auto max-w-[1440px] overflow-hidden rounded-[2rem] bg-primary px-7 py-12 text-white shadow-elegant sm:px-10 md:px-14 md:py-16">
