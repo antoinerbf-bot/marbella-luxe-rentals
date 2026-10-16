@@ -430,3 +430,27 @@ body {
     scroll-behavior: auto !important;
   }
 }
+
+/* Homepage prestige hero: live text and accessible service navigation */
+.solveig-hero { isolation:isolate; }
+.solveig-hero-copy { animation: solveigReveal 1.15s cubic-bezier(.2,.7,.2,1) both; }
+.solveig-hero-monogram { display:block; margin-bottom:-.2rem; color:#d8b16d; font:clamp(4rem,8vw,7rem)/.85 Georgia,serif; letter-spacing:-.14em; text-shadow:0 4px 26px #0002; }
+.solveig-hero-location { margin-top:1.15rem; color:#f3dfba; font-size:.7rem; letter-spacing:.42em; }
+.solveig-hero-statement { display:flex; flex-direction:column; gap:.12em; margin:1.3rem auto 0; max-width:55rem; color:#fffaf1; font:500 clamp(1.45rem,3.4vw,3rem)/1.12 var(--font-display); text-wrap:balance; text-shadow:0 2px 18px #0005; }
+.solveig-hero-statement span { animation: solveigLineIn .8s both; }
+.solveig-hero-statement span:nth-child(2) { animation-delay:.18s; }
+.solveig-hero-statement span:nth-child(3) { animation-delay:.36s; }
+.solveig-hero-support { max-width:44rem; margin:1rem auto 0; color:#fff8ed; font-size:clamp(.78rem,1.2vw,.95rem); line-height:1.75; text-shadow:0 1px 12px #0007; }
+.solveig-hero-services { position:absolute; z-index:3; inset-inline: max(1rem, calc((100% - 1120px)/2)); bottom:2.7rem; display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid #e8d2a677; background:linear-gradient(180deg,#211a1420,#211a1455); backdrop-filter:blur(5px); }
+.solveig-hero-service { position:relative; display:flex; min-height:7.3rem; flex-direction:column; align-items:center; justify-content:center; gap:.48rem; padding:.75rem .45rem; color:#fff8ed; text-align:center; text-transform:uppercase; font-size:clamp(.55rem,.8vw,.7rem); line-height:1.45; letter-spacing:.12em; transition:background .35s ease,color .35s ease; }
+.solveig-hero-service + .solveig-hero-service { border-left:1px solid #e8d2a655; }
+.solveig-hero-service svg { width:2rem;height:2rem; fill:none;stroke:#e8c78d;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;transition:transform .35s ease; }
+.solveig-hero-service:hover,.solveig-hero-service:focus-visible { background:#fff8ed16;color:#f4d69b; outline-offset:-3px; }
+.solveig-hero-service:hover svg { transform:translateY(-3px); }
+.solveig-service-arrow { position:absolute; bottom:.3rem; right:.6rem; color:#e8c78d; opacity:0; transform:translate(-3px,3px); transition:all .25s ease; }
+.solveig-hero-service:hover .solveig-service-arrow,.solveig-hero-service:focus-visible .solveig-service-arrow { opacity:1;transform:none; }
+.solveig-hero-scroll { position:absolute; right:1.5rem; bottom:1.2rem; display:flex; align-items:center; gap:.5rem; color:#fff8edb8; font-size:.58rem; letter-spacing:.15em; text-transform:uppercase; }
+@keyframes solveigReveal { from {opacity:0;transform:translateY(18px);filter:blur(3px)} to {opacity:1;transform:translateY(0);filter:blur(0)} }
+@keyframes solveigLineIn { from {opacity:0;transform:translateY(10px)} to {opacity:1;transform:translateY(0)} }
+@media(max-width:640px) { .solveig-hero-services { inset-inline:.65rem; bottom:2.5rem; grid-template-columns:repeat(2,minmax(0,1fr)); border-top:0; } .solveig-hero-service { min-height:5.2rem; gap:.3rem; font-size:.58rem; } .solveig-hero-service:nth-child(3) {border-top:1px solid #e8d2a655} .solveig-hero-service:nth-child(4) {border-top:1px solid #e8d2a655} .solveig-hero-service:nth-child(3) {border-left:0} .solveig-hero-service svg {width:1.55rem;height:1.55rem} .solveig-hero-scroll {display:none} .solveig-hero-support {max-width:24rem} }
+@media(prefers-reduced-motion:reduce) { .solveig-hero-copy,.solveig-hero-statement span {animation:none!important} .solveig-hero-service,.solveig-hero-service svg {transition:none!important} }
