@@ -735,51 +735,15 @@ function Index() {
 
   return (
     <SolveigLayout>
-      <section className="solveig-hero relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white">
-        <ScrollParallaxImage
-          src={media.hero}
-          alt="Villa de prestige sur la Costa del Sol au coucher du soleil"
-          loading="eager"
-          fetchPriority="high"
-          className="hero-kenburns absolute inset-0"
-          imageClassName="h-full w-full"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,25,30,.22),rgba(30,23,18,.06)_38%,rgba(24,18,13,.65))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,transparent_5%,rgba(24,18,13,.18)_100%)]" />
-        <div className="relative mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-center px-5 pb-36 pt-28 text-center sm:px-8 sm:pb-40">
-          <div className="solveig-hero-copy max-w-5xl">
-            <div className="mb-4 flex flex-col items-center">
-              <span aria-hidden="true" className="solveig-hero-monogram">SP</span>
-              <span className="solveig-custom-wordmark">Solveig’s</span>
-              <span className="solveig-custom-sub">PRESTIGE SERVICE</span>
-            </div>
-            <p className="solveig-hero-location">MARBELLA & MIJAS</p>
-            <h1 className="solveig-hero-statement">
-              <span>Une présence locale discrète</span>
-              <span>pour des propriétés d’exception sur la Costa del Sol</span>
-            </h1>
-
-          </div>
-        </div>
-        <nav aria-label={locale === "fr" ? "Accès rapides aux services" : locale === "en" ? "Quick access to services" : locale === "es" ? "Acceso rápido a los servicios" : "الوصول السريع إلى الخدمات"} className="solveig-hero-services">
-          <Link to="/gestion-propriete" className="solveig-hero-service">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22 24 6l19 16M11 19v23h26V19M20 42V28h8v14" /></svg>
-            <span>{heroServiceLabels[0]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
-          </Link>
-          <Link to="/conciergerie" className="solveig-hero-service">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 32h32M12 32v-7a12 12 0 0 1 24 0v7M5 38h38M24 7v4" /></svg>
-            <span>{heroServiceLabels[1]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
-          </Link>
-          <Link to="/location-saisonniere" className="solveig-hero-service">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="15" r="9"/><path d="m25 21-18 18 5 5 18-18M8 35l5 5M31 11v8M27 15h8" /></svg>
-            <span>{heroServiceLabels[2]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
-          </Link>
-          <Link to="/services/chef-a-domicile" className="solveig-hero-service">
-            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 6c-3 6-8 9-12 10 4 1 7 4 8 9-2-1-5-2-8-1 4 5 9 8 12 12 3-4 8-7 12-12-3-1-6 0-8 1 1-5 4-8 8-9-4-1-9-4-12-10z" /><path d="M24 28v14" /></svg>
-            <span>{heroServiceLabels[3]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
-          </Link>
+      <section className="solveig-hero solveig-hero-reference relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1aaad271-8a11-4152-b428-cdfb048a7510.png" alt="Solveig’s Prestige Service : villa méditerranéenne au coucher du soleil, piscine à débordement et services de prestige à Marbella et Mijas" className="absolute inset-0 h-full w-full object-cover object-center" fetchPriority="high" />
+        <nav aria-label="Accès rapide aux services" className="solveig-reference-hotspots absolute inset-x-0 bottom-0 z-10 grid grid-cols-4">
+          <Link to="/gestion-propriete" aria-label="Gestion de propriété" className="h-[22vh] min-h-28" />
+          <Link to="/conciergerie" aria-label="Services de conciergerie" className="h-[22vh] min-h-28" />
+          <Link to="/location-saisonniere" aria-label="Gestion locative" className="h-[22vh] min-h-28" />
+          <Link to="/services/chef-a-domicile" aria-label="Chef à domicile" className="h-[22vh] min-h-28" />
         </nav>
-        <a href="#services" className="solveig-hero-scroll" aria-label={c.scroll}><span>Défiler pour découvrir</span><ArrowDown size={15} /></a>
+        <a href="#services" className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 text-transparent" aria-label={c.scroll}>Découvrir les services</a>
       </section>
 
       <section id="services" className="relative bg-[#f7f0e3]">
