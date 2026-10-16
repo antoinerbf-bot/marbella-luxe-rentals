@@ -19,22 +19,23 @@ export const Route = createFileRoute("/locations-maroc")({
   head: () => ({
     meta: [
       {
-        title: "Maisons du Maroc — Appartements & villas de charme",
+        title: "Solveig’s Prestige Service — Univers marocain | Séjours au Maroc",
       },
       {
         name: "description",
         content:
-          "Découvrez des idées de séjours en appartements et villas de charme au Maroc. Partagez vos dates et vos envies pour recevoir une sélection adaptée.",
+          "Explorez l’univers marocain de Solveig’s Prestige Service : inspirations de séjours à Marrakech et Essaouira, appartements et villas à rechercher selon vos dates et vos envies. Les disponibilités et les tarifs sont confirmés avant toute réservation.",
       },
       {
         property: "og:title",
-        content: "Maisons du Maroc — Appartements & villas",
+        content: "Solveig’s Prestige Service — Univers marocain",
       },
       {
         property: "og:description",
         content:
-          "Patios de Marrakech, lumière d’Essaouira et maisons de vacances sélectionnées selon votre façon de voyager.",
+          "Patios de Marrakech, lumière d’Essaouira et recherche de séjours adaptée à vos dates, vos préférences et votre groupe.",
       },
+      { property: "og:site_name", content: "Solveig’s Prestige Service" },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
