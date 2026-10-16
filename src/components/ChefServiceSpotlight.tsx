@@ -4,7 +4,8 @@ import { ArrowRight, ChefHat, Check, MessageCircle } from "lucide-react";
 import { useSolveigLocale } from "@/lib/locale";
 import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import { Button } from "@/components/ui/button";
-import image from "@/assets/chef-culinary-archive-01.jpg";
+
+const image = "https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=1600&q=88";
 
 const copy = {
   fr: {
@@ -15,7 +16,7 @@ const copy = {
     benefits: ["Un menu pensé pour vous", "Le plaisir de recevoir sans contraintes"],
     action: "Découvrir le chef à domicile",
     contact: "Parler de mon dîner",
-    imageAlt: "Photographie issue des archives culinaires de Dominique Hybord",
+    imageAlt: "Chef professionnel en cuisine, préparant un repas à domicile",
     whatsappMessage:
       "Bonjour, je souhaite organiser un dîner avec un chef à domicile à Marbella ou Mijas.",
   },
@@ -27,7 +28,7 @@ const copy = {
     benefits: ["A menu created around you", "The pleasure of hosting, made effortless"],
     action: "Discover the private chef experience",
     contact: "Discuss my dinner",
-    imageAlt: "Photograph from Dominique Hybord’s culinary archive",
+    imageAlt: "Professional chef preparing a private meal",
     whatsappMessage: "Hello, I would like to arrange a private chef dinner in Marbella or Mijas.",
   },
   es: {
@@ -38,7 +39,7 @@ const copy = {
     benefits: ["Un menú pensado para usted", "El placer de recibir sin preocupaciones"],
     action: "Descubrir el chef a domicilio",
     contact: "Hablar de mi cena",
-    imageAlt: "Fotografía del archivo culinario de Dominique Hybord",
+    imageAlt: "Chef profesional preparando una comida privada",
     whatsappMessage:
       "Hola, me gustaría organizar una cena con chef a domicilio en Marbella o Mijas.",
   },
@@ -50,7 +51,7 @@ const copy = {
     benefits: ["قائمة طعام مصممة لك", "ضيافة ممتعة بلا عناء"],
     action: "اكتشف تجربة الطاهي الخاص",
     contact: "لنتحدث عن أمسيتك",
-    imageAlt: "صورة من أرشيف الطهي لدومينيك هيبور",
+    imageAlt: "طاهٍ محترف يحضّر وجبة خاصة",
     whatsappMessage: "مرحباً، أود تنظيم عشاء مع طاهٍ خاص في ماربيا أو ميخاس.",
   },
 } as const;
@@ -105,37 +106,10 @@ export function ChefServiceSpotlight() {
           </a>
         </div>
 
-        <ScrollParallaxImage src={image} alt={content.imageAlt} className="min-h-64 md:min-h-full">
-          <svg
-            aria-hidden="true"
-            viewBox="0 0 240 180"
-            className="culinary-motif pointer-events-none absolute right-3 top-2 w-[40%] max-w-52 text-[#fff5dc]/85 drop-shadow-lg sm:right-6 sm:top-5"
-            fill="none"
-            stroke="currentColor"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          >
-            <circle cx="132" cy="91" r="54" strokeWidth="2" />
-            <circle cx="132" cy="91" r="43" strokeWidth="1" />
-            <circle cx="116" cy="79" r="11" strokeWidth="2" />
-            <circle cx="145" cy="102" r="12" strokeWidth="2" />
-            <path
-              d="M116 68c-4-8-2-13 3-17 3 6 3 11-3 17Zm2 0c7-7 12-9 18-7-5 7-10 9-18 7Z"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M142 90c5-7 11-9 16-6-4 7-9 9-16 6Zm3 2c8-4 13-3 17 2-7 4-12 3-17-2Z"
-              strokeWidth="1.5"
-            />
-            <path
-              d="M37 37v54m-8-54v20m16-20v20m-8 14v45m164-85v48m-7-48v17c0 9 14 9 14 0V21"
-              strokeWidth="2"
-            />
-            <path d="M25 145c24-12 40-12 59 0m75 0c17-11 32-12 52-5" strokeWidth="1.2" />
-          </svg>
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2d2119]/35 via-transparent to-transparent" />
+        <ScrollParallaxImage src={image} alt={content.imageAlt} className="min-h-64 md:min-h-full object-cover">
+         <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#2d2119]/35 via-transparent to-transparent" />
           <p className="absolute bottom-5 left-5 rounded-full border border-white/35 bg-[#2d2119]/40 px-4 py-2 text-[9px] font-bold uppercase tracking-[.2em] text-white backdrop-blur-sm sm:bottom-7 sm:left-7">
-            Solveig’s Prestige Service
+            Chef à domicile · Marbella & Mijas
           </p>
         </ScrollParallaxImage>
       </div>
