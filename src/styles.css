@@ -911,3 +911,144 @@ body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
  .solveig-cinematic-actions {gap:5px !important}
  .solveig-locale-control {max-width:66px !important}
 }
+
+
+/* iPhone hero: keep the photograph full-screen and anchor the four service links at the bottom. */
+@media (max-width: 767px) {
+  .solveig-cinematic-home {
+    height: 100svh !important;
+    min-height: 680px !important;
+    max-height: 980px !important;
+    padding: 0 0 max(14px, env(safe-area-inset-bottom)) !important;
+    display: flex !important;
+    flex-direction: column !important;
+    justify-content: flex-start !important;
+    overflow: hidden !important;
+    isolation: isolate !important;
+    background: #15262c !important;
+  }
+  .solveig-cinematic-backdrop {
+    position: absolute !important;
+    inset: 0 !important;
+    background-size: cover !important;
+    background-position: 48% center !important;
+    background-repeat: no-repeat !important;
+    transform: none !important;
+  }
+  .solveig-cinematic-shade {
+    position: absolute !important;
+    inset: 0 !important;
+    background:
+      linear-gradient(180deg, rgba(5,18,27,.58) 0%, rgba(5,18,27,.12) 22%, rgba(20,17,13,.02) 43%, rgba(5,15,20,.12) 64%, rgba(4,13,18,.78) 100%),
+      radial-gradient(ellipse at 50% 43%, rgba(255,240,211,.10), transparent 62%) !important;
+  }
+  .solveig-cinematic-header {
+    flex: 0 0 auto !important;
+    position: relative !important;
+    z-index: 5 !important;
+    padding: max(10px, env(safe-area-inset-top)) 10px 0 !important;
+  }
+  .solveig-cinematic-center {
+    position: relative !important;
+    z-index: 2 !important;
+    top: auto !important;
+    left: auto !important;
+    transform: none !important;
+    width: calc(100% - 22px) !important;
+    margin: clamp(18px, 3.2svh, 30px) auto 0 !important;
+    flex: 0 1 auto !important;
+    text-align: center !important;
+  }
+  .solveig-cinematic-monogram {
+    width: 94px !important;
+    height: 78px !important;
+    margin: 0 auto 2px !important;
+  }
+  .solveig-cinematic-center h1 {
+    font-size: clamp(39px, 10.5vw, 51px) !important;
+    line-height: .96 !important;
+    text-shadow: 0 2px 15px rgba(255,245,225,.72), 0 1px 3px rgba(255,245,225,.5) !important;
+  }
+  .solveig-cinematic-subtitle {
+    margin-top: 5px !important;
+    font-size: 9px !important;
+    letter-spacing: .24em !important;
+    text-shadow: 0 1px 10px rgba(255,245,225,.85) !important;
+  }
+  .solveig-cinematic-region {
+    margin-top: 16px !important;
+    font-size: 10px !important;
+    letter-spacing: .19em !important;
+    text-shadow: 0 1px 10px rgba(255,245,225,.9) !important;
+  }
+  .solveig-cinematic-tagline {
+    max-width: 330px !important;
+    margin: 10px auto 0 !important;
+    font-size: clamp(13px, 3.7vw, 15px) !important;
+    line-height: 1.35 !important;
+    text-shadow: 0 1px 10px rgba(255,245,225,.95) !important;
+  }
+  .solveig-cinematic-services {
+    position: relative !important;
+    z-index: 4 !important;
+    inset: auto !important;
+    left: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: calc(100% - 20px) !important;
+    margin: auto auto 0 !important;
+    padding: 12px 0 0 !important;
+    flex: 0 0 auto !important;
+    display: grid !important;
+    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
+    gap: 0 !important;
+    border-top: 1px solid rgba(245, 218, 160, .72) !important;
+    background: linear-gradient(180deg, rgba(7,15,19,.04), rgba(7,15,19,.38)) !important;
+  }
+  .solveig-cinematic-services a {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    min-width: 0 !important;
+    gap: 6px !important;
+    padding: 5px 2px 3px !important;
+    border: 0 !important;
+  }
+  .solveig-cinematic-services a + a {
+    border-left: 1px solid rgba(245,218,160,.48) !important;
+  }
+  .solveig-cinematic-services svg {
+    width: 26px !important;
+    height: 26px !important;
+    flex: 0 0 auto !important;
+  }
+  .solveig-cinematic-services span {
+    display: block !important;
+    min-height: 27px !important;
+    color: #fffaf0 !important;
+    font-size: clamp(6.5px, 1.8vw, 8px) !important;
+    line-height: 1.35 !important;
+    letter-spacing: .025em !important;
+    text-align: center !important;
+    overflow-wrap: normal !important;
+    text-shadow: 0 2px 8px rgba(0,0,0,.9) !important;
+  }
+  .solveig-cinematic-services i {
+    width: 27px !important;
+    height: 27px !important;
+    margin-top: 1px !important;
+    font-size: 17px !important;
+    flex: 0 0 auto !important;
+  }
+  .solveig-cinematic-scroll { display: none !important; }
+}
+@media (max-width: 380px) {
+  .solveig-cinematic-center { margin-top: 16px !important; }
+  .solveig-cinematic-monogram { width: 82px !important; height: 68px !important; }
+  .solveig-cinematic-center h1 { font-size: 39px !important; }
+  .solveig-cinematic-services { width: calc(100% - 12px) !important; }
+  .solveig-cinematic-services svg { width: 22px !important; height: 22px !important; }
+  .solveig-cinematic-services span { font-size: 6.2px !important; }
+  .solveig-cinematic-services i { width: 23px !important; height: 23px !important; }
+}
