@@ -18,6 +18,7 @@ import { useSolveigLocale } from "@/lib/locale";
 import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
 import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 import { UniverseLanguageMenu } from "@/components/UniverseLanguageMenu";
+import chefArchivePhoto from "@/assets/chef-culinary-archive-01.jpg";
 
 
 const SITE_URL =
@@ -762,11 +763,7 @@ function Index() {
           <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
         </nav>
         <div className="solveig-cinematic-center">
-          <svg className="solveig-cinematic-monogram" viewBox="0 0 150 150" role="img" aria-label="Monogramme SP doré">
-            <defs><linearGradient id="cinematicGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f5d99b"/><stop offset=".5" stopColor="#b78339"/><stop offset="1" stopColor="#e6c47e"/></linearGradient></defs>
-            <g fill="none" stroke="url(#cinematicGold)" strokeWidth="1.8" strokeLinecap="round"><path d="M18 111C37 89 44 66 47 31C60 58 74 77 94 94"/><path d="M29 95C17 91 10 81 10 69C22 73 29 82 32 91M40 68C28 61 25 50 29 39C39 47 43 57 42 66M48 43C43 31 48 20 57 13C61 25 58 36 52 43"/></g>
-            <text x="49" y="111" fill="url(#cinematicGold)" fontFamily="Baskerville, Georgia, serif" fontSize="102" letterSpacing="-13">SP</text>
-          </svg>
+          <img className="solveig-cinematic-monogram" src="/sp-logo.svg" alt="Monogramme Solveig’s Prestige Service" />
           <h1>SOLVEIG’S</h1>
           <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
           <span className="solveig-cinematic-rule" />
@@ -799,8 +796,13 @@ function Index() {
             </p>
           </div>
           <div className="mt-14 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-            {services.map(([number, title, text, to, Icon]) => (
+            {services.map(([number, title, text, to, Icon], index) => (
               <Link key={to} to={to} className="solveig-service-card group">
+                <div className="solveig-service-image-wrap">
+                  <img src={[media.hero, media.oldTown, media.mijas, chefArchivePhoto][index]} alt="" loading="lazy" className="solveig-service-image" />
+                  <span className="solveig-service-image-number">{number}</span>
+                </div>
+                <div className="solveig-service-card-content">
                 <div className="solveig-service-icon">
                   <Icon size={18} />
                 </div>
@@ -813,6 +815,7 @@ function Index() {
                   <span className="mt-6 inline-flex items-center gap-2 text-[9px] font-bold uppercase tracking-[.2em] text-[#4f7f80]">
                     {c.discoverLabel} <ArrowRight size={13} />
                   </span>
+                </div>
                 </div>
               </Link>
             ))}
