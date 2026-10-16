@@ -739,18 +739,9 @@ function Index() {
             <p className="solveig-hero-location">MARBELLA &amp; MIJAS</p>
             <h1 className="solveig-hero-statement">
               <span>Une présence locale discrète</span>
-              <span>pour des propriétés d’exception</span>
-              <span>sur la Costa del Sol.</span>
+              <span>pour des propriétés d’exception sur la Costa del Sol</span>
             </h1>
-            <p className="solveig-hero-support">{c.intro}</p>
-            <div className="mt-6 flex flex-wrap justify-center gap-3">
-              <Button asChild variant="secondary" size="lg" className="rounded-full px-6 shadow-xl">
-                <Link to="/contact">{c.reserve}</Link>
-              </Button>
-              <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/30 bg-white/10 px-6 text-white backdrop-blur-xl hover:bg-white/20 hover:text-white">
-                <Link to="/services">{c.quote}</Link>
-              </Button>
-            </div>
+
           </div>
         </div>
         <nav aria-label="Accès rapides aux services" className="solveig-hero-services">
