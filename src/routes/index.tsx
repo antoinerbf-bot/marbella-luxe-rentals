@@ -735,15 +735,50 @@ function Index() {
 
   return (
     <SolveigLayout>
-      <section className="solveig-hero solveig-hero-reference relative overflow-hidden bg-[#2f241c] text-white" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
-        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1aaad271-8a11-4152-b428-cdfb048a7510.png" alt="Villa de prestige à Marbella au coucher du soleil, piscine à débordement et mer Méditerranée" className="solveig-reference-art absolute inset-0 h-full w-full" fetchPriority="high" />
-        <nav aria-label="Accès rapide aux services" className="solveig-reference-hotspots absolute inset-x-0 bottom-0 z-20 grid grid-cols-4">
-          <Link to="/gestion-propriete" aria-label="Gestion de propriété" title="Gestion de propriété" className="solveig-hotspot" />
-          <Link to="/conciergerie" aria-label="Services de conciergerie" title="Services de conciergerie" className="solveig-hotspot" />
-          <Link to="/location-saisonniere" aria-label="Gestion locative" title="Gestion locative" className="solveig-hotspot" />
-          <Link to="/services/chef-a-domicile" aria-label="Chef à domicile" title="Chef à domicile" className="solveig-hotspot" />
+      <section className="solveig-hero solveig-cinematic-home" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
+        <div className="solveig-cinematic-backdrop" aria-hidden="true" />
+        <div className="solveig-cinematic-shade" aria-hidden="true" />
+        <header className="solveig-cinematic-header">
+          <Link to="/" className="solveig-mini-brand" aria-label="Solveig’s Prestige Service — Accueil">
+            <span>SOLVEIG’S</span><small>PRESTIGE SERVICE</small>
+          </Link>
+          <nav className="solveig-cinematic-nav" aria-label="Navigation principale">
+            <Link to="/" className="is-current">ACCUEIL</Link>
+            <Link to="/zones">MARBELLA</Link>
+            <Link to="/zones">MIJAS</Link>
+            <Link to="/services">NOS SERVICES</Link>
+            <Link to="/location-saisonniere">PROPRIÉTÉS</Link>
+            <Link to="/a-propos">À PROPOS</Link>
+            <Link to="/contact">CONTACT</Link>
+          </nav>
+          <div className="solveig-cinematic-actions">
+            <Link to="/locations-maroc" className="solveig-outline-control"><span>🇲🇦</span><span>UNIVERS MAROCAIN</span></Link>
+            <div className="solveig-locale-control"><UniverseLanguageMenu universe="costa" /></div>
+            <button type="button" className="solveig-mobile-menu" aria-label="Ouvrir le menu" onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
+          </div>
+        </header>
+        <nav className="solveig-mobile-drawer" aria-label="Menu mobile">
+          <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
         </nav>
-        <a href="#services" className="solveig-hero-scroll absolute left-1/2 z-20 -translate-x-1/2" aria-label={c.scroll}>Explorer les services <span aria-hidden="true">↓</span></a>
+        <div className="solveig-cinematic-center">
+          <svg className="solveig-cinematic-monogram" viewBox="0 0 150 150" role="img" aria-label="Monogramme SP doré">
+            <defs><linearGradient id="cinematicGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#f5d99b"/><stop offset=".5" stopColor="#b78339"/><stop offset="1" stopColor="#e6c47e"/></linearGradient></defs>
+            <g fill="none" stroke="url(#cinematicGold)" strokeWidth="1.8" strokeLinecap="round"><path d="M18 111C37 89 44 66 47 31C60 58 74 77 94 94"/><path d="M29 95C17 91 10 81 10 69C22 73 29 82 32 91M40 68C28 61 25 50 29 39C39 47 43 57 42 66M48 43C43 31 48 20 57 13C61 25 58 36 52 43"/></g>
+            <text x="49" y="111" fill="url(#cinematicGold)" fontFamily="Baskerville, Georgia, serif" fontSize="102" letterSpacing="-13">SP</text>
+          </svg>
+          <h1>SOLVEIG’S</h1>
+          <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
+          <span className="solveig-cinematic-rule" />
+          <p className="solveig-cinematic-region">MARBELLA &amp; MIJAS</p>
+          <p className="solveig-cinematic-tagline">Une présence locale discrète pour<br className="desktop-break" /> des propriétés exceptionnelles sur la Costa del Sol</p>
+        </div>
+        <nav className="solveig-cinematic-services" aria-label="Découvrir nos services">
+          <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>PROPERTY<br/>MANAGEMENT</span><i>→</i></Link>
+          <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>CONCIERGE<br/>SERVICES</span><i>→</i></Link>
+          <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>RENTAL<br/>MANAGEMENT</span><i>→</i></Link>
+          <Link to="/services/chef-a-domicile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 27a13 13 0 1 1 26 0v4H11zM15 31v10h18V31M20 41v3h8v-3"/></svg><span>CHEF<br/>À DOMICILE</span><i>→</i></Link>
+        </nav>
+        <a href="#services" className="solveig-cinematic-scroll" aria-label="Découvrir la suite">DÉCOUVRIR <span>↓</span></a>
       </section>
 
       <section id="services" className="relative bg-[#f7f0e3]">
