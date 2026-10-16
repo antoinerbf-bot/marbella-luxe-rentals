@@ -23,7 +23,7 @@ const SITE_URL =
   import.meta.env["VITE_SITE_URL"] ?? "https://solveigconciergeriemarbella.vercel.app";
 
 const media = {
-  hero: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=90",
+  hero: "https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1e9f7f9c-850f-46a7-a5fc-d2f8886510ef.png",
   oldTown:
     "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marbella_-_Plaza_de_los_Naranjos_8.jpg",
   mijas:
