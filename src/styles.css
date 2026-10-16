@@ -259,3 +259,16 @@ body { overflow-x: hidden; }
   }
   .solveig-hero-service:nth-child(3) { border-left: 0 !important; }
 }
+
+
+/* Reference-matched homepage hero: one composed visual, with functional service hotspots. */
+.min-h-screen:has(.solveig-hero-reference) > header { display: none; }
+.solveig-hero-reference { min-height: 100svh; height: 100svh; }
+.solveig-hero-reference > img { object-fit: cover; object-position: center center; }
+.solveig-reference-hotspots a { display:block; background:transparent; }
+.solveig-reference-hotspots a:focus-visible { outline: 2px solid #d8b66f; outline-offset: -5px; }
+@media (max-width: 700px) {
+  .solveig-hero-reference { height: 100svh; min-height: 680px; }
+  .solveig-hero-reference > img { object-position: center center; }
+  .solveig-reference-hotspots a { height: 18vh; min-height: 110px; }
+}
