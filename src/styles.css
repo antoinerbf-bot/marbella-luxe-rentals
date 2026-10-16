@@ -772,3 +772,94 @@ body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
 @media(prefers-reduced-motion:reduce) {
  .solveig-service-card,.solveig-service-image { animation:none !important; }
 }
+
+
+/* Final responsive correction: match the supplied desktop composition and keep the photo dominant on mobile. */
+.solveig-cinematic-home { height:100svh !important; min-height:680px !important; }
+.solveig-cinematic-backdrop { background-position:center 50% !important; background-size:cover !important; }
+.solveig-cinematic-center { top:42% !important; width:min(620px,50vw) !important; }
+.solveig-cinematic-monogram { width:clamp(135px,13vw,175px) !important;height:clamp(125px,13vw,165px) !important; }
+.solveig-cinematic-center h1 { font-size:clamp(52px,5.5vw,78px) !important; }
+.solveig-cinematic-region { margin-top:23px !important; }
+.solveig-cinematic-tagline { margin-top:16px !important; }
+.solveig-cinematic-services { width:min(920px,68vw) !important; bottom:24px !important; }
+.solveig-cinematic-services svg { width:46px !important;height:46px !important; }
+.solveig-cinematic-services i { width:36px !important;height:36px !important; }
+@media(max-width:767px) {
+ .solveig-cinematic-home {
+   height:auto !important; min-height:0 !important;
+   display:flex !important; flex-direction:column !important;
+   padding:0 0 18px !important;
+   background:#15262c !important;
+ }
+ .solveig-cinematic-backdrop {
+   position:absolute !important; inset:0 !important;
+   background-size:auto 100% !important;
+   background-position:42% top !important;
+   background-repeat:no-repeat !important;
+   transform:none !important;
+ }
+ .solveig-cinematic-shade {
+   background:linear-gradient(180deg,rgba(8,18,24,.62) 0%,rgba(8,18,24,.08) 15%,rgba(255,244,223,.02) 37%,rgba(8,15,18,.18) 65%,rgba(8,15,18,.82) 100%) !important;
+ }
+ .solveig-cinematic-header {
+   position:relative !important; z-index:5 !important;
+   display:flex !important; flex-wrap:nowrap !important;
+   padding:max(10px,env(safe-area-inset-top)) 10px 6px !important;
+   gap:5px !important;
+ }
+ .solveig-mini-brand { flex:0 1 auto !important; min-width:0 !important; font-size:11px !important; }
+ .solveig-mini-brand small { font-size:5px !important; letter-spacing:.12em !important; }
+ .solveig-cinematic-nav { display:none !important; }
+ .solveig-cinematic-actions { margin-left:auto !important; gap:5px !important; }
+ .solveig-outline-control { width:30px !important;height:30px !important; min-width:30px !important; overflow:hidden !important; padding:0 !important; }
+ .solveig-outline-control span:nth-child(2) { display:none !important; }
+ .solveig-locale-control { max-width:72px !important; }
+ .solveig-locale-control .language-picker summary { min-height:30px !important; padding:0 6px !important; font-size:10px !important; }
+ .solveig-mobile-menu { width:31px !important;height:31px !important; font-size:22px !important; }
+ .solveig-mobile-drawer { z-index:20 !important; }
+ .solveig-cinematic-center {
+   position:relative !important; z-index:2 !important;
+   top:auto !important;left:auto !important;transform:none !important;
+   width:calc(100% - 24px) !important;
+   margin:clamp(32px,5vh,52px) auto 0 !important;
+   padding:0 !important;
+ }
+ .solveig-cinematic-monogram { width:86px !important;height:78px !important; }
+ .solveig-cinematic-center h1 { font-size:clamp(40px,11.3vw,54px) !important;line-height:.94 !important; }
+ .solveig-cinematic-subtitle { margin-top:4px !important;font-size:9px !important;letter-spacing:.23em !important; }
+ .solveig-cinematic-region { margin-top:17px !important;font-size:10px !important;letter-spacing:.2em !important; }
+ .solveig-cinematic-tagline { max-width:315px !important;margin-top:11px !important;font-size:14px !important;line-height:1.35 !important; }
+ .solveig-cinematic-services {
+   position:relative !important;z-index:3 !important;
+   left:auto !important;bottom:auto !important;transform:none !important;
+   width:calc(100% - 24px) !important;
+   margin:clamp(26px,5vh,42px) auto 0 !important;
+   padding:12px 0 0 !important;
+   display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;
+   gap:0 !important;
+   border-top:1px solid rgba(241,210,145,.55) !important;
+   background:linear-gradient(180deg,rgba(8,15,18,.05),rgba(8,15,18,.28)) !important;
+ }
+ .solveig-cinematic-services a {
+   display:flex !important; flex-direction:column !important;
+   align-items:center !important; justify-content:flex-start !important;
+   gap:7px !important;min-width:0 !important;
+   padding:6px 2px !important;border:0 !important;
+ }
+ .solveig-cinematic-services a + a { border-left:1px solid rgba(245,218,160,.42) !important; }
+ .solveig-cinematic-services svg { width:25px !important;height:25px !important;flex:none !important; }
+ .solveig-cinematic-services span {
+   display:block !important;text-align:center !important;
+   font-size:7px !important;line-height:1.35 !important;
+   letter-spacing:.015em !important;overflow-wrap:anywhere !important;
+ }
+ .solveig-cinematic-services i { width:24px !important;height:24px !important;font-size:16px !important;margin-top:1px !important; }
+ .solveig-cinematic-scroll { display:none !important; }
+}
+@media(max-width:380px) {
+ .solveig-mini-brand {font-size:10px !important}
+ .solveig-cinematic-services span {font-size:6.5px !important}
+ .solveig-cinematic-services svg {width:22px !important;height:22px !important}
+ .solveig-cinematic-services i {width:21px !important;height:21px !important}
+}
