@@ -1,6 +1,8 @@
 # Marbella Luxe Rentals
 
-Solveig's Prestige Service — Gestion locative à Marbella & Mijas refait moi ce site en beaucoup mieux stp
+Solveig's Prestige Service — Gestion locative à Marbella & Mijas
+
+Hero updated: Property management · Concierge services · Rental management · Lifestyle assistance
 
 This project was built with [Lovable](https://lovable.dev).
 
