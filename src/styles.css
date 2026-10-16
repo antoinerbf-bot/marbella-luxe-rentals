@@ -401,3 +401,14 @@ body { overflow-x: hidden; }
  .solveig-cinematic-backdrop,.solveig-cinematic-center {animation:none}
  .solveig-cinematic-services a {transition:none}
 }
+
+
+/* Critical homepage-only cleanup: suppress the global floating shell on the cinematic landing page. */
+body:has(.solveig-cinematic-home) .min-h-screen > header,
+body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !important; }
+body:has(.solveig-cinematic-home) .solveig-cinematic-home { margin-top:0 !important; }
+@media(max-width:767px) {
+ body:has(.solveig-cinematic-home) .solveig-cinematic-header { padding-top:max(12px, env(safe-area-inset-top)); }
+ body:has(.solveig-cinematic-home) .solveig-cinematic-center { color:#211b16; }
+ body:has(.solveig-cinematic-home) .solveig-cinematic-tagline { color:#211b16; text-shadow:0 1px 12px rgba(255,245,220,.55); }
+}
