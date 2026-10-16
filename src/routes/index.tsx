@@ -718,82 +718,60 @@ function Index() {
 
   return (
     <SolveigLayout>
-      <section className="relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white">
+      <section className="solveig-hero relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white">
         <ScrollParallaxImage
           src={media.hero}
-          alt="Villa de prestige à Marbella sur la Costa del Sol"
+          alt="Villa de prestige sur la Costa del Sol au coucher du soleil"
           loading="eager"
           fetchPriority="high"
-          className="hero-kenburns absolute inset-0 scale-[1.035]"
+          className="hero-kenburns absolute inset-0"
           imageClassName="h-full w-full"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,27,20,.22),rgba(37,27,20,.12)_38%,rgba(24,18,13,.58))]" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_10%,rgba(24,18,13,.34)_100%)]" />
-        <div className="absolute inset-0 opacity-[.14] hero-grid" />
-        <div className="relative mx-auto flex min-h-[100svh] max-w-[1440px] flex-col items-center justify-center px-5 pb-20 pt-32 text-center sm:px-8">
-          <div className="hero-fade-in max-w-5xl">
-            <div className="mb-5 flex flex-col items-center">
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(20,25,30,.22),rgba(30,23,18,.06)_38%,rgba(24,18,13,.65))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,transparent_5%,rgba(24,18,13,.18)_100%)]" />
+        <div className="relative mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-center px-5 pb-36 pt-28 text-center sm:px-8 sm:pb-40">
+          <div className="solveig-hero-copy max-w-5xl">
+            <div className="mb-4 flex flex-col items-center">
+              <span aria-hidden="true" className="solveig-hero-monogram">SP</span>
               <span className="solveig-custom-wordmark">Solveig’s</span>
               <span className="solveig-custom-sub">PRESTIGE SERVICE</span>
             </div>
-            <p className="text-[9px] font-bold uppercase tracking-[0.34em] text-white/72 sm:text-[10px]">
-              {c.eyebrow}
-            </p>
-            <h1 className="mt-7 font-display text-[2.25rem] font-medium leading-[.98] tracking-[-.02em] text-balance sm:text-5xl md:text-[4.25rem] lg:text-[4.75rem]">
-              {c.hero}
+            <p className="solveig-hero-location">MARBELLA &amp; MIJAS</p>
+            <h1 className="solveig-hero-statement">
+              <span>Une présence locale discrète</span>
+              <span>pour des propriétés d’exception</span>
+              <span>sur la Costa del Sol.</span>
             </h1>
-            <p className="mx-auto mt-5 max-w-xl text-[13px] leading-6 text-white/82 sm:text-sm sm:leading-7">
-              {c.intro}
-            </p>
-            <div className="mt-6 flex flex-wrap justify-center gap-2.5">
+            <p className="solveig-hero-support">{c.intro}</p>
+            <div className="mt-6 flex flex-wrap justify-center gap-3">
               <Button asChild variant="secondary" size="lg" className="rounded-full px-6 shadow-xl">
                 <Link to="/contact">{c.reserve}</Link>
               </Button>
-              <Button
-                asChild
-                variant="coastal"
-                size="lg"
-                className="rounded-full border border-white/25 bg-white/10 px-6 text-white backdrop-blur-xl hover:bg-white/20 hover:text-white"
-              >
+              <Button asChild variant="coastal" size="lg" className="rounded-full border border-white/30 bg-white/10 px-6 text-white backdrop-blur-xl hover:bg-white/20 hover:text-white">
                 <Link to="/services">{c.quote}</Link>
               </Button>
-              <a
-                href="tel:+34623626724"
-                className="inline-flex h-11 items-center justify-center rounded-full border border-white/25 bg-black/10 px-6 text-sm font-semibold backdrop-blur-xl transition hover:bg-white/15"
-              >
-                {c.call}
-              </a>
-            </div>
-            <div className="mt-7 flex flex-wrap justify-center gap-x-4 gap-y-2 text-[9px] font-bold uppercase tracking-[0.2em] text-white/58">
-              <span>Marbella</span>
-              <span>·</span>
-              <span>Mijas</span>
-              <span>·</span>
-              <span>Costa del Sol</span>
             </div>
           </div>
         </div>
-        <a
-          href="#services"
-          className="absolute bottom-7 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 text-[9px] font-bold uppercase tracking-[0.22em] text-white/62"
-          aria-label={c.scroll}
-        >
-          <span>{c.scroll}</span>
-          <ArrowDown size={15} className="animate-bounce" />
-        </a>
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 1440 115"
-          preserveAspectRatio="none"
-          className="coastal-wave pointer-events-none absolute inset-x-0 bottom-0 h-16 w-full sm:h-24"
-        >
-          <path d="M0 62C180 24 290 97 490 67S840 22 1035 57s275 36 405-4v62H0Z" fill="#f7f0e3" />
-          <path
-            d="M0 79C195 48 307 111 512 82s339-39 526-13 273 31 402-5v51H0Z"
-            fill="#f7f0e3"
-            opacity=".55"
-          />
-        </svg>
+        <nav aria-label="Accès rapides aux services" className="solveig-hero-services">
+          <Link to="/gestion-propriete" className="solveig-hero-service">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22 24 6l19 16M11 19v23h26V19M20 42V28h8v14" /></svg>
+            <span>Gestion<br />de propriété</span><span className="solveig-service-arrow">↗</span>
+          </Link>
+          <Link to="/conciergerie" className="solveig-hero-service">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 32h32M12 32v-7a12 12 0 0 1 24 0v7M5 38h38M24 7v4" /></svg>
+            <span>Services<br />de conciergerie</span><span className="solveig-service-arrow">↗</span>
+          </Link>
+          <Link to="/location-saisonniere" className="solveig-hero-service">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="15" r="9"/><path d="m25 21-18 18 5 5 18-18M8 35l5 5M31 11v8M27 15h8" /></svg>
+            <span>Gestion<br />locative</span><span className="solveig-service-arrow">↗</span>
+          </Link>
+          <Link to="/services/housekeeping" className="solveig-hero-service">
+            <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42V22M24 29C9 29 5 18 5 10c12 0 19 7 19 19M24 24C24 11 31 5 43 5c0 13-6 21-19 21M24 36C14 36 9 30 8 23c10 0 16 5 16 13" /></svg>
+            <span>Assistance<br />lifestyle</span><span className="solveig-service-arrow">↗</span>
+          </Link>
+        </nav>
+        <a href="#services" className="solveig-hero-scroll" aria-label={c.scroll}><span>Défiler pour découvrir</span><ArrowDown size={15} /></a>
       </section>
 
       <section id="services" className="relative bg-[#f7f0e3]">
