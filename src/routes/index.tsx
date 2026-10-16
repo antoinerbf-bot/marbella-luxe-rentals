@@ -17,6 +17,7 @@ import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
 import { useSolveigLocale } from "@/lib/locale";
 import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
 import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
+import { UniverseLanguageMenu } from "@/components/UniverseLanguageMenu";
 
 
 const SITE_URL =
