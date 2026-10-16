@@ -272,3 +272,28 @@ body { overflow-x: hidden; }
   .solveig-hero-reference > img { object-position: center center; }
   .solveig-reference-hotspots a { height: 18vh; min-height: 110px; }
 }
+
+
+/* Mobile cleanup: the approved hero artwork already contains its own header, logo and service row. */
+@media (max-width: 767px) {
+  .min-h-screen:has(.solveig-hero-reference) > header { display: none !important; }
+  .solveig-hero-reference {
+    width: 100%;
+    height: auto !important;
+    min-height: 0 !important;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    background: #2f241c;
+  }
+  .solveig-hero-reference > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain !important;
+    object-position: center top;
+  }
+  .solveig-reference-hotspots { bottom: 0; height: 25%; }
+  .solveig-reference-hotspots a { height: 100% !important; min-height: 0 !important; }
+  .solveig-hero-reference > a[aria-label] { display: none; }
+}
