@@ -422,7 +422,7 @@ function ChefAtHomePage() {
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Button asChild variant="secondary" size="xl" className="rounded-full">
-                <a href={whatsappLink} target="_blank" rel="noreferrer">
+                <a href="#demande-chef">
                   {content.heroAction} <ArrowRight aria-hidden="true" />
                 </a>
               </Button>
