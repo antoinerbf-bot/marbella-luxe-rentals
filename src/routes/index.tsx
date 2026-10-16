@@ -34,7 +34,7 @@ const media = {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Solveig’s Prestige Service — Property Management in Marbella & Mijas" },
+      { title: "Solveig’s Prestige Service — Conciergerie de prestige à Marbella & Mijas" },
       {
         name: "description",
         content:
@@ -45,7 +45,7 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: "Solveig’s Prestige Service — Marbella & Mijas" },
       {
         property: "og:description",
-        content: "A discreet local presence for exceptional properties on the Costa del Sol.",
+        content: "Conciergerie privée, gestion de propriété et services sur mesure à Marbella, Mijas et sur la Costa del Sol.",
       },
       { property: "og:image", content: "https://solveigconciergeriemarbella.vercel.app/og-solveig.svg" },
       { property: "og:image:width", content: "1200" },
@@ -715,6 +715,12 @@ function Index() {
   const c = copy[locale];
   const whatsappLink = `https://wa.me/34623626724?text=${encodeURIComponent(c.whatsappMessage)}`;
   const services = c.services;
+  const heroServiceLabels = {
+    fr: ["Gestion de propriété", "Services de conciergerie", "Gestion locative", "Chef à domicile"],
+    en: ["Property management", "Concierge services", "Rental management", "Private chef"],
+    es: ["Gestión de propiedades", "Servicios de conserjería", "Gestión de alquileres", "Chef privado"],
+    ar: ["إدارة العقارات", "خدمات الاستقبال الخاص", "إدارة الإيجارات", "طاهٍ خاص"],
+  }[locale];
 
   return (
     <SolveigLayout>
@@ -744,22 +750,22 @@ function Index() {
 
           </div>
         </div>
-        <nav aria-label="Accès rapides aux services" className="solveig-hero-services">
+        <nav aria-label={locale === "fr" ? "Accès rapides aux services" : locale === "en" ? "Quick access to services" : locale === "es" ? "Acceso rápido a los servicios" : "الوصول السريع إلى الخدمات"} className="solveig-hero-services">
           <Link to="/gestion-propriete" className="solveig-hero-service">
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M5 22 24 6l19 16M11 19v23h26V19M20 42V28h8v14" /></svg>
-            <span>Gestion<br />de propriété</span><span className="solveig-service-arrow">↗</span>
+            <span>{heroServiceLabels[0]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
           </Link>
           <Link to="/conciergerie" className="solveig-hero-service">
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 32h32M12 32v-7a12 12 0 0 1 24 0v7M5 38h38M24 7v4" /></svg>
-            <span>Services<br />de conciergerie</span><span className="solveig-service-arrow">↗</span>
+            <span>{heroServiceLabels[1]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
           </Link>
           <Link to="/location-saisonniere" className="solveig-hero-service">
             <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="15" r="9"/><path d="m25 21-18 18 5 5 18-18M8 35l5 5M31 11v8M27 15h8" /></svg>
-            <span>Gestion<br />locative</span><span className="solveig-service-arrow">↗</span>
+            <span>{heroServiceLabels[2]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
           </Link>
           <Link to="/services/housekeeping" className="solveig-hero-service">
             <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 42V22M24 29C9 29 5 18 5 10c12 0 19 7 19 19M24 24C24 11 31 5 43 5c0 13-6 21-19 21M24 36C14 36 9 30 8 23c10 0 16 5 16 13" /></svg>
-            <span>Chef<br />à domicile</span><span className="solveig-service-arrow">↗</span>
+            <span>{heroServiceLabels[3]}</span><span className="solveig-service-arrow" aria-hidden="true">↗</span>
           </Link>
         </nav>
         <a href="#services" className="solveig-hero-scroll" aria-label={c.scroll}><span>Défiler pour découvrir</span><ArrowDown size={15} /></a>
