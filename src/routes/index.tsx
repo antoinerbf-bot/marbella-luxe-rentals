@@ -47,7 +47,7 @@ export const Route = createFileRoute("/")({
         property: "og:description",
         content: "A discreet local presence for exceptional properties on the Costa del Sol.",
       },
-      { property: "og:image", content: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&h=630&q=85" },
+      { property: "og:image", content: "https://solveigconciergeriemarbella.vercel.app/og-solveig.svg" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
       { property: "og:image:alt", content: "Villa de prestige à Marbella — Solveig’s Prestige Service" },
@@ -727,25 +727,25 @@ function Index() {
           className="hero-kenburns absolute inset-0 scale-[1.035]"
           imageClassName="h-full w-full"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,27,20,.34),rgba(37,27,20,.22)_35%,rgba(37,27,20,.76))]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,27,20,.22),rgba(37,27,20,.12)_38%,rgba(24,18,13,.58))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_10%,rgba(24,18,13,.34)_100%)]" />
         <div className="absolute inset-0 opacity-[.14] hero-grid" />
         <div className="relative mx-auto flex min-h-[100svh] max-w-[1440px] flex-col items-center justify-center px-5 pb-20 pt-32 text-center sm:px-8">
           <div className="hero-fade-in max-w-5xl">
-            <div className="mb-7 flex flex-col items-center">
+            <div className="mb-5 flex flex-col items-center">
               <span className="solveig-custom-wordmark">Solveig’s</span>
               <span className="solveig-custom-sub">PRESTIGE SERVICE</span>
             </div>
             <p className="text-[9px] font-bold uppercase tracking-[0.34em] text-white/72 sm:text-[10px]">
               {c.eyebrow}
             </p>
-            <h1 className="mt-7 font-display text-[3.4rem] font-medium leading-[.86] tracking-[-.025em] text-balance sm:text-6xl md:text-[6.4rem]">
+            <h1 className="mt-7 font-display text-[2.25rem] font-medium leading-[.98] tracking-[-.02em] text-balance sm:text-5xl md:text-[4.25rem] lg:text-[4.75rem]">
               {c.hero}
             </h1>
-            <p className="mx-auto mt-7 max-w-2xl text-sm leading-7 text-white/78 sm:text-base">
+            <p className="mx-auto mt-5 max-w-xl text-[13px] leading-6 text-white/82 sm:text-sm sm:leading-7">
               {c.intro}
             </p>
-            <div className="mt-8 flex flex-wrap justify-center gap-2.5">
+            <div className="mt-6 flex flex-wrap justify-center gap-2.5">
               <Button asChild variant="secondary" size="lg" className="rounded-full px-6 shadow-xl">
                 <Link to="/contact">{c.reserve}</Link>
               </Button>
