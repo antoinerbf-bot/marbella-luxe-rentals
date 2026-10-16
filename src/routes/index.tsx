@@ -104,11 +104,7 @@ const copy = {
       "De la surveillance de votre maison à l’accueil de vos invités, chaque intervention est pensée comme une extension naturelle de votre propriété.",
     featureEyebrow: "Votre maison, notre attention",
     featureTitle: (
-      <>
-        Le luxe commence
-        <br />
-        quand tout semble <span>simple.</span>
-      </>
+      <>Votre propriété, <span>notre attention.</span></>
     ),
     featureText:
       "Une belle propriété ne se résume pas à quatre murs. Elle vit, elle s’entretient, elle accueille. Notre rôle est de préserver cette qualité dans le temps et de rendre chaque interaction plus fluide.",
@@ -196,11 +192,7 @@ const copy = {
     ],
     propertyEyebrow: "Votre maison, notre attention",
     propertyTitle: (
-      <>
-        Le luxe commence
-        <br />
-        quand tout semble <span>simple.</span>
-      </>
+      <>Votre propriété, <span>notre attention.</span></>
     ),
     propertyText:
       "Une belle propriété ne se résume pas à quatre murs. Elle vit, elle s’entretient, elle accueille. Notre rôle est de préserver cette qualité dans le temps et de rendre chaque interaction plus fluide.",
@@ -265,11 +257,7 @@ const copy = {
       "From watching over your home to welcoming your guests, every intervention is designed as a natural extension of your property.",
     featureEyebrow: "Your home, our attention",
     featureTitle: (
-      <>
-        Luxury begins
-        <br />
-        when everything feels <span>simple.</span>
-      </>
+      <>Your property, <span>our attention.</span></>
     ),
     featureText:
       "A beautiful property is more than four walls. It lives, it is maintained, it welcomes. Our role is to preserve that quality over time and make every interaction effortless.",
@@ -357,11 +345,7 @@ const copy = {
     ],
     propertyEyebrow: "Your home, our attention",
     propertyTitle: (
-      <>
-        Luxury begins
-        <br />
-        when everything feels <span>simple.</span>
-      </>
+      <>Your property, <span>our attention.</span></>
     ),
     propertyText:
       "A beautiful property is more than four walls. It lives, it is maintained, it welcomes. Our role is to preserve that quality over time and make every interaction effortless.",
@@ -420,11 +404,7 @@ const copy = {
       "Desde la supervisión de su vivienda hasta la bienvenida de sus invitados, cada intervención se concibe como una extensión natural de su propiedad.",
     featureEyebrow: "Su casa, nuestra atención",
     featureTitle: (
-      <>
-        El lujo comienza
-        <br />
-        cuando todo parece <span>simple.</span>
-      </>
+      <>Su propiedad, <span>nuestra atención.</span></>
     ),
     featureText:
       "Una propiedad hermosa es mucho más que cuatro paredes. Vive, se mantiene y recibe. Nuestro papel es preservar esa calidad y hacer que cada interacción sea más sencilla.",
@@ -512,11 +492,7 @@ const copy = {
     ],
     propertyEyebrow: "Su casa, nuestra atención",
     propertyTitle: (
-      <>
-        El lujo comienza
-        <br />
-        cuando todo parece <span>simple.</span>
-      </>
+      <>Su propiedad, <span>nuestra atención.</span></>
     ),
     propertyText:
       "Una propiedad hermosa es mucho más que cuatro paredes. Vive, se mantiene y recibe. Nuestro papel es preservar esa calidad y hacer que cada interacción sea más sencilla.",
@@ -581,11 +557,7 @@ const copy = {
       "من مراقبة منزلك إلى استقبال ضيوفك، كل تدخل يُصمم كامتداد طبيعي لعقارك.",
     featureEyebrow: "منزلك، اهتمامنا",
     featureTitle: (
-      <>
-        يبدأ الفخامة
-        <br />
-        عندما يبدو كل شيء <span>بسيطاً.</span>
-      </>
+      <>عقارك، <span>اهتمامنا.</span></>
     ),
     featureText:
       "العقار الجميل أكثر من أربعة جدران. يعيش، يُصان، يستقبل. دورنا هو الحفاظ على هذه الجودة مع الوقت وجعل كل تفاعل أكثر سلاسة.",
@@ -673,11 +645,7 @@ const copy = {
     ],
     propertyEyebrow: "منزلك، اهتمامنا",
     propertyTitle: (
-      <>
-        يبدأ الفخامة
-        <br />
-        عندما يبدو كل شيء <span>بسيطاً.</span>
-      </>
+      <>عقارك، <span>اهتمامنا.</span></>
     ),
     propertyText:
       "العقار الجميل أكثر من أربعة جدران. يعيش، يُصان، يستقبل. دورنا هو الحفاظ على هذه الجودة مع الوقت وجعل كل تفاعل أكثر سلاسة.",
@@ -741,9 +709,6 @@ function Index() {
         <div className="solveig-cinematic-backdrop" aria-hidden="true" />
         <div className="solveig-cinematic-shade" aria-hidden="true" />
         <header className="solveig-cinematic-header">
-          <Link to="/" className="solveig-mini-brand" aria-label="Solveig’s Prestige Service — Accueil">
-            <span>SOLVEIG’S</span><small>PRESTIGE SERVICE</small>
-          </Link>
           <nav className="solveig-cinematic-nav" aria-label="Navigation principale">
             <Link to="/" className="is-current">ACCUEIL</Link>
             <Link to="/zones">MARBELLA</Link>
@@ -856,23 +821,7 @@ function Index() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-[1.35fr_.65fr] gap-3 sm:gap-4">
-            <ScrollParallaxImage
-              src={media.hero}
-              alt="Villa de prestige à Marbella"
-              className="row-span-2 min-h-[300px] rounded-[1.6rem] sm:min-h-[430px]"
-            />
-            <ScrollParallaxImage
-              src={media.oldTown}
-              alt="Marbella historique"
-              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
-            />
-            <ScrollParallaxImage
-              src={media.mijas}
-              alt="Mijas, Andalousie"
-              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
-            />
-          </div>
+
         </div>
       </section>
 
