@@ -20,7 +20,7 @@ import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
 
 
 const SITE_URL =
-  import.meta.env["VITE_SITE_URL"] ?? "https://marbella-luxe-rentals.antoinerbf.workers.dev";
+  import.meta.env["VITE_SITE_URL"] ?? "https://solveigconciergeriemarbella.vercel.app";
 
 const media = {
   hero: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=90",
@@ -40,11 +40,17 @@ export const Route = createFileRoute("/")({
         content:
           "Premium property management, private concierge and seasonal rental support in Marbella, Mijas and the Costa del Sol.",
       },
+      { property: "og:url", content: SITE_URL },
+      { property: "og:site_name", content: "Solveig’s Prestige Service" },
       { property: "og:title", content: "Solveig’s Prestige Service — Marbella & Mijas" },
       {
         property: "og:description",
         content: "A discreet local presence for exceptional properties on the Costa del Sol.",
       },
+      { property: "og:image", content: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&h=630&q=85" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Villa de prestige à Marbella — Solveig’s Prestige Service" },
       { property: "og:type", content: "website" },
       { name: "robots", content: "index, follow, max-image-preview:large, max-video-preview:-1" },
       { name: "twitter:card", content: "summary_large_image" },
