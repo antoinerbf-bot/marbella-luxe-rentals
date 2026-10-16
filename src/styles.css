@@ -321,7 +321,7 @@ body { overflow-x: hidden; }
 /* Cinematic homepage rebuilt as real responsive HTML, not a flattened screenshot. */
 .min-h-screen:has(.solveig-cinematic-home) > header { display:none !important; }
 .solveig-cinematic-home { position:relative; isolation:isolate; min-height:100svh; height:100svh; overflow:hidden; color:#fffaf1; background:#172f3b; }
-.solveig-cinematic-backdrop { position:absolute; inset:0; z-index:-3; background-image:url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2600&q=92"); background-position:center 53%; background-size:cover; transform:scale(1.02); animation:solveigHeroReveal 1.4s ease-out both; }
+.solveig-cinematic-backdrop { position:absolute; inset:0; z-index:-3; background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/8d812521-061b-4c31-8168-29f22818498f.png"); background-position:center 53%; background-size:cover; transform:scale(1.02); animation:solveigHeroReveal 1.4s ease-out both; }
 .solveig-cinematic-shade { position:absolute; inset:0; z-index:-2; background:linear-gradient(180deg,rgba(8,25,39,.52) 0%,rgba(18,34,41,.08) 30%,rgba(17,30,33,.08) 56%,rgba(25,23,20,.64) 100%),linear-gradient(90deg,rgba(21,24,23,.2),transparent 42%,rgba(20,30,37,.12)); }
 .solveig-cinematic-header { position:absolute; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:22px; padding:20px clamp(20px,4vw,64px); }
 .solveig-mini-brand { display:flex; flex-direction:column; color:#fff9ef; text-decoration:none; font-family:Georgia,serif; font-size:clamp(17px,1.7vw,25px); line-height:1; white-space:nowrap; letter-spacing:.02em; }
@@ -420,5 +420,5 @@ body:has(section.solveig-cinematic-home) .min-h-screen > header,
 body:has(section.solveig-cinematic-home) .min-h-screen header:not(.solveig-cinematic-header):not(.solveig-mobile-drawer) { display:none !important; }
 body:has(section.solveig-cinematic-home) .solveig-cinematic-home { margin:0 !important; padding-top:0 !important; }
 body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
- background-image: url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2600&q=92");
+ background-image: url("https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/8d812521-061b-4c31-8168-29f22818498f.png");
 }
