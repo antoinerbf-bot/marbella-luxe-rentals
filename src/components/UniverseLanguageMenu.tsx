@@ -26,7 +26,7 @@ const menuCopy: Record<
   }
 > = {
   fr: {
-    morocco: "Maisons du Maroc",
+    morocco: "Univers marocain",
     costa: "Costa del Sol",
     shortMorocco: "Maroc",
     shortCosta: "Costa",
@@ -35,7 +35,7 @@ const menuCopy: Record<
     chooseLanguage: "Choisir une langue",
   },
   en: {
-    morocco: "Morocco stays",
+    morocco: "Moroccan universe",
     costa: "Costa del Sol",
     shortMorocco: "Morocco",
     shortCosta: "Costa",
@@ -44,7 +44,7 @@ const menuCopy: Record<
     chooseLanguage: "Choose a language",
   },
   es: {
-    morocco: "Estancias en Marruecos",
+    morocco: "Universo marroquí",
     costa: "Costa del Sol",
     shortMorocco: "Marruecos",
     shortCosta: "Costa",
@@ -53,7 +53,7 @@ const menuCopy: Record<
     chooseLanguage: "Elegir idioma",
   },
   ar: {
-    morocco: "إقامات في المغرب",
+    morocco: "العالم المغربي",
     costa: "كوستا ديل سول",
     shortMorocco: "المغرب",
     shortCosta: "كوستا",
