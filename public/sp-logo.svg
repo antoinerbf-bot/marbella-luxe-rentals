@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 160" fill="none">
+  <g stroke="#c9a05d" stroke-width="1.4" fill="none" opacity="0.95">
+    <path d="M55 78 C40 70 32 55 38 42 C48 48 55 58 58 72"/>
+    <path d="M52 85 C35 82 25 68 28 52 C40 58 48 70 52 82"/>
+    <path d="M58 70 C48 58 45 42 52 30 C58 40 60 55 60 68"/>
+    <ellipse cx="36" cy="48" rx="5" ry="9" transform="rotate(-35 36 48)" stroke="#c9a05d" fill="none"/>
+    <ellipse cx="30" cy="62" rx="4.5" ry="8" transform="rotate(-20 30 62)" stroke="#c9a05d" fill="none"/>
+    <ellipse cx="48" cy="38" rx="4" ry="7.5" transform="rotate(-50 48 38)" stroke="#c9a05d" fill="none"/>
+  </g>
+  <g stroke="#c9a05d" stroke-width="1.4" fill="none" opacity="0.95">
+    <path d="M145 78 C160 70 168 55 162 42 C152 48 145 58 142 72"/>
+    <path d="M148 85 C165 82 175 68 172 52 C160 58 152 70 148 82"/>
+    <path d="M142 70 C152 58 155 42 148 30 C142 40 140 55 140 68"/>
+    <ellipse cx="164" cy="48" rx="5" ry="9" transform="rotate(35 164 48)" stroke="#c9a05d" fill="none"/>
+    <ellipse cx="170" cy="62" rx="4.5" ry="8" transform="rotate(20 170 62)" stroke="#c9a05d" fill="none"/>
+    <ellipse cx="152" cy="38" rx="4" ry="7.5" transform="rotate(50 152 38)" stroke="#c9a05d" fill="none"/>
+  </g>
+  <text x="100" y="105" text-anchor="middle" font-family="Georgia, Times New Roman, serif" font-size="78" font-weight="500" fill="#c9a05d" letter-spacing="-6">SP</text>
+</svg>
