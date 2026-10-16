@@ -412,3 +412,13 @@ body:has(.solveig-cinematic-home) .solveig-cinematic-home { margin-top:0 !import
  body:has(.solveig-cinematic-home) .solveig-cinematic-center { color:#211b16; }
  body:has(.solveig-cinematic-home) .solveig-cinematic-tagline { color:#211b16; text-shadow:0 1px 12px rgba(255,245,220,.55); }
 }
+
+
+/* Hard-scope the legacy shell header off on the homepage only; retain it everywhere else. */
+body:has(section.solveig-cinematic-home) header.fixed.inset-x-0.top-0,
+body:has(section.solveig-cinematic-home) .min-h-screen > header,
+body:has(section.solveig-cinematic-home) .min-h-screen header:not(.solveig-cinematic-header):not(.solveig-mobile-drawer) { display:none !important; }
+body:has(section.solveig-cinematic-home) .solveig-cinematic-home { margin:0 !important; padding-top:0 !important; }
+body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
+ background-image: url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2600&q=92");
+}
