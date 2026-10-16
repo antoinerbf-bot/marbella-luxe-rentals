@@ -149,7 +149,7 @@ const shellCopy = {
   },
 } as const;
 
-export function SolveigLayout({ children }: { children: ReactNode }) {
+export function SolveigLayout({ children, hideHeader = false }: { children: ReactNode; hideHeader?: boolean }) {
   const locale = useSolveigLocale();
   const copy = shellCopy[locale];
   const whatsappLink = getWhatsappLink(locale);
@@ -162,7 +162,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
 
   return (
     <div className="min-h-screen overflow-x-hidden bg-background text-foreground">
-      <header className="fixed inset-x-0 top-0 z-50">
+      {!hideHeader && <header className="fixed inset-x-0 top-0 z-50">
         <div className="mx-auto mt-3 max-w-[1440px] px-4 sm:px-6 lg:px-8">
           <div className="glass-nav flex min-h-[68px] items-center justify-between gap-2 rounded-full border border-white/30 px-3 pl-4 shadow-[0_18px_60px_-35px_rgba(0,0,0,.45)] sm:gap-4 sm:pl-5">
             <Link
@@ -241,7 +241,7 @@ export function SolveigLayout({ children }: { children: ReactNode }) {
             </div>
           )}
         </div>
-      </header>
+      </header>}
 
       <main className="pt-0">{children}</main>
 
