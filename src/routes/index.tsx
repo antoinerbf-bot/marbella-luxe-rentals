@@ -737,8 +737,16 @@ function Index() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_50%_42%,transparent_5%,rgba(24,18,13,.18)_100%)]" />
         <div className="relative mx-auto flex min-h-[100svh] max-w-[1600px] flex-col items-center justify-center px-5 pb-36 pt-28 text-center sm:px-8 sm:pb-40">
           <div className="solveig-hero-copy max-w-5xl">
-            <div className="mb-4 flex flex-col items-center">
-              <span aria-hidden="true" className="solveig-hero-monogram">SP</span>
+            <div className="mb-4 flex flex-col items-center" aria-label="Solveig’s Prestige Service">
+              <svg className="solveig-hero-logo" viewBox="0 0 240 150" role="img" aria-label="Monogramme doré SP avec branche d’olivier">
+                <defs><linearGradient id="solveigGold" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stopColor="#f1d7a0"/><stop offset="52%" stopColor="#c69a55"/><stop offset="100%" stopColor="#e7c98e"/></linearGradient></defs>
+                <g fill="none" stroke="url(#solveigGold)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M35 112 C52 91 62 68 69 37 C79 61 93 82 113 98"/>
+                  <path d="M49 92 C36 89 28 79 25 66 C39 70 48 79 53 87 M59 68 C46 62 42 50 44 38 C56 45 62 55 62 65 M72 47 C65 35 69 23 78 14 C83 27 81 37 76 45"/>
+                  <path d="M35 112 C57 119 84 124 111 121"/>
+                </g>
+                <text x="86" y="101" fill="url(#solveigGold)" fontFamily="Baskerville, Georgia, serif" fontSize="91" fontWeight="400" letterSpacing="-12">SP</text>
+              </svg>
               <span className="solveig-custom-wordmark">Solveig’s</span>
               <span className="solveig-custom-sub">PRESTIGE SERVICE</span>
             </div>
