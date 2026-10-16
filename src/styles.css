@@ -9,9 +9,6 @@
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
   --radius-xl: calc(var(--radius) + 4px);
-  --radius-2xl: calc(var(--radius) + 8px);
-  --radius-3xl: calc(var(--radius) + 12px);
-  --radius-4xl: calc(var(--radius) + 16px);
   --font-sans: var(--font-body);
   --font-display: var(--font-display);
   --color-background: var(--background);
@@ -33,23 +30,8 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-ring-offset-background: var(--background);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
   --color-surface: var(--surface);
   --color-surface-foreground: var(--surface-foreground);
-  --color-surface-warm: var(--surface-warm);
   --color-coast: var(--coast);
   --color-coast-foreground: var(--coast-foreground);
   --color-gold: var(--gold);
@@ -81,67 +63,12 @@
   --ring: oklch(0.554 0.069 185.04);
   --surface: oklch(0.948 0.025 88.92);
   --surface-foreground: oklch(0.247 0.031 75.64);
-  --surface-warm: oklch(0.89 0.048 78.92);
   --coast: oklch(0.554 0.069 185.04);
   --coast-foreground: oklch(0.986 0.011 88.72);
   --gold: oklch(0.682 0.115 78.89);
   --gold-foreground: oklch(0.206 0.027 73.37);
-  --chart-1: oklch(0.554 0.069 185.04);
-  --chart-2: oklch(0.682 0.115 78.89);
-  --chart-3: oklch(0.463 0.068 148.2);
-  --chart-4: oklch(0.611 0.083 57.3);
-  --chart-5: oklch(0.341 0.051 213.4);
-  --sidebar: oklch(0.948 0.025 88.92);
-  --sidebar-foreground: oklch(0.205 0.029 76.44);
-  --sidebar-primary: oklch(0.277 0.049 183.54);
-  --sidebar-primary-foreground: oklch(0.986 0.011 88.72);
-  --sidebar-accent: oklch(0.914 0.039 87.48);
-  --sidebar-accent-foreground: oklch(0.259 0.036 72.28);
-  --sidebar-border: oklch(0.846 0.032 82.64);
-  --sidebar-ring: oklch(0.554 0.069 185.04);
-  --gradient-hero: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--primary) 94%, transparent),
-    color-mix(in oklab, var(--coast) 74%, transparent)
-  );
   --gradient-soft: linear-gradient(180deg, var(--background), var(--surface));
   --shadow-elegant: 0 24px 70px -36px color-mix(in oklab, var(--primary) 52%, transparent);
-  --shadow-soft: 0 18px 55px -42px color-mix(in oklab, var(--foreground) 36%, transparent);
-}
-
-.dark {
-  --background: oklch(0.129 0.042 264.695);
-  --foreground: oklch(0.984 0.003 247.858);
-  --card: oklch(0.208 0.042 265.755);
-  --card-foreground: oklch(0.984 0.003 247.858);
-  --popover: oklch(0.208 0.042 265.755);
-  --popover-foreground: oklch(0.984 0.003 247.858);
-  --primary: oklch(0.929 0.013 255.508);
-  --primary-foreground: oklch(0.208 0.042 265.755);
-  --secondary: oklch(0.279 0.041 260.031);
-  --secondary-foreground: oklch(0.984 0.003 247.858);
-  --muted: oklch(0.279 0.041 260.031);
-  --muted-foreground: oklch(0.704 0.04 256.788);
-  --accent: oklch(0.279 0.041 260.031);
-  --accent-foreground: oklch(0.984 0.003 247.858);
-  --destructive: oklch(0.704 0.191 22.216);
-  --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.551 0.027 264.364);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.208 0.042 265.755);
-  --sidebar-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-accent: oklch(0.279 0.041 260.031);
-  --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
 @layer base {
@@ -150,17 +77,10 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-body);
-    letter-spacing: 0;
   }
 }
 
-@utility text-balance { text-wrap: balance; }
-@utility bg-gradient-hero { background-image: var(--gradient-hero); }
-@utility bg-gradient-soft { background-image: var(--gradient-soft); }
-@utility shadow-elegant { box-shadow: var(--shadow-elegant); }
-@utility shadow-soft { box-shadow: var(--shadow-soft); }
-
-.scroll-parallax-frame { position: relative; overflow: hidden; overflow: clip; isolation: isolate; }
+.scroll-parallax-frame { position: relative; overflow: hidden; isolation: isolate; }
 .scroll-parallax-frame.absolute { position: absolute; }
 .scroll-parallax-image {
   display: block; width: 100%; height: 100%; object-fit: cover;
@@ -180,18 +100,16 @@
   padding: 1.55rem; box-shadow: 0 22px 65px -48px oklch(0.34 0.038 68 / 45%);
   transition: transform 0.55s cubic-bezier(0.2, 0.75, 0.2, 1), box-shadow 0.55s ease;
 }
-.solveig-service-card:hover { transform: translateY(-8px); box-shadow: 0 30px 75px -45px oklch(0.34 0.038 68 / 55%); }
+.solveig-service-card:hover { transform: translateY(-8px); }
 .solveig-service-icon {
   display: flex; width: 2.7rem; height: 2.7rem; align-items: center; justify-content: center;
   border: 1px solid oklch(0.55 0.07 190 / 20%); border-radius: 999px;
   background: oklch(0.82 0.08 205 / 16%); color: oklch(0.55 0.07 190);
 }
-.solveig-destination { position: relative; min-height: 470px; overflow: hidden; border-radius: 1.6rem; }
 
 .hero-kenburns { animation: heroZoom 24s ease-in-out infinite alternate; }
 @keyframes heroZoom { from { transform: scale(1.035); } to { transform: scale(1.09); } }
-@keyframes solveigReveal { from { opacity: 0; transform: translateY(18px); filter: blur(3px); } to { opacity: 1; transform: translateY(0); filter: blur(0); } }
-@keyframes solveigLineIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes solveigReveal { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: translateY(0); } }
 
 .soft-grid, .aqua-grid { background-size: 52px 52px; pointer-events: none; }
 .soft-grid {
@@ -205,31 +123,10 @@
     linear-gradient(to bottom, oklch(0.3 0.06 195 / 7%) 1px, transparent 1px);
 }
 
-.mobile-menu { animation: menuIn 0.22s ease-out both; }
-@keyframes menuIn {
-  from { opacity: 0; transform: translateY(-8px) scale(0.98); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-::selection { background: color-mix(in oklab, var(--gold) 65%, transparent); color: var(--foreground); }
 html { scroll-behavior: smooth; }
 body { overflow-x: hidden; }
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  .scroll-parallax-image { transform: scale(1.03) !important; }
-  .solveig-service-card { transition: none; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-  .solveig-hero-copy, .solveig-hero-statement span { animation: none !important; }
-  .solveig-hero-service, .solveig-hero-service svg { transition: none !important; }
-}
-
-/* === PRESTIGE HERO — match reference image (villa + pool golden hour) === */
+/* PRESTIGE HERO — match reference mockup */
 .solveig-hero {
   min-height: 100svh !important;
   height: 100svh;
@@ -240,141 +137,125 @@ body { overflow-x: hidden; }
 .solveig-hero > div.absolute:first-of-type {
   background: linear-gradient(
     180deg,
-    rgba(12,18,24,.18) 0%,
-    rgba(20,16,12,.04) 32%,
-    rgba(24,18,12,.12) 55%,
-    rgba(18,12,8,.62) 100%
+    rgba(255,250,240,.15) 0%,
+    rgba(255,250,240,.02) 32%,
+    rgba(20,14,8,.05) 55%,
+    rgba(12,8,4,.5) 100%
   ) !important;
 }
 .solveig-hero-copy {
-  width: min(100%, 46rem);
+  width: min(100%, 48rem);
   transform: translateY(-2vh);
   text-align: center;
   animation: solveigReveal 1.1s ease-out both;
 }
+/* SP logo via SVG — matches reference monogram + olive branch */
 .solveig-hero-monogram {
-  display: block;
-  font-family: Georgia, "Times New Roman", serif;
-  font-size: clamp(4.8rem, 9.5vw, 7.8rem);
-  line-height: 0.78;
-  color: #c9a05d;
-  letter-spacing: -0.12em;
-  text-shadow: 0 2px 14px rgba(0,0,0,.15);
-  margin-bottom: -0.15rem;
+  display: block !important;
+  font-size: 0 !important;
+  color: transparent !important;
+  width: clamp(9.5rem, 17vw, 14rem) !important;
+  height: clamp(6.8rem, 12.5vw, 10.5rem) !important;
+  margin: 0 auto 0.1rem !important;
+  background: url("/sp-logo.svg") center / contain no-repeat !important;
+  text-shadow: none !important;
 }
 .solveig-custom-wordmark {
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: clamp(2.1rem, 4.2vw, 3.6rem) !important;
+  font-size: clamp(2.3rem, 4.5vw, 4rem) !important;
   font-weight: 500 !important;
   line-height: 1 !important;
-  color: #f8f0e4 !important;
-  letter-spacing: 0.02em !important;
-  text-shadow: 0 2px 18px rgba(0,0,0,.35) !important;
+  color: #1a1510 !important;
+  letter-spacing: 0.03em !important;
+  text-shadow: 0 1px 14px rgba(255,255,255,.4) !important;
 }
 .solveig-custom-sub {
-  margin-top: 0.55rem !important;
-  font-size: clamp(0.58rem, 1.05vw, 0.85rem) !important;
+  margin-top: 0.5rem !important;
+  font-size: clamp(0.6rem, 1.1vw, 0.88rem) !important;
   letter-spacing: 0.42em !important;
-  color: #e8d4b0 !important;
-  text-shadow: 0 1px 10px rgba(0,0,0,.3) !important;
+  color: #2c261e !important;
+  text-shadow: 0 1px 10px rgba(255,255,255,.35) !important;
   font-weight: 600 !important;
 }
 .solveig-hero-location {
-  margin-top: 1.15rem !important;
-  font-size: clamp(0.62rem, 1vw, 0.82rem) !important;
+  margin-top: 1.1rem !important;
+  font-size: clamp(0.62rem, 1vw, 0.85rem) !important;
   letter-spacing: 0.4em !important;
-  color: #f0e0c4 !important;
-  text-shadow: 0 1px 12px rgba(0,0,0,.4) !important;
+  color: #3a3228 !important;
+  text-shadow: 0 1px 10px rgba(255,255,255,.4) !important;
 }
 .solveig-hero-statement {
-  margin-top: 1.4rem !important;
+  margin-top: 1.35rem !important;
   max-width: 42rem !important;
   font-family: Georgia, "Times New Roman", serif !important;
-  font-size: clamp(1rem, 1.7vw, 1.4rem) !important;
+  font-size: clamp(1.05rem, 1.75vw, 1.4rem) !important;
   font-weight: 400 !important;
   line-height: 1.35 !important;
-  color: #faf4eb !important;
-  text-shadow: 0 1px 14px rgba(0,0,0,.45) !important;
+  color: #1f1a14 !important;
+  text-shadow: 0 1px 12px rgba(255,255,255,.45) !important;
   gap: 0 !important;
 }
 .solveig-hero-statement span { display: inline !important; }
 .solveig-hero-statement span + span::before { content: " "; white-space: pre; }
 .solveig-hero-services {
-  width: min(72%, 960px) !important;
-  max-width: 960px !important;
-  bottom: 2rem !important;
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  width: min(75%, 980px) !important;
+  max-width: 980px !important;
+  bottom: 1.8rem !important;
   inset-inline: 50% !important;
   transform: translateX(-50%) !important;
   grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
   background: transparent !important;
-  border-top: 1px solid rgba(232, 210, 166, 0.45) !important;
-  backdrop-filter: none !important;
-  position: absolute;
-  z-index: 3;
-  display: grid;
+  border-top: 1px solid rgba(196, 160, 90, 0.45) !important;
 }
 .solveig-hero-service {
-  min-height: 6.8rem !important;
-  padding: 0.55rem 0.5rem !important;
+  min-height: 6.5rem !important;
+  padding: 0.5rem 0.4rem !important;
   color: #fff8ee !important;
-  font-size: clamp(0.52rem, 0.7vw, 0.68rem) !important;
-  letter-spacing: 0.12em !important;
-  text-shadow: 0 1px 8px rgba(20,12,6,.5) !important;
+  font-size: clamp(0.5rem, 0.68vw, 0.65rem) !important;
+  letter-spacing: 0.11em !important;
+  text-shadow: 0 1px 8px rgba(20,12,6,.55) !important;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.4rem;
+  gap: 0.35rem;
   text-align: center;
   text-transform: uppercase;
-  transition: background 0.35s ease, color 0.35s ease;
+  transition: background 0.35s ease;
 }
 .solveig-hero-service svg {
-  width: 2.5rem !important;
-  height: 2.5rem !important;
+  width: 2.35rem !important;
+  height: 2.35rem !important;
   stroke: #e0bc7a !important;
   fill: none;
   stroke-width: 1.5;
   filter: drop-shadow(0 1px 4px rgba(20,12,6,.4)) !important;
-  transition: transform 0.35s ease;
 }
 .solveig-hero-service + .solveig-hero-service {
-  border-left: 1px solid rgba(232, 210, 166, 0.4) !important;
+  border-left: 1px solid rgba(196, 160, 90, 0.4) !important;
 }
-.solveig-hero-service:hover,
-.solveig-hero-service:focus-visible {
-  background: rgba(255,248,237,0.12);
-  color: #f4d69b;
-}
-.solveig-hero-service:hover svg { transform: translateY(-3px); }
-.solveig-service-arrow {
-  position: static;
-  display: grid;
-  place-items: center;
-  opacity: 1;
-  width: 1.75rem;
-  height: 1.75rem;
-  margin-top: 0.15rem;
-  border: 1px solid #d9b878;
-  border-radius: 999px;
-  color: #fff7e8;
-  font-size: 0.85rem;
-}
+.solveig-hero-service:hover { background: rgba(255,248,237,0.1); }
+.solveig-service-arrow { display: none; }
+
 @media (max-width: 640px) {
   .solveig-hero-copy { transform: translateY(-4vh); }
-  .solveig-hero-monogram { font-size: 4rem; }
-  .solveig-custom-wordmark { font-size: 1.85rem !important; }
+  .solveig-hero-monogram {
+    width: 8rem !important;
+    height: 5.8rem !important;
+  }
+  .solveig-custom-wordmark { font-size: 1.9rem !important; }
   .solveig-hero-services {
-    width: calc(100% - 1.2rem) !important;
-    bottom: 1.1rem !important;
+    width: calc(100% - 1rem) !important;
+    bottom: 1rem !important;
     grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
   }
-  .solveig-hero-service { min-height: 4.6rem !important; font-size: 0.52rem !important; }
-  .solveig-hero-service:nth-child(3) {
-    border-top: 1px solid rgba(232,210,166,.4);
-    border-left: 0 !important;
-  }
+  .solveig-hero-service { min-height: 4.4rem !important; font-size: 0.5rem !important; }
+  .solveig-hero-service:nth-child(3),
   .solveig-hero-service:nth-child(4) {
-    border-top: 1px solid rgba(232,210,166,.4);
+    border-top: 1px solid rgba(196,160,90,.4);
   }
+  .solveig-hero-service:nth-child(3) { border-left: 0 !important; }
 }
