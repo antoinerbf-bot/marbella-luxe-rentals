@@ -735,7 +735,7 @@ function Index() {
   }[locale];
 
   return (
-    <SolveigLayout>
+    <SolveigLayout hideHeader>
       <section className="solveig-hero solveig-cinematic-home" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
         <div className="solveig-cinematic-backdrop" aria-hidden="true" />
         <div className="solveig-cinematic-shade" aria-hidden="true" />
