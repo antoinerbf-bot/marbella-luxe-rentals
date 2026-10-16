@@ -1052,3 +1052,82 @@ body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
   .solveig-cinematic-services span { font-size: 6.2px !important; }
   .solveig-cinematic-services i { width: 23px !important; height: 23px !important; }
 }
+
+
+/* Final visual correction — keep the SP identity crisp and the homepage message readable over photography. */
+.solveig-cinematic-shade {
+  background:
+    linear-gradient(180deg, rgba(9,23,32,.72) 0%, rgba(13,29,36,.34) 19%, rgba(20,31,34,.12) 43%, rgba(12,22,27,.20) 65%, rgba(10,17,20,.82) 100%),
+    linear-gradient(90deg, rgba(8,19,27,.22), rgba(10,22,28,.08) 48%, rgba(8,19,27,.26));
+}
+.solveig-cinematic-center {
+  top: 38% !important;
+  width: min(660px, 88vw);
+  padding: 18px clamp(20px, 3vw, 38px) 22px;
+  border: 1px solid rgba(235,207,157,.48);
+  border-radius: 4px;
+  background: linear-gradient(145deg, rgba(15,35,43,.76), rgba(19,31,35,.58));
+  box-shadow: 0 22px 90px rgba(0,0,0,.24);
+  backdrop-filter: blur(8px);
+}
+.solveig-cinematic-monogram {
+  width: clamp(112px, 12vw, 158px) !important;
+  height: auto !important;
+  max-height: 118px;
+  object-fit: contain;
+  margin: 0 auto 4px !important;
+  filter: drop-shadow(0 3px 10px rgba(0,0,0,.45));
+}
+.solveig-cinematic-center h1 {
+  color: #fff7e7 !important;
+  font-size: clamp(43px, 5.3vw, 74px) !important;
+  letter-spacing: .025em;
+  text-shadow: 0 3px 18px rgba(0,0,0,.58) !important;
+}
+.solveig-cinematic-subtitle,
+.solveig-cinematic-region {
+  color: #f2dfb9 !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.6) !important;
+}
+.solveig-cinematic-rule { background: #d4b16e; }
+.solveig-cinematic-tagline {
+  color: #fff9ef !important;
+  text-shadow: 0 2px 12px rgba(0,0,0,.68) !important;
+  max-width: 510px;
+}
+.solveig-cinematic-header { padding-top: max(22px, env(safe-area-inset-top)); }
+.solveig-mini-brand { text-shadow: 0 2px 12px rgba(0,0,0,.55); }
+.solveig-cinematic-services {
+  width: min(1040px, 88vw);
+  bottom: clamp(20px, 3.5vh, 42px);
+  padding-top: 18px;
+  border-top-color: rgba(239,210,157,.82);
+}
+.solveig-cinematic-services a { padding: 0 20px; }
+.solveig-cinematic-services span { color: #fffaf0; text-shadow: 0 2px 12px rgba(0,0,0,.85); }
+.solveig-service-image-wrap { height: 210px; }
+.solveig-service-image { object-position: center; filter: saturate(.88) contrast(1.02); }
+.solveig-service-card:hover .solveig-service-image { filter: saturate(1.02) contrast(1.03); }
+.solveig-service-card-content { padding: 1.45rem 1.4rem 1.6rem; }
+.solveig-service-image-number {
+  color: #fff8e8;
+  border: 1px solid rgba(255,248,232,.65);
+  background: rgba(20,36,40,.56);
+  backdrop-filter: blur(10px);
+}
+@media (max-width: 767px) {
+  .solveig-cinematic-home { min-height: 100svh !important; height: auto !important; }
+  .solveig-cinematic-center {
+    top: auto !important;
+    width: calc(100% - 28px);
+    margin: 22px auto 0 !important;
+    padding: 18px 16px 20px !important;
+    background: linear-gradient(145deg, rgba(15,35,43,.78), rgba(19,31,35,.62));
+  }
+  .solveig-cinematic-monogram { width: 106px !important; max-height: 88px; }
+  .solveig-cinematic-center h1 { font-size: clamp(39px, 11vw, 56px) !important; }
+  .solveig-cinematic-tagline { font-size: 15px !important; }
+  .solveig-cinematic-services { margin-top: 18px; padding-top: 14px; }
+  .solveig-cinematic-services a { padding: 8px 6px; }
+  .solveig-service-image-wrap { height: 180px; }
+}
