@@ -17,13 +17,13 @@ import { ContactBand, SolveigLayout } from "@/components/SolveigLayout";
 import { useSolveigLocale } from "@/lib/locale";
 import { ChefServiceSpotlight } from "@/components/ChefServiceSpotlight";
 import { ScrollParallaxImage } from "@/components/ScrollParallaxImage";
-import villaImage from "@/assets/marbella-prestige-villa.jpg";
+
 
 const SITE_URL =
   import.meta.env["VITE_SITE_URL"] ?? "https://marbella-luxe-rentals.antoinerbf.workers.dev";
 
 const media = {
-  hero: villaImage,
+  hero: "https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=90",
   oldTown:
     "https://commons.wikimedia.org/wiki/Special:Redirect/file/Marbella_-_Plaza_de_los_Naranjos_8.jpg",
   mijas:
@@ -721,18 +721,6 @@ function Index() {
           className="hero-kenburns absolute inset-0 scale-[1.035]"
           imageClassName="h-full w-full"
         />
-        <video
-          className="absolute inset-0 h-full w-full object-cover opacity-65"
-          autoPlay
-          muted
-          loop
-          playsInline
-          poster={media.hero}
-          preload="metadata"
-          aria-hidden="true"
-        >
-          <source src="/solveig-hero.mp4" type="video/mp4" />
-        </video>
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(37,27,20,.34),rgba(37,27,20,.22)_35%,rgba(37,27,20,.76))]" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,transparent_10%,rgba(24,18,13,.34)_100%)]" />
         <div className="absolute inset-0 opacity-[.14] hero-grid" />
