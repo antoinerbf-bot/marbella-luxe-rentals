@@ -735,15 +735,15 @@ function Index() {
 
   return (
     <SolveigLayout>
-      <section className="solveig-hero solveig-hero-reference relative min-h-[100svh] overflow-hidden bg-[#2f241c] text-white" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
-        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1aaad271-8a11-4152-b428-cdfb048a7510.png" alt="Solveig’s Prestige Service : villa méditerranéenne au coucher du soleil, piscine à débordement et services de prestige à Marbella et Mijas" className="absolute inset-0 h-full w-full object-cover object-center" fetchPriority="high" />
-        <nav aria-label="Accès rapide aux services" className="solveig-reference-hotspots absolute inset-x-0 bottom-0 z-10 grid grid-cols-4">
-          <Link to="/gestion-propriete" aria-label="Gestion de propriété" className="h-[22vh] min-h-28" />
-          <Link to="/conciergerie" aria-label="Services de conciergerie" className="h-[22vh] min-h-28" />
-          <Link to="/location-saisonniere" aria-label="Gestion locative" className="h-[22vh] min-h-28" />
-          <Link to="/services/chef-a-domicile" aria-label="Chef à domicile" className="h-[22vh] min-h-28" />
+      <section className="solveig-hero solveig-hero-reference relative overflow-hidden bg-[#2f241c] text-white" aria-label="Solveig’s Prestige Service — Marbella & Mijas">
+        <img src="https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1aaad271-8a11-4152-b428-cdfb048a7510.png" alt="Villa de prestige à Marbella au coucher du soleil, piscine à débordement et mer Méditerranée" className="solveig-reference-art absolute inset-0 h-full w-full" fetchPriority="high" />
+        <nav aria-label="Accès rapide aux services" className="solveig-reference-hotspots absolute inset-x-0 bottom-0 z-20 grid grid-cols-4">
+          <Link to="/gestion-propriete" aria-label="Gestion de propriété" title="Gestion de propriété" className="solveig-hotspot" />
+          <Link to="/conciergerie" aria-label="Services de conciergerie" title="Services de conciergerie" className="solveig-hotspot" />
+          <Link to="/location-saisonniere" aria-label="Gestion locative" title="Gestion locative" className="solveig-hotspot" />
+          <Link to="/services/chef-a-domicile" aria-label="Chef à domicile" title="Chef à domicile" className="solveig-hotspot" />
         </nav>
-        <a href="#services" className="absolute bottom-2 left-1/2 z-20 -translate-x-1/2 text-transparent" aria-label={c.scroll}>Découvrir les services</a>
+        <a href="#services" className="solveig-hero-scroll absolute left-1/2 z-20 -translate-x-1/2" aria-label={c.scroll}>Explorer les services <span aria-hidden="true">↓</span></a>
       </section>
 
       <section id="services" className="relative bg-[#f7f0e3]">
