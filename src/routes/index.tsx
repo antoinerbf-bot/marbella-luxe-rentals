@@ -708,6 +708,12 @@ function Index() {
     es: { subtitle: "SERVICIO DE PRESTIGIO", region: "MARBELLA & MIJAS", tagline: "Una presencia local discreta para propiedades excepcionales en la Costa del Sol" },
     ar: { subtitle: "خدمات راقية", region: "ماربيا وميخاس", tagline: "رعاية محلية راقية للعقارات الاستثنائية في كوستا ديل سول" },
   }[locale];
+  const navCopy = {
+    fr: { home: "Accueil", marbella: "Marbella", mijas: "Mijas", services: "Nos services", properties: "Propriétés", about: "À propos", contact: "Contact", openMenu: "Ouvrir le menu", navLabel: "Navigation principale", discover: "Découvrir nos services" },
+    en: { home: "Home", marbella: "Marbella", mijas: "Mijas", services: "Our services", properties: "Properties", about: "About", contact: "Contact", openMenu: "Open menu", navLabel: "Main navigation", discover: "Explore our services" },
+    es: { home: "Inicio", marbella: "Marbella", mijas: "Mijas", services: "Servicios", properties: "Propiedades", about: "Nosotros", contact: "Contacto", openMenu: "Abrir menú", navLabel: "Navegación principal", discover: "Descubrir servicios" },
+    ar: { home: "الرئيسية", marbella: "ماربيا", mijas: "ميخاس", services: "خدماتنا", properties: "العقارات", about: "من نحن", contact: "اتصل بنا", openMenu: "فتح القائمة", navLabel: "التنقل الرئيسي", discover: "اكتشف خدماتنا" },
+  }[locale];
 
   return (
     <SolveigLayout hideHeader>
@@ -715,23 +721,23 @@ function Index() {
         <div className="solveig-cinematic-backdrop" aria-hidden="true" />
         <div className="solveig-cinematic-shade" aria-hidden="true" />
         <header className="solveig-cinematic-header">
-          <nav className="solveig-cinematic-nav" aria-label="Navigation principale">
-            <Link to="/" className="is-current">ACCUEIL</Link>
-            <Link to="/zones">MARBELLA</Link>
-            <Link to="/zones">MIJAS</Link>
-            <Link to="/services">NOS SERVICES</Link>
-            <Link to="/location-saisonniere">PROPRIÉTÉS</Link>
-            <Link to="/a-propos">À PROPOS</Link>
-            <Link to="/contact">CONTACT</Link>
+          <nav className="solveig-cinematic-nav" aria-label={navCopy.navLabel}>
+            <Link to="/" className="is-current">{navCopy.home}</Link>
+            <Link to="/zones">{navCopy.marbella}</Link>
+            <Link to="/zones">{navCopy.mijas}</Link>
+            <Link to="/services">{navCopy.services}</Link>
+            <Link to="/location-saisonniere">{navCopy.properties}</Link>
+            <Link to="/a-propos">{navCopy.about}</Link>
+            <Link to="/contact">{navCopy.contact}</Link>
           </nav>
           <div className="solveig-cinematic-actions">
             <Link to="/locations-maroc" className="solveig-outline-control"><span className="solveig-morocco-flag" aria-hidden="true">🇲🇦</span><span className="solveig-morocco-label">UNIVERS MAROCAIN</span></Link>
             <div className="solveig-locale-control"><UniverseLanguageMenu universe="costa" /></div>
-            <button type="button" className="solveig-mobile-menu" aria-label="Ouvrir le menu" onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
+            <button type="button" className="solveig-mobile-menu" aria-label={navCopy.openMenu} onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
           </div>
         </header>
         <nav className="solveig-mobile-drawer" aria-label="Menu mobile">
-          <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
+          <Link to="/">{navCopy.home}</Link><Link to="/zones">{navCopy.marbella} & {navCopy.mijas}</Link><Link to="/services">{navCopy.services}</Link><Link to="/location-saisonniere">{navCopy.properties}</Link><Link to="/a-propos">{navCopy.about}</Link><Link to="/contact">{navCopy.contact}</Link><Link to="/locations-maroc">{locale === "fr" ? "Univers du Maroc" : locale === "en" ? "Moroccan universe" : locale === "es" ? "Universo marroquí" : "العالم المغربي"}</Link>
         </nav>
         <div className="solveig-cinematic-center">
           <img
@@ -748,7 +754,7 @@ function Index() {
           <p className="solveig-cinematic-region">{heroCopy.region}</p>
           <p className="solveig-cinematic-tagline">{heroCopy.tagline}</p>
         </div>
-        <nav className="solveig-cinematic-services" aria-label={c.allServices}>
+        <nav className="solveig-cinematic-services" aria-label={navCopy.discover}>
           <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>{heroServiceLabels[0]}</span><i>→</i></Link>
           <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>{heroServiceLabels[1]}</span><i>→</i></Link>
           <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>{heroServiceLabels[2]}</span><i>→</i></Link>
