@@ -329,7 +329,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 }
 .solveig-cinematic-backdrop {
   position:absolute; inset:0; z-index:0; pointer-events:none;
-  background-image:url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=90");
+  background-image:url("https://images.unsplash.com/photo-1759405198466-d7f97ef8b4a7?auto=format&fit=crop&w=3000&q=90");
   background-position:center 53%; background-size:cover;
 }
 .solveig-cinematic-shade {
@@ -424,7 +424,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 /* Hero art is a clean photograph; all brand copy is live, localized HTML. */
 .solveig-cinematic-backdrop {
   background-size:cover !important;
-  background-position:center 56% !important;
+  background-position:center 52% !important;
   background-repeat:no-repeat !important;
   transform:none !important;
   animation:none !important;
