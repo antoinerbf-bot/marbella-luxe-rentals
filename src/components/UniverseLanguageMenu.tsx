@@ -69,7 +69,6 @@ export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
   const otherHref = universe === "costa" ? "/locations-maroc" : "/";
   const otherLabel = universe === "costa" ? copy.morocco : copy.costa;
   const shortLabel = universe === "costa" ? copy.shortMorocco : copy.shortCosta;
-  const otherFlag = universe === "costa" ? "🇲🇦" : "🇪🇸";
   const selectedLanguage = localeOptions.find((option) => option.code === locale)!;
 
   const changeLocale = (nextLocale: AppLocale, details: HTMLDetailsElement | null) => {
@@ -92,30 +91,15 @@ export function UniverseLanguageMenu({ universe }: { universe: AppUniverse }) {
             : "border-[#577b6b]/35 bg-[linear-gradient(135deg,#fbf8ed,#e7eee3)] text-[#385b4d] hover:border-[#577b6b]/65 hover:shadow-[0_12px_28px_-14px_rgba(45,86,68,.4)]"
         }`}
       >
-        <span
-          aria-hidden="true"
-          className={`grid size-7 shrink-0 place-items-center rounded-full text-base shadow-inner transition-transform duration-500 group-hover:rotate-[12deg] sm:size-8 sm:text-lg ${
-            universe === "costa" ? "bg-[#ead2b8]" : "bg-[#d7e5d8]"
-          }`}
-        >
-          {otherFlag}
-        </span>
         <span className="flex min-w-0 flex-col items-start leading-tight">
-          <span className="hidden text-[7px] font-bold uppercase tracking-[.16em] opacity-65 min-[480px]:block sm:text-[8px]">
-            {copy.explore}
-          </span>
-          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[480px]:block sm:text-[11px]">
+          <span className="whitespace-nowrap text-[10px] font-bold uppercase tracking-[.08em] sm:text-[11px]">
             {otherLabel}
           </span>
-          <span className="hidden whitespace-nowrap text-[10px] font-bold min-[370px]:inline min-[480px]:hidden">
-            {shortLabel}
+          <span className="text-[8px] font-medium leading-tight opacity-75 sm:text-[9px]">
+            {copy.explore}
           </span>
         </span>
-        <ArrowRight
-          size={13}
-          aria-hidden="true"
-          className="hidden shrink-0 transition-transform group-hover:translate-x-0.5 min-[480px]:block"
-        />
+        <ArrowRight size={14} aria-hidden="true" className="shrink-0 transition-transform group-hover:translate-x-1" />
       </Link>
 
       <details
