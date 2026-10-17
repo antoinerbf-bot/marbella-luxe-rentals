@@ -697,10 +697,16 @@ function Index() {
   const whatsappLink = `https://wa.me/34623626724?text=${encodeURIComponent(c.whatsappMessage)}`;
   const services = c.services;
   const heroServiceLabels = {
-    fr: ["Gestion de propriété", "Services de conciergerie", "Gestion locative", "Assistance lifestyle"],
-    en: ["Property management", "Concierge services", "Rental management", "Lifestyle assistance"],
-    es: ["Gestión de propiedades", "Servicios de conserjería", "Gestión de alquileres", "Asistencia lifestyle"],
-    ar: ["إدارة العقارات", "خدمات الكونسيرج", "إدارة الإيجارات", "مساعدة أسلوب الحياة"],
+    fr: ["Gestion de propriété", "Conciergerie privée", "Location saisonnière", "Chef à domicile"],
+    en: ["Property management", "Private concierge", "Holiday rentals", "Private chef"],
+    es: ["Gestión de propiedades", "Conserjería privada", "Alquiler vacacional", "Chef privado"],
+    ar: ["إدارة العقارات", "خدمات الكونسيرج", "إيجارات العطلات", "طاهٍ خاص"],
+  }[locale];
+  const heroCopy = {
+    fr: { subtitle: "PRESTIGE SERVICE", region: "MARBELLA & MIJAS", tagline: "Une présence locale discrète pour des propriétés exceptionnelles sur la Costa del Sol" },
+    en: { subtitle: "PRESTIGE SERVICE", region: "MARBELLA & MIJAS", tagline: "Discreet local care for exceptional properties on the Costa del Sol" },
+    es: { subtitle: "SERVICIO DE PRESTIGIO", region: "MARBELLA & MIJAS", tagline: "Una presencia local discreta para propiedades excepcionales en la Costa del Sol" },
+    ar: { subtitle: "خدمات راقية", region: "ماربيا وميخاس", tagline: "رعاية محلية راقية للعقارات الاستثنائية في كوستا ديل سول" },
   }[locale];
 
   return (
@@ -737,16 +743,16 @@ function Index() {
             fetchPriority="high"
           />
           <h1>SOLVEIG’S</h1>
-          <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
+          <p className="solveig-cinematic-subtitle">{heroCopy.subtitle}</p>
           <span className="solveig-cinematic-rule" />
-          <p className="solveig-cinematic-region">MARBELLA &amp; MIJAS</p>
-          <p className="solveig-cinematic-tagline">Une présence locale discrète pour<br className="desktop-break" /> des propriétés exceptionnelles sur la Costa del Sol</p>
+          <p className="solveig-cinematic-region">{heroCopy.region}</p>
+          <p className="solveig-cinematic-tagline">{heroCopy.tagline}</p>
         </div>
-        <nav className="solveig-cinematic-services" aria-label="Découvrir nos services">
-          <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>PROPERTY<br/>MANAGEMENT</span><i>→</i></Link>
-          <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>CONCIERGE<br/>SERVICES</span><i>→</i></Link>
-          <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>RENTAL<br/>MANAGEMENT</span><i>→</i></Link>
-          <Link to="/services/chef-a-domicile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 27a13 13 0 1 1 26 0v4H11zM15 31v10h18V31M20 41v3h8v-3"/></svg><span>CHEF<br/>À DOMICILE</span><i>→</i></Link>
+        <nav className="solveig-cinematic-services" aria-label={c.allServices}>
+          <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>{heroServiceLabels[0]}</span><i>→</i></Link>
+          <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>{heroServiceLabels[1]}</span><i>→</i></Link>
+          <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>{heroServiceLabels[2]}</span><i>→</i></Link>
+          <Link to="/services/chef-a-domicile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 27a13 13 0 1 1 26 0v4H11zM15 31v10h18V31M20 41v3h8v-3"/></svg><span>{heroServiceLabels[3]}</span><i>→</i></Link>
         </nav>
         <a href="#services" className="solveig-cinematic-scroll" aria-label="Découvrir la suite">DÉCOUVRIR <span>↓</span></a>
       </section>
