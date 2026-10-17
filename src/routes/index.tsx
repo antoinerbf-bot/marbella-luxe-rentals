@@ -731,7 +731,7 @@ function Index() {
             <Link to="/contact">{navCopy.contact}</Link>
           </nav>
           <div className="solveig-cinematic-actions">
-            <Link to="/locations-maroc" className="solveig-outline-control"><span className="solveig-morocco-flag" aria-hidden="true">🇲🇦</span><span className="solveig-morocco-label">UNIVERS MAROCAIN</span></Link>
+            <Link to="/locations-maroc" className="solveig-outline-control" aria-label={locale === "fr" ? "Découvrir notre univers du Maroc" : locale === "en" ? "Discover our Moroccan universe" : locale === "es" ? "Descubrir nuestro universo marroquí" : "اكتشف عالمنا المغربي"}><span className="solveig-morocco-label">{locale === "fr" ? "UNIVERS DU MAROC" : locale === "en" ? "MOROCCAN UNIVERSE" : locale === "es" ? "UNIVERSO MARROQUÍ" : "العالم المغربي"}</span><ArrowRight size={13} aria-hidden="true" /></Link>
             <div className="solveig-locale-control"><UniverseLanguageMenu universe="costa" /></div>
             <button type="button" className="solveig-mobile-menu" aria-label={navCopy.openMenu} onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
           </div>
