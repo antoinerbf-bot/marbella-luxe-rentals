@@ -56,4 +56,24 @@ export const blogArticles = [
       "Le plus beau souvenir d’une réception tient souvent à cela : le temps passé ensemble, sans regarder l’heure ni se préoccuper de la cuisine.",
     ],
   },
+  {
+    slug: "chef-a-domicile-marbella-mijas",
+    category: "L’art de recevoir",
+    title: "Chef à domicile à Marbella : une expérience privée dans votre villa",
+    excerpt:
+      "Un dîner imaginé autour de vos envies, une cuisine de saison et le plaisir de recevoir dans l’intimité de votre villa sur la Costa del Sol.",
+    image:
+      "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?auto=format&fit=crop&w=1400&q=85",
+    imageAlt: "Préparation d’un repas dans une cuisine lumineuse",
+    imageCredit: "Image Unsplash",
+    imageCreditUrl: "https://unsplash.com/",
+    readingTime: "4 min",
+    paragraphs: [
+      "Séjourner dans une villa à Marbella ou à Mijas permet de profiter de la Costa del Sol à son propre rythme. Faire venir un chef à domicile prolonge cette liberté : le repas se déroule chez vous, dans un cadre familier, sans interrompre le moment passé avec vos proches.",
+      "L’expérience commence par un échange autour de l’occasion, du nombre de convives, des préférences et des éventuelles contraintes alimentaires. Ces informations permettent d’imaginer un format adapté, qu’il s’agisse d’un dîner à deux, d’un repas en famille ou d’une réception privée. Le menu et les détails pratiques sont définis avec le chef selon votre demande.",
+      "Le parcours de Dominique Hybord s’est construit sur plusieurs décennies de métier. Il commence son apprentissage à 14 ans, se forme notamment à Paris et poursuit son expérience dans des maisons reconnues, dont l’Auberge du Père Bise à Talloires. Il ouvre ensuite La Fleur de Sel à Cevins, son village natal. Cette histoire culinaire nourrit aujourd’hui une approche centrée sur le savoir-faire et le plaisir de partager.",
+      "Pour préparer une demande, précisez la date envisagée, le lieu du repas et le type d’occasion. Vous pouvez également indiquer vos préférences, allergies ou besoins alimentaires afin que ces éléments soient pris en compte dès le premier échange. La demande permet de discuter du projet ; la disponibilité et les conditions sont confirmées séparément.",
+      "À Marbella, Mijas et dans les environs, un chef privé permet de faire de la table un moment central du séjour, sans imposer un format standardisé. L’objectif est simple : une expérience culinaire pensée pour votre occasion et le plaisir d’être pleinement présent auprès de vos invités."
+    ],
+  },
 ] as const;

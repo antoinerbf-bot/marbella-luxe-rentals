@@ -104,11 +104,7 @@ const copy = {
       "De la surveillance de votre maison à l’accueil de vos invités, chaque intervention est pensée comme une extension naturelle de votre propriété.",
     featureEyebrow: "Votre maison, notre attention",
     featureTitle: (
-      <>
-        Le luxe commence
-        <br />
-        quand tout semble <span>simple.</span>
-      </>
+      <>Votre propriété, <span>notre attention.</span></>
     ),
     featureText:
       "Une belle propriété ne se résume pas à quatre murs. Elle vit, elle s’entretient, elle accueille. Notre rôle est de préserver cette qualité dans le temps et de rendre chaque interaction plus fluide.",
@@ -196,11 +192,7 @@ const copy = {
     ],
     propertyEyebrow: "Votre maison, notre attention",
     propertyTitle: (
-      <>
-        Le luxe commence
-        <br />
-        quand tout semble <span>simple.</span>
-      </>
+      <>Votre propriété, <span>notre attention.</span></>
     ),
     propertyText:
       "Une belle propriété ne se résume pas à quatre murs. Elle vit, elle s’entretient, elle accueille. Notre rôle est de préserver cette qualité dans le temps et de rendre chaque interaction plus fluide.",
@@ -265,11 +257,7 @@ const copy = {
       "From watching over your home to welcoming your guests, every intervention is designed as a natural extension of your property.",
     featureEyebrow: "Your home, our attention",
     featureTitle: (
-      <>
-        Luxury begins
-        <br />
-        when everything feels <span>simple.</span>
-      </>
+      <>Your property, <span>our attention.</span></>
     ),
     featureText:
       "A beautiful property is more than four walls. It lives, it is maintained, it welcomes. Our role is to preserve that quality over time and make every interaction effortless.",
@@ -357,11 +345,7 @@ const copy = {
     ],
     propertyEyebrow: "Your home, our attention",
     propertyTitle: (
-      <>
-        Luxury begins
-        <br />
-        when everything feels <span>simple.</span>
-      </>
+      <>Your property, <span>our attention.</span></>
     ),
     propertyText:
       "A beautiful property is more than four walls. It lives, it is maintained, it welcomes. Our role is to preserve that quality over time and make every interaction effortless.",
@@ -420,11 +404,7 @@ const copy = {
       "Desde la supervisión de su vivienda hasta la bienvenida de sus invitados, cada intervención se concibe como una extensión natural de su propiedad.",
     featureEyebrow: "Su casa, nuestra atención",
     featureTitle: (
-      <>
-        El lujo comienza
-        <br />
-        cuando todo parece <span>simple.</span>
-      </>
+      <>Su propiedad, <span>nuestra atención.</span></>
     ),
     featureText:
       "Una propiedad hermosa es mucho más que cuatro paredes. Vive, se mantiene y recibe. Nuestro papel es preservar esa calidad y hacer que cada interacción sea más sencilla.",
@@ -512,11 +492,7 @@ const copy = {
     ],
     propertyEyebrow: "Su casa, nuestra atención",
     propertyTitle: (
-      <>
-        El lujo comienza
-        <br />
-        cuando todo parece <span>simple.</span>
-      </>
+      <>Su propiedad, <span>nuestra atención.</span></>
     ),
     propertyText:
       "Una propiedad hermosa es mucho más que cuatro paredes. Vive, se mantiene y recibe. Nuestro papel es preservar esa calidad y hacer que cada interacción sea más sencilla.",
@@ -581,11 +557,7 @@ const copy = {
       "من مراقبة منزلك إلى استقبال ضيوفك، كل تدخل يُصمم كامتداد طبيعي لعقارك.",
     featureEyebrow: "منزلك، اهتمامنا",
     featureTitle: (
-      <>
-        يبدأ الفخامة
-        <br />
-        عندما يبدو كل شيء <span>بسيطاً.</span>
-      </>
+      <>عقارك، <span>اهتمامنا.</span></>
     ),
     featureText:
       "العقار الجميل أكثر من أربعة جدران. يعيش، يُصان، يستقبل. دورنا هو الحفاظ على هذه الجودة مع الوقت وجعل كل تفاعل أكثر سلاسة.",
@@ -673,11 +645,7 @@ const copy = {
     ],
     propertyEyebrow: "منزلك، اهتمامنا",
     propertyTitle: (
-      <>
-        يبدأ الفخامة
-        <br />
-        عندما يبدو كل شيء <span>بسيطاً.</span>
-      </>
+      <>عقارك، <span>اهتمامنا.</span></>
     ),
     propertyText:
       "العقار الجميل أكثر من أربعة جدران. يعيش، يُصان، يستقبل. دورنا هو الحفاظ على هذه الجودة مع الوقت وجعل كل تفاعل أكثر سلاسة.",
@@ -729,10 +697,22 @@ function Index() {
   const whatsappLink = `https://wa.me/34623626724?text=${encodeURIComponent(c.whatsappMessage)}`;
   const services = c.services;
   const heroServiceLabels = {
-    fr: ["Gestion de propriété", "Services de conciergerie", "Gestion locative", "Assistance lifestyle"],
-    en: ["Property management", "Concierge services", "Rental management", "Lifestyle assistance"],
-    es: ["Gestión de propiedades", "Servicios de conserjería", "Gestión de alquileres", "Asistencia lifestyle"],
-    ar: ["إدارة العقارات", "خدمات الكونسيرج", "إدارة الإيجارات", "مساعدة أسلوب الحياة"],
+    fr: ["Gestion de propriété", "Conciergerie privée", "Location saisonnière", "Chef à domicile"],
+    en: ["Property management", "Private concierge", "Holiday rentals", "Private chef"],
+    es: ["Gestión de propiedades", "Conserjería privada", "Alquiler vacacional", "Chef privado"],
+    ar: ["إدارة العقارات", "خدمات الكونسيرج", "إيجارات العطلات", "طاهٍ خاص"],
+  }[locale];
+  const heroCopy = {
+    fr: { subtitle: "PRESTIGE SERVICE", region: "MARBELLA & MIJAS", tagline: "Une présence locale discrète pour des propriétés exceptionnelles sur la Costa del Sol" },
+    en: { subtitle: "PRESTIGE SERVICE", region: "MARBELLA & MIJAS", tagline: "Discreet local care for exceptional properties on the Costa del Sol" },
+    es: { subtitle: "SERVICIO DE PRESTIGIO", region: "MARBELLA & MIJAS", tagline: "Una presencia local discreta para propiedades excepcionales en la Costa del Sol" },
+    ar: { subtitle: "خدمات راقية", region: "ماربيا وميخاس", tagline: "رعاية محلية راقية للعقارات الاستثنائية في كوستا ديل سول" },
+  }[locale];
+  const navCopy = {
+    fr: { home: "Accueil", marbella: "Marbella", mijas: "Mijas", services: "Nos services", properties: "Propriétés", about: "À propos", contact: "Contact", openMenu: "Ouvrir le menu", navLabel: "Navigation principale", discover: "Découvrir nos services" },
+    en: { home: "Home", marbella: "Marbella", mijas: "Mijas", services: "Our services", properties: "Properties", about: "About", contact: "Contact", openMenu: "Open menu", navLabel: "Main navigation", discover: "Explore our services" },
+    es: { home: "Inicio", marbella: "Marbella", mijas: "Mijas", services: "Servicios", properties: "Propiedades", about: "Nosotros", contact: "Contacto", openMenu: "Abrir menú", navLabel: "Navegación principal", discover: "Descubrir servicios" },
+    ar: { home: "الرئيسية", marbella: "ماربيا", mijas: "ميخاس", services: "خدماتنا", properties: "العقارات", about: "من نحن", contact: "اتصل بنا", openMenu: "فتح القائمة", navLabel: "التنقل الرئيسي", discover: "اكتشف خدماتنا" },
   }[locale];
 
   return (
@@ -741,52 +721,44 @@ function Index() {
         <div className="solveig-cinematic-backdrop" aria-hidden="true" />
         <div className="solveig-cinematic-shade" aria-hidden="true" />
         <header className="solveig-cinematic-header">
-          <Link to="/" className="solveig-mini-brand" aria-label="Solveig’s Prestige Service — Accueil">
-            <span>SOLVEIG’S</span><small>PRESTIGE SERVICE</small>
-          </Link>
-          <nav className="solveig-cinematic-nav" aria-label="Navigation principale">
-            <Link to="/" className="is-current">ACCUEIL</Link>
-            <Link to="/zones">MARBELLA</Link>
-            <Link to="/zones">MIJAS</Link>
-            <Link to="/services">NOS SERVICES</Link>
-            <Link to="/location-saisonniere">PROPRIÉTÉS</Link>
-            <Link to="/a-propos">À PROPOS</Link>
-            <Link to="/contact">CONTACT</Link>
+          <nav className="solveig-cinematic-nav" aria-label={navCopy.navLabel}>
+            <Link to="/" className="is-current">{navCopy.home}</Link>
+            <Link to="/zones">{navCopy.marbella}</Link>
+            <Link to="/zones">{navCopy.mijas}</Link>
+            <Link to="/services">{navCopy.services}</Link>
+            <Link to="/location-saisonniere">{navCopy.properties}</Link>
+            <Link to="/a-propos">{navCopy.about}</Link>
+            <Link to="/contact">{navCopy.contact}</Link>
           </nav>
           <div className="solveig-cinematic-actions">
-            <Link to="/locations-maroc" className="solveig-outline-control"><span className="solveig-morocco-flag" aria-hidden="true">🇲🇦</span><span className="solveig-morocco-label">UNIVERS MAROCAIN</span></Link>
+            <Link to="/locations-maroc" className="solveig-outline-control" aria-label={locale === "fr" ? "Découvrir notre univers du Maroc" : locale === "en" ? "Discover our Moroccan universe" : locale === "es" ? "Descubrir nuestro universo marroquí" : "اكتشف عالمنا المغربي"}><span className="solveig-morocco-label">{locale === "fr" ? "UNIVERS DU MAROC" : locale === "en" ? "MOROCCAN UNIVERSE" : locale === "es" ? "UNIVERSO MARROQUÍ" : "العالم المغربي"}</span><ArrowRight size={13} aria-hidden="true" /></Link>
             <div className="solveig-locale-control"><UniverseLanguageMenu universe="costa" /></div>
-            <button type="button" className="solveig-mobile-menu" aria-label="Ouvrir le menu" onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
+            <button type="button" className="solveig-mobile-menu" aria-label={navCopy.openMenu} onClick={() => document.querySelector(".solveig-mobile-drawer")?.classList.toggle("is-open")}>☰</button>
           </div>
         </header>
         <nav className="solveig-mobile-drawer" aria-label="Menu mobile">
-          <Link to="/">Accueil</Link><Link to="/zones">Marbella & Mijas</Link><Link to="/services">Nos services</Link><Link to="/location-saisonniere">Propriétés</Link><Link to="/a-propos">À propos</Link><Link to="/contact">Contact</Link><Link to="/locations-maroc">Univers marocain 🇲🇦</Link>
+          <Link to="/">{navCopy.home}</Link><Link to="/zones">{navCopy.marbella} & {navCopy.mijas}</Link><Link to="/services">{navCopy.services}</Link><Link to="/location-saisonniere">{navCopy.properties}</Link><Link to="/a-propos">{navCopy.about}</Link><Link to="/contact">{navCopy.contact}</Link><Link to="/locations-maroc">{locale === "fr" ? "Univers du Maroc" : locale === "en" ? "Moroccan universe" : locale === "es" ? "Universo marroquí" : "العالم المغربي"}</Link>
         </nav>
         <div className="solveig-cinematic-center">
-          <svg className="solveig-cinematic-monogram" viewBox="0 0 220 170" role="img" aria-label="Monogramme SP entrelacé avec branche d’olivier">
-            <defs><linearGradient id="solveigGold" x1="0" y1="0" x2="0.9" y2="1"><stop offset="0" stopColor="#f4dfa5"/><stop offset=".45" stopColor="#c29a52"/><stop offset="1" stopColor="#f0d28c"/></linearGradient></defs>
-            <g fill="none" stroke="url(#solveigGold)" strokeWidth="1.25" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M29 145C45 121 52 88 53 29C68 61 84 87 112 113"/>
-              <path d="M41 125C26 120 19 108 21 94C35 100 42 111 44 123"/>
-              <path d="M48 91C34 82 32 68 37 56C49 65 52 77 50 89"/>
-              <path d="M53 57C48 44 55 30 65 23C69 37 64 50 57 59"/>
-              <path d="M62 72C76 78 84 92 85 104"/>
-              <path d="M31 144C53 149 72 148 91 141"/>
-            </g>
-            <text x="49" y="128" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="118" fontWeight="400" letterSpacing="-17">S</text>
-            <text x="91" y="143" fill="url(#solveigGold)" fontFamily="Baskerville, 'Times New Roman', serif" fontSize="119" fontWeight="400" letterSpacing="-17">P</text>
-          </svg>
+          <img
+            className="solveig-cinematic-monogram"
+            src="/sp-logo.svg"
+            alt="Monogramme SP de Solveig’s Prestige Service"
+            width={180}
+            height={130}
+            fetchPriority="high"
+          />
           <h1>SOLVEIG’S</h1>
-          <p className="solveig-cinematic-subtitle">PRESTIGE SERVICE</p>
+          <p className="solveig-cinematic-subtitle">{heroCopy.subtitle}</p>
           <span className="solveig-cinematic-rule" />
-          <p className="solveig-cinematic-region">MARBELLA &amp; MIJAS</p>
-          <p className="solveig-cinematic-tagline">Une présence locale discrète pour<br className="desktop-break" /> des propriétés exceptionnelles sur la Costa del Sol</p>
+          <p className="solveig-cinematic-region">{heroCopy.region}</p>
+          <p className="solveig-cinematic-tagline">{heroCopy.tagline}</p>
         </div>
-        <nav className="solveig-cinematic-services" aria-label="Découvrir nos services">
-          <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>PROPERTY<br/>MANAGEMENT</span><i>→</i></Link>
-          <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>CONCIERGE<br/>SERVICES</span><i>→</i></Link>
-          <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>RENTAL<br/>MANAGEMENT</span><i>→</i></Link>
-          <Link to="/services/chef-a-domicile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 27a13 13 0 1 1 26 0v4H11zM15 31v10h18V31M20 41v3h8v-3"/></svg><span>CHEF<br/>À DOMICILE</span><i>→</i></Link>
+        <nav className="solveig-cinematic-services" aria-label={navCopy.discover}>
+          <Link to="/gestion-propriete"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M4 22 24 5l20 17M10 19v24h28V19M20 43V29h8v14"/></svg><span>{heroServiceLabels[0]}</span><i>→</i></Link>
+          <Link to="/conciergerie"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M8 34h32l-4-6H12zM13 28a11 11 0 0 1 22 0M24 6v6M20 6h8"/></svg><span>{heroServiceLabels[1]}</span><i>→</i></Link>
+          <Link to="/location-saisonniere"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="31" cy="14" r="9"/><path d="m25 20-19 19 5 5 19-19M27 14h8"/></svg><span>{heroServiceLabels[2]}</span><i>→</i></Link>
+          <Link to="/services/chef-a-domicile"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M11 27a13 13 0 1 1 26 0v4H11zM15 31v10h18V31M20 41v3h8v-3"/></svg><span>{heroServiceLabels[3]}</span><i>→</i></Link>
         </nav>
         <a href="#services" className="solveig-cinematic-scroll" aria-label="Découvrir la suite">DÉCOUVRIR <span>↓</span></a>
       </section>
@@ -811,7 +783,7 @@ function Index() {
             {services.map(([number, title, text, to, Icon], index) => (
               <Link key={to} to={to} className="solveig-service-card group">
                 <div className="solveig-service-image-wrap">
-                  <img src={[media.hero, "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1000&q=85", "https://images.unsplash.com/photo-1511818966892-d7d671e672a2?auto=format&fit=crop&w=1000&q=85", "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1000&q=85"][index]} alt="" loading="lazy" className="solveig-service-image" />
+                  <img src={["https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1200&q=88", "https://images.unsplash.com/photo-1581578731548-c64695cc6952?auto=format&fit=crop&w=1200&q=88"][index]} alt="" loading="lazy" className="solveig-service-image" />
                   <span className="solveig-service-image-number">{number}</span>
                 </div>
                 <div className="solveig-service-card-content">
@@ -861,23 +833,7 @@ function Index() {
               </Link>
             </Button>
           </div>
-          <div className="grid grid-cols-[1.35fr_.65fr] gap-3 sm:gap-4">
-            <ScrollParallaxImage
-              src={media.hero}
-              alt="Villa de prestige à Marbella"
-              className="row-span-2 min-h-[300px] rounded-[1.6rem] sm:min-h-[430px]"
-            />
-            <ScrollParallaxImage
-              src={media.oldTown}
-              alt="Marbella historique"
-              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
-            />
-            <ScrollParallaxImage
-              src={media.mijas}
-              alt="Mijas, Andalousie"
-              className="min-h-[145px] rounded-[1.6rem] sm:min-h-[205px]"
-            />
-          </div>
+
         </div>
       </section>
 

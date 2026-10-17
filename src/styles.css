@@ -318,737 +318,225 @@ body { overflow-x: hidden; }
 }
 
 
-/* Cinematic homepage rebuilt as real responsive HTML, not a flattened screenshot. */
-.min-h-screen:has(.solveig-cinematic-home) > header { display:none !important; }
-.solveig-cinematic-home { position:relative; isolation:isolate; min-height:100svh; height:100svh; overflow:hidden; color:#fffaf1; background:#172f3b; }
-.solveig-cinematic-backdrop { position:absolute; inset:0; z-index:-3; background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/8d812521-061b-4c31-8168-29f22818498f.png"); background-position:center 53%; background-size:cover; transform:scale(1.02); animation:solveigHeroReveal 1.4s ease-out both; }
-.solveig-cinematic-shade { position:absolute; inset:0; z-index:-2; background:linear-gradient(180deg,rgba(8,25,39,.52) 0%,rgba(18,34,41,.08) 30%,rgba(17,30,33,.08) 56%,rgba(25,23,20,.64) 100%),linear-gradient(90deg,rgba(21,24,23,.2),transparent 42%,rgba(20,30,37,.12)); }
-.solveig-cinematic-header { position:absolute; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; gap:22px; padding:20px clamp(20px,4vw,64px); }
-.solveig-mini-brand { display:flex; flex-direction:column; color:#fff9ef; text-decoration:none; font-family:Georgia,serif; font-size:clamp(17px,1.7vw,25px); line-height:1; white-space:nowrap; letter-spacing:.02em; }
-.solveig-mini-brand small { margin-top:5px; font:500 8px/1.2 system-ui,sans-serif; letter-spacing:.26em; }
-.solveig-cinematic-nav { display:flex; align-items:center; justify-content:center; gap:clamp(10px,1.7vw,27px); }
-.solveig-cinematic-nav a { color:#fffaf2; text-decoration:none; font:500 11px/1.3 system-ui,sans-serif; white-space:nowrap; letter-spacing:.04em; padding:8px 0; border-bottom:1px solid transparent; transition:color .25s,border-color .25s; }
-.solveig-cinematic-nav a:hover,.solveig-cinematic-nav a.is-current { border-color:#d6b36f; color:#f3d89d; }
-.solveig-cinematic-actions { display:flex; align-items:center; gap:10px; }
-.solveig-outline-control { display:inline-flex; align-items:center; gap:9px; border:1px solid rgba(235,198,128,.85); border-radius:999px; padding:11px 16px; color:white; text-decoration:none; white-space:nowrap; font:500 10px/1 system-ui,sans-serif; letter-spacing:.05em; background:rgba(15,44,60,.24); backdrop-filter:blur(12px); }
-.solveig-locale-control .flex { gap:6px; }
-.solveig-locale-control .language-picker summary { border-color:rgba(235,198,128,.8)!important; background:rgba(15,44,60,.3)!important; color:white!important; border-radius:999px!important; min-height:40px!important; }
-.solveig-locale-control .language-picker summary svg { color:#fff!important; }
-.solveig-locale-control .language-picker summary span { color:white!important; }
-.solveig-locale-control > div > a { display:none!important; }
-.solveig-mobile-menu { display:none; border:1px solid #e5c581; color:white; background:rgba(15,44,60,.25); width:42px;height:42px;border-radius:50%;font-size:23px; }
-.solveig-mobile-drawer { display:none; }
-.solveig-cinematic-center { position:absolute; z-index:2; top:48%; left:50%; width:min(680px,90vw); transform:translate(-50%,-50%); text-align:center; color:#1e1b18; animation:solveigContentReveal 1.1s .1s ease both; }
-.solveig-cinematic-monogram { display:block; width:clamp(100px,12vw,165px); height:auto; margin:0 auto -4px; }
-.solveig-cinematic-center h1 { margin:0; font:400 clamp(42px,6.2vw,86px)/.98 Georgia,'Times New Roman',serif; letter-spacing:.015em; }
-.solveig-cinematic-subtitle { margin:8px 0 0; font:500 clamp(12px,1.6vw,21px)/1.4 Georgia,serif; letter-spacing:.31em; }
-.solveig-cinematic-rule { display:block; width:84px; height:1px; margin:17px auto 13px; background:#c59b54; }
-.solveig-cinematic-region { margin:0; color:#766a58; font:500 clamp(10px,1.3vw,17px)/1.5 system-ui,sans-serif; letter-spacing:.28em; }
-.solveig-cinematic-tagline { margin:19px auto 0; font:400 clamp(15px,1.55vw,22px)/1.35 Georgia,serif; color:#29231d; text-wrap:balance; }
-.solveig-cinematic-services { position:absolute; z-index:5; bottom:clamp(28px,5vh,60px); left:50%; transform:translateX(-50%); width:min(850px,75vw); display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); }
-.solveig-cinematic-services a { min-width:0; display:flex; flex-direction:column; align-items:center; justify-content:flex-start; gap:8px; padding:0 12px; color:#fffaf0; text-decoration:none; text-align:center; position:relative; transition:transform .25s,color .25s; }
-.solveig-cinematic-services a+a { border-left:1px solid rgba(238,209,154,.65); }
-.solveig-cinematic-services a:hover { color:#f4d18b; transform:translateY(-5px); }
-.solveig-cinematic-services svg { width:42px;height:42px; fill:none; stroke:#e9c780; stroke-width:1.7; stroke-linecap:round;stroke-linejoin:round; }
-.solveig-cinematic-services span { font:500 clamp(9px,.9vw,12px)/1.45 system-ui,sans-serif; letter-spacing:.09em; }
-.solveig-cinematic-services i { display:grid; place-items:center; width:34px;height:34px;border:1px solid #e7c477;border-radius:50%;font-style:normal;font-size:21px;color:#f0d18f;transition:background .25s,color .25s; }
-.solveig-cinematic-services a:hover i { background:#e7c477;color:#1d2b30; }
-.solveig-cinematic-scroll { position:absolute; bottom:12px;left:50%;transform:translateX(-50%); color:#fff4df; text-decoration:none;font:500 9px/1.4 system-ui,sans-serif;letter-spacing:.18em;display:flex;gap:10px;align-items:center;opacity:.7; }
-.solveig-cinematic-scroll span {font-size:15px;}
-@keyframes solveigHeroReveal { from {transform:scale(1.08);filter:brightness(.8)} to {transform:scale(1.02);filter:brightness(1)} }
-@keyframes solveigContentReveal { from {opacity:0;translate:0 16px} to {opacity:1;translate:0 0} }
-@media(max-width:1150px) {
- .solveig-cinematic-header {gap:12px;padding:18px 20px}
- .solveig-cinematic-nav {gap:12px}
- .solveig-cinematic-nav a {font-size:9px}
- .solveig-mini-brand {display:none}
- .solveig-cinematic-services {width:90vw}
-}
-@media(max-width:767px) {
- .solveig-cinematic-home {height:auto;min-height:100svh;overflow:hidden;padding-bottom:20px;display:flex;flex-direction:column;justify-content:flex-start;}
- .solveig-cinematic-backdrop {background-position:42% center;}
- .solveig-cinematic-shade {background:linear-gradient(180deg,rgba(8,25,39,.72),rgba(15,31,37,.1) 24%,rgba(17,30,33,.05) 55%,rgba(25,23,20,.75));}
- .solveig-cinematic-header {position:relative;gap:8px;padding:14px 14px;align-items:center;}
- .solveig-mini-brand {display:flex;font-size:16px}
- .solveig-mini-brand small {font-size:6px;letter-spacing:.19em}
- .solveig-cinematic-nav {display:none}
- .solveig-cinematic-actions {margin-left:auto;gap:6px}
- .solveig-outline-control {font-size:0;padding:9px;width:38px;height:38px;justify-content:center}
- .solveig-outline-control span:last-child {display:none}
- .solveig-locale-control .language-picker summary {min-height:38px!important;padding:0 9px!important}
- .solveig-locale-control .language-picker summary svg:first-child {display:none}
- .solveig-mobile-menu {display:block}
- .solveig-mobile-drawer.is-open {position:absolute;top:68px;left:14px;right:14px;z-index:30;display:grid;gap:0;padding:10px;border:1px solid rgba(227,193,132,.65);border-radius:18px;background:rgba(17,36,46,.96);backdrop-filter:blur(18px)}
- .solveig-mobile-drawer a {padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.12);color:#fff8e9;text-decoration:none;font:500 12px system-ui,sans-serif;letter-spacing:.07em}
- .solveig-cinematic-center {position:relative;top:auto;left:auto;transform:none;width:100%;padding:clamp(26px,7vh,56px) 18px 20px;margin:auto 0 0;animation:solveigContentReveal .9s ease both}
- .solveig-cinematic-monogram {width:clamp(82px,25vw,120px);margin-bottom:0}
- .solveig-cinematic-center h1 {font-size:clamp(40px,12vw,60px)}
- .solveig-cinematic-subtitle {font-size:11px;letter-spacing:.25em;margin-top:5px}
- .solveig-cinematic-rule {margin:12px auto 10px}
- .solveig-cinematic-region {font-size:10px;letter-spacing:.2em}
- .solveig-cinematic-tagline {font-size:clamp(14px,4vw,17px);margin-top:14px;max-width:340px;color:#241f1a}
- .desktop-break {display:none}
- .solveig-cinematic-services {position:relative;left:auto;bottom:auto;transform:none;width:100%;margin:16px auto 0;padding:14px 10px 0;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:18px;background:rgba(20,27,28,.18);backdrop-filter:blur(2px)}
- .solveig-cinematic-services a {padding:8px 6px;gap:7px}
- .solveig-cinematic-services a:nth-child(3) {border-left:0}
- .solveig-cinematic-services a:nth-child(2n) {border-left:1px solid rgba(238,209,154,.55)}
- .solveig-cinematic-services svg {width:34px;height:34px}
- .solveig-cinematic-services span {font-size:10px}
- .solveig-cinematic-services i {width:29px;height:29px}
- .solveig-cinematic-scroll {display:none}
-}
-@media(prefers-reduced-motion:reduce) {
- .solveig-cinematic-backdrop,.solveig-cinematic-center {animation:none}
- .solveig-cinematic-services a {transition:none}
-}
-
-
-/* Critical homepage-only cleanup: suppress the global floating shell on the cinematic landing page. */
-body:has(.solveig-cinematic-home) .min-h-screen > header,
+/* Single source of truth for the cinematic homepage. */
+.min-h-screen:has(.solveig-cinematic-home) > header,
 body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !important; }
-body:has(.solveig-cinematic-home) .solveig-cinematic-home { margin-top:0 !important; }
-@media(max-width:767px) {
- body:has(.solveig-cinematic-home) .solveig-cinematic-header { padding-top:max(12px, env(safe-area-inset-top)); }
- body:has(.solveig-cinematic-home) .solveig-cinematic-center { color:#211b16; }
- body:has(.solveig-cinematic-home) .solveig-cinematic-tagline { color:#211b16; text-shadow:0 1px 12px rgba(255,245,220,.55); }
-}
 
-
-/* Hard-scope the legacy shell header off on the homepage only; retain it everywhere else. */
-body:has(section.solveig-cinematic-home) header.fixed.inset-x-0.top-0,
-body:has(section.solveig-cinematic-home) .min-h-screen > header,
-body:has(section.solveig-cinematic-home) .min-h-screen header:not(.solveig-cinematic-header):not(.solveig-mobile-drawer) { display:none !important; }
-body:has(section.solveig-cinematic-home) .solveig-cinematic-home { margin:0 !important; padding-top:0 !important; }
-body:has(section.solveig-cinematic-home) .solveig-cinematic-backdrop {
- background-image: url("https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/8d812521-061b-4c31-8168-29f22818498f.png");
-}
-
-
-/* October 2026 refinement: premium readability, original monogram, image-led service cards and restrained parallax. */
 .solveig-cinematic-home {
-  min-height: min(920px, 100svh) !important;
-  height: max(760px, 100svh) !important;
-  max-height: none !important;
+  position:relative; isolation:isolate; display:flex; flex-direction:column;
+  min-height:760px; height:100svh; overflow:hidden; margin:0 !important;
+  color:#fffaf1; background:#172f3b;
 }
 .solveig-cinematic-backdrop {
-  background-position: center 54%;
-  transform: scale(1.08);
-  will-change: transform;
-  animation: solveigSlowParallax 24s ease-in-out infinite alternate;
+  position:absolute; inset:0; z-index:0; pointer-events:none;
+  background-image:url("https://images.unsplash.com/photo-1759405198466-d7f97ef8b4a7?auto=format&fit=crop&w=3000&q=90");
+  background-position:center 53%; background-size:cover;
 }
 .solveig-cinematic-shade {
-  background:
-    linear-gradient(180deg, rgba(8,25,39,.64) 0%, rgba(8,25,39,.14) 19%, rgba(255,244,222,.02) 42%, rgba(17,23,25,.12) 64%, rgba(16,20,21,.70) 100%),
-    linear-gradient(90deg, rgba(13,22,26,.13), rgba(255,248,233,.08) 35%, rgba(255,248,233,.04) 68%, rgba(10,24,32,.16));
+  position:absolute; inset:0; z-index:1; pointer-events:none;
+  background:linear-gradient(180deg,rgba(8,25,39,.48),rgba(8,25,39,.02) 35%,rgba(10,18,20,.08) 58%,rgba(10,18,20,.58));
 }
+.solveig-cinematic-header {
+  position:relative; z-index:20; display:flex; align-items:center; justify-content:space-between;
+  gap:18px; padding:20px clamp(18px,4vw,60px);
+}
+.solveig-mini-brand {display:flex;flex-direction:column;color:#fff9ef;text-decoration:none;font:400 clamp(17px,1.7vw,25px)/1 Georgia,serif;white-space:nowrap}
+.solveig-mini-brand small {margin-top:5px;font:500 8px/1.2 system-ui,sans-serif;letter-spacing:.26em}
+.solveig-cinematic-nav {display:flex;align-items:center;justify-content:center;gap:clamp(10px,1.7vw,25px);margin-left:auto}
+.solveig-cinematic-nav a {color:#fffaf2;text-decoration:none;font:500 11px/1.3 system-ui,sans-serif;white-space:nowrap;letter-spacing:.04em;padding:8px 0;border-bottom:1px solid transparent}
+.solveig-cinematic-nav a:hover,.solveig-cinematic-nav a.is-current {border-color:#d6b36f;color:#f3d89d}
+.solveig-cinematic-actions {display:flex;align-items:center;gap:9px}
+.solveig-outline-control {display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(235,198,128,.85);border-radius:999px;padding:11px 15px;color:white;text-decoration:none;white-space:nowrap;font:500 10px/1 system-ui,sans-serif;letter-spacing:.05em;background:rgba(15,44,60,.45)}
+.solveig-locale-control .flex {gap:6px}
+.solveig-locale-control .language-picker summary {border-color:rgba(235,198,128,.8)!important;background:rgba(15,44,60,.5)!important;color:white!important;border-radius:999px!important;min-height:40px!important}
+.solveig-locale-control .language-picker summary svg,.solveig-locale-control .language-picker summary span {color:white!important}
+.solveig-locale-control > div > a {display:none!important}
+.solveig-mobile-menu {display:none;border:1px solid #e5c581;color:white;background:rgba(15,44,60,.5);width:42px;height:42px;border-radius:50%;font-size:23px}
+.solveig-mobile-drawer {display:none}
+.solveig-mobile-drawer.is-open {position:absolute;top:68px;left:14px;right:14px;z-index:30;display:grid;gap:0;padding:10px;border:1px solid rgba(227,193,132,.65);border-radius:18px;background:rgba(17,36,46,.97)}
+.solveig-mobile-drawer a {padding:13px 14px;border-bottom:1px solid rgba(255,255,255,.12);color:#fff8e9;text-decoration:none;font:500 12px system-ui,sans-serif;letter-spacing:.07em}
 .solveig-cinematic-center {
-  top: 45% !important;
-  width: min(700px, 90vw);
-  padding: 24px clamp(18px, 3vw, 36px) 28px;
-  border: 1px solid rgba(255,255,255,.30);
-  border-radius: 3px;
-  background: linear-gradient(135deg, rgba(255,249,235,.20), rgba(255,249,235,.07));
-  box-shadow: 0 20px 80px rgba(32,26,18,.07);
-  backdrop-filter: blur(2px);
+  position:absolute;z-index:2;top:46%;left:50%;width:min(680px,90vw);
+  transform:translate(-50%,-50%);text-align:center;color:#211b16;
 }
-.solveig-cinematic-monogram {
-  width: clamp(105px, 11vw, 145px) !important;
-  height: auto !important;
-  max-height: 104px;
-  object-fit: contain;
-  margin: 0 auto 2px !important;
-  filter: drop-shadow(0 2px 8px rgba(255,249,235,.55));
+.solveig-cinematic-monogram {display:block;width:clamp(100px,12vw,155px);height:auto;margin:0 auto 0}
+.solveig-cinematic-center h1 {margin:0;font:400 clamp(42px,6.2vw,82px)/1 Georgia,'Times New Roman',serif;letter-spacing:.01em}
+.solveig-cinematic-subtitle {margin:8px 0 0;font:500 clamp(12px,1.5vw,20px)/1.4 Georgia,serif;letter-spacing:.28em}
+.solveig-cinematic-rule {display:block;width:76px;height:1px;margin:15px auto 12px;background:#c59b54}
+.solveig-cinematic-region {margin:0;color:#766a58;font:500 clamp(10px,1.2vw,16px)/1.5 system-ui,sans-serif;letter-spacing:.22em}
+.solveig-cinematic-tagline {max-width:560px;margin:17px auto 0;font:400 clamp(15px,1.5vw,21px)/1.45 Georgia,serif;color:#29231d;text-wrap:balance}
+.solveig-cinematic-services {position:absolute;z-index:5;bottom:36px;left:50%;transform:translateX(-50%);width:min(900px,82vw);display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.solveig-cinematic-services a {min-width:0;display:flex;flex-direction:column;align-items:center;gap:9px;padding:0 14px;color:#fffaf0;text-decoration:none;text-align:center}
+.solveig-cinematic-services a+a {border-left:1px solid rgba(238,209,154,.65)}
+.solveig-cinematic-services svg {width:38px;height:38px;fill:none;stroke:#e9c780;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.solveig-cinematic-services span {font:500 10px/1.45 system-ui,sans-serif;letter-spacing:.06em;text-shadow:0 2px 10px rgba(0,0,0,.65)}
+.solveig-cinematic-services i {display:grid;place-items:center;width:30px;height:30px;border:1px solid #e7c477;border-radius:50%;font-style:normal;font-size:19px;color:#f0d18f}
+.solveig-cinematic-scroll {position:absolute;bottom:10px;left:50%;transform:translateX(-50%);color:#fff4df;text-decoration:none;font:500 9px/1.4 system-ui,sans-serif;letter-spacing:.18em;display:flex;gap:10px;align-items:center;opacity:.7}
+.solveig-cinematic-scroll span {font-size:15px}
+@media(max-width:1150px) {
+  .solveig-mini-brand {display:none}
+  .solveig-cinematic-header {gap:10px;padding-inline:18px}
+  .solveig-cinematic-nav {gap:12px}
+  .solveig-cinematic-nav a {font-size:9px}
 }
-.solveig-cinematic-center h1 {
-  color: #181713;
-  font-size: clamp(43px, 5.5vw, 76px) !important;
-  text-shadow: 0 1px 18px rgba(255,250,239,.65);
+@media(max-width:767px) {
+  .solveig-cinematic-home {height:auto;min-height:100svh;overflow:hidden;padding-bottom:20px}
+  .solveig-cinematic-backdrop {background-position:43% center;background-size:auto 100%;background-size:cover}
+  .solveig-cinematic-shade {background:linear-gradient(180deg,rgba(8,25,39,.55),rgba(8,25,39,.06) 30%,rgba(10,18,20,.12) 65%,rgba(10,18,20,.68))}
+  .solveig-cinematic-header {padding:max(12px,env(safe-area-inset-top)) 12px 8px;gap:6px}
+  .solveig-cinematic-nav {display:none}
+  .solveig-cinematic-actions {margin-left:auto;gap:6px}
+  .solveig-outline-control {min-height:38px;padding:8px 10px;gap:5px;font-size:9px;letter-spacing:.025em}
+  .solveig-morocco-label {display:inline-block!important;font-size:9px!important;letter-spacing:.02em!important}
+  .solveig-locale-control .language-picker summary {min-height:38px!important;padding:0 8px!important}
+  .solveig-locale-control .language-picker summary svg:first-child {display:none}
+  .solveig-mobile-menu {display:block;flex:none;width:38px;height:38px}
+  .solveig-cinematic-center {position:relative;top:auto;left:auto;transform:none;width:100%;padding:24px 18px 10px;margin:auto 0 0}
+  .solveig-cinematic-monogram {width:clamp(76px,22vw,108px)}
+  .solveig-cinematic-center h1 {font-size:clamp(38px,10.5vw,52px);line-height:1.02}
+  .solveig-cinematic-subtitle {font-size:10px;letter-spacing:.2em;margin-top:5px}
+  .solveig-cinematic-rule {margin:10px auto 8px}
+  .solveig-cinematic-region {font-size:9px;letter-spacing:.16em}
+  .solveig-cinematic-tagline {font-size:15px;line-height:1.4;margin-top:11px;max-width:340px}
+  .desktop-break {display:none}
+  .solveig-cinematic-services {position:relative;left:auto;bottom:auto;transform:none;width:100%;margin:12px auto 0;padding:10px 10px 0;grid-template-columns:repeat(2,minmax(0,1fr));row-gap:12px;background:rgba(20,27,28,.18)}
+  .solveig-cinematic-services a {padding:8px 6px;gap:6px}
+  .solveig-cinematic-services a:nth-child(3) {border-left:0}
+  .solveig-cinematic-services a:nth-child(2n) {border-left:1px solid rgba(238,209,154,.55)}
+  .solveig-cinematic-services svg {width:28px;height:28px}
+  .solveig-cinematic-services span {font-size:9px;line-height:1.4}
+  .solveig-cinematic-services i {width:25px;height:25px;font-size:16px}
+  .solveig-cinematic-scroll {display:none}
 }
-.solveig-cinematic-subtitle {
-  color: #252018;
-  text-shadow: 0 1px 12px rgba(255,250,239,.7);
+@media(max-width:380px) {
+  .solveig-cinematic-header {padding-inline:7px;gap:4px}
+  .solveig-cinematic-actions {gap:4px}
+  .solveig-outline-control {padding-inline:7px}
+  .solveig-morocco-label {font-size:8px!important}
+  .solveig-locale-control .language-picker summary {padding-inline:5px!important}
 }
-.solveig-cinematic-region {
-  color: #2b261e !important;
-  text-shadow: 0 1px 12px rgba(255,250,239,.8);
-}
-.solveig-cinematic-tagline {
-  max-width: 540px;
-  color: #211b15 !important;
-  text-shadow: 0 1px 14px rgba(255,250,239,.85);
-  font-size: clamp(15px, 1.55vw, 22px) !important;
-}
-.solveig-cinematic-services {
-  width: min(980px, 84vw);
-  bottom: clamp(24px, 4vh, 48px);
-  padding-top: 16px;
-  border-top: 1px solid rgba(240,211,158,.62);
-}
-.solveig-cinematic-services a { padding: 0 18px; }
-.solveig-cinematic-services span {
-  font-size: clamp(10px, .9vw, 12px);
-  text-shadow: 0 2px 10px rgba(0,0,0,.65);
-}
-.solveig-cinematic-services svg { filter: drop-shadow(0 2px 7px rgba(0,0,0,.45)); }
-.solveig-cinematic-services i { margin-top: 4px; }
-.solveig-service-card {
-  padding: 0 !important;
-  overflow: hidden;
-  min-height: 0 !important;
-  border-color: rgba(120,94,60,.22);
-  background: #fffaf0;
-  border-radius: 1.15rem;
-  box-shadow: 0 18px 55px -42px rgba(52,39,30,.65);
-}
-.solveig-service-image-wrap {
-  position: relative;
-  height: 170px;
-  overflow: hidden;
-  background: #e4d4bd;
-}
-.solveig-service-image {
-  display:block;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transition:transform .8s cubic-bezier(.2,.7,.2,1), filter .5s ease;
-}
-.solveig-service-card:hover .solveig-service-image { transform:scale(1.055); filter:saturate(1.04); }
-.solveig-service-image-number {
-  position:absolute;
-  left:14px;
-  bottom:12px;
-  color:#fff8e9;
-  font:500 11px/1 system-ui,sans-serif;
-  letter-spacing:.18em;
-  text-shadow:0 1px 8px rgba(0,0,0,.7);
-}
-.solveig-service-card-content { padding: 1.25rem 1.3rem 1.45rem; }
-.solveig-service-card-content > div:first-child { margin-top:0 !important; }
-.solveig-service-card-content .solveig-service-icon {
-  width:2.55rem;height:2.55rem;
-  background:#f5eddd;
-  color:#987543;
-  border-color:rgba(185,147,90,.45);
-}
-.solveig-service-card-content h3 { line-height:1.25; min-height:2.5rem; }
-.solveig-service-card-content p { min-height:5.25rem; }
-@keyframes solveigSlowParallax {
-  from { transform:scale(1.035) translate3d(0,0,0); }
-  to { transform:scale(1.095) translate3d(0,-8px,0); }
-}
-@media (max-width: 1150px) and (min-width: 768px) {
-  .solveig-cinematic-header { padding-inline:20px; }
-  .solveig-cinematic-nav { gap:10px; }
-  .solveig-cinematic-nav a { font-size:9px; }
-  .solveig-outline-control { padding:10px 12px; font-size:9px; }
-}
-@media (max-width: 767px) {
-  .solveig-cinematic-home {
-    height:auto !important;
-    min-height: 850px !important;
-    padding-bottom: 16px;
-    overflow:hidden;
-  }
-  .solveig-cinematic-backdrop {
-    background-position: 39% center;
-    animation: solveigSlowParallax 30s ease-in-out infinite alternate;
-  }
-  .solveig-cinematic-shade {
-    background:linear-gradient(180deg,rgba(8,25,39,.76) 0%,rgba(8,25,39,.34) 16%,rgba(255,242,218,.16) 36%,rgba(16,25,27,.12) 61%,rgba(12,19,21,.82) 100%);
-  }
-  .solveig-cinematic-header { padding: max(14px,env(safe-area-inset-top)) 12px 10px; gap:6px; }
-  .solveig-mini-brand { font-size:14px !important; }
-  .solveig-mini-brand small { font-size:5.5px; }
-  .solveig-cinematic-actions { gap:5px; }
-  .solveig-outline-control { width:34px;height:34px;padding:0; }
-  .solveig-locale-control .language-picker summary { min-height:34px !important; }
-  .solveig-mobile-menu { width:36px;height:36px; flex:0 0 36px; }
-  .solveig-cinematic-center {
-    top:auto !important; left:auto !important; transform:none !important;
-    position:relative !important; width:calc(100% - 28px);
-    margin:clamp(44px,8vh,72px) auto 0;
-    padding:16px 12px 18px;
-    background:linear-gradient(135deg,rgba(255,249,235,.46),rgba(255,249,235,.25));
-    border-color:rgba(255,255,255,.45);
-    backdrop-filter:blur(5px);
-  }
-  .solveig-cinematic-monogram { width:90px !important; max-height:70px; margin-bottom:0 !important; }
-  .solveig-cinematic-center h1 { font-size:clamp(38px,11vw,52px) !important; line-height:1 !important; }
-  .solveig-cinematic-subtitle { font-size:10px !important; letter-spacing:.22em; margin-top:5px; }
-  .solveig-cinematic-rule { margin:10px auto 8px; }
-  .solveig-cinematic-region { font-size:9px !important; letter-spacing:.19em; }
-  .solveig-cinematic-tagline { max-width:320px; font-size:15px !important; line-height:1.4; margin-top:10px; }
-  .solveig-cinematic-services {
-    position:relative; left:auto; bottom:auto; transform:none; width:calc(100% - 24px);
-    margin:24px auto 0; padding:16px 0 0;
-    grid-template-columns:repeat(2,minmax(0,1fr)); row-gap:18px;
-  }
-  .solveig-cinematic-services a { padding:8px 5px; gap:7px; }
-  .solveig-cinematic-services a:nth-child(2n) { border-left:1px solid rgba(238,209,154,.7); }
-  .solveig-cinematic-services a:nth-child(3) { border-left:0; }
-  .solveig-cinematic-services svg { width:33px;height:33px; }
-  .solveig-cinematic-services span { font-size:10px; line-height:1.5; }
-  .solveig-cinematic-services i { width:29px;height:29px;font-size:19px; }
-  .solveig-service-image-wrap { height:145px; }
-  .solveig-service-card-content { padding:1rem; }
-  .solveig-service-card-content h3 { min-height:0; }
-  .solveig-service-card-content p { min-height:0; }
-}
-@media (prefers-reduced-motion: reduce) {
-  .solveig-cinematic-backdrop { animation:none !important; }
-  .solveig-service-image { transition:none !important; }
+@media(prefers-reduced-motion:reduce) {
+  .solveig-cinematic-backdrop,.solveig-cinematic-center {animation:none!important}
+  .solveig-cinematic-services a {transition:none!important}
 }
 
 
-/* Reference-matched final composition: no glass panel, centered wordmark, original interlaced monogram. */
-.solveig-cinematic-home {
-  position:relative;
-  height:100svh !important;
-  min-height:760px !important;
-  overflow:hidden;
-  background:#14232b;
-}
+/* Hero art is a clean photograph; all brand copy is live, localized HTML. */
 .solveig-cinematic-backdrop {
-  position:absolute; inset:-2%;
-  background-position:center center !important;
   background-size:cover !important;
-  transform:translate3d(0,0,0) scale(1.02);
+  background-position:center 52% !important;
+  background-repeat:no-repeat !important;
+  transform:none !important;
   animation:none !important;
 }
 .solveig-cinematic-shade {
-  background:linear-gradient(180deg,rgba(8,18,24,.48) 0%,rgba(8,18,24,.06) 17%,rgba(255,244,223,.02) 45%,rgba(9,20,25,.02) 68%,rgba(8,15,18,.55) 100%) !important;
+  background:linear-gradient(180deg,rgba(8,22,31,.56) 0%,rgba(8,22,31,.15) 32%,rgba(8,22,31,.24) 65%,rgba(8,22,31,.7) 100%) !important;
 }
 .solveig-cinematic-center {
-  top:43% !important;
-  left:50% !important;
-  transform:translate(-50%,-50%) !important;
-  width:min(620px,54vw) !important;
-  padding:0 !important;
-  margin:0 !important;
-  border:0 !important;
-  border-radius:0 !important;
-  background:transparent !important;
-  box-shadow:none !important;
-  backdrop-filter:none !important;
+  top:39% !important;
+  color:#fff !important;
+  animation:solveigCopyReveal 1.1s ease-out both !important;
 }
 .solveig-cinematic-monogram {
-  display:block;
-  width:clamp(118px,12vw,164px) !important;
-  height:clamp(108px,12vw,154px) !important;
+  width:clamp(105px,12vw,150px) !important;
   max-height:none !important;
-  object-fit:contain;
-  margin:0 auto 0 !important;
-  filter:drop-shadow(0 1px 2px rgba(255,245,220,.24));
+  margin:0 auto 4px !important;
+  filter:brightness(0) invert(1) drop-shadow(0 4px 18px rgba(0,0,0,.24));
+  animation:solveigMonogramReveal 1.5s cubic-bezier(.16,1,.3,1) both !important;
 }
-.solveig-cinematic-center h1 {
-  margin:0 !important;
-  color:#090909 !important;
-  font-family:Baskerville,Georgia,'Times New Roman',serif !important;
-  font-size:clamp(48px,5.1vw,76px) !important;
-  font-weight:500 !important;
-  line-height:.96 !important;
-  letter-spacing:-.035em !important;
-  text-shadow:0 1px 12px rgba(255,246,226,.36) !important;
-}
-.solveig-cinematic-subtitle {
-  margin:5px 0 0 !important;
-  color:#0d0c0b !important;
-  font-family:Georgia,'Times New Roman',serif !important;
-  font-size:clamp(13px,1.55vw,21px) !important;
-  line-height:1.3 !important;
-  letter-spacing:.31em !important;
-  text-shadow:0 1px 12px rgba(255,246,226,.45) !important;
-}
-.solveig-cinematic-rule { display:none !important; }
-.solveig-cinematic-region {
-  margin:29px 0 0 !important;
-  color:#17140f !important;
-  font-size:clamp(12px,1.35vw,18px) !important;
-  letter-spacing:.28em !important;
-  line-height:1.4 !important;
-  text-shadow:0 1px 12px rgba(255,246,226,.65) !important;
-}
+.solveig-cinematic-center h1,
+.solveig-cinematic-subtitle,
+.solveig-cinematic-region,
 .solveig-cinematic-tagline {
-  margin:20px auto 0 !important;
-  max-width:540px !important;
-  color:#130f0b !important;
-  font-family:Georgia,'Times New Roman',serif !important;
-  font-size:clamp(15px,1.55vw,22px) !important;
-  line-height:1.34 !important;
-  text-shadow:0 1px 13px rgba(255,246,226,.72) !important;
+  color:#fff !important;
+  text-shadow:0 2px 18px rgba(0,0,0,.6),0 0 2px rgba(0,0,0,.25) !important;
 }
-.solveig-cinematic-services {
-  left:50% !important;
-  bottom:clamp(25px,4.4vh,54px) !important;
-  transform:translateX(-50%) !important;
-  width:min(940px,68vw) !important;
-  display:grid !important;
-  grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-  border-top:0 !important;
-  padding:0 !important;
-  background:transparent !important;
+.solveig-cinematic-rule {background:rgba(255,255,255,.9) !important}
+.solveig-cinematic-region {letter-spacing:.2em !important}
+.solveig-cinematic-tagline {max-width:560px !important;animation:solveigCopyReveal 1.1s .28s ease-out both !important}
+.solveig-cinematic-subtitle,.solveig-cinematic-region {animation:solveigCopyReveal 1.1s .14s ease-out both !important}
+@keyframes solveigBrandReveal {
+  0% { opacity:0; transform:translate(-50%,-44%); filter:blur(5px); }
+  65% { opacity:1; filter:blur(0); }
+  100% { opacity:1; transform:translate(-50%,-50%); filter:blur(0); }
 }
-.solveig-cinematic-services a {
-  min-width:0;
-  padding:0 14px !important;
-  gap:8px !important;
-  border-left:1px solid rgba(245,218,160,.72);
-  text-align:center;
-  transition:transform .45s ease, color .45s ease;
-}
-.solveig-cinematic-services a:first-child { border-left:0; }
-.solveig-cinematic-services svg { width:54px !important;height:54px !important;stroke:#f1d18b !important;stroke-width:1.5 !important; }
-.solveig-cinematic-services span {
-  color:#fffaf0 !important;
-  font-size:clamp(10px,.95vw,13px) !important;
-  line-height:1.45 !important;
-  letter-spacing:.08em;
-  text-shadow:0 2px 8px rgba(0,0,0,.75) !important;
-}
-.solveig-cinematic-services i {
-  display:flex;align-items:center;justify-content:center;
-  width:43px !important;height:43px !important;
-  margin-top:4px !important;
-  border:1px solid #efd18c;
-  border-radius:50%;
-  color:#f6d795 !important;
-  font-style:normal;
-  font-size:25px !important;
-}
-.solveig-cinematic-services a:hover { transform:translateY(-5px); }
-.solveig-service-image-wrap { height:230px !important; }
-.solveig-service-card { transform:translateY(0); }
-@supports (animation-timeline:view()) {
-  .solveig-service-card {
-    animation:solveigCardRise linear both;
-    animation-timeline:view();
-    animation-range:entry 0% cover 32%;
+@media (max-width:767px) {
+  .solveig-cinematic-home {
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
+    width:100% !important;
+    height:auto !important;
+    min-height:100svh !important;
+    aspect-ratio:auto !important;
+    padding:0 0 14px !important;
+    overflow:hidden !important;
   }
-  .solveig-service-image {
-    animation:solveigImageDrift linear both;
-    animation-timeline:view();
-    animation-range:cover 0% cover 75%;
+  .solveig-cinematic-backdrop {background-position:center center !important;background-size:cover !important}
+  .solveig-cinematic-shade {display:block !important}
+  .solveig-cinematic-header {
+    display:flex !important;
+    position:relative !important;
+    justify-content:flex-end !important;
+    padding:max(12px,env(safe-area-inset-top)) 10px 8px !important;
+    gap:5px !important;
   }
-}
-@keyframes solveigCardRise { from {opacity:.45;transform:translateY(38px)} to {opacity:1;transform:translateY(0)} }
-@keyframes solveigImageDrift { from {transform:scale(1.14) translateY(-2%)} to {transform:scale(1.02) translateY(2%)} }
-@media(max-width:1100px) and (min-width:768px) {
- .solveig-cinematic-nav { gap:9px !important; }
- .solveig-cinematic-nav a { font-size:9px !important; }
- .solveig-cinematic-center { width:min(600px,58vw) !important; }
- .solveig-cinematic-services { width:80vw !important; }
-}
-@media(max-width:767px) {
- .solveig-cinematic-home { height:auto !important; min-height:900px !important; padding-bottom:20px !important; }
- .solveig-cinematic-backdrop { background-position:38% center !important; }
- .solveig-cinematic-shade { background:linear-gradient(180deg,rgba(8,18,24,.65),rgba(8,18,24,.10) 23%,rgba(255,244,223,.04) 43%,rgba(8,15,18,.68) 100%) !important; }
- .solveig-cinematic-header { padding: max(12px,env(safe-area-inset-top)) 12px 8px !important; }
- .solveig-cinematic-center {
-   position:relative !important; top:auto !important; left:auto !important;
-   transform:none !important; width:calc(100% - 28px) !important;
-   margin:clamp(45px,8vh,70px) auto 0 !important;
-   padding:0 !important; border:0 !important; background:transparent !important;
-   box-shadow:none !important; backdrop-filter:none !important;
- }
- .solveig-cinematic-monogram { width:108px !important;height:100px !important; }
- .solveig-cinematic-center h1 { font-size:clamp(43px,12vw,58px) !important; }
- .solveig-cinematic-subtitle { font-size:10px !important;letter-spacing:.26em !important; }
- .solveig-cinematic-region { margin-top:22px !important;font-size:11px !important;letter-spacing:.2em !important; }
- .solveig-cinematic-tagline { max-width:330px !important;margin-top:14px !important;font-size:16px !important;line-height:1.4 !important; }
- .solveig-cinematic-services {
-   position:relative !important;left:auto !important;bottom:auto !important;transform:none !important;
-   width:calc(100% - 22px) !important;margin:30px auto 0 !important;
-   grid-template-columns:repeat(2,minmax(0,1fr)) !important;row-gap:17px !important;
-   padding:16px 0 0 !important;border-top:1px solid rgba(241,210,145,.62) !important;
- }
- .solveig-cinematic-services a { padding:8px 5px !important;border-left:0 !important; }
- .solveig-cinematic-services a:nth-child(even) { border-left:1px solid rgba(245,218,160,.72) !important; }
- .solveig-cinematic-services svg { width:38px !important;height:38px !important; }
- .solveig-cinematic-services span { font-size:10px !important;line-height:1.45 !important; }
- .solveig-cinematic-services i { width:31px !important;height:31px !important;font-size:20px !important; }
- .solveig-service-image-wrap { height:185px !important; }
+  .solveig-cinematic-nav {display:none !important}
+  .solveig-cinematic-actions {display:flex !important;margin-left:auto !important;gap:5px !important}
+  .solveig-outline-control {
+    display:inline-flex !important;
+    min-height:40px !important;
+    height:auto !important;
+    width:auto !important;
+    max-width:calc(100vw - 112px) !important;
+    padding:8px 10px !important;
+    font-size:9px !important;
+    overflow:visible !important;
+    background:rgba(14,35,45,.82) !important;
+    color:#fff !important;
+  }
+  .solveig-morocco-label {display:inline !important;font-size:9px !important;white-space:nowrap !important}
+  .solveig-locale-control .language-picker summary {min-height:40px !important;padding:0 8px !important;background:rgba(14,35,45,.82)!important}
+  .solveig-locale-control .language-picker summary svg:first-child {display:none !important}
+  .solveig-mobile-menu {display:block !important;flex:none !important;width:40px !important;height:40px !important}
+  .solveig-mobile-drawer {display:none}
+  .solveig-mobile-drawer.is-open {display:grid !important}
+  .solveig-cinematic-center {
+    display:block !important;
+    position:relative !important;
+    top:auto !important;left:auto !important;
+    transform:none !important;
+    width:100% !important;
+    margin:0 auto !important;
+    padding:clamp(22px,5vh,42px) 18px 16px !important;
+    color:#fff !important;
+  }
+  .solveig-cinematic-monogram {width:clamp(94px,25vw,124px) !important;max-height:none !important}
+  .solveig-cinematic-center h1 {font-size:clamp(39px,10vw,54px) !important;line-height:1.02 !important}
+  .solveig-cinematic-subtitle {font-size:10px !important;letter-spacing:.22em !important;margin-top:5px !important}
+  .solveig-cinematic-rule {margin:11px auto 9px !important}
+  .solveig-cinematic-region {font-size:9px !important;letter-spacing:.15em !important}
+  .solveig-cinematic-tagline {font-size:15px !important;line-height:1.45 !important;margin:12px auto 0 !important;max-width:350px !important}
+  .solveig-cinematic-services {
+    display:grid !important;
+    position:relative !important;
+    left:auto !important;bottom:auto !important;
+    transform:none !important;
+    width:100% !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    margin:8px auto 0 !important;
+    padding:8px 10px 0 !important;
+    row-gap:8px !important;
+    background:rgba(9,24,32,.25) !important;
+  }
+  .solveig-cinematic-services a {padding:9px 5px !important;gap:5px !important}
+  .solveig-cinematic-services a:nth-child(3) {border-left:0 !important}
+  .solveig-cinematic-services a:nth-child(2n) {border-left:1px solid rgba(255,255,255,.45) !important}
+  .solveig-cinematic-services svg {width:27px !important;height:27px !important;stroke:#fff !important}
+  .solveig-cinematic-services span {font-size:9px !important;letter-spacing:.03em !important;color:#fff !important;text-shadow:0 2px 10px rgba(0,0,0,.75) !important}
+  .solveig-cinematic-services i {width:24px !important;height:24px !important;color:#fff !important;border-color:#fff !important}
+  .solveig-cinematic-scroll {display:none !important}
 }
 @media(prefers-reduced-motion:reduce) {
- .solveig-service-card,.solveig-service-image { animation:none !important; }
-}
-
-
-/* Final responsive correction: match the supplied desktop composition and keep the photo dominant on mobile. */
-.solveig-cinematic-home { height:100svh !important; min-height:680px !important; }
-.solveig-cinematic-backdrop { background-position:center 50% !important; background-size:cover !important; }
-.solveig-cinematic-center { top:42% !important; width:min(620px,50vw) !important; }
-.solveig-cinematic-monogram { width:clamp(135px,13vw,175px) !important;height:clamp(125px,13vw,165px) !important; }
-.solveig-cinematic-center h1 { font-size:clamp(52px,5.5vw,78px) !important; }
-.solveig-cinematic-region { margin-top:23px !important; }
-.solveig-cinematic-tagline { margin-top:16px !important; }
-.solveig-cinematic-services { width:min(920px,68vw) !important; bottom:24px !important; }
-.solveig-cinematic-services svg { width:46px !important;height:46px !important; }
-.solveig-cinematic-services i { width:36px !important;height:36px !important; }
-@media(max-width:767px) {
- .solveig-cinematic-home {
-   height:auto !important; min-height:0 !important;
-   display:flex !important; flex-direction:column !important;
-   padding:0 0 18px !important;
-   background:#15262c !important;
- }
- .solveig-cinematic-backdrop {
-   position:absolute !important; inset:0 !important;
-   background-size:auto 100% !important;
-   background-position:42% top !important;
-   background-repeat:no-repeat !important;
-   transform:none !important;
- }
- .solveig-cinematic-shade {
-   background:linear-gradient(180deg,rgba(8,18,24,.62) 0%,rgba(8,18,24,.08) 15%,rgba(255,244,223,.02) 37%,rgba(8,15,18,.18) 65%,rgba(8,15,18,.82) 100%) !important;
- }
- .solveig-cinematic-header {
-   position:relative !important; z-index:5 !important;
-   display:flex !important; flex-wrap:nowrap !important;
-   padding:max(10px,env(safe-area-inset-top)) 10px 6px !important;
-   gap:5px !important;
- }
- .solveig-mini-brand { flex:0 1 auto !important; min-width:0 !important; font-size:11px !important; }
- .solveig-mini-brand small { font-size:5px !important; letter-spacing:.12em !important; }
- .solveig-cinematic-nav { display:none !important; }
- .solveig-cinematic-actions { margin-left:auto !important; gap:5px !important; }
- .solveig-outline-control { width:30px !important;height:30px !important; min-width:30px !important; overflow:hidden !important; padding:0 !important; }
- .solveig-outline-control span:nth-child(2) { display:none !important; }
- .solveig-locale-control { max-width:72px !important; }
- .solveig-locale-control .language-picker summary { min-height:30px !important; padding:0 6px !important; font-size:10px !important; }
- .solveig-mobile-menu { width:31px !important;height:31px !important; font-size:22px !important; }
- .solveig-mobile-drawer { z-index:20 !important; }
- .solveig-cinematic-center {
-   position:relative !important; z-index:2 !important;
-   top:auto !important;left:auto !important;transform:none !important;
-   width:calc(100% - 24px) !important;
-   margin:clamp(32px,5vh,52px) auto 0 !important;
-   padding:0 !important;
- }
- .solveig-cinematic-monogram { width:86px !important;height:78px !important; }
- .solveig-cinematic-center h1 { font-size:clamp(40px,11.3vw,54px) !important;line-height:.94 !important; }
- .solveig-cinematic-subtitle { margin-top:4px !important;font-size:9px !important;letter-spacing:.23em !important; }
- .solveig-cinematic-region { margin-top:17px !important;font-size:10px !important;letter-spacing:.2em !important; }
- .solveig-cinematic-tagline { max-width:315px !important;margin-top:11px !important;font-size:14px !important;line-height:1.35 !important; }
- .solveig-cinematic-services {
-   position:relative !important;z-index:3 !important;
-   left:auto !important;bottom:auto !important;transform:none !important;
-   width:calc(100% - 24px) !important;
-   margin:clamp(26px,5vh,42px) auto 0 !important;
-   padding:12px 0 0 !important;
-   display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;
-   gap:0 !important;
-   border-top:1px solid rgba(241,210,145,.55) !important;
-   background:linear-gradient(180deg,rgba(8,15,18,.05),rgba(8,15,18,.28)) !important;
- }
- .solveig-cinematic-services a {
-   display:flex !important; flex-direction:column !important;
-   align-items:center !important; justify-content:flex-start !important;
-   gap:7px !important;min-width:0 !important;
-   padding:6px 2px !important;border:0 !important;
- }
- .solveig-cinematic-services a + a { border-left:1px solid rgba(245,218,160,.42) !important; }
- .solveig-cinematic-services svg { width:25px !important;height:25px !important;flex:none !important; }
- .solveig-cinematic-services span {
-   display:block !important;text-align:center !important;
-   font-size:7px !important;line-height:1.35 !important;
-   letter-spacing:.015em !important;overflow-wrap:anywhere !important;
- }
- .solveig-cinematic-services i { width:24px !important;height:24px !important;font-size:16px !important;margin-top:1px !important; }
- .solveig-cinematic-scroll { display:none !important; }
-}
-@media(max-width:380px) {
- .solveig-mini-brand {font-size:10px !important}
- .solveig-cinematic-services span {font-size:6.5px !important}
- .solveig-cinematic-services svg {width:22px !important;height:22px !important}
- .solveig-cinematic-services i {width:21px !important;height:21px !important}
-}
-
-
-/* Final polish: preserve the Moroccan universe control and strengthen the visual hierarchy. */
-.solveig-cinematic-actions { flex-shrink:0; }
-.solveig-outline-control {
-  display:inline-flex !important;align-items:center !important;justify-content:center !important;
-  gap:8px !important;white-space:nowrap !important;
-  min-height:36px !important;padding:9px 13px !important;
-  border:1px solid rgba(239,211,155,.78) !important;
-  color:#fff8e8 !important;background:rgba(15,27,31,.24) !important;
-  text-shadow:0 1px 8px rgba(0,0,0,.6);
-}
-.solveig-morocco-flag {display:inline-block !important;font-size:15px !important;line-height:1 !important}
-.solveig-morocco-label {display:inline-block !important;font-size:9px !important;letter-spacing:.1em !important}
-.solveig-cinematic-backdrop {background-position:center 48% !important; background-size:cover !important;}
-.solveig-cinematic-center { top:41% !important; }
-.solveig-cinematic-monogram {
-  width:clamp(155px,15vw,190px) !important;
-  height:clamp(126px,13vw,165px) !important;
-  margin-bottom:0 !important;
-  filter:drop-shadow(0 2px 4px rgba(16,20,20,.22)) !important;
-}
-.solveig-cinematic-center h1 { letter-spacing:.005em !important; }
-.solveig-cinematic-subtitle { letter-spacing:.27em !important; }
-@media(min-width:768px) {
- .solveig-cinematic-center { top:42% !important; }
- .solveig-cinematic-services { bottom:22px !important; }
-}
-@media(max-width:767px) {
- .solveig-cinematic-backdrop {
-   background-size:auto 100% !important;
-   background-position:44% top !important;
- }
- .solveig-cinematic-center { margin-top:clamp(24px,4vh,38px) !important; }
- .solveig-cinematic-monogram { width:118px !important;height:96px !important; }
- .solveig-cinematic-center h1 { font-size:clamp(40px,10.8vw,52px) !important; }
- .solveig-cinematic-region { margin-top:15px !important; }
- .solveig-cinematic-tagline { margin-top:10px !important; }
- .solveig-outline-control {
-   width:auto !important;min-width:30px !important;max-width:36px !important;
-   height:31px !important;min-height:31px !important;padding:0 7px !important;
-   overflow:visible !important;border-radius:3px !important;
- }
- .solveig-morocco-flag {font-size:14px !important}
- .solveig-morocco-label {display:none !important}
- .solveig-cinematic-actions {gap:5px !important}
- .solveig-locale-control {max-width:66px !important}
-}
-
-
-/* iPhone hero: keep the photograph full-screen and anchor the four service links at the bottom. */
-@media (max-width: 767px) {
-  .solveig-cinematic-home {
-    height: 100svh !important;
-    min-height: 680px !important;
-    max-height: 980px !important;
-    padding: 0 0 max(14px, env(safe-area-inset-bottom)) !important;
-    display: flex !important;
-    flex-direction: column !important;
-    justify-content: flex-start !important;
-    overflow: hidden !important;
-    isolation: isolate !important;
-    background: #15262c !important;
-  }
-  .solveig-cinematic-backdrop {
-    position: absolute !important;
-    inset: 0 !important;
-    background-size: cover !important;
-    background-position: 48% center !important;
-    background-repeat: no-repeat !important;
-    transform: none !important;
-  }
-  .solveig-cinematic-shade {
-    position: absolute !important;
-    inset: 0 !important;
-    background:
-      linear-gradient(180deg, rgba(5,18,27,.58) 0%, rgba(5,18,27,.12) 22%, rgba(20,17,13,.02) 43%, rgba(5,15,20,.12) 64%, rgba(4,13,18,.78) 100%),
-      radial-gradient(ellipse at 50% 43%, rgba(255,240,211,.10), transparent 62%) !important;
-  }
-  .solveig-cinematic-header {
-    flex: 0 0 auto !important;
-    position: relative !important;
-    z-index: 5 !important;
-    padding: max(10px, env(safe-area-inset-top)) 10px 0 !important;
-  }
-  .solveig-cinematic-center {
-    position: relative !important;
-    z-index: 2 !important;
-    top: auto !important;
-    left: auto !important;
-    transform: none !important;
-    width: calc(100% - 22px) !important;
-    margin: clamp(18px, 3.2svh, 30px) auto 0 !important;
-    flex: 0 1 auto !important;
-    text-align: center !important;
-  }
-  .solveig-cinematic-monogram {
-    width: 94px !important;
-    height: 78px !important;
-    margin: 0 auto 2px !important;
-  }
-  .solveig-cinematic-center h1 {
-    font-size: clamp(39px, 10.5vw, 51px) !important;
-    line-height: .96 !important;
-    text-shadow: 0 2px 15px rgba(255,245,225,.72), 0 1px 3px rgba(255,245,225,.5) !important;
-  }
-  .solveig-cinematic-subtitle {
-    margin-top: 5px !important;
-    font-size: 9px !important;
-    letter-spacing: .24em !important;
-    text-shadow: 0 1px 10px rgba(255,245,225,.85) !important;
-  }
-  .solveig-cinematic-region {
-    margin-top: 16px !important;
-    font-size: 10px !important;
-    letter-spacing: .19em !important;
-    text-shadow: 0 1px 10px rgba(255,245,225,.9) !important;
-  }
-  .solveig-cinematic-tagline {
-    max-width: 330px !important;
-    margin: 10px auto 0 !important;
-    font-size: clamp(13px, 3.7vw, 15px) !important;
-    line-height: 1.35 !important;
-    text-shadow: 0 1px 10px rgba(255,245,225,.95) !important;
-  }
-  .solveig-cinematic-services {
-    position: relative !important;
-    z-index: 4 !important;
-    inset: auto !important;
-    left: auto !important;
-    bottom: auto !important;
-    transform: none !important;
-    width: calc(100% - 20px) !important;
-    margin: auto auto 0 !important;
-    padding: 12px 0 0 !important;
-    flex: 0 0 auto !important;
-    display: grid !important;
-    grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
-    gap: 0 !important;
-    border-top: 1px solid rgba(245, 218, 160, .72) !important;
-    background: linear-gradient(180deg, rgba(7,15,19,.04), rgba(7,15,19,.38)) !important;
-  }
-  .solveig-cinematic-services a {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
-    min-width: 0 !important;
-    gap: 6px !important;
-    padding: 5px 2px 3px !important;
-    border: 0 !important;
-  }
-  .solveig-cinematic-services a + a {
-    border-left: 1px solid rgba(245,218,160,.48) !important;
-  }
-  .solveig-cinematic-services svg {
-    width: 26px !important;
-    height: 26px !important;
-    flex: 0 0 auto !important;
-  }
-  .solveig-cinematic-services span {
-    display: block !important;
-    min-height: 27px !important;
-    color: #fffaf0 !important;
-    font-size: clamp(6.5px, 1.8vw, 8px) !important;
-    line-height: 1.35 !important;
-    letter-spacing: .025em !important;
-    text-align: center !important;
-    overflow-wrap: normal !important;
-    text-shadow: 0 2px 8px rgba(0,0,0,.9) !important;
-  }
-  .solveig-cinematic-services i {
-    width: 27px !important;
-    height: 27px !important;
-    margin-top: 1px !important;
-    font-size: 17px !important;
-    flex: 0 0 auto !important;
-  }
-  .solveig-cinematic-scroll { display: none !important; }
-}
-@media (max-width: 380px) {
-  .solveig-cinematic-center { margin-top: 16px !important; }
-  .solveig-cinematic-monogram { width: 82px !important; height: 68px !important; }
-  .solveig-cinematic-center h1 { font-size: 39px !important; }
-  .solveig-cinematic-services { width: calc(100% - 12px) !important; }
-  .solveig-cinematic-services svg { width: 22px !important; height: 22px !important; }
-  .solveig-cinematic-services span { font-size: 6.2px !important; }
-  .solveig-cinematic-services i { width: 23px !important; height: 23px !important; }
+  .solveig-cinematic-center,.solveig-cinematic-monogram,.solveig-cinematic-subtitle,.solveig-cinematic-region,.solveig-cinematic-tagline {animation:none !important;opacity:1 !important;filter:none !important}
 }
