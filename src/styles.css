@@ -328,12 +328,12 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
   color:#fffaf1; background:#172f3b;
 }
 .solveig-cinematic-backdrop {
-  position:absolute; inset:0; z-index:-2;
+  position:absolute; inset:0; z-index:0; pointer-events:none;
   background-image:url("https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=2400&q=90");
   background-position:center 53%; background-size:cover;
 }
 .solveig-cinematic-shade {
-  position:absolute; inset:0; z-index:-1; pointer-events:none;
+  position:absolute; inset:0; z-index:1; pointer-events:none;
   background:linear-gradient(180deg,rgba(8,25,39,.48),rgba(8,25,39,.02) 35%,rgba(10,18,20,.08) 58%,rgba(10,18,20,.58));
 }
 .solveig-cinematic-header {
