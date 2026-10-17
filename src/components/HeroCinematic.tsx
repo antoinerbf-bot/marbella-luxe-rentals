@@ -86,11 +86,9 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
         <img
           src="/hero-marbella.png"
           alt="Villa d'exception au coucher de soleil à Marbella"
-          className="w-full h-full object-cover object-[center_22%] sm:object-[center_18%] transition-transform duration-1000 scale-100"
+          className="w-full h-full object-cover object-[48%_center] sm:object-[center_18%] transition-transform duration-1000 scale-100"
           loading="eager"
         />
-
-
 
         {/* Shading Gradients: Contrast without darkening the sunset or the terrace */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-[#081218]/85 pointer-events-none" />
@@ -98,40 +96,40 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
       </div>
 
       {/* Center Brand Identity: Positioned in the Upper Sky (NO SP MONOGRAM, NO SUPERPOSITION) */}
-      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center mt-4 sm:mt-6 md:mt-8 flex flex-col items-center">
+      <div className="relative z-10 mx-auto max-w-4xl px-4 text-center mt-2 sm:mt-6 md:mt-8 flex flex-col items-center">
         {/* Title: SOLVEIG'S */}
-        <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[0.08em] uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-[0.95]">
+        <h1 className="font-serif text-3xl min-[380px]:text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-normal tracking-[0.08em] uppercase text-white drop-shadow-[0_4px_20px_rgba(0,0,0,0.9)] leading-[0.95]">
           SOLVEIG’S
         </h1>
 
         {/* Subtitle */}
-        <p className="mt-1.5 sm:mt-2 text-[10px] sm:text-[12px] md:text-[13px] font-bold tracking-[0.38em] text-[#f7e1a0] uppercase drop-shadow-md">
+        <p className="mt-1 sm:mt-2 text-[9px] min-[380px]:text-[10px] sm:text-[12px] md:text-[13px] font-bold tracking-[0.38em] text-[#f7e1a0] uppercase drop-shadow-md">
           PRESTIGE SERVICE
         </p>
 
         {/* Region Tag with Gold Accents */}
-        <div className="mt-3 sm:mt-4 flex items-center justify-center gap-3 w-full">
-          <span className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent via-[#f1d291]/80 to-transparent" />
-          <p className="text-[10px] sm:text-[12px] font-semibold tracking-[0.28em] text-[#fff6e0] uppercase drop-shadow">
+        <div className="mt-2.5 sm:mt-4 flex items-center justify-center gap-2 sm:gap-3 w-full">
+          <span className="h-[1px] w-8 min-[380px]:w-12 sm:w-20 bg-gradient-to-r from-transparent via-[#f1d291]/80 to-transparent" />
+          <p className="text-[9px] min-[380px]:text-[10px] sm:text-[12px] font-semibold tracking-[0.28em] text-[#fff6e0] uppercase drop-shadow">
             MARBELLA & MIJAS
           </p>
-          <span className="h-[1px] w-12 sm:w-20 bg-gradient-to-r from-transparent via-[#f1d291]/80 to-transparent" />
+          <span className="h-[1px] w-8 min-[380px]:w-12 sm:w-20 bg-gradient-to-r from-transparent via-[#f1d291]/80 to-transparent" />
         </div>
 
         {/* Tagline */}
-        <p className="mt-3 max-w-xl text-xs sm:text-sm md:text-base text-white/95 font-light leading-snug sm:leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] px-2">
+        <p className="mt-2 sm:mt-3 max-w-md text-[11px] min-[380px]:text-xs sm:text-sm md:text-base text-white/95 font-light leading-snug sm:leading-relaxed drop-shadow-[0_2px_10px_rgba(0,0,0,0.9)] px-2">
           Une présence locale discrète pour <br className="hidden sm:inline" />
           des propriétés d’exception sur la Costa del Sol
         </p>
       </div>
 
-      {/* Bottom 4 Services Bar: Positioned Cleanly Over Water with ZERO Collisions */}
-      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-12 mt-auto pt-6 sm:pt-8">
-        {/* Subtle horizontal gold border divider on desktop */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#f1d291]/60 to-transparent mb-4 sm:mb-5 hidden sm:block" />
+      {/* Bottom 4 Services Bar: Anchored gracefully at the bottom */}
+      <div className="relative z-20 w-full max-w-[1400px] mx-auto px-2 sm:px-6 lg:px-12 mt-auto pt-2 sm:pt-8 pb-1 sm:pb-0">
+        {/* Subtle horizontal gold border divider */}
+        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#f1d291]/60 to-transparent mb-2 sm:mb-5" />
 
-        {/* Desktop 4 columns over the pool / Mobile 2x2 clear tactile cards */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-2.5 sm:gap-4 lg:gap-0">
+        {/* 4 Columns on all devices (mobile hairline dock matching reference site, desktop palace dock) */}
+        <div className="grid grid-cols-4 gap-0 w-full rounded-2xl overflow-hidden bg-black/40 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border border-[#f1d291]/25 sm:border-none">
           {servicesData.map((service, index) => (
             <div
               key={service.id}
@@ -143,45 +141,36 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
                   onSelectService(service.id);
                 }
               }}
-              className={`group relative cursor-pointer text-center flex flex-col items-center justify-between p-3 sm:p-4 lg:p-5 transition-all duration-300 rounded-2xl sm:rounded-none ${
-                /* Mobile frosted luxury card effect */
-                'bg-black/55 backdrop-blur-md border border-[#f1d291]/35 hover:border-[#f1d291]/80 hover:bg-black/75 shadow-xl'
-              } ${
-                /* Desktop border dividers */
-                index !== 0 ? 'lg:border-l lg:border-[#f1d291]/30 lg:border-t-0 lg:border-r-0 lg:border-b-0' : 'lg:border-none'
-              } ${
-                'lg:bg-transparent lg:backdrop-blur-none lg:shadow-none lg:hover:bg-black/30 lg:rounded-2xl'
-              }`}
+              className={`group relative cursor-pointer text-center flex flex-col items-center justify-between py-2.5 px-1 sm:p-4 lg:p-5 transition-all duration-300 ${
+                index !== 0 ? 'border-l border-[#f1d291]/30' : ''
+              } hover:bg-black/30 lg:rounded-2xl`}
             >
               {/* Service Icon with Golden Hue */}
-              <div className="text-[#f1d291] group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 mb-1.5 drop-shadow">
-                {service.icon}
+              <div className="text-[#f1d291] group-hover:text-white transition-colors duration-300 transform group-hover:scale-110 mb-1 sm:mb-1.5 drop-shadow">
+                <div className="w-5 h-5 min-[380px]:w-6 min-[380px]:h-6 sm:w-8 sm:h-8 flex items-center justify-center [&>svg]:w-full [&>svg]:h-full">
+                  {service.icon}
+                </div>
               </div>
 
               {/* Title & Subtitle */}
-              <div className="flex flex-col items-center leading-tight">
-                <span className="text-[11px] sm:text-[12px] lg:text-[13px] font-bold tracking-[0.16em] uppercase text-white group-hover:text-[#f4dfa5] transition-colors drop-shadow">
+              <div className="flex flex-col items-center leading-tight min-h-[24px] sm:min-h-[32px] justify-center">
+                <span className="text-[7.5px] min-[380px]:text-[8.5px] sm:text-[12px] lg:text-[13px] font-bold tracking-[0.06em] sm:tracking-[0.16em] uppercase text-white group-hover:text-[#f4dfa5] transition-colors drop-shadow">
                   {service.title}
                 </span>
-                <span className="text-[10px] sm:text-[11px] lg:text-[12px] font-medium tracking-[0.12em] uppercase text-white/90 group-hover:text-[#f4dfa5] transition-colors drop-shadow">
+                <span className="text-[6.5px] min-[380px]:text-[7.5px] sm:text-[11px] lg:text-[12px] font-medium tracking-[0.04em] sm:tracking-[0.12em] uppercase text-white/90 group-hover:text-[#f4dfa5] transition-colors drop-shadow">
                   {service.subtitle}
                 </span>
               </div>
 
               {/* Circular Action Button with Arrow */}
-              <div className="mt-2.5">
+              <div className="mt-1 sm:mt-2.5">
                 <div
-                  className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#f1d291]/70 bg-black/40 group-hover:border-[#f4dfa5] group-hover:bg-[#c29a52] flex items-center justify-center transition-all duration-300 shadow-[0_0_12px_rgba(241,210,145,0.25)] group-hover:shadow-[0_0_20px_rgba(244,223,165,0.7)] group-hover:scale-110"
+                  className="w-5 h-5 min-[380px]:w-6 min-[380px]:h-6 sm:w-8 sm:h-8 rounded-full border border-[#f1d291]/70 bg-black/40 group-hover:border-[#f4dfa5] group-hover:bg-[#c29a52] flex items-center justify-center transition-all duration-300 shadow-[0_0_8px_rgba(241,210,145,0.25)] group-hover:scale-110"
                   aria-label={`Découvrir ${service.title} ${service.subtitle}`}
                 >
-                  <ArrowRight className="w-3.5 h-3.5 text-[#f1d291] group-hover:text-black transition-all duration-300 group-hover:translate-x-0.5" />
+                  <ArrowRight className="w-2.5 h-2.5 min-[380px]:w-3 min-[380px]:h-3 sm:w-3.5 sm:h-3.5 text-[#f1d291] group-hover:text-black transition-all duration-300 group-hover:translate-x-0.5" />
                 </div>
               </div>
-
-              {/* Mobile Quick Tap Indicator */}
-              <span className="text-[9px] tracking-wider text-[#f1d291]/90 mt-1 sm:hidden font-medium">
-                Découvrir →
-              </span>
             </div>
           ))}
         </div>

@@ -110,7 +110,7 @@ export const LiveConciergeNotifications: React.FC<LiveConciergeNotificationsProp
   return (
     <aside
       aria-label="Notification conciergerie en direct"
-      className="fixed bottom-5 left-4 sm:bottom-7 sm:left-7 z-40 max-w-[340px] sm:max-w-[420px] animate-in fade-in slide-in-from-bottom-5 duration-500 pointer-events-auto"
+      className="hidden md:block fixed bottom-7 left-7 z-40 max-w-[420px] animate-in fade-in slide-in-from-bottom-5 duration-500 pointer-events-auto"
     >
       <div
         onClick={handleClick}

@@ -35,19 +35,18 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
       }`}
     >
       <div className="max-w-[1560px] mx-auto px-4 sm:px-8 lg:px-12 flex items-center justify-between">
-        {/* Left Side: Minimalist luxury discreet watermark (doesn't clash with bougainvillea) */}
+        {/* Left Side: Full prestigious brand wordmark on all screen sizes */}
         <div className="flex items-center">
           <a
             href="#hero"
-            className="group flex items-center gap-2.5 focus:outline-none"
+            className="group flex flex-col text-left focus:outline-none"
             aria-label="Solveig's Prestige Service"
           >
-            {/* Subtle luxury seal symbol */}
-            <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#f1d291]/50 bg-black/40 backdrop-blur-md flex items-center justify-center text-[#f1d291] group-hover:border-[#f4dfa5] group-hover:scale-105 transition-all">
-              <span className="font-serif text-xs sm:text-sm font-semibold tracking-tighter">SP</span>
-            </div>
-            <span className="text-[10px] sm:text-[11px] font-semibold tracking-[0.24em] text-white/80 group-hover:text-white uppercase transition-colors hidden min-[400px]:inline">
-              Solveig’s
+            <span className="font-serif text-lg sm:text-2xl font-normal tracking-[0.14em] text-white leading-none group-hover:text-[#f4dfa5] transition-colors">
+              SOLVEIG’S
+            </span>
+            <span className="text-[7.5px] sm:text-[9.5px] font-bold tracking-[0.32em] text-[#edd088] uppercase mt-0.5 group-hover:text-white transition-colors">
+              PRESTIGE SERVICE
             </span>
           </a>
         </div>
@@ -80,12 +79,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
           </a>
         </nav>
 
-        {/* Right Side: Distinct Contact Button, Univers Marocain with Camel, Direct Flags & Mobile Menu */}
-        <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
-          {/* Distinct Contact Button - clearly separated with dedicated luxury styling */}
+        {/* Right Side: Contact Button, Univers Marocain with Camel, Direct Flags & Mobile Menu */}
+        <div className="flex items-center gap-1.5 sm:gap-3 lg:gap-4">
+          {/* Distinct Contact Button - desktop only */}
           <a
             href="#contact"
-            className="hidden md:inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 rounded-full border border-[#f1d291]/50 bg-black/40 hover:bg-[#f1d291]/15 text-[#f4dfa5] text-[11px] font-bold tracking-[0.18em] uppercase transition-all duration-300 shadow-sm hover:border-[#f1d291] hover:scale-105"
+            className="hidden lg:inline-flex items-center justify-center px-4 py-1.5 sm:px-5 sm:py-2 rounded-full border border-[#f1d291]/50 bg-black/40 hover:bg-[#f1d291]/15 text-[#f4dfa5] text-[11px] font-bold tracking-[0.18em] uppercase transition-all duration-300 shadow-sm hover:border-[#f1d291] hover:scale-105"
           >
             Contact
           </a>
@@ -93,16 +92,17 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
           {/* Univers Marocain Button with Camel icon 🐪 and no 'MA' */}
           <button
             onClick={onOpenMoroccoUniverse}
-            className="group relative overflow-hidden inline-flex items-center gap-2 rounded-full border border-[#e5a872]/70 bg-gradient-to-r from-[#873e1c]/80 via-[#a34f24]/75 to-[#732f12]/80 backdrop-blur-md px-3.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-[11px] font-bold tracking-[0.16em] uppercase text-[#fff7e8] shadow-[0_4px_18px_rgba(163,79,36,0.35)] transition-all duration-300 hover:border-[#ffd6aa] hover:shadow-[0_0_24px_rgba(229,168,114,0.5)] hover:scale-[1.02]"
+            className="group relative overflow-hidden inline-flex items-center gap-1.5 sm:gap-2 rounded-full border border-[#e5a872]/70 bg-gradient-to-r from-[#873e1c]/85 via-[#a34f24]/80 to-[#732f12]/85 backdrop-blur-md px-2.5 py-1.5 sm:px-4 sm:py-2 text-[10px] sm:text-[11px] font-bold tracking-[0.14em] uppercase text-[#fff7e8] shadow-[0_4px_18px_rgba(163,79,36,0.35)] transition-all duration-300 hover:border-[#ffd6aa] hover:scale-[1.02]"
           >
-            <span className="text-base sm:text-lg drop-shadow">🐪</span>
-            <span className="hidden min-[500px]:inline">Univers Marocain</span>
-            <ArrowRight className="w-3.5 h-3.5 text-[#f9d7b4] transition-transform duration-300 group-hover:translate-x-1" />
+            <span className="text-sm sm:text-base">🐪</span>
+            <span className="hidden min-[480px]:inline">Univers Marocain</span>
+            <span className="min-[480px]:hidden">Maroc</span>
+            <ArrowRight className="w-3 h-3 text-[#f9d7b4] hidden min-[360px]:inline transition-transform duration-300 group-hover:translate-x-0.5" />
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
           </button>
 
-          {/* Direct Country Flags for Language Selection (France, UK, Espagne, Maroc) */}
-          <div className="flex items-center gap-1 sm:gap-1.5 p-1 rounded-full border border-white/20 bg-black/45 backdrop-blur-md shadow-sm">
+          {/* Desktop Direct Country Flags (France, UK, Espagne, Maroc) */}
+          <div className="hidden sm:flex items-center gap-1 sm:gap-1.5 p-1 rounded-full border border-white/20 bg-black/45 backdrop-blur-md shadow-sm">
             {languages.map((lang) => (
               <button
                 key={lang.code}
@@ -120,13 +120,23 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
             ))}
           </div>
 
+          {/* Mobile Single Flag Indicator */}
+          <button
+            onClick={onOpenMobileMenu}
+            className="sm:hidden flex items-center justify-center w-7 h-7 rounded-full border border-white/20 bg-black/40 text-sm shadow-sm"
+            aria-label="Sélectionner la langue"
+            title={`Langue active : ${selectedLang.label}`}
+          >
+            <span className="leading-none">{selectedLang.flag}</span>
+          </button>
+
           {/* Mobile hamburger menu */}
           <button
             onClick={onOpenMobileMenu}
-            className="lg:hidden flex items-center justify-center w-9 h-9 sm:w-10 sm:h-10 rounded-full border border-white/20 bg-black/35 text-white hover:border-[#f1d291] hover:text-[#f1d291] backdrop-blur-md transition-all duration-200"
+            className="lg:hidden flex items-center justify-center w-8 h-8 min-[380px]:w-9 min-[380px]:h-9 rounded-full border border-white/20 bg-black/35 text-white hover:border-[#f1d291] hover:text-[#f1d291] backdrop-blur-md transition-all duration-200"
             aria-label="Ouvrir le menu mobile"
           >
-            <Menu className="w-5 h-5" />
+            <Menu className="w-4 h-4 sm:w-5 sm:h-5" />
           </button>
         </div>
       </div>

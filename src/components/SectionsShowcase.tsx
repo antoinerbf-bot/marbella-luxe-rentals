@@ -136,13 +136,13 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
         </div>
 
         {/* 4 Cards Grid - PALACE VISUALS */}
-        <div className="mt-14 grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-8 sm:mt-14 grid gap-4 sm:gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {/* Card 1: Gestion de propriété */}
           <div
             onClick={() => onSelectService('property-management')}
-            className="group cursor-pointer overflow-hidden rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
+            className="group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
           >
-            <div className="relative h-60 overflow-hidden">
+            <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85"
                 alt="Domaine de prestige et villa contemporaine à Marbella"
@@ -150,21 +150,21 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase border border-white/20">
+              <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
                 01 · Intendance & Domaine
               </span>
             </div>
-            <div className="p-6">
-              <div className="w-10 h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-4">
-                <KeyRound className="w-5 h-5" />
+            <div className="p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-3 sm:mb-4">
+                <KeyRound className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
+              <h3 className="text-lg sm:text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
                 Gestion de propriété
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
                 Surveillance régulière, contrôle technique, coordination d’artisans et préparation soignée avant chaque séjour.
               </p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
+              <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -174,9 +174,9 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           {/* Card 2: Conciergerie privée */}
           <div
             onClick={() => onSelectService('concierge-services')}
-            className="group cursor-pointer overflow-hidden rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
+            className="group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
           >
-            <div className="relative h-60 overflow-hidden">
+            <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
                 alt="Hospitalité privée et conciergerie de palace à Marbella"
@@ -184,21 +184,21 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase border border-white/20">
+              <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
                 02 · Conciergerie 24/7
               </span>
             </div>
-            <div className="p-6">
-              <div className="w-10 h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-4">
-                <Sparkles className="w-5 h-5" />
+            <div className="p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-3 sm:mb-4">
+                <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
+              <h3 className="text-lg sm:text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
                 Conciergerie privée
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
                 Accueil VIP, réservations de tables d'exception, yachts privés et assistance sur-mesure disponible 7j/7.
               </p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
+              <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -208,9 +208,9 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           {/* Card 3: Location saisonnière */}
           <div
             onClick={() => onSelectService('rental-management')}
-            className="group cursor-pointer overflow-hidden rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
+            className="group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
           >
-            <div className="relative h-60 overflow-hidden">
+            <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=1200&q=85"
                 alt="Suite panoramique et séjour d’exception face à la mer"
@@ -218,21 +218,21 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] font-bold tracking-widest uppercase border border-white/20">
+              <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
                 03 · Location Saisonnière
               </span>
             </div>
-            <div className="p-6">
-              <div className="w-10 h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-4">
-                <CalendarDays className="w-5 h-5" />
+            <div className="p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-3 sm:mb-4">
+                <CalendarDays className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
+              <h3 className="text-lg sm:text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
                 Location saisonnière
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
                 Valorisation de votre villa, accueil des hôtes, contrôle rigoureux et rentabilité optimisée en toute sérénité.
               </p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
+              <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -242,9 +242,9 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           {/* Card 4: Chef à domicile */}
           <div
             onClick={() => onSelectService('chef-a-domicile')}
-            className="group cursor-pointer overflow-hidden rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
+            className="group cursor-pointer overflow-hidden rounded-2xl sm:rounded-3xl bg-[#fffdf8] border border-[#78664c]/15 shadow-sm hover:shadow-2xl hover:-translate-y-1.5 transition-all duration-500"
           >
-            <div className="relative h-60 overflow-hidden">
+            <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
                 src="/archives-cuisine/2022-10-05 12.42.03.jpg"
                 alt="Chef à domicile haute gastronomie Dominique Hybord"
@@ -252,21 +252,21 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-              <span className="absolute bottom-3 left-3 px-3 py-1 rounded-full bg-[#34241b]/85 backdrop-blur-md text-[#fbe8b5] text-[10px] font-bold tracking-widest uppercase border border-[#c29a52]/40">
+              <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#34241b]/85 backdrop-blur-md text-[#fbe8b5] text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-[#c29a52]/40">
                 04 · Gastronomie Privée
               </span>
             </div>
-            <div className="p-6">
-              <div className="w-10 h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-4">
-                <ChefHat className="w-5 h-5" />
+            <div className="p-5 sm:p-6">
+              <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-2xl bg-[#c29a52]/15 text-[#987543] flex items-center justify-center mb-3 sm:mb-4">
+                <ChefHat className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
-              <h3 className="text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
+              <h3 className="text-lg sm:text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
                 Chef à domicile
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
                 L’art de recevoir chez soi. Menus gastronomiques sur-mesure imaginés et exécutés en direct dans votre villa.
               </p>
-              <div className="mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
+              <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
               </div>
@@ -296,48 +296,51 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           </div>
 
           {/* Main Showcase Grid: Interactive Video Player with 3 Switchable Villa Moments */}
-          <div className="grid lg:grid-cols-2 gap-10 items-center rounded-3xl bg-[#15262c]/90 border border-gold-border/40 p-6 sm:p-10 shadow-2xl backdrop-blur-xl">
+          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center rounded-3xl bg-[#15262c]/90 border border-gold-border/40 p-4 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl">
             {/* Video Player Box with 3 Tab Selectors */}
             <div className="flex flex-col space-y-3">
               {/* Video Tabs: Flambage / Convives / Dressage */}
               <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
                 <button
                   onClick={() => setActiveVideoTab('flambe')}
-                  className={`flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
                     activeVideoTab === 'flambe'
                       ? 'bg-gradient-to-r from-[#e5a872] to-[#f4cb99] text-black shadow-md'
                       : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
                   }`}
                 >
                   <Flame className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">1. Le Chef (Flambage)</span>
+                  <span className="sm:hidden font-medium">Flambage</span>
+                  <span className="hidden sm:inline">1. Le Chef (Flambage)</span>
                 </button>
                 <button
                   onClick={() => setActiveVideoTab('convives')}
-                  className={`flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
                     activeVideoTab === 'convives'
                       ? 'bg-gradient-to-r from-[#e5a872] to-[#f4cb99] text-black shadow-md'
                       : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
                   }`}
                 >
                   <Users className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">2. Les Convives</span>
+                  <span className="sm:hidden font-medium">Convives</span>
+                  <span className="hidden sm:inline">2. Les Convives</span>
                 </button>
                 <button
                   onClick={() => setActiveVideoTab('plating')}
-                  className={`flex items-center justify-center gap-1.5 sm:gap-2 px-2.5 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
                     activeVideoTab === 'plating'
                       ? 'bg-gradient-to-r from-[#e5a872] to-[#f4cb99] text-black shadow-md'
                       : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
                   }`}
                 >
                   <Utensils className="w-3.5 h-3.5 shrink-0" />
-                  <span className="truncate">3. Dressage</span>
+                  <span className="sm:hidden font-medium">Dressage</span>
+                  <span className="hidden sm:inline">3. Dressage</span>
                 </button>
               </div>
 
               {/* Video Player Viewport */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 group min-h-[360px] sm:min-h-[440px] bg-black">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 group min-h-[260px] sm:min-h-[440px] bg-black">
                 {activeVideoTab === 'flambe' && (
                   <video
                     key="video-flambe"
@@ -347,7 +350,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                     playsInline
                     preload="auto"
                     poster="/archives-cuisine/2022-10-05 12.42.03.jpg"
-                    className="w-full h-full object-cover min-h-[360px] sm:min-h-[440px]"
+                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
                   >
                     <source src="/videos/chef-flambe-pro.mp4" type="video/mp4" />
                   </video>
@@ -361,7 +364,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                     playsInline
                     preload="auto"
                     poster="/archives-cuisine/2018-01-21 08.25.03.jpg"
-                    className="w-full h-full object-cover min-h-[360px] sm:min-h-[440px]"
+                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
                   >
                     <source src="/videos/champagne-convives.webm" type="video/webm" />
                   </video>
@@ -375,7 +378,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                     playsInline
                     preload="auto"
                     poster="/archives-cuisine/2023-09-12 13.09.35.jpg"
-                    className="w-full h-full object-cover min-h-[360px] sm:min-h-[440px]"
+                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
                   >
                     <source src="/videos/gourmet-plating-pro.mp4" type="video/mp4" />
                     <source src="/videos/chefs-cuisine-pro.mp4" type="video/mp4" />
@@ -384,36 +387,36 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
 
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
                 
-                <div className="absolute bottom-5 left-5 right-5 flex items-center justify-between">
-                  <div>
-                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#edd088] flex items-center gap-1.5">
-                      <Flame className="w-3.5 h-3.5 text-[#e5a872]" />
-                      {activeVideoTab === 'flambe' && 'Cuisine Ouverte · Flambage en Direct'}
-                      {activeVideoTab === 'convives' && 'Les Convives Réunis · Art de Recevoir en Villa'}
-                      {activeVideoTab === 'plating' && 'Dressage Haute Couture & Finesse Botanique'}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between gap-2">
+                  <div className="min-w-0 pr-2">
+                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#edd088] flex items-center gap-1.5 truncate">
+                      <Flame className="w-3.5 h-3.5 text-[#e5a872] shrink-0" />
+                      {activeVideoTab === 'flambe' && 'Cuisine Ouverte · Flambage'}
+                      {activeVideoTab === 'convives' && 'Les Convives · Art de Recevoir'}
+                      {activeVideoTab === 'plating' && 'Dressage Haute Couture'}
                     </span>
-                    <h4 className="font-serif text-xl sm:text-2xl text-white font-medium mt-0.5">
+                    <h4 className="font-serif text-base sm:text-2xl text-white font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
                       {activeVideoTab === 'flambe' && 'Maîtrise du Feu & Haute Gastronomie'}
                       {activeVideoTab === 'convives' && 'Moments Précieux Partagés en Villa'}
                       {activeVideoTab === 'plating' && 'Précision et Esthétique dans l’Assiette'}
                     </h4>
                   </div>
-                  <div className="w-10 h-10 rounded-full bg-black/60 border border-[#f1d291]/60 flex items-center justify-center text-[#f1d291] shrink-0">
-                    <Play className="w-4 h-4 fill-current ml-0.5" />
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 border border-[#f1d291]/60 flex items-center justify-center text-[#f1d291] shrink-0">
+                    <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
                   </div>
                 </div>
               </div>
             </div>
 
             {/* Content & Inclusions */}
-            <div className="flex flex-col justify-center space-y-6">
-              <div className="space-y-4">
+            <div className="flex flex-col justify-center space-y-5 sm:space-y-6">
+              <div className="space-y-3.5 sm:space-y-4">
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-white text-base">Menu Dégustation Sur-Mesure</h5>
+                    <h5 className="font-semibold text-white text-sm sm:text-base">Menu Dégustation Sur-Mesure</h5>
                     <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
                       Conçu exclusivement selon vos envies, le nombre de convives et vos exigences diététiques.
                     </p>
@@ -421,11 +424,11 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-white text-base">Approvisionnement Haute Qualité</h5>
+                    <h5 className="font-semibold text-white text-sm sm:text-base">Approvisionnement Haute Qualité</h5>
                     <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
                       Pêche locale du jour, primeurs bio d'Andalousie et viandes d'exception sélectionnées chez les meilleurs artisans.
                     </p>
@@ -433,11 +436,11 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 </div>
 
                 <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-4 h-4" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
+                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
                   </div>
                   <div>
-                    <h5 className="font-semibold text-white text-base">Service & Discrétion Absolue</h5>
+                    <h5 className="font-semibold text-white text-sm sm:text-base">Service & Discrétion Absolue</h5>
                     <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
                       Dressage minute, service à l'assiette soigné et remise en état immaculée de votre cuisine en fin de réception.
                     </p>
@@ -446,10 +449,10 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               </div>
 
               {/* Action Buttons */}
-              <div className="pt-2 flex flex-wrap gap-4">
+              <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
                 <button
                   onClick={() => onSelectService('chef-a-domicile')}
-                  className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black font-semibold text-xs sm:text-sm px-7 py-3.5 shadow-lg shadow-gold/25 hover:scale-105 active:scale-95 transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black font-semibold text-xs sm:text-sm px-6 py-3.5 shadow-lg shadow-gold/25 hover:scale-105 active:scale-95 transition-all"
                 >
                   <span>Découvrir l'Expérience Chef</span>
                   <ArrowRight className="w-4 h-4" />
@@ -458,7 +461,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                   href="https://wa.me/34623626724?text=Bonjour%20Solveig,%20je%20souhaite%20organiser%20un%20d%C3%AEner%20priv%C3%A9%20avec%20le%20chef%20%C3%A0%20domicile."
                   target="_blank"
                   rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
                 >
                   <MessageCircle className="w-4 h-4 text-[#25D366]" />
                   <span>Réserver sur WhatsApp</span>
@@ -483,10 +486,10 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               </div>
 
               {/* Category Filter */}
-              <div className="flex items-center gap-2 mt-4 md:mt-0 p-1.5 rounded-full bg-black/40 border border-white/15">
+              <div className="flex items-center gap-1.5 sm:gap-2 mt-4 md:mt-0 p-1 sm:p-1.5 rounded-full bg-black/40 border border-white/15 overflow-x-auto max-w-full no-scrollbar">
                 <button
                   onClick={() => setActiveDishCategory('all')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
                     activeDishCategory === 'all'
                       ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
                       : 'text-white/70 hover:text-white'
@@ -496,7 +499,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 </button>
                 <button
                   onClick={() => setActiveDishCategory('mains')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
                     activeDishCategory === 'mains'
                       ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
                       : 'text-white/70 hover:text-white'
@@ -506,7 +509,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 </button>
                 <button
                   onClick={() => setActiveDishCategory('desserts')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
                     activeDishCategory === 'desserts'
                       ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
                       : 'text-white/70 hover:text-white'
@@ -516,7 +519,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 </button>
                 <button
                   onClick={() => setActiveDishCategory('tables')}
-                  className={`px-3.5 py-1.5 rounded-full text-xs font-bold uppercase tracking-wider transition-all ${
+                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
                     activeDishCategory === 'tables'
                       ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
                       : 'text-white/70 hover:text-white'
@@ -528,14 +531,14 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             </div>
 
             {/* Gallery Grid: 16+ authentic dishes with high-res zoom */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6">
               {filteredDishes.map((item, idx) => (
                 <div
                   key={idx}
                   onClick={() => setZoomedDish(item)}
                   className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/15 hover:border-[#edd088] shadow-lg hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 bg-[#15252c]"
                 >
-                  <div className="h-52 sm:h-64 overflow-hidden bg-black/50">
+                  <div className="h-36 sm:h-52 lg:h-64 overflow-hidden bg-black/50">
                     <img
                       src={item.src}
                       alt={item.title}
@@ -543,11 +546,11 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                       loading="lazy"
                     />
                   </div>
-                  <div className="p-3.5 bg-[#101b20] border-t border-white/10">
+                  <div className="p-3 sm:p-3.5 bg-[#101b20] border-t border-white/10">
                     <h5 className="text-xs sm:text-sm font-semibold text-white line-clamp-1 group-hover:text-[#edd088] transition-colors">
                       {item.title}
                     </h5>
-                    <p className="text-[11px] text-white/65 line-clamp-2 mt-1 leading-snug">
+                    <p className="text-[10px] sm:text-[11px] text-white/65 line-clamp-2 mt-0.5 sm:mt-1 leading-snug">
                       {item.desc}
                     </p>
                   </div>
@@ -617,19 +620,19 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               <span className="w-8 h-px bg-[#c29a52]" />
               Premier échange privilégié
             </div>
-            <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl font-medium leading-[0.95] text-white">
+            <h2 className="font-serif text-3xl sm:text-5xl md:text-6xl font-medium leading-[0.98] sm:leading-[0.95] text-white">
               Votre propriété mérite une présence à sa hauteur.
             </h2>
-            <p className="mt-5 max-w-xl text-sm sm:text-base text-white/80 leading-relaxed font-light">
+            <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base text-white/80 leading-relaxed font-light">
               Parlez-nous de votre bien, de votre rythme de présence et de vos attentes. Nous construirons ensemble l’accompagnement haute couture adapté à votre propriété sur la Costa del Sol.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col sm:flex-row flex-wrap gap-3">
               <a
                 href="https://wa.me/34623626724?text=Bonjour%20Solveig,%20je%20souhaite%20discuter%20de%20la%20gestion%20de%20mon%20bien%20%C3%A0%20Marbella%20ou%20Mijas."
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full bg-[#25D366] text-black font-semibold text-xs sm:text-sm px-6 py-3.5 shadow-lg shadow-[#25D366]/25 hover:scale-105 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-black font-semibold text-xs sm:text-sm px-6 py-3.5 shadow-lg shadow-[#25D366]/25 hover:scale-105 transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
                 <span>WhatsApp Direct (+34 623 626 724)</span>
@@ -637,7 +640,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
 
               <a
                 href="tel:+34623626724"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
               >
                 <Phone className="w-4 h-4 text-[#edd088]" />
                 <span>+34 623 626 724</span>
@@ -645,7 +648,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
 
               <a
                 href="mailto:solveighybord@gmail.com"
-                className="inline-flex items-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
               >
                 <Mail className="w-4 h-4 text-[#edd088]" />
                 <span>solveighybord@gmail.com</span>

@@ -125,7 +125,7 @@ export const AboutSection: React.FC = () => {
           {/* Right: Palace Architectural Visual with Clean Floating Card (5 Cols) */}
           <div className="lg:col-span-5">
             <div className="relative rounded-3xl overflow-hidden border border-gold-border/40 shadow-2xl bg-black/40">
-              <div className="relative h-[380px] sm:h-[440px] overflow-hidden">
+              <div className="relative h-[280px] sm:h-[440px] overflow-hidden">
                 <img
                   src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=85"
                   alt="Propriété d’exception et art de vivre à Marbella"
@@ -135,16 +135,16 @@ export const AboutSection: React.FC = () => {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
                 
                 {/* Discrete Floating Signature Card */}
-                <div className="absolute bottom-5 left-5 right-5 p-4 sm:p-5 rounded-2xl bg-black/70 backdrop-blur-md border border-[#c29a52]/40">
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 p-3 sm:p-5 rounded-2xl bg-black/75 backdrop-blur-md border border-[#c29a52]/40">
                   <div className="flex items-center gap-3">
-                    <div className="w-9 h-9 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center text-[#edd088] shrink-0">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center text-[#edd088] shrink-0">
                       <UtensilsCrossed className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-xs sm:text-sm font-serif italic text-white/95 leading-snug">
+                      <p className="text-[11px] sm:text-sm font-serif italic text-white/95 leading-snug">
                         « Le véritable luxe ne s’impose pas : il se ressent dans la perfection invisible de chaque instant. »
                       </p>
-                      <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088] mt-1 block">
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#edd088] mt-1 block">
                         Solveig & Dominique Hybord · Fondateurs
                       </span>
                     </div>
