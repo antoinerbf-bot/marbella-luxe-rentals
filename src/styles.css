@@ -329,7 +329,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 }
 .solveig-cinematic-backdrop {
   position:absolute; inset:0; z-index:-2;
-  background-image:url("https://d2ol7oe51mr4n9.cloudfront.net/user_3CWyfseY5SlAB1v9O94YRIcxpSv/1e9f7f9c-850f-46a7-a5fc-d2f8886510ef.png");
+  background-image:url("https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=2400&q=90");
   background-position:center 53%; background-size:cover;
 }
 .solveig-cinematic-shade {
@@ -421,29 +421,120 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 }
 
 
-/* Hotfix from actual iPhone screenshot: the supplied reference artwork already
-   contains the brand lockup, navigation and service labels. Do not draw them twice. */
-@media (max-width: 767px) {
+/* Hero art is a clean photograph; all brand copy is live, localized HTML. */
+.solveig-cinematic-backdrop {
+  background-size:cover !important;
+  background-position:center 54% !important;
+  background-repeat:no-repeat !important;
+  transform:none !important;
+  animation:none !important;
+}
+.solveig-cinematic-shade {
+  background:linear-gradient(180deg,rgba(8,22,31,.56) 0%,rgba(8,22,31,.15) 32%,rgba(8,22,31,.24) 65%,rgba(8,22,31,.7) 100%) !important;
+}
+.solveig-cinematic-center {
+  top:39% !important;
+  color:#fff !important;
+  animation:solveigBrandReveal 1.25s cubic-bezier(.2,.75,.25,1) both !important;
+}
+.solveig-cinematic-monogram {
+  width:clamp(105px,12vw,150px) !important;
+  max-height:none !important;
+  margin:0 auto 4px !important;
+  filter:brightness(0) invert(1) drop-shadow(0 4px 18px rgba(0,0,0,.24));
+}
+.solveig-cinematic-center h1,
+.solveig-cinematic-subtitle,
+.solveig-cinematic-region,
+.solveig-cinematic-tagline {
+  color:#fff !important;
+  text-shadow:0 2px 18px rgba(0,0,0,.6),0 0 2px rgba(0,0,0,.25) !important;
+}
+.solveig-cinematic-rule {background:rgba(255,255,255,.9) !important}
+.solveig-cinematic-region {letter-spacing:.2em !important}
+.solveig-cinematic-tagline {max-width:560px !important}
+@keyframes solveigBrandReveal {
+  0% { opacity:0; transform:translate(-50%,-44%); filter:blur(5px); }
+  65% { opacity:1; filter:blur(0); }
+  100% { opacity:1; transform:translate(-50%,-50%); filter:blur(0); }
+}
+@media (max-width:767px) {
   .solveig-cinematic-home {
+    display:flex !important;
+    flex-direction:column !important;
+    justify-content:flex-start !important;
     width:100% !important;
     height:auto !important;
-    min-height:0 !important;
-    aspect-ratio: 16 / 9;
-    padding:0 !important;
-    background:#172f3b;
+    min-height:100svh !important;
+    aspect-ratio:auto !important;
+    padding:0 0 14px !important;
+    overflow:hidden !important;
   }
-  .solveig-cinematic-backdrop {
-    inset:0 !important;
-    background-size:contain !important;
-    background-repeat:no-repeat !important;
-    background-position:center top !important;
+  .solveig-cinematic-backdrop {background-position:center center !important;background-size:cover !important}
+  .solveig-cinematic-shade {display:block !important}
+  .solveig-cinematic-header {
+    display:flex !important;
+    position:relative !important;
+    justify-content:flex-end !important;
+    padding:max(12px,env(safe-area-inset-top)) 10px 8px !important;
+    gap:5px !important;
+  }
+  .solveig-cinematic-nav {display:none !important}
+  .solveig-cinematic-actions {display:flex !important;margin-left:auto !important;gap:5px !important}
+  .solveig-outline-control {
+    display:inline-flex !important;
+    min-height:40px !important;
+    height:auto !important;
+    width:auto !important;
+    max-width:calc(100vw - 112px) !important;
+    padding:8px 10px !important;
+    font-size:9px !important;
+    overflow:visible !important;
+    background:rgba(14,35,45,.82) !important;
+    color:#fff !important;
+  }
+  .solveig-morocco-label {display:inline !important;font-size:9px !important;white-space:nowrap !important}
+  .solveig-locale-control .language-picker summary {min-height:40px !important;padding:0 8px !important;background:rgba(14,35,45,.82)!important}
+  .solveig-locale-control .language-picker summary svg:first-child {display:none !important}
+  .solveig-mobile-menu {display:block !important;flex:none !important;width:40px !important;height:40px !important}
+  .solveig-mobile-drawer {display:none}
+  .solveig-mobile-drawer.is-open {display:grid !important}
+  .solveig-cinematic-center {
+    display:block !important;
+    position:relative !important;
+    top:auto !important;left:auto !important;
     transform:none !important;
-    animation:none !important;
+    width:100% !important;
+    margin:0 auto !important;
+    padding:clamp(22px,5vh,42px) 18px 16px !important;
+    color:#fff !important;
   }
-  .solveig-cinematic-shade { display:none !important; }
-  .solveig-cinematic-header,
-  .solveig-mobile-drawer,
-  .solveig-cinematic-center,
-  .solveig-cinematic-services,
-  .solveig-cinematic-scroll { display:none !important; }
+  .solveig-cinematic-monogram {width:clamp(94px,25vw,124px) !important;max-height:none !important}
+  .solveig-cinematic-center h1 {font-size:clamp(39px,10vw,54px) !important;line-height:1.02 !important}
+  .solveig-cinematic-subtitle {font-size:10px !important;letter-spacing:.22em !important;margin-top:5px !important}
+  .solveig-cinematic-rule {margin:11px auto 9px !important}
+  .solveig-cinematic-region {font-size:9px !important;letter-spacing:.15em !important}
+  .solveig-cinematic-tagline {font-size:15px !important;line-height:1.45 !important;margin:12px auto 0 !important;max-width:350px !important}
+  .solveig-cinematic-services {
+    display:grid !important;
+    position:relative !important;
+    left:auto !important;bottom:auto !important;
+    transform:none !important;
+    width:100% !important;
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important;
+    margin:8px auto 0 !important;
+    padding:8px 10px 0 !important;
+    row-gap:8px !important;
+    background:rgba(9,24,32,.25) !important;
+  }
+  .solveig-cinematic-services a {padding:9px 5px !important;gap:5px !important}
+  .solveig-cinematic-services a:nth-child(3) {border-left:0 !important}
+  .solveig-cinematic-services a:nth-child(2n) {border-left:1px solid rgba(255,255,255,.45) !important}
+  .solveig-cinematic-services svg {width:27px !important;height:27px !important;stroke:#fff !important}
+  .solveig-cinematic-services span {font-size:9px !important;letter-spacing:.03em !important;color:#fff !important;text-shadow:0 2px 10px rgba(0,0,0,.75) !important}
+  .solveig-cinematic-services i {width:24px !important;height:24px !important;color:#fff !important;border-color:#fff !important}
+  .solveig-cinematic-scroll {display:none !important}
+}
+@media(prefers-reduced-motion:reduce) {
+  .solveig-cinematic-center {animation:none !important;opacity:1 !important;filter:none !important}
 }
