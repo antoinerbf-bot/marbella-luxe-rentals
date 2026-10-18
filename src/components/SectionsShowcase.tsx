@@ -144,8 +144,8 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           >
             <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85"
-                alt="Domaine de prestige et villa contemporaine à Marbella"
+                src="/property-management-charm.jpg"
+                alt="Domaine de charme et villa andalouse d'exception à Marbella"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
                 loading="lazy"
               />

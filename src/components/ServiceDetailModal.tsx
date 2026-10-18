@@ -29,7 +29,7 @@ const serviceDetailsExtended: Record<
       'Fermeture soignée et sécurisation lors de vos départs',
     ],
     whatsappText: 'Bonjour Solveig, je souhaite des informations sur la gestion de ma villa à Marbella / Mijas.',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: '/property-management-charm.jpg',
   },
   'concierge-services': {
     heroTag: 'Conciergerie Privée & Lifestyle sur mesure',
@@ -83,7 +83,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({ serviceI
     headline: 'Accompagnement personnalisé',
     points: [],
     whatsappText: 'Bonjour Solveig, je souhaite échanger à propos de vos services.',
-    imageUrl: 'https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: '/property-management-charm.jpg',
   };
 
   if (!service) return null;
