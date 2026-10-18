@@ -42,7 +42,7 @@ const serviceDetailsExtended: Record<
       'Discrétion totale et protocole d’excellence de palace',
     ],
     whatsappText: 'Bonjour Solveig, je souhaiterais bénéficier de vos services de conciergerie privée.',
-    imageUrl: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85',
+    imageUrl: '/concierge-private-vip.jpg',
   },
   'rental-management': {
     heroTag: 'Location Saisonnière & Intendance Haut de Gamme',

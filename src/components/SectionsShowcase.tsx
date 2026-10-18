@@ -178,8 +178,8 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           >
             <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
-                src="https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=1200&q=85"
-                alt="Hospitalité privée et conciergerie de palace à Marbella"
+                src="/concierge-private-vip.jpg"
+                alt="Conciergerie privée et hospitalité de palace 24/7 à Marbella"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
                 loading="lazy"
               />
