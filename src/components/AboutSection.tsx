@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Award, Newspaper, Star, CheckCircle2, ArrowRight, ShieldCheck, HeartHandshake, Eye, UtensilsCrossed, Sparkles, X, ChevronRight } from 'lucide-react';
+import React, { useState, useRef } from 'react';
+import { Award, Newspaper, Star, CheckCircle2, ArrowRight, ShieldCheck, HeartHandshake, Eye, UtensilsCrossed, Sparkles, X, ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface PressArticle {
   title: string;
@@ -127,8 +127,8 @@ export const AboutSection: React.FC = () => {
             <div className="relative rounded-3xl overflow-hidden border border-gold-border/40 shadow-2xl bg-black/40">
               <div className="relative h-[280px] sm:h-[440px] overflow-hidden">
                 <img
-                  src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=1200&q=85"
-                  alt="Propriété d’exception et art de vivre à Marbella"
+                  src="/about-villa-charm.jpg"
+                  alt="Demeure andalouse historique et art de vivre d'exception à Marbella"
                   className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
@@ -155,58 +155,102 @@ export const AboutSection: React.FC = () => {
           </div>
         </div>
 
-        {/* Press Mentions: Clean & Airy Strip */}
-        <div className="pt-10 border-t border-white/10">
-          <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-2">
+        {/* Press Mentions: Sleek Horizontal Showcase with Parallax Cards */}
+        <div className="pt-12 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
-                Distinctions & Archives
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088] flex items-center gap-2">
+                <Newspaper className="w-3.5 h-3.5 text-[#e5a872]" />
+                Archives & Reconnaissance Presse
               </span>
-              <h3 className="font-serif text-xl sm:text-2xl text-white font-medium mt-0.5">
-                Reconnaissance de la Presse Gastronomique
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-medium mt-1">
+                Trente Ans de Gastronomie dans la Presse
               </h3>
+              <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-xl">
+                Articles authentiques consacrés au parcours d'excellence de Dominique et Solveig Hybord. Faites défiler horizontalement pour feuilleter les publications originales.
+              </p>
             </div>
-            <p className="text-[11px] sm:text-xs text-white/60">
-              Cliquez sur un article pour consulter le scan original
-            </p>
+
+            {/* Navigation Arrows */}
+            <div className="flex items-center gap-2 shrink-0">
+              <button
+                onClick={() => {
+                  const el = document.getElementById('press-shelf-container');
+                  if (el) el.scrollBy({ left: -340, behavior: 'smooth' });
+                }}
+                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
+                aria-label="Article précédent"
+              >
+                <ChevronLeft className="w-5 h-5 text-[#fbe8b5]" />
+              </button>
+              <button
+                onClick={() => {
+                  const el = document.getElementById('press-shelf-container');
+                  if (el) el.scrollBy({ left: 340, behavior: 'smooth' });
+                }}
+                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
+                aria-label="Article suivant"
+              >
+                <ChevronRight className="w-5 h-5 text-[#fbe8b5]" />
+              </button>
+            </div>
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {/* Horizontal Scrolling Shelf with Natural 3:4 Vertical Newspaper Aspect Ratio */}
+          <div
+            id="press-shelf-container"
+            className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 pt-2 px-1 snap-x snap-mandatory"
+          >
             {pressArticles.map((article, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedArticle(article)}
-                className="group cursor-pointer rounded-2xl bg-[#132228] border border-white/10 p-3.5 hover:border-[#edd088] hover:bg-[#172830] transition-all duration-300 flex flex-col justify-between"
+                className="group relative cursor-pointer w-[270px] sm:w-[320px] shrink-0 rounded-3xl bg-gradient-to-b from-[#16272e] to-[#0e191d] border border-white/15 p-4 hover:border-[#edd088] hover:shadow-[0_20px_45px_rgba(241,210,145,0.2)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between snap-start"
               >
+                {/* Vertical Magazine Card Header */}
                 <div>
-                  <div className="h-32 rounded-xl overflow-hidden bg-black/60 mb-3 relative border border-white/10">
+                  <div className="relative h-[340px] sm:h-[400px] rounded-2xl overflow-hidden bg-black/60 mb-4 border border-white/10 shadow-inner group-hover:border-[#edd088]/40 transition-colors">
                     <img
                       src={article.image}
                       alt={article.title}
-                      className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-black/40 group-hover:bg-transparent transition-colors flex items-center justify-center">
-                      <span className="opacity-0 group-hover:opacity-100 px-2.5 py-1 rounded-full bg-black/80 backdrop-blur-md border border-[#edd088] text-[#edd088] text-[9px] font-bold uppercase tracking-wider transition-opacity flex items-center gap-1 shadow-lg">
-                        <Eye className="w-3 h-3" />
-                        Agrandir
+                    {/* Gradient shading */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+
+                    {/* Source Badge on top */}
+                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[#edd088] text-[9.5px] font-bold tracking-widest uppercase border border-[#edd088]/40 shadow-lg">
+                      {article.source}
+                    </span>
+
+                    {/* Hover Zoom Prompt */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="px-4 py-2 rounded-full bg-black/90 backdrop-blur-md border border-[#edd088] text-[#edd088] text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl scale-95 group-hover:scale-100 transition-transform">
+                        <Eye className="w-4 h-4" />
+                        Lire l'Article Original
                       </span>
+                    </div>
+
+                    {/* Bottom overlay snippet */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="text-[10px] text-white/60 font-semibold tracking-wider block">
+                        {article.title} · {article.date}
+                      </span>
+                      <h4 className="font-serif text-sm sm:text-base text-white font-medium line-clamp-2 mt-0.5 group-hover:text-[#edd088] transition-colors leading-snug">
+                        {article.headline}
+                      </h4>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between text-[10px] font-bold text-[#edd088] uppercase tracking-wider mb-1">
-                    <span>{article.title}</span>
-                    <span className="text-white/40">{article.date}</span>
-                  </div>
-
-                  <h5 className="font-serif text-xs sm:text-sm text-white font-medium group-hover:text-[#edd088] transition-colors leading-snug line-clamp-2">
-                    {article.headline}
-                  </h5>
+                  <p className="text-xs text-white/70 line-clamp-3 leading-relaxed italic px-1">
+                    {article.snippet}
+                  </p>
                 </div>
 
-                <div className="mt-3 pt-2.5 border-t border-white/10 flex items-center justify-between text-[10px] font-semibold text-white/70">
-                  <span className="truncate">{article.source}</span>
-                  <ChevronRight className="w-3 h-3 text-[#edd088] group-hover:translate-x-0.5 transition-transform shrink-0 ml-1" />
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-semibold text-[#edd088] px-1">
+                  <span>Feuilleter le scan original</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             ))}

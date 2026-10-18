@@ -9,11 +9,25 @@ import { MobileDrawer } from './components/MobileDrawer';
 import { ServiceDetailModal } from './components/ServiceDetailModal';
 import { LiveConciergeNotifications } from './components/LiveConciergeNotifications';
 import { MoroccoUniversePage } from './components/MoroccoUniversePage';
+import { ServicePage } from './components/ServicePage';
 
 export function App() {
   const [currentUniverse, setCurrentUniverse] = useState<'marbella' | 'maroc'>('marbella');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
+
+  // If user is exploring a dedicated Service Page (full page view)
+  if (activeServiceId) {
+    return (
+      <ServicePage
+        serviceId={activeServiceId}
+        onBack={() => {
+          setActiveServiceId(null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
 
   // If user is exploring the dedicated Moroccan Universe
   if (currentUniverse === 'maroc') {

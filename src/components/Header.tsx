@@ -101,34 +101,38 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
             <div className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-1000 bg-gradient-to-r from-transparent via-white/20 to-transparent pointer-events-none" />
           </button>
 
-          {/* Desktop Direct Country Flags (France, UK, Espagne, Maroc) */}
-          <div className="hidden sm:flex items-center gap-1 sm:gap-1.5 p-1 rounded-full border border-white/20 bg-black/45 backdrop-blur-md shadow-sm">
-            {languages.map((lang) => (
-              <button
-                key={lang.code}
-                onClick={() => setSelectedLang(lang)}
-                title={`${lang.label} (${lang.code})`}
-                aria-label={`Sélectionner ${lang.label}`}
-                className={`relative px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-sm sm:text-base transition-all duration-200 flex items-center justify-center ${
-                  selectedLang.code === lang.code
-                    ? 'bg-[#c29a52]/40 shadow-[0_0_10px_rgba(241,210,145,0.4)] ring-1 ring-[#f1d291] scale-110'
-                    : 'opacity-60 hover:opacity-100 hover:scale-105'
-                }`}
-              >
-                <span className="leading-none">{lang.flag}</span>
-              </button>
-            ))}
-          </div>
+          {/* Flag Dropdown Selector (100% Flags Only - No Letters) */}
+          <div className="relative">
+            <button
+              onClick={() => setLangOpen(!langOpen)}
+              className="flex items-center gap-1 sm:gap-1.5 px-2.5 py-1.5 rounded-full border border-white/20 bg-black/50 hover:border-[#f1d291] text-base backdrop-blur-md transition-all duration-200 shadow-sm"
+              aria-label="Changer de pays / langue"
+            >
+              <span className="leading-none text-base sm:text-lg">{selectedLang.flag}</span>
+              <ChevronDown className={`w-3 h-3 text-[#edd088] transition-transform duration-300 ${langOpen ? 'rotate-180' : ''}`} />
+            </button>
 
-          {/* Mobile Single Flag Indicator */}
-          <button
-            onClick={onOpenMobileMenu}
-            className="sm:hidden flex items-center justify-center w-7 h-7 rounded-full border border-white/20 bg-black/40 text-sm shadow-sm"
-            aria-label="Sélectionner la langue"
-            title={`Langue active : ${selectedLang.label}`}
-          >
-            <span className="leading-none">{selectedLang.flag}</span>
-          </button>
+            {langOpen && (
+              <div className="absolute right-0 top-full mt-2 py-1.5 px-1.5 rounded-2xl bg-[#101c22]/98 border border-[#f1d291]/50 shadow-[0_10px_30px_rgba(0,0,0,0.85)] backdrop-blur-2xl flex flex-col gap-1 z-50 animate-in fade-in slide-in-from-top-2 duration-200 min-w-[50px] items-center">
+                {languages.map((lang) => (
+                  <button
+                    key={lang.code}
+                    onClick={() => {
+                      setSelectedLang(lang);
+                      setLangOpen(false);
+                    }}
+                    className={`w-9 h-9 rounded-xl flex items-center justify-center text-xl transition-all duration-200 ${
+                      selectedLang.code === lang.code
+                        ? 'bg-[#c29a52]/40 ring-1 ring-[#f1d291] scale-105'
+                        : 'opacity-65 hover:opacity-100 hover:bg-white/10 hover:scale-110'
+                    }`}
+                  >
+                    <span className="leading-none">{lang.flag}</span>
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
 
           {/* Mobile hamburger menu */}
           <button

@@ -8,6 +8,7 @@ interface MobileDrawerProps {
 }
 
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onOpenMorocco }) => {
+  const [activeFlag, setActiveFlag] = React.useState('🇫🇷');
   if (!isOpen) return null;
 
   return (
@@ -58,12 +59,21 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
             </button>
           </div>
 
-          {/* Direct Country Flags Selector */}
+          {/* Direct Country Flags Selector (100% Flags Only - No Letters) */}
           <div className="mb-6 p-2 rounded-2xl border border-white/10 bg-white/5 flex items-center justify-around">
-            <span className="text-xl p-1.5 rounded-lg bg-[#c29a52]/30 ring-1 ring-[#f1d291]" title="Français">🇫🇷</span>
-            <span className="text-xl p-1.5 rounded-lg opacity-70 hover:opacity-100 transition-opacity" title="English">🇬🇧</span>
-            <span className="text-xl p-1.5 rounded-lg opacity-70 hover:opacity-100 transition-opacity" title="Español">🇪🇸</span>
-            <span className="text-xl p-1.5 rounded-lg opacity-70 hover:opacity-100 transition-opacity" title="Maroc / العربية">🇲🇦</span>
+            {['🇫🇷', '🇬🇧', '🇪🇸', '🇲🇦'].map((flag) => (
+              <button
+                key={flag}
+                onClick={() => setActiveFlag(flag)}
+                className={`text-xl p-2 rounded-xl transition-all ${
+                  activeFlag === flag
+                    ? 'bg-[#c29a52]/40 ring-1 ring-[#f1d291] scale-110 shadow-sm'
+                    : 'opacity-65 hover:opacity-100 hover:scale-105'
+                }`}
+              >
+                <span className="leading-none">{flag}</span>
+              </button>
+            ))}
           </div>
 
           {/* Navigation Links */}
