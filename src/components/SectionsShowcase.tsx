@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, KeyRound, Sparkles, ChefHat, MessageCircle, Phone, Mail, Play, ZoomIn, Utensils, X, Wine, Users, Plus, CheckCircle2, CalendarDays, Flame } from 'lucide-react';
+import { ArrowRight, Check, KeyRound, Sparkles, ChefHat, MessageCircle, Phone, Mail, Play, ZoomIn, Utensils, X, Wine, Users, CalendarDays, Flame } from 'lucide-react';
 
 interface SectionsShowcaseProps {
   onSelectService: (serviceId: string) => void;
@@ -8,7 +8,6 @@ interface SectionsShowcaseProps {
 export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectService }) => {
   const [activeVideoTab, setActiveVideoTab] = useState<'cuisine' | 'convives' | 'plating'>('cuisine');
   const [activeDishCategory, setActiveDishCategory] = useState<'all' | 'mains' | 'desserts' | 'tables'>('all');
-  const [selectedDishes, setSelectedDishes] = useState<string[]>([]);
   const [zoomedDish, setZoomedDish] = useState<{
     src: string;
     title: string;
@@ -17,13 +16,6 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
     wine?: string;
     note?: string;
   } | null>(null);
-
-  const toggleDishInMenu = (dishTitle: string, e?: React.MouseEvent) => {
-    if (e) e.stopPropagation();
-    setSelectedDishes((prev) =>
-      prev.includes(dishTitle) ? prev.filter((t) => t !== dishTitle) : [...prev, dishTitle]
-    );
-  };
 
   // ALL 16+ AUTHENTIC DISHES FROM DOMINIQUE HYBORD ARCHIVES WITH WINE PAIRING & CHEF NOTES
   const allCulinaryDishes = [
@@ -126,7 +118,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
     {
       title: 'L’Art de la Table en Villa Privée',
       category: 'tables',
-      desc: 'Argenterie, verrerie en cristal, bougies et nappage de lin pour une ambiance de palace chez vous.',
+      desc: 'Argenterie, verrerie en cristal, bougies et nappage de lin pour une ambiance de grande table chez vous.',
       src: '/archives-cuisine/2018-01-21 08.25.03.jpg',
       wine: 'Sélection Sommelier Dédiée',
       note: 'Mise en scène complète incluse',
@@ -209,7 +201,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 Gestion de propriété
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
-                Surveillance régulière, contrôle technique, coordination d’artisans et préparation soignée avant chaque séjour.
+                Votre maison, entre de bonnes mains même lorsque vous êtes loin. Surveillance attentive, visites régulières et coordination bienveillante des prestataires.
               </p>
               <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
@@ -225,8 +217,8 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           >
             <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
-                src="/concierge-private-vip.jpg"
-                alt="Conciergerie privée et hospitalité de palace 24/7 à Marbella"
+                src="/candidates/option1_yacht.jpg"
+                alt="Conciergerie privée et yacht charter au coucher de soleil à Puerto Banús"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
                 loading="lazy"
               />
@@ -243,7 +235,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 Conciergerie privée
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
-                Accueil VIP, réservations de tables d'exception, yachts privés et assistance sur-mesure disponible 7j/7.
+                Le sens du détail, sans jamais en faire trop. Une présence locale pour rendre les séjours plus fluides et les demandes plus simples, avec discrétion.
               </p>
               <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
@@ -277,8 +269,21 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 Location saisonnière
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
-                Valorisation de votre villa, accueil des hôtes, contrôle rigoureux et rentabilité optimisée en toute sérénité.
+                Une expérience de séjour pensée avant même l’arrivée. Orchestrée pour préserver votre bien et la qualité de chaque séjour.
               </p>
+              
+              {/* 2 Formules Claires */}
+              <div className="mt-3 pt-2.5 border-t border-[#78664c]/15 text-[10.5px] text-[#66584c] space-y-1">
+                <p className="flex items-center gap-1.5 font-medium text-[#8c6742]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c29a52]" />
+                  Option 1 · Réservations gérées par vous
+                </p>
+                <p className="flex items-center gap-1.5 font-medium text-[#8c6742]">
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#c29a52]" />
+                  Option 2 · Réservations gérées par nous
+                </p>
+              </div>
+
               <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
                 <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
@@ -311,7 +316,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 Chef à domicile
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
-                L’art de recevoir chez soi. Menus gastronomiques sur-mesure imaginés et exécutés en direct dans votre villa.
+                L’art de recevoir chez soi. Menus sur-mesure imaginés en direct avec le chef selon vos goûts, vos envies et votre budget.
               </p>
               <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
@@ -338,7 +343,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               L’expérience gastronomique privée dans l’intimité exclusive de votre villa
             </p>
             <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed font-light">
-              Dans la cuisine ouverte de votre villa avec vue sur la mer, observez le chef faire flamber des produits nobles, dresser vos assiettes sous vos yeux et servir vos convives réunis autour d'une table d'exception. Vous profitez pleinement de vos proches ; nous orchestrons un service de palace sur-mesure.
+              Dans la cuisine ouverte de votre villa avec vue sur la mer, observez le chef élaborer des créations raffinées, dresser vos assiettes sous vos yeux et servir vos convives réunis autour d'une table d'exception. Vous profitez pleinement de vos proches ; nous orchestrons un service sur-mesure.
             </p>
           </div>
 
@@ -444,7 +449,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                       {activeVideoTab === 'plating' && 'Dressage Haute Couture'}
                     </span>
                     <h4 className="font-serif text-base sm:text-2xl text-white font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
-                      {activeVideoTab === 'cuisine' && 'Rigueur & Maîtrise Culinaire de Palace'}
+                      {activeVideoTab === 'cuisine' && 'Excellence & Savoir-Faire Culinaire en Villa'}
                       {activeVideoTab === 'convives' && 'Moments Précieux Partagés en Villa'}
                       {activeVideoTab === 'plating' && 'Précision et Esthétique dans l’Assiette'}
                     </h4>
@@ -518,18 +523,18 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             </div>
           </div>
 
-          {/* GROS PLAN SUR TOUS LES PLATS RÉELS DE L'ARCHIVE DOMINIQUE HYBORD */}
+          {/* GROS PLAN SUR LES CRÉATIONS CULINAIRES DOMINIQUE HYBORD */}
           <div className="mt-20">
             <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10">
               <div>
                 <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
-                  Galerie Haute Gastronomie
+                  Galerie Inspirations Gastronomiques
                 </span>
                 <h3 className="font-serif text-3xl sm:text-4xl text-white font-medium mt-1">
                   Les Créations Authentiques de Dominique Hybord
                 </h3>
-                <p className="text-xs sm:text-sm text-white/70 mt-1">
-                  Chaque plat est réalisé sur-mesure dans votre villa. Cliquez sur une photo pour zoomer en haute définition.
+                <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-2xl">
+                  Une sélection d’inspirations culinaires. Chaque menu est ensuite imaginé et composé sur-mesure en échange direct avec le chef, selon vos goûts, vos envies et votre budget.
                 </p>
               </div>
 
@@ -578,132 +583,75 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               </div>
             </div>
 
-            {/* Interactive Menu Builder Summary Banner (When 1+ dishes selected) */}
-            {selectedDishes.length > 0 && (
-              <div className="mb-8 p-4 sm:p-6 rounded-3xl bg-gradient-to-r from-[#172b33] via-[#1a333d] to-[#122329] border border-gold-border/70 shadow-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4 animate-in fade-in slide-in-from-top-3 duration-300">
-                <div className="space-y-1">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#25D366] animate-pulse" />
-                    <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088]">
-                      Votre Dégustation Personnalisée · {selectedDishes.length} plat{selectedDishes.length > 1 ? 's' : ''} sélectionné{selectedDishes.length > 1 ? 's' : ''}
-                    </span>
-                  </div>
-                  <p className="text-xs sm:text-sm text-white/90 line-clamp-1">
-                    {selectedDishes.join(' · ')}
-                  </p>
-                </div>
-
-                <div className="flex items-center gap-2.5 w-full md:w-auto">
-                  <button
-                    onClick={() => setSelectedDishes([])}
-                    className="text-xs text-white/60 hover:text-white underline px-3 py-2"
-                  >
-                    Effacer la sélection
-                  </button>
-                  <a
-                    href={`https://wa.me/34623626724?text=${encodeURIComponent(
-                      `Bonjour Solveig, j'ai composé mon menu idéal avec Dominique Hybord :\n\n${selectedDishes.map((d, i) => `${i + 1}. ${d}`).join('\n')}\n\nPouvez-vous me confirmer les disponibilités pour un dîner privé en villa ?`
-                    )}`}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="w-full md:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#25D366] text-black text-xs font-bold px-6 py-3 shadow-lg shadow-[#25D366]/20 hover:scale-105 transition-all"
-                  >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>Réserver ce Menu sur WhatsApp</span>
-                  </a>
-                </div>
-              </div>
-            )}
-
-            {/* Gallery Grid: 16+ authentic dishes with interactive selection & zoom */}
+            {/* Gallery Grid: authentic dishes with HD zoom inspection */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredDishes.map((item, idx) => {
-                const isSelected = selectedDishes.includes(item.title);
-                return (
+              {filteredDishes.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group relative overflow-hidden rounded-2xl border border-white/15 bg-[#142329] hover:border-[#edd088]/60 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+                >
+                  {/* Image Box */}
                   <div
-                    key={idx}
-                    className={`group relative overflow-hidden rounded-2xl border transition-all duration-300 flex flex-col justify-between ${
-                      isSelected
-                        ? 'border-[#edd088] bg-[#1a2f37] ring-1 ring-[#edd088] shadow-2xl'
-                        : 'border-white/15 bg-[#142329] hover:border-[#edd088]/60 shadow-lg hover:shadow-xl hover:-translate-y-1'
-                    }`}
+                    onClick={() => setZoomedDish(item)}
+                    className="relative h-44 sm:h-52 overflow-hidden bg-black/60 cursor-pointer"
                   >
-                    {/* Image Box */}
-                    <div
-                      onClick={() => setZoomedDish(item)}
-                      className="relative h-44 sm:h-52 overflow-hidden bg-black/60 cursor-pointer"
-                    >
-                      <img
-                        src={item.src}
-                        alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
-                        loading="lazy"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#142329] via-transparent to-black/30 pointer-events-none" />
+                    <img
+                      src={item.src}
+                      alt={item.title}
+                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#142329] via-transparent to-black/30 pointer-events-none" />
 
-                      {/* Wine Pairing Pill Badge */}
-                      {item.wine && (
-                        <div className="absolute top-2.5 left-2.5 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[9px] text-[#edd088] font-medium shadow-md">
-                          <Wine className="w-3 h-3 text-[#f4cb99] shrink-0" />
-                          <span className="truncate max-w-[140px]">{item.wine}</span>
-                        </div>
-                      )}
-
-                      {/* Zoom Indicator on Hover */}
-                      <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                        <span className="px-3 py-1 rounded-full bg-black/85 text-[#edd088] text-[10px] font-bold uppercase tracking-wider border border-[#edd088] flex items-center gap-1 shadow-lg">
-                          <ZoomIn className="w-3 h-3" />
-                          Gros Plan HD
-                        </span>
+                    {/* Wine Pairing Pill Badge */}
+                    {item.wine && (
+                      <div className="absolute top-2.5 left-2.5 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[9px] text-[#edd088] font-medium shadow-md">
+                        <Wine className="w-3 h-3 text-[#f4cb99] shrink-0" />
+                        <span className="truncate max-w-[140px]">{item.wine}</span>
                       </div>
-                    </div>
+                    )}
 
-                    {/* Content Box */}
-                    <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-grow">
-                      <div>
-                        {item.note && (
-                          <span className="text-[9px] font-bold uppercase tracking-wider text-[#c29a52] block mb-1">
-                            ★ {item.note}
-                          </span>
-                        )}
-                        <h5
-                          onClick={() => setZoomedDish(item)}
-                          className="text-xs sm:text-sm font-semibold text-white line-clamp-2 hover:text-[#edd088] cursor-pointer transition-colors"
-                        >
-                          {item.title}
-                        </h5>
-                        <p className="text-[10px] sm:text-[11px] text-white/65 line-clamp-2 mt-1 leading-snug">
-                          {item.desc}
-                        </p>
-                      </div>
-
-                      {/* Playful Interactive Menu Toggle Button */}
-                      <div className="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-                        <button
-                          onClick={(e) => toggleDishInMenu(item.title, e)}
-                          className={`w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all ${
-                            isSelected
-                              ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                              : 'bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border border-white/15'
-                          }`}
-                        >
-                          {isSelected ? (
-                            <>
-                              <CheckCircle2 className="w-3.5 h-3.5 text-black" />
-                              <span>Sélectionné au Menu</span>
-                            </>
-                          ) : (
-                            <>
-                              <Plus className="w-3.5 h-3.5 text-[#edd088]" />
-                              <span>Ajouter au Menu</span>
-                            </>
-                          )}
-                        </button>
-                      </div>
+                    {/* Zoom Indicator on Hover */}
+                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
+                      <span className="px-3 py-1 rounded-full bg-black/85 text-[#edd088] text-[10px] font-bold uppercase tracking-wider border border-[#edd088] flex items-center gap-1 shadow-lg">
+                        <ZoomIn className="w-3 h-3" />
+                        Gros Plan HD
+                      </span>
                     </div>
                   </div>
-                );
-              })}
+
+                  {/* Content Box */}
+                  <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-grow">
+                    <div>
+                      {item.note && (
+                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#c29a52] block mb-1">
+                          ★ {item.note}
+                        </span>
+                      )}
+                      <h5
+                        onClick={() => setZoomedDish(item)}
+                        className="text-xs sm:text-sm font-semibold text-white line-clamp-2 hover:text-[#edd088] cursor-pointer transition-colors"
+                      >
+                        {item.title}
+                      </h5>
+                      <p className="text-[10px] sm:text-[11px] text-white/65 line-clamp-2 mt-1 leading-snug">
+                        {item.desc}
+                      </p>
+                    </div>
+
+                    {/* Action Button: HD Zoom */}
+                    <div className="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
+                      <button
+                        onClick={() => setZoomedDish(item)}
+                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border border-white/15"
+                      >
+                        <ZoomIn className="w-3.5 h-3.5 text-[#edd088]" />
+                        <span>Découvrir la création</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -741,35 +689,16 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               </div>
 
               <div className="flex items-center gap-2.5 shrink-0">
-                <button
-                  onClick={() => toggleDishInMenu(zoomedDish.title)}
-                  className={`inline-flex items-center gap-1.5 rounded-full px-5 py-3 text-xs font-bold transition-all ${
-                    selectedDishes.includes(zoomedDish.title)
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'border border-white/20 bg-white/5 hover:bg-white/15 text-white'
-                  }`}
-                >
-                  {selectedDishes.includes(zoomedDish.title) ? (
-                    <>
-                      <CheckCircle2 className="w-4 h-4" />
-                      <span>Retirer du menu</span>
-                    </>
-                  ) : (
-                    <>
-                      <Plus className="w-4 h-4" />
-                      <span>Ajouter au menu</span>
-                    </>
-                  )}
-                </button>
-
                 <a
-                  href={`https://wa.me/34623626724?text=${encodeURIComponent(`Bonjour Solveig, je souhaite inclure le plat « ${zoomedDish.title} » dans le menu de mon dîner privé à Marbella.`)}`}
+                  href={`https://wa.me/34623626724?text=${encodeURIComponent(
+                    `Bonjour Solveig, j'ai découvert les créations du Chef Dominique Hybord (notamment « ${zoomedDish.title} ») et je souhaite échanger avec lui pour concevoir un menu adapté à nos goûts et à notre budget.`
+                  )}`}
                   target="_blank"
                   rel="noreferrer"
-                  className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#25D366] text-black text-xs font-bold px-5 py-3 hover:scale-105 transition-all shadow-md"
+                  className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#20b858] text-black text-xs font-bold px-6 py-3.5 hover:scale-105 transition-all shadow-lg shadow-[#25D366]/20"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Demander sur WhatsApp</span>
+                  <span>Échanger avec le Chef sur WhatsApp</span>
                 </a>
               </div>
             </div>

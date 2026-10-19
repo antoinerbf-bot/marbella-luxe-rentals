@@ -20,7 +20,7 @@ export const servicesData: ServiceItem[] = [
     number: '01',
     title: 'PROPERTY',
     subtitle: 'MANAGEMENT',
-    description: 'Surveillance méticuleuse, entretien technique rigoureux, coordination des prestataires et préparation avant chaque séjour.',
+    description: 'Surveillance attentive, visites régulières, coordination des prestataires et préparation soignée avant chaque séjour.',
     icon: (
       <svg className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M4 22 24 5l20 17" />

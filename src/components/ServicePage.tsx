@@ -48,50 +48,50 @@ const servicesDatabase: Record<string, ServiceContent> = {
     id: 'property-management',
     badge: 'Intendance Privée & Domaine · Marbella & Mijas',
     title: 'Property Management',
-    subtitle: 'La sérénité absolue pour votre domaine d’exception',
-    tagline: '« Votre propriété entretenue et surveillée avec la rigueur d’un palace 365 jours par an. »',
+    subtitle: 'Votre maison, entre de bonnes mains même lorsque vous êtes loin',
+    tagline: '« La tranquillité commence par savoir que quelqu’un veille réellement sur votre bien. »',
     heroImage: '/property-management-charm.jpg',
     heroDescription:
-      'Posséder une villa de prestige sur la Costa del Sol doit demeurer un privilège sans contrainte. Solveig’s Prestige Service prend en charge l’intégralité de l’intendance technique, administrative et opérationnelle de votre bien. À chaque visite, un rapport photo/vidéo haute définition vous est adressé directement sur WhatsApp ou email.',
+      'Posséder une villa de prestige sur la Costa del Sol doit demeurer un privilège sans contrainte. Solveig’s Prestige Service prend en charge l’intendance complète, la surveillance attentive et la coordination des prestataires de votre bien. À chaque visite, un compte-rendu clair et détaillé avec photos HD vous est adressé directement sur WhatsApp ou email.',
     whatsappMessage: 'Bonjour Solveig, je souhaite échanger à propos de la gestion de ma villa sur la Costa del Sol.',
     stats: [
-      { value: '30+', label: 'Ans de rigueur et d’exigence' },
-      { value: '100%', label: 'Rapports photo/vidéo 4K sous 24h' },
-      { value: '24/7', label: 'Intervention d’urgence technique' },
+      { value: '30+', label: 'Ans d’expérience et d’exigence' },
+      { value: '100%', label: 'Comptes-rendus détaillés avec photos HD' },
+      { value: '24/7', label: 'Disponibilité & veille active' },
       { value: '0 €', label: 'Surcoût caché sur les artisans' },
     ],
     pillars: [
       {
-        title: 'Surveillance & Audit Technique Rigoureux',
+        title: 'Surveillance Attentive & Présence Régulière',
         desc: 'Visites périodiques approfondies de l’ensemble de vos espaces intérieurs et extérieurs.',
         icon: 'shield',
         details: [
-          'Contrôle complet des systèmes de climatisation (Airzone/Daikin), chauffage et ventilation',
-          'Vérification de la plomberie, suppression des odeurs de siphons et détection des fuites',
-          'Inspection du taux de sel, du pH et de la filtration de la piscine',
-          'Test des alarmes, caméras périmétriques et fermetures de sécurité',
+          'Contrôle complet des systèmes de climatisation, chauffage et ventilation',
+          'Vérification soignée de la plomberie, suppression des odeurs de siphons et détection de fuites',
+          'Contrôle attentif du taux de sel, du pH et de la limpidité de la piscine',
+          'Vérification des fermetures de sécurité, portails et caméras',
         ],
       },
       {
-        title: 'Coordination des Artisans & Prestataires',
-        desc: 'Supervision directe de chaque intervenant pour une exécution parfaite au juste prix.',
+        title: 'Coordination Bienveillante des Prestataires',
+        desc: 'Supervision directe de chaque intervenant pour une exécution soignée au juste prix.',
         icon: 'clock',
         details: [
-          'Sélection et négociation auprès des meilleurs artisans locaux (jardinage, électricité, toiture)',
-          'Présence physique sur place lors des interventions et vérification des travaux finis',
-          'Validation stricte des factures pour vous éviter toute surfacturation',
-          'Planification préventive des révisions annuelles (chaudières, pompes à chaleur, portails)',
+          'Sélection auprès des meilleurs artisans locaux de confiance (jardinage, électricité, toiture)',
+          'Présence physique sur place lors des interventions et vérification soignée des travaux finis',
+          'Vérification attentive des devis et factures pour vous éviter toute surfacturation',
+          'Planification préventive des révisions annuelles (pompes à chaleur, portails, climatisation)',
         ],
       },
       {
         title: 'Protocole d’Arrivée VIP Propriétaire',
-        desc: 'Votre villa prête à vous accueillir dans un confort hôtelier absolu à chaque séjour.',
+        desc: 'Votre villa prête à vous accueillir dans un confort absolu à chaque séjour.',
         icon: 'star',
         details: [
           'Mise en température des pièces 24h avant votre arrivée (chauffage ou climatisation)',
           'Aération complète et diffusion de fragrances d’ambiance subtiles',
           'Remplissage de votre réfrigérateur selon votre liste de courses personnalisée',
-          'Fleurs fraîches coupées, lits faits à l’hôtelière et linge de maison immaculé',
+          'Fleurs fraîches coupées, lits faits avec soin et linge de maison impeccable',
         ],
       },
       {
@@ -102,15 +102,15 @@ const servicesDatabase: Record<string, ServiceContent> = {
           'Fermeture raisonnée des vannes principales d’eau pour éviter tout sinistre silencieux',
           'Protection des mobiliers d’extérieur face au vent marin et aux intempéries',
           'Gestion du courrier et des réceptions de colis en votre absence',
-          'Ronde renforcée après chaque épisode météorologique majeur (tempête, pluies torrentielles)',
+          'Visite de contrôle renforcée après chaque épisode météorologique majeur (tempête, fortes pluies)',
         ],
       },
     ],
     processSteps: [
       {
         step: '01',
-        title: 'Visite d’audit & Inventaire Technique',
-        desc: 'Nous réalisons un état des lieux exhaustif de votre villa et identifions l’ensemble des points d’attention techniques.',
+        title: 'Visite Initiale & Prise en Main',
+        desc: 'Nous découvrons votre propriété, vos attentes précises et établissons un suivi sur-mesure.',
       },
       {
         step: '02',
@@ -119,7 +119,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
       {
         step: '03',
-        title: 'Intendance Active & Rapports Hebdomadaires',
+        title: 'Intendance Active & Rapports Réguliers',
         desc: 'Chaque semaine, vous recevez un compte-rendu précis avec photos HD attestant du parfait état de votre domaine.',
       },
       {
@@ -154,7 +154,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
       {
         q: 'Pouvez-vous superviser de gros travaux ou des rénovations ?',
-        a: 'Absolument. Nous travaillons avec des architectes et entrepreneurs de confiance à Marbella et Mijas. Nous supervisons le planning des travaux, assurons le suivi de chantier hebdomadaire et vous envoyons des photos d’avancement.',
+        a: 'Absolument. Nous travaillons avec des artisans et entrepreneurs de confiance à Marbella et Mijas. Nous supervisons le planning des travaux, assurons le suivi de chantier hebdomadaire et vous envoyons des photos d’avancement.',
       },
     ],
   },
@@ -163,11 +163,11 @@ const servicesDatabase: Record<string, ServiceContent> = {
     id: 'concierge-services',
     badge: 'Conciergerie Privée & Lifestyle 24/7 · Costa del Sol',
     title: 'Concierge Services',
-    subtitle: 'L’inaccessible devient votre quotidien sur la Costa del Sol',
-    tagline: '« Une écoute discrète, un carnet d’adresses d’exception et une réponse instantanée à toutes vos envies. »',
-    heroImage: '/concierge-private-vip.jpg',
+    subtitle: 'Le sens du détail, sans jamais en faire trop',
+    tagline: '« Le vrai luxe est souvent invisible : quelqu’un a déjà pensé au détail avant même que vous le demandiez. »',
+    heroImage: '/candidates/option1_yacht.jpg',
     heroDescription:
-      'Obtenir la meilleure table à Puente Romano sans délai, privatiser un yacht pour une journée aux abords de Gibraltar, ou bénéficier d’un chauffeur d’élite dès votre sortie d’avion : Solveig’s Prestige Service transforme chaque instant de votre séjour en une parenthèse de fluidité et d’exclusivité.',
+      'Une présence locale pour rendre les séjours plus fluides et les demandes plus simples, avec discrétion. Obtenir une table d’exception à Puente Romano, réserver un yacht privé pour une échappée en mer au crépuscule ou disposer d’un chauffeur d’élite dès la sortie de votre avion : Solveig’s Prestige Service anticipe chaque instant pour vous offrir une sérénité absolue.',
     whatsappMessage: 'Bonjour Solveig, je souhaiterais solliciter vos services de conciergerie privée pour mon séjour à Marbella.',
     stats: [
       { value: '24/7', label: 'Ligne directe propriétaire' },
@@ -205,8 +205,8 @@ const servicesDatabase: Record<string, ServiceContent> = {
         details: [
           'Location à la journée ou au week-end de yachts de 15 à 45 mètres au départ de Puerto Banús',
           'Itinéraires sur-mesure vers les criques de Cabopino, Gibraltar ou les côtes marocaines',
-          'Catering haut de gamme à bord, champagne millésimé et chef privé',
-          'Activités nautiques : seabob, jet-ski, paddle et plongée encadrée',
+          'Catering raffiné à bord, champagne millésimé et équipage attentionné',
+          'Activités nautiques : seabob, jet-ski, paddle et baignade dans les eaux cristallines',
         ],
       },
       {
@@ -216,7 +216,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
         details: [
           'Masseurs et thérapeutes professionnels pour soins en terrasse ou au bord de la piscine',
           'Coachs sportifs privés (yoga, pilates, tennis, padel) à domicile',
-          'Gouvernantes, lingères et majordomes formés aux standards des 5 étoiles',
+          'Gouvernantes, lingères et personnel de maison formés aux plus hauts standards',
           'Garde d’enfants qualifiée et bilingue pour vos soirées en toute sérénité',
         ],
       },
@@ -254,8 +254,8 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Approvisionnement en grands crus, cigares et produits d’exception',
     ],
     galleryImages: [
-      { url: '/concierge-private-vip.jpg', caption: 'Art de recevoir et conciergerie privée VIP' },
-      { url: '/concierge-yacht-vip.jpg', caption: 'Yacht charter privé au départ de Puerto Banús' },
+      { url: '/candidates/option1_yacht.jpg', caption: 'Yacht charter privé au coucher de soleil à Puerto Banús' },
+      { url: '/concierge-yacht-vip.jpg', caption: 'Journées en mer et expériences maritimes exclusives' },
       { url: '/candidates/option3_chauffeur.jpg', caption: 'Chauffeur d’élite et accueil aéroport' },
     ],
     faqs: [
@@ -278,89 +278,89 @@ const servicesDatabase: Record<string, ServiceContent> = {
     id: 'rental-management',
     badge: 'Gestion Locative Haute Gamme · Rendement & Sérénité',
     title: 'Rental Management',
-    subtitle: 'Valorisez votre bien tout en préservant son intégrité',
-    tagline: '« Un rendement optimisé pour votre villa, avec des hôtes rigoureusement triés sur le volet. »',
+    subtitle: 'Une expérience de séjour pensée avant même l’arrivée',
+    tagline: '« Valoriser votre bien tout en préservant son intégrité, avec des hôtes choisis avec soin. »',
     heroImage: '/rental-management-charm.jpg',
     heroDescription:
-      'Louer sa propriété d’exception sur la Costa del Sol ne doit pas rimer avec dégradation ou soucis opérationnels. Solveig’s Prestige Service opère une gestion locative haute couture : sélection intransigeante des profils, accueil physique en gants blancs, cautionnement bancaire élevé et gouvernance digne d’un palace 5 étoiles.',
+      'Louer sa propriété d’exception sur la Costa del Sol doit s’accompagner d’une totale tranquillité d’esprit. Solveig’s Prestige Service vous propose deux formules modulables : soit la prise en charge exclusive sur place lorsque vous gérez vous-même vos réservations (accueil, état des lieux, blanchisserie et ménage 5 étoiles), soit une gestion locative intégrale clé en main avec sélection attentive des voyageurs, contrats et conciergerie dédiée.',
     whatsappMessage: 'Bonjour Solveig, je souhaite optimiser la location saisonnière de ma villa à Marbella.',
     stats: [
       { value: '100%', label: 'Voyageurs contrôlés et vérifiés' },
       { value: '5 ★', label: 'Standards hôteliers de blanchisserie' },
-      { value: '+35%', label: 'Revenu optimisé via Yield Management' },
+      { value: '2 Formules', label: 'Gestion sur place ou clé en main' },
       { value: '0', label: 'Contrainte logistique pour le propriétaire' },
     ],
     pillars: [
       {
-        title: 'Sélection Drastique des Profils de Voyageurs',
-        desc: 'Nous n’accueillons que des familles et hôtes respectueux de votre patrimoine.',
+        title: 'Formule 1 : Réservations Gérées par Vous (Propriétaires)',
+        desc: 'Vous pilotez vous-même vos réservations : nous assurons une intendance et un accueil irréprochables sur place.',
         icon: 'shield',
         details: [
-          'Vérification d’identité systématique avant toute confirmation de séjour',
-          'Interdiction absolue et contractuelle des fêtes et événements non déclarés',
-          'Caution bancaire conséquente bloquée en amont de l’arrivée',
-          'Règlement intérieur strict et respectueux du voisinage de la villa',
+          'Accueil physique soigné de vos voyageurs et remise en main propre des clés',
+          'État des lieux d’entrée et de sortie minutieux avec reportage photo comparatif',
+          'Fourniture de linge hôtelier de qualité supérieure lavé et repassé aux normes 5 étoiles',
+          'Ménage de départ approfondi et remise en beauté complète de la villa avant chaque séjour',
         ],
       },
       {
-        title: 'Commercialisation Premium & Yield Management',
-        desc: 'Maximiser vos revenus locatifs tout en préservant la rareté de votre bien.',
+        title: 'Formule 2 : Gestion Locative Intégrale (Gérée par Nous)',
+        desc: 'Délégation totale et sérénité absolue : nous prenons en charge la location de votre bien de A à Z.',
         icon: 'star',
         details: [
-          'Diffusion sur les plateformes exclusives et auprès de notre clientèle privée fidèle',
-          'Prises de vue photographiques professionnelles mettant en valeur l’âme de la villa',
-          'Ajustement dynamique des tarifs selon la saisonnalité et les grands événements de Marbella',
-          'Rédaction soignée et bilingue mettant en avant les atouts d’exception',
+          'Création et mise en valeur de votre annonce sur les canaux de voyageurs haut de gamme',
+          'Filtrage strict et sélection soignée des profils de familles et invités respectueux',
+          'Gestion complète des réservations, contrats de séjour et dépôts de garantie',
+          'Optimisation tarifaire selon la saisonnalité et les événements majeurs de la Costa del Sol',
         ],
       },
       {
-        title: 'Accueil en Personne & Check-in / Check-out VIP',
-        desc: 'Jamais de boîte à clés : chaque voyageur est reçu avec les égards d’un palace.',
+        title: 'Accueil VIP en Personne & Présence Bienveillante',
+        desc: 'Jamais de boîte à clés : chaque voyageur est reçu chaleureusement avec attention et égards.',
         icon: 'clock',
         details: [
-          'Accueil physique chaleureux par l’équipe Solveig, visite guidée et explications techniques',
-          'Panier de bienvenue raffiné (vins locaux, fruits andalous, douceurs artisanales)',
-          'État des lieux d’entrée et de sortie minutieux avec relevé photo comparatif',
-          'Assistance conciergerie dédiée aux locataires tout au long de leur séjour',
+          'Accueil physique chaleureux par l’équipe Solveig, visite guidée des équipements de la villa',
+          'Panier d’accueil raffiné aux saveurs locales andalouses',
+          'Assistance conciergerie locale dédiée aux locataires tout au long de leur séjour',
+          'Disponibilité attentive en cas de besoin ou question durant le séjour',
         ],
       },
       {
-        title: 'Gouvernance & Blanchisserie 5 Étoiles',
+        title: 'Gouvernance & Blanchisserie Hôtelière 5 Étoiles',
         desc: 'Une propriété rendue dans un état d’hygiène et d’éclat irréprochable.',
         icon: 'file',
         details: [
-          'Équipes de ménage professionnelles formées aux exigences de l’hôtellerie de luxe',
-          'Linge de maison haut de gamme en coton égyptien lavé et repassé aux normes hôtelières',
-          'Produits d’accueil éco-responsables de marques de prestige dans les salles de bain',
-          'Réapprovisionnement des consommables indispensables (café Nespresso, huiles, épices)',
+          'Équipes de ménage professionnelles formées aux exigences de la belle hôtellerie',
+          'Linge de maison haut de gamme en coton supérieur lavé et repassé avec minutie',
+          'Produits d’accueil soignés et éco-responsables dans les salles de bain',
+          'Réapprovisionnement des consommables indispensables pour le confort des hôtes',
         ],
       },
     ],
     processSteps: [
       {
         step: '01',
-        title: 'Estimation & Conseil de Valorisation',
-        desc: 'Nous évaluons le potentiel locatif annuel de votre propriété et suggérons d’éventuelles améliorations pour maximiser son attrait.',
+        title: 'Estimation & Choix de la Formule',
+        desc: 'Nous évaluons vos besoins et convenons de la formule la plus adaptée : intendance d’accueil sur place ou gestion locative intégrale.',
       },
       {
         step: '02',
         title: 'Mise en Valeur & Shooting Photo HD',
-        desc: 'Nous créons une annonce d’exception et déployons la commercialisation sur les réseaux de voyageurs haut de gamme.',
+        desc: 'Nous créons une annonce soignée et déployons la commercialisation sur les réseaux de voyageurs haut de gamme.',
       },
       {
         step: '03',
-        title: 'Filtrage & Gestion des Séjours',
-        desc: 'Nous gérons les réservations, les contrats, les cautions et l’accueil complet des locataires.',
+        title: 'Sélection & Accueil des Voyageurs',
+        desc: 'Nous filtrons avec soin les profils de voyageurs et assurons l’accueil personnalisé en villa avec état des lieux.',
       },
       {
         step: '04',
         title: 'Rapport Financier & Versement',
-        desc: 'Chaque mois, vous recevez un récapitulatif détaillé des réservations et vos revenus locatifs nets.',
+        desc: 'Chaque mois, vous recevez un récapitulatif clair des séjours et vos revenus locatifs nets.',
       },
     ],
     inclusions: [
-      'Création et gestion des annonces de prestige multi-plateformes',
-      'Filtrage rigoureux et sélection des profils de voyageurs',
+      'Choix entre Formule Sur-Place (accueil & intendance) ou Formule Clé en Main',
+      'Sélection attentive et filtrage soigné des profils de voyageurs',
       'Gestion des cautions et formalités légales en Espagne',
       'Accueil physique personnalisé (Check-in VIP) et départ (Check-out)',
       'Fourniture de linge hôtelier de qualité supérieure et blanchissage',
@@ -384,7 +384,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
       {
         q: 'Quels sont vos honoraires de gestion locative ?',
-        a: 'Nos honoraires sont calculés sur une commission au pourcentage des loyers bruts encaissés. Vous n’avez aucune commission fixe si votre villa n’est pas louée : nos intérêts sont 100% alignés avec les vôtres.',
+        a: 'Nos honoraires dépendent de la formule choisie (forfait d’intendance d’accueil ou commission au pourcentage des loyers encaissés). Vous n’avez aucune commission fixe si votre villa n’est pas louée : nos intérêts sont 100% alignés avec les vôtres.',
       },
     ],
   },
@@ -407,19 +407,19 @@ const servicesDatabase: Record<string, ServiceContent> = {
     ],
     pillars: [
       {
-        title: 'Menu Dégustation Sur-Mesure',
-        desc: 'Une création originale conçue exclusivement selon vos envies et vos préférences.',
+        title: 'Menu Sur-Mesure en Dialogue Ouvert',
+        desc: 'Un échange direct avec le Chef pour composer un menu adapté à vos goûts, vos envies et votre budget.',
         icon: 'star',
         details: [
           'Échange préalable pour définir vos goûts, restrictions alimentaires et souhaits de menu',
           'Inspiration terre-mer méditerranéenne alliant fraîcheur iodée et générosité d’auteur',
-          'Choix entre menu gastronomique 4 à 7 temps, barbecue chic ou tapas d’exception',
+          'Choix entre menu gastronomique 4 à 7 temps, déjeuner d’été décontracté ou réception festive',
           'Possibilité de menus enfants gourmets et options végétariennes créatives',
         ],
       },
       {
         title: 'Approvisionnement d’Exception & Produits Nobles',
-        desc: 'Une sélection intransigeante auprès des meilleurs producteurs et criées locales.',
+        desc: 'Une sélection attentive auprès des meilleurs producteurs et criées locales.',
         icon: 'shield',
         details: [
           'Pêche locale du jour débarquée à la criée (bar de ligne, dorade royale, gambas rouges)',
@@ -429,7 +429,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
         ],
       },
       {
-        title: 'Art de la Table & Dressage Haute Couture',
+        title: 'Art de la Table & Dressage Minute',
         desc: 'Une mise en scène élégante qui sublime chaque plat et émerveille vos convives.',
         icon: 'clock',
         details: [
@@ -446,8 +446,8 @@ const servicesDatabase: Record<string, ServiceContent> = {
         details: [
           'Service discret et prévenant au rythme naturel de votre tablée',
           'Vaisselle débarrassée au fur et à mesure sans jamais troubler vos conversations',
-          'Nettoyage intégral et désinfection de la cuisine en fin de prestation',
-          'Plan de travail et four impeccables, poubelles évacuées : la magie d’un palace chez soi',
+          'Nettoyage intégral et remise en état parfaite de la cuisine en fin de prestation',
+          'Plan de travail et four impeccables, poubelles évacuées : la magie d’une grande table chez soi',
         ],
       },
     ],
@@ -474,8 +474,8 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
     ],
     inclusions: [
-      'Conception d’un menu sur-mesure validé avec vous',
-      'Achat rigoureux des ingrédients nobles le matin même',
+      'Conception d’un menu sur-mesure imaginé en direct avec le chef selon votre budget',
+      'Sélection soignée des ingrédients nobles le matin même',
       'Préparation, cuissons minute et dressage dans votre cuisine',
       'Service à table soigné par le chef (et maître d’hôtel selon convives)',
       'Argenterie, verrerie et nappage sur demande',
@@ -663,7 +663,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
               Les 4 Piliers de Notre Protocole
             </h2>
             <p className="text-xs sm:text-sm text-white/70 mt-2">
-              Chaque détail est anticipé pour vous délivrer un service haute couture digne des plus grands palaces.
+              Chaque détail est anticipé pour vous délivrer un accompagnement sur-mesure d’exception.
             </p>
           </div>
 

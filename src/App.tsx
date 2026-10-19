@@ -10,6 +10,7 @@ import { ServiceDetailModal } from './components/ServiceDetailModal';
 import { LiveConciergeNotifications } from './components/LiveConciergeNotifications';
 import { MoroccoUniversePage } from './components/MoroccoUniversePage';
 import { ServicePage } from './components/ServicePage';
+import { MarbellaMijasSection } from './components/MarbellaMijasSection';
 
 export function App() {
   const [currentUniverse, setCurrentUniverse] = useState<'marbella' | 'maroc'>('marbella');
@@ -57,6 +58,9 @@ export function App() {
       <HeroCinematic
         onSelectService={(serviceId) => setActiveServiceId(serviceId)}
       />
+
+      {/* Dedicated Marbella, Mijas & Costa del Sol Section */}
+      <MarbellaMijasSection />
 
       {/* Showcase and Content Sections (Services, Chef, Contact) */}
       <SectionsShowcase

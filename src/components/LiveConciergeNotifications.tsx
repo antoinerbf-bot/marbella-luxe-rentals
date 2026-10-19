@@ -31,7 +31,7 @@ const notifications: NotificationItem[] = [
     icon: '🗝️',
     category: 'Arrivée Propriétaire VIP',
     location: 'Mijas Pueblo · Domaine Privé',
-    action: 'Villa entièrement préparée : champagne millésimé au frais, fleurs fraîches coupées et contrôle technique validé.',
+    action: 'Villa entièrement préparée : champagne millésimé au frais, fleurs fraîches coupées et vérification soignée.',
     timeAgo: 'Il y a 12 min',
     type: 'property',
   },

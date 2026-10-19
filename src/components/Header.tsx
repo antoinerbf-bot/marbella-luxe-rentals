@@ -60,6 +60,12 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
             Accueil
           </a>
           <a
+            href="#marbella"
+            className="hover:text-[#f4dfa5] transition-colors duration-200"
+          >
+            Marbella & Mijas
+          </a>
+          <a
             href="#services"
             className="hover:text-[#f4dfa5] transition-colors duration-200"
           >
