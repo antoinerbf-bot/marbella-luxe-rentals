@@ -395,7 +395,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
     title: 'Chef à Domicile',
     subtitle: 'La table d’un grand étoilé dans l’intimité exclusive de votre villa',
     tagline: '« 30 ans d’exigence gastronomique, saluée par le Guide Michelin et Gault & Millau. »',
-    heroImage: '/archives-cuisine/2022-10-05 12.42.03.jpg',
+    heroImage: '/chef-villa-gastro.jpg',
     heroDescription:
       'Offrez à vos proches une parenthèse gastronomique inoubliable sans quitter votre terrasse face à la mer. Formé dans les plus illustres maisons étoilées de France, le Chef Dominique Hybord compose des menus sur-mesure d’inspiration méditerranéenne, mariant la noblesse des produits de la mer à la chaleur du terroir andalou.',
     whatsappMessage: 'Bonjour Solveig, je souhaite organiser une expérience Chef à Domicile privée pour ma villa.',

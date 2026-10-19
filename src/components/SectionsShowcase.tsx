@@ -298,8 +298,8 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
           >
             <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
-                src="/archives-cuisine/2022-10-05 12.42.03.jpg"
-                alt="Chef à domicile haute gastronomie Dominique Hybord"
+                src="/chef-villa-gastro.jpg"
+                alt="Chef privé gastronomique en villa à Marbella"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
                 loading="lazy"
               />

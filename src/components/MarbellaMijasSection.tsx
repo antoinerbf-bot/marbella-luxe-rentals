@@ -19,9 +19,9 @@ const zonesData: ZoneItem[] = [
     kicker: 'Le cœur international',
     tagline: 'L’élégance cosmopolite entre mer et montagne',
     description:
-      'Villas d’exception, appartements de prestige, résidences en bord de mer et propriétés emblématiques du centre historique.',
+      'Villas d’exception, demeures andalouses de prestige, résidences en bord de mer et propriétés emblématiques du Golden Mile.',
     neighborhoods: ['Golden Mile', 'Nueva Andalucía', 'Puerto Banús', 'Casco Antiguo', 'Sierra Blanca'],
-    image: 'https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=1200&q=85',
+    image: '/marbella-golden-mile.jpg',
     badge: 'Golden Mile & Banús',
   },
   {
@@ -30,9 +30,9 @@ const zonesData: ZoneItem[] = [
     kicker: 'L’Andalousie en hauteur',
     tagline: 'L’authenticité du village blanc préservé',
     description:
-      'Maisons de charme, vues panoramiques plongeantes sur la Méditerranée et propriétés intimistes au cœur des ruelles fleuries.',
+      'Maisons de charme blanchies à la chaux, vues panoramiques plongeantes sur la Méditerranée et cortijos intimistes aux ruelles fleuries.',
     neighborhoods: ['Village Historique', 'Sierra de Mijas', 'Cortijos Traditionnels', 'Valtocado'],
-    image: 'https://images.unsplash.com/photo-1509316975850-ff9c5deb0cd9?auto=format&fit=crop&w=1200&q=85',
+    image: '/mijas-pueblo-charme.jpg',
     badge: 'Village Blanc d’Artistes',
   },
   {
@@ -41,9 +41,9 @@ const zonesData: ZoneItem[] = [
     kicker: 'Le littoral vivant',
     tagline: 'L’art de vivre balnéaire les pieds dans l’eau',
     description:
-      'Séjours balnéaires, villégiatures familiales, locations saisonnières et belles résidences entre village marin et plages dorées.',
+      'Séjours balnéaires, villégiatures familiales, belles demeures côtières et terrasses ombragées le long de la Senda Litoral.',
     neighborhoods: ['Front de Mer', 'Torrenueva', 'El Chaparral', 'La Noria Golf'],
-    image: 'https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=85',
+    image: '/la-cala-de-mijas.jpg',
     badge: 'Plages & Art de Vivre',
   },
   {
@@ -52,9 +52,9 @@ const zonesData: ZoneItem[] = [
     kicker: 'La côte résidentielle',
     tagline: 'Sérénité et villégiature toute l’année',
     description:
-      'Une présence continue pour les propriétaires absents et les biens destinés à la villégiature estivale et hivernale.',
+      'Villas andalouses nichées dans les pinèdes maritimes, domaines privés avec piscines et vue panoramique sur les golfs et la mer.',
     neighborhoods: ['Sitio de Calahonda', 'Riviera del Sol', 'Miraflores', 'Torrenueva Park'],
-    image: 'https://images.unsplash.com/photo-1580587771525-78b9dba3b914?auto=format&fit=crop&w=1200&q=85',
+    image: '/calahonda-riviera-sol.jpg',
     badge: 'Résidences & Golfs',
   },
 ];

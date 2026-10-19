@@ -69,7 +69,7 @@ const serviceDetailsExtended: Record<
       'Cuisine reconnue par la presse gastronomique (Le Dauphiné, InfosNews)',
     ],
     whatsappText: 'Bonjour Solveig, je souhaite réserver une expérience Chef à Domicile privée pour ma villa.',
-    imageUrl: '/archives-cuisine/2022-10-05 12.42.03.jpg',
+    imageUrl: '/chef-villa-gastro.jpg',
     isChef: true,
   },
 };

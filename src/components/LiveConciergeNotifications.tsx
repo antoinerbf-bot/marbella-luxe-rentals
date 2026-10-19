@@ -20,18 +20,18 @@ const notifications: NotificationItem[] = [
   {
     id: 1,
     icon: '🥂',
-    category: 'Haute Gastronomie Privée',
+    category: 'Gastronomie Privée',
     location: 'Marbella · Golden Mile',
-    action: 'Dîner 8 convives en cours de dressage par le Chef Dominique Hybord : homard bleu et émulsion safranée.',
+    action: 'Dîner 8 convives en cours de dressage minute par le Chef Dominique Hybord.',
     timeAgo: 'Il y a 4 min',
     type: 'chef',
   },
   {
     id: 2,
     icon: '🗝️',
-    category: 'Arrivée Propriétaire VIP',
-    location: 'Mijas Pueblo · Domaine Privé',
-    action: 'Villa entièrement préparée : champagne millésimé au frais, fleurs fraîches coupées et vérification soignée.',
+    category: 'Arrivée VIP',
+    location: 'Mijas Pueblo · Domaine',
+    action: 'Villa prête pour les propriétaires : champagne au frais et veille soignée.',
     timeAgo: 'Il y a 12 min',
     type: 'property',
   },
@@ -39,17 +39,17 @@ const notifications: NotificationItem[] = [
     id: 3,
     icon: '🇲🇦',
     category: 'Univers Marocain',
-    location: 'Marrakech · Riad de la Palmeraie',
-    action: 'Accueil privatisé dans un palais arabo-andalou avec majordome dédié et cuisinière à demeure.',
+    location: 'Marrakech · Palmeraie',
+    action: 'Accueil privatisé en riad d’exception avec cuisinière et majordome.',
     timeAgo: 'Il y a 28 min',
     type: 'maroc',
   },
   {
     id: 4,
     icon: '🛥️',
-    category: 'Art de Vivre & Mer',
-    location: 'Puerto Banús · Marina Privée',
-    action: 'Yacht Riva privatisé pour une escapade crépusculaire face aux falaises de Gibraltar.',
+    category: 'Lifestyle & Mer',
+    location: 'Puerto Banús · Marina',
+    action: 'Yacht charter privé pour une escapade crépusculaire en Méditerranée.',
     timeAgo: 'Il y a 45 min',
     type: 'concierge',
   },
@@ -58,8 +58,8 @@ const notifications: NotificationItem[] = [
     icon: '🌿',
     category: 'Intendance & Sérénité',
     location: 'Marbella · Sierra Blanca',
-    action: 'Entretien paysager, pisciniste et surveillance méticuleuse finalisés avec rapport photo envoyé au propriétaire.',
-    timeAgo: 'Il y a 58 min',
+    action: 'Visite de surveillance et intendance soignée terminées avec rapport photo.',
+    timeAgo: 'Il y a 55 min',
     type: 'property',
   },
 ];
@@ -75,22 +75,24 @@ export const LiveConciergeNotifications: React.FC<LiveConciergeNotificationsProp
   useEffect(() => {
     if (dismissed) return;
 
-    // Show initial notification after 3.5 seconds
+    // First discrete appearance after 8 seconds (letting visitor discover the hero first)
     const initialTimer = setTimeout(() => {
       setVisible(true);
-    }, 3500);
+    }, 8000);
 
-    // Rotate notification every 12 seconds
+    // Show for 5.5s, then hide for 25s before next notification ("de temps en temps")
+    let hideTimer: ReturnType<typeof setTimeout>;
     const interval = setInterval(() => {
       setVisible(false);
-      setTimeout(() => {
+      hideTimer = setTimeout(() => {
         setCurrentIndex((prev) => (prev + 1) % notifications.length);
         setVisible(true);
-      }, 700);
-    }, 12000);
+      }, 25000);
+    }, 30500);
 
     return () => {
       clearTimeout(initialTimer);
+      clearTimeout(hideTimer);
       clearInterval(interval);
     };
   }, [dismissed]);
@@ -110,49 +112,48 @@ export const LiveConciergeNotifications: React.FC<LiveConciergeNotificationsProp
   return (
     <aside
       aria-label="Notification conciergerie en direct"
-      className="hidden md:block fixed bottom-7 left-7 z-40 max-w-[420px] animate-in fade-in slide-in-from-bottom-5 duration-500 pointer-events-auto"
+      className="hidden lg:block fixed bottom-20 right-5 sm:bottom-24 sm:right-7 z-30 max-w-[310px] animate-in fade-in slide-in-from-bottom-3 duration-500 pointer-events-auto"
     >
       <div
         onClick={handleClick}
-        className={`relative rounded-2xl border border-[#f1d291]/60 bg-gradient-to-br from-[#101c22]/98 via-[#14232a]/95 to-[#0b1418]/98 backdrop-blur-2xl p-4 shadow-[0_20px_50px_rgba(0,0,0,0.75)] text-left flex items-start gap-3.5 transition-all duration-300 ${
+        className={`relative rounded-2xl border border-[#f1d291]/50 bg-gradient-to-br from-[#101c22]/98 via-[#14232a]/95 to-[#0b1418]/98 backdrop-blur-xl p-3 shadow-2xl text-left flex items-start gap-2.5 transition-all duration-300 ${
           current.type === 'maroc' || current.type === 'chef' ? 'cursor-pointer hover:border-[#f4dfa5] hover:scale-[1.02]' : ''
         }`}
       >
-        {/* Luxury Wax Seal Emblem */}
+        {/* Subtle emblem */}
         <div className="relative shrink-0">
-          <div className="w-11 h-11 rounded-2xl bg-gradient-to-br from-[#3d2b1d] via-[#24170f] to-[#140c08] border border-[#f1d291]/80 flex items-center justify-center text-xl shadow-[inset_0_2px_4px_rgba(255,255,255,0.15)] group-hover:scale-105 transition-transform">
+          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-[#3d2b1d] via-[#24170f] to-[#140c08] border border-[#f1d291]/70 flex items-center justify-center text-sm shadow-md">
             <span>{current.icon}</span>
           </div>
-          {/* Subtle pulsating gold dot */}
-          <span className="absolute -top-1 -right-1 flex h-3 w-3">
+          <span className="absolute -top-0.5 -right-0.5 flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#f1d291] opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-3 w-3 bg-[#e5a872]"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-[#e5a872]"></span>
           </span>
         </div>
 
         {/* Content */}
-        <div className="flex-1 min-w-0 pr-4">
-          <div className="flex items-center justify-between gap-1 mb-1">
-            <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#edd088] bg-[#edd088]/10 px-2.5 py-0.5 rounded-full border border-[#edd088]/30">
+        <div className="flex-1 min-w-0 pr-3">
+          <div className="flex items-center justify-between gap-1 mb-0.5">
+            <span className="text-[8px] font-bold uppercase tracking-wider text-[#edd088] bg-[#edd088]/10 px-2 py-0.5 rounded-full border border-[#edd088]/25">
               {current.category}
             </span>
-            <span className="text-[9px] text-white/50 tracking-wider">
+            <span className="text-[8px] text-white/45">
               {current.timeAgo}
             </span>
           </div>
 
-          <p className="text-[11px] sm:text-xs text-white/95 font-medium leading-snug mt-1.5">
+          <p className="text-[10.5px] text-white/90 font-medium leading-tight mt-1">
             {current.action}
           </p>
 
-          <div className="flex items-center justify-between mt-2 pt-1 border-t border-white/5">
-            <span className="text-[9.5px] text-[#f4cb99]/85 font-semibold tracking-wide">
+          <div className="flex items-center justify-between mt-1.5 pt-1 border-t border-white/5">
+            <span className="text-[9px] text-[#f4cb99]/85 font-medium truncate">
               📍 {current.location}
             </span>
             {(current.type === 'maroc' || current.type === 'chef') && (
-              <span className="text-[9.5px] text-[#edd088] font-bold uppercase tracking-wider flex items-center gap-1 hover:underline">
-                <span>Découvrir</span>
-                <ArrowRight className="w-2.5 h-2.5" />
+              <span className="text-[8.5px] text-[#edd088] font-bold uppercase tracking-wider flex items-center gap-0.5 hover:underline shrink-0">
+                <span>Voir</span>
+                <ArrowRight className="w-2 h-2" />
               </span>
             )}
           </div>
@@ -164,10 +165,10 @@ export const LiveConciergeNotifications: React.FC<LiveConciergeNotificationsProp
             e.stopPropagation();
             setDismissed(true);
           }}
-          className="absolute top-2.5 right-2.5 p-1 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors"
+          className="absolute top-2 right-2 p-1 rounded-full text-white/40 hover:text-white hover:bg-white/10 transition-colors"
           aria-label="Fermer la notification"
         >
-          <X className="w-3.5 h-3.5" />
+          <X className="w-3 h-3" />
         </button>
       </div>
     </aside>
