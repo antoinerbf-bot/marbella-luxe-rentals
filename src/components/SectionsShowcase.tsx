@@ -7,152 +7,35 @@ interface SectionsShowcaseProps {
 
 export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectService }) => {
   const [activeVideoTab, setActiveVideoTab] = useState<'cuisine' | 'convives' | 'plating'>('cuisine');
-  const [activeDishCategory, setActiveDishCategory] = useState<'all' | 'mains' | 'desserts' | 'tables'>('all');
-  const [zoomedDish, setZoomedDish] = useState<{
-    src: string;
-    title: string;
-    desc: string;
-    category: string;
-    wine?: string;
-    note?: string;
-  } | null>(null);
+  const [zoomedDish, setZoomedDish] = useState<{ src: string; title: string } | null>(null);
 
-  // ALL 16+ AUTHENTIC DISHES FROM DOMINIQUE HYBORD ARCHIVES WITH WINE PAIRING & CHEF NOTES
-  const allCulinaryDishes = [
-    {
-      title: 'Noisette d’Agneau Rôtie & Jus Corsé au Thym',
-      category: 'mains',
-      desc: 'Cuisson basse température, réduction de jus au romarin et légumes glacés du marché andalou.',
-      src: '/archives-cuisine/2022-10-05 12.42.03.jpg',
-      wine: 'Ribera del Duero Reserva',
-      note: 'Cuisson lente 12h à 62°C',
-    },
-    {
-      title: 'Dressage d’Exception & Finesse Botanique',
-      category: 'mains',
-      desc: 'Herbes sauvages de l’arrière-pays, fleurs comestibles et émulsion légère d’huile d’olive extra vierge.',
-      src: '/archives-cuisine/2023-09-12 13.09.35.jpg',
-      wine: 'Meursault Premier Cru',
-      note: 'Fleurs cueillies le matin',
-    },
-    {
-      title: 'Pêche Locale & Nage aux Saveurs Méditerranéennes',
-      category: 'mains',
-      desc: 'Poisson de ligne pêché du matin, tombée d’épinards frais et velouté safrané délicat.',
-      src: '/archives-cuisine/2018-07-05 09.50.45.jpg',
-      wine: 'Albariño de Rías Baixas',
-      note: 'Criée d’Estepona du jour',
-    },
-    {
-      title: 'Harmonie de Saveurs Estivales',
-      category: 'mains',
-      desc: 'Légumes croquants du soleil, caviar d’aubergine fumé et réduction balsamique millésimée.',
-      src: '/archives-cuisine/2018-07-05 09.51.09.jpg',
-      wine: 'Château Minuty Rosé Prestige',
-      note: 'Primeurs bio d’Andalousie',
-    },
-    {
-      title: 'Pièce de Bœuf d’Exception & Accords Grands Crus',
-      category: 'mains',
-      desc: 'Filet maturé poêlé minute, mousseline de céleri truffée et petits oignons caramélisés.',
-      src: '/archives-cuisine/2017-12-01 19.51.19.jpg',
-      wine: 'Pauillac Grand Cru Classé',
-      note: 'Maturation 45 jours',
-    },
-    {
-      title: 'Création Gastronomique d’Auteur',
-      category: 'mains',
-      desc: 'Richesse des textures, foie gras poêlé et réduction aux épices douces.',
-      src: '/archives-cuisine/2023-09-12 13.09.35.jpg',
-      wine: 'Sauternes Millésimé',
-      note: 'Recette signature Dominique Hybord',
-    },
-    {
-      title: 'Médaillons Délicats & Velouté d’Antan',
-      category: 'mains',
-      desc: 'Technique française de haute précision alliant générosité montagnarde et soleil d’Espagne.',
-      src: '/archives-cuisine/2015-09-16 11.01.56.jpg',
-      wine: 'Condrieu Guigal',
-      note: 'Tradition alpine réinventée',
-    },
-    {
-      title: 'Entrée Fraîcheur & Émulsion Agrumes',
-      category: 'mains',
-      desc: 'Équilibre parfait entre acidité vive des citrons de Malaga et douceur des produits nobles.',
-      src: '/archives-cuisine/2016-12-07 13.01.27.jpg',
-      wine: 'Chablis Premier Cru',
-      note: 'Agrumes bio de la vallée de Guadalhorce',
-    },
-    {
-      title: 'Délice Festif & Dressage Contemporain',
-      category: 'mains',
-      desc: 'Assiette sculptée pour un dîner de prestige sous la tonnelle d’une villa à Marbella.',
-      src: '/archives-cuisine/2017-11-29 13.03.41.jpg',
-      wine: 'Champagne Laurent-Perrier Brut',
-      note: 'Dressage minute en cuisine ouverte',
-    },
-    {
-      title: 'Menu Dégustation Saint-Valentin Privé',
-      category: 'desserts',
-      desc: 'Création sucrée-salée tout en volupté pour une soirée romantique inoubliable en villa.',
-      src: '/archives-cuisine/2019-02-14 21.11.08.jpg',
-      wine: 'Champagne Rosé Millésimé',
-      note: 'Chocolat Valrhona & framboises fraîches',
-    },
-    {
-      title: 'Palette Maraîchère & Fraîcheur du Terroir',
-      category: 'mains',
-      desc: 'Sélection des primeurs biologiques cultivés avec passion en Andalousie.',
-      src: '/archives-cuisine/2019-08-01 10.10.16-1.jpg',
-      wine: 'Sancerre Blanc Domaine Vacheron',
-      note: '100% végétal haute couture',
-    },
-    {
-      title: 'Gibier Noble & Châtaignes Grillées',
-      category: 'mains',
-      desc: 'Inspiration des grands chalets alpins mariée à la chaleur des intérieurs de Marbella.',
-      src: '/archives-cuisine/2019-11-20 13.10.51-1.jpg',
-      wine: 'Hermitage Rouge',
-      note: 'Héritage étoilé de Dominique Hybord',
-    },
-    {
-      title: 'L’Art de la Table en Villa Privée',
-      category: 'tables',
-      desc: 'Argenterie, verrerie en cristal, bougies et nappage de lin pour une ambiance de grande table chez vous.',
-      src: '/archives-cuisine/2018-01-21 08.25.03.jpg',
-      wine: 'Sélection Sommelier Dédiée',
-      note: 'Mise en scène complète incluse',
-    },
-    {
-      title: 'Dîner d’Été en Plein Air face à la Mer',
-      category: 'tables',
-      desc: 'Dégustation au crépuscule sur la terrasse avec vue imprenable sur la baie de Marbella.',
-      src: '/archives-cuisine/2016-07-21 21.02.39.jpg',
-      wine: 'Vins Blancs Méditerranéens',
-      note: 'Cadre idyllique au coucher de soleil',
-    },
-    {
-      title: 'Création Récente 2024 · Saveurs Sublimes',
-      category: 'mains',
-      desc: 'L’excellence continue d’une cuisine d’auteur vivante, généreuse et profondément raffinée.',
-      src: '/archives-cuisine/2024-01-23 16.31.12.jpg',
-      wine: 'Rioja Gran Reserva',
-      note: 'Dernière création de saison',
-    },
-    {
-      title: 'Apéritif Gourmand & Mignardises Salées',
-      category: 'desserts',
-      desc: 'Bouchées apéritives créatives servies au bord de la piscine lors des réceptions d’exception.',
-      src: '/archives-cuisine/2015-09-16 11.01.18.jpg',
-      wine: 'Cava Reserva Brut Nature',
-      note: 'Cocktail dînatoire au bord de l’eau',
-    },
+  // Galerie volontairement éditoriale : photos des assiettes, sans fiches de plats.
+  const culinaryGallery = [
+    '/archives-cuisine/2022-10-05 12.42.03.jpg',
+    '/archives-cuisine/2023-09-12 13.09.35.jpg',
+    '/archives-cuisine/2018-07-05 09.50.45.jpg',
+    '/archives-cuisine/2018-07-05 09.51.09.jpg',
+    '/archives-cuisine/2017-12-01 19.51.19.jpg',
+    '/archives-cuisine/2015-09-16 11.01.56.jpg',
+    '/archives-cuisine/2016-12-07 13.01.27.jpg',
+    '/archives-cuisine/2017-11-29 13.03.41.jpg',
+    '/archives-cuisine/2019-02-14 21.11.08.jpg',
+    '/archives-cuisine/2019-08-01 10.10.16-1.jpg',
+    '/archives-cuisine/2019-11-20 13.10.51-1.jpg',
+    '/archives-cuisine/2018-01-21 08.25.03.jpg',
+    '/archives-cuisine/2016-07-21 21.02.39.jpg',
+    '/archives-cuisine/2024-01-23 16.31.12.jpg',
+    '/archives-cuisine/2015-09-16 11.01.18.jpg',
   ];
 
-  const filteredDishes = allCulinaryDishes.filter((dish) => {
-    if (activeDishCategory === 'all') return true;
-    return dish.category === activeDishCategory;
-  });
+  const pressGallery = [
+    '/archives-cuisine/le dauphiné 5 fevrier 2015 001.jpg',
+    '/archives-cuisine/article de La Savoie 001.jpg',
+    '/archives-cuisine/pub schuss magazine 2011 001.jpg',
+    '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
+    '/archives-cuisine/infosnews 001.jpg',
+    '/archives-cuisine/la vie nouvelle 001.jpg',
+  ];
 
   return (
     <div className="w-full bg-[#fbf7f0] text-[#34271e] overflow-hidden relative">
@@ -523,192 +406,99 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             </div>
           </div>
 
-          {/* GROS PLAN SUR LES CRÉATIONS CULINAIRES DOMINIQUE HYBORD */}
+          {/* GALERIE ÉPURÉE — ASSIETTES & PRESSE */}
           <div className="mt-20">
-            <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-white/10">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
-                  Galerie Inspirations Gastronomiques
-                </span>
-                <h3 className="font-serif text-3xl sm:text-4xl text-white font-medium mt-1">
-                  Les Créations Authentiques de Dominique Hybord
-                </h3>
-                <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-2xl">
-                  Une sélection d’inspirations culinaires. Chaque menu est ensuite imaginé et composé sur-mesure en échange direct avec le chef, selon vos goûts, vos envies et votre budget.
-                </p>
-              </div>
-
-              {/* Category Filter */}
-              <div className="flex items-center gap-1.5 sm:gap-2 mt-4 md:mt-0 p-1 sm:p-1.5 rounded-full bg-black/40 border border-white/15 overflow-x-auto max-w-full no-scrollbar">
-                <button
-                  onClick={() => setActiveDishCategory('all')}
-                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                    activeDishCategory === 'all'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  Tous ({allCulinaryDishes.length})
-                </button>
-                <button
-                  onClick={() => setActiveDishCategory('mains')}
-                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                    activeDishCategory === 'mains'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  Plats & Mer
-                </button>
-                <button
-                  onClick={() => setActiveDishCategory('desserts')}
-                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                    activeDishCategory === 'desserts'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  Douceurs
-                </button>
-                <button
-                  onClick={() => setActiveDishCategory('tables')}
-                  className={`px-3 sm:px-3.5 py-1 sm:py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider whitespace-nowrap transition-all ${
-                    activeDishCategory === 'tables'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'text-white/70 hover:text-white'
-                  }`}
-                >
-                  Tables Privées
-                </button>
-              </div>
+            <div className="mb-8 border-b border-white/10 pb-5">
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
+                Galerie Inspirations Gastronomiques
+              </span>
+              <h3 className="mt-2 font-serif text-3xl sm:text-4xl font-medium text-white">
+                Les Créations Authentiques de Dominique Hybord
+              </h3>
             </div>
 
-            {/* Gallery Grid: authentic dishes with HD zoom inspection */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
-              {filteredDishes.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group relative overflow-hidden rounded-2xl border border-white/15 bg-[#142329] hover:border-[#edd088]/60 shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between"
+            <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
+              {culinaryGallery.map((src, index) => (
+                <button
+                  key={src}
+                  type="button"
+                  onClick={() => setZoomedDish({ src, title: `Création culinaire ${index + 1}` })}
+                  aria-label="Agrandir la photographie"
+                  className="group relative aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/30 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#edd088]"
                 >
-                  {/* Image Box */}
-                  <div
-                    onClick={() => setZoomedDish(item)}
-                    className="relative h-44 sm:h-52 overflow-hidden bg-black/60 cursor-pointer"
+                  <img
+                    src={src}
+                    alt="Création culinaire de Dominique Hybord"
+                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    loading="lazy"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/25">
+                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-black/40 text-white opacity-0 transition-opacity group-hover:opacity-100">
+                      <ZoomIn className="h-5 w-5" />
+                    </span>
+                  </span>
+                </button>
+              ))}
+            </div>
+
+            <div className="mt-16 border-t border-white/10 pt-10">
+              <div className="mb-6 flex items-center gap-3">
+                <Newspaper className="h-4 w-4 text-[#edd088]" />
+                <h4 className="font-serif text-2xl sm:text-3xl text-white">Articles de presse</h4>
+              </div>
+              <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
+                {pressGallery.map((src) => (
+                  <button
+                    key={src}
+                    type="button"
+                    onClick={() => setZoomedDish({ src, title: 'Article de presse' })}
+                    aria-label="Agrandir l’article de presse"
+                    className="group relative aspect-[3/4] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-white/5 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#edd088]"
                   >
                     <img
-                      src={item.src}
-                      alt={item.title}
-                      className="w-full h-full object-cover group-hover:scale-108 transition-transform duration-700"
+                      src={src}
+                      alt="Archive de presse consacrée au parcours gastronomique de Dominique Hybord"
+                      className="h-full w-full object-contain bg-[#f4f0e8] transition-transform duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#142329] via-transparent to-black/30 pointer-events-none" />
-
-                    {/* Wine Pairing Pill Badge */}
-                    {item.wine && (
-                      <div className="absolute top-2.5 left-2.5 flex items-center gap-1 px-2.5 py-1 rounded-full bg-black/75 backdrop-blur-md border border-white/20 text-[9px] text-[#edd088] font-medium shadow-md">
-                        <Wine className="w-3 h-3 text-[#f4cb99] shrink-0" />
-                        <span className="truncate max-w-[140px]">{item.wine}</span>
-                      </div>
-                    )}
-
-                    {/* Zoom Indicator on Hover */}
-                    <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center pointer-events-none">
-                      <span className="px-3 py-1 rounded-full bg-black/85 text-[#edd088] text-[10px] font-bold uppercase tracking-wider border border-[#edd088] flex items-center gap-1 shadow-lg">
-                        <ZoomIn className="w-3 h-3" />
-                        Gros Plan HD
+                    <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors group-hover:bg-black/20">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-black/50 text-white opacity-0 transition-opacity group-hover:opacity-100">
+                        <ZoomIn className="h-5 w-5" />
                       </span>
-                    </div>
-                  </div>
-
-                  {/* Content Box */}
-                  <div className="p-3.5 sm:p-4 flex flex-col justify-between flex-grow">
-                    <div>
-                      {item.note && (
-                        <span className="text-[9px] font-bold uppercase tracking-wider text-[#c29a52] block mb-1">
-                          ★ {item.note}
-                        </span>
-                      )}
-                      <h5
-                        onClick={() => setZoomedDish(item)}
-                        className="text-xs sm:text-sm font-semibold text-white line-clamp-2 hover:text-[#edd088] cursor-pointer transition-colors"
-                      >
-                        {item.title}
-                      </h5>
-                      <p className="text-[10px] sm:text-[11px] text-white/65 line-clamp-2 mt-1 leading-snug">
-                        {item.desc}
-                      </p>
-                    </div>
-
-                    {/* Action Button: HD Zoom */}
-                    <div className="mt-3.5 pt-3 border-t border-white/10 flex items-center justify-between gap-2">
-                      <button
-                        onClick={() => setZoomedDish(item)}
-                        className="w-full inline-flex items-center justify-center gap-1.5 py-2 px-3 rounded-xl text-[10px] font-bold uppercase tracking-wider transition-all bg-white/5 hover:bg-white/15 text-white/80 hover:text-white border border-white/15"
-                      >
-                        <ZoomIn className="w-3.5 h-3.5 text-[#edd088]" />
-                        <span>Découvrir la création</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              ))}
+                    </span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* DISH LIGHTBOX MODAL WITH FULLSCREEN ZOOM */}
+      {/* LIGHTBOX PHOTO — SANS FICHE DESCRIPTIVE */}
       {zoomedDish && (
         <div
           onClick={() => setZoomedDish(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/95 backdrop-blur-xl animate-in fade-in duration-200"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/95 p-4 backdrop-blur-xl"
+          role="dialog"
+          aria-modal="true"
+          aria-label={zoomedDish.title}
         >
           <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl max-h-[92vh] bg-[#122026] border border-gold-border/70 rounded-3xl p-5 sm:p-7 overflow-hidden shadow-2xl flex flex-col justify-between"
+            onClick={(event) => event.stopPropagation()}
+            className="relative flex max-h-[92vh] max-w-5xl items-center justify-center"
           >
-            <div className="relative rounded-2xl overflow-hidden max-h-[62vh] bg-black">
-              <img src={zoomedDish.src} alt={zoomedDish.title} className="w-full h-full max-h-[62vh] object-contain mx-auto" />
-            </div>
-
-            <div className="mt-4 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div>
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088]">
-                    Création Culinaire · Dominique Hybord
-                  </span>
-                  {zoomedDish.wine && (
-                    <span className="px-2 py-0.5 rounded-full bg-white/10 text-[9px] text-[#edd088] font-medium flex items-center gap-1">
-                      <Wine className="w-2.5 h-2.5" />
-                      {zoomedDish.wine}
-                    </span>
-                  )}
-                </div>
-                <h4 className="font-serif text-2xl sm:text-3xl text-white font-bold">{zoomedDish.title}</h4>
-                <p className="text-xs sm:text-sm text-white/80 mt-1 max-w-2xl">{zoomedDish.desc}</p>
-              </div>
-
-              <div className="flex items-center gap-2.5 shrink-0">
-                <a
-                  href={`https://wa.me/34623626724?text=${encodeURIComponent(
-                    `Bonjour Solveig, j'ai découvert les créations du Chef Dominique Hybord (notamment « ${zoomedDish.title} ») et je souhaite échanger avec lui pour concevoir un menu adapté à nos goûts et à notre budget.`
-                  )}`}
-                  target="_blank"
-                  rel="noreferrer"
-                  className="shrink-0 inline-flex items-center gap-2 rounded-full bg-[#25D366] hover:bg-[#20b858] text-black text-xs font-bold px-6 py-3.5 hover:scale-105 transition-all shadow-lg shadow-[#25D366]/20"
-                >
-                  <MessageCircle className="w-4 h-4" />
-                  <span>Échanger avec le Chef sur WhatsApp</span>
-                </a>
-              </div>
-            </div>
-
+            <img
+              src={zoomedDish.src}
+              alt={zoomedDish.title}
+              className="max-h-[88vh] max-w-full rounded-xl object-contain"
+            />
             <button
+              type="button"
               onClick={() => setZoomedDish(null)}
-              className="absolute top-4 right-4 p-2.5 rounded-full bg-black/70 text-white/80 hover:text-white border border-white/20 hover:border-gold transition-colors"
-              aria-label="Fermer"
+              className="absolute -right-2 -top-2 rounded-full border border-white/30 bg-black/80 p-2 text-white hover:text-[#edd088]"
+              aria-label="Fermer la photo"
             >
-              <X className="w-5 h-5" />
+              <X className="h-5 w-5" />
             </button>
           </div>
         </div>
