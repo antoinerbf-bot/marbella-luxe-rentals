@@ -7,152 +7,35 @@ interface SectionsShowcaseProps {
 
 export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectService }) => {
   const [activeVideoTab, setActiveVideoTab] = useState<'cuisine' | 'convives' | 'plating'>('cuisine');
-  const [activeDishCategory, setActiveDishCategory] = useState<'all' | 'mains' | 'desserts' | 'tables'>('all');
-  const [zoomedDish, setZoomedDish] = useState<{
-    src: string;
-    title: string;
-    desc: string;
-    category: string;
-    wine?: string;
-    note?: string;
-  } | null>(null);
+  const [zoomedDish, setZoomedDish] = useState<{ src: string; title: string } | null>(null);
 
-  // ALL 16+ AUTHENTIC DISHES FROM DOMINIQUE HYBORD ARCHIVES WITH WINE PAIRING & CHEF NOTES
-  const allCulinaryDishes = [
-    {
-      title: 'Noisette d’Agneau Rôtie & Jus Corsé au Thym',
-      category: 'mains',
-      desc: 'Cuisson basse température, réduction de jus au romarin et légumes glacés du marché andalou.',
-      src: '/archives-cuisine/2022-10-05 12.42.03.jpg',
-      wine: 'Ribera del Duero Reserva',
-      note: 'Cuisson lente 12h à 62°C',
-    },
-    {
-      title: 'Dressage d’Exception & Finesse Botanique',
-      category: 'mains',
-      desc: 'Herbes sauvages de l’arrière-pays, fleurs comestibles et émulsion légère d’huile d’olive extra vierge.',
-      src: '/archives-cuisine/2023-09-12 13.09.35.jpg',
-      wine: 'Meursault Premier Cru',
-      note: 'Fleurs cueillies le matin',
-    },
-    {
-      title: 'Pêche Locale & Nage aux Saveurs Méditerranéennes',
-      category: 'mains',
-      desc: 'Poisson de ligne pêché du matin, tombée d’épinards frais et velouté safrané délicat.',
-      src: '/archives-cuisine/2018-07-05 09.50.45.jpg',
-      wine: 'Albariño de Rías Baixas',
-      note: 'Criée d’Estepona du jour',
-    },
-    {
-      title: 'Harmonie de Saveurs Estivales',
-      category: 'mains',
-      desc: 'Légumes croquants du soleil, caviar d’aubergine fumé et réduction balsamique millésimée.',
-      src: '/archives-cuisine/2018-07-05 09.51.09.jpg',
-      wine: 'Château Minuty Rosé Prestige',
-      note: 'Primeurs bio d’Andalousie',
-    },
-    {
-      title: 'Pièce de Bœuf d’Exception & Accords Grands Crus',
-      category: 'mains',
-      desc: 'Filet maturé poêlé minute, mousseline de céleri truffée et petits oignons caramélisés.',
-      src: '/archives-cuisine/2017-12-01 19.51.19.jpg',
-      wine: 'Pauillac Grand Cru Classé',
-      note: 'Maturation 45 jours',
-    },
-    {
-      title: 'Création Gastronomique d’Auteur',
-      category: 'mains',
-      desc: 'Richesse des textures, foie gras poêlé et réduction aux épices douces.',
-      src: '/archives-cuisine/2023-09-12 13.09.35.jpg',
-      wine: 'Sauternes Millésimé',
-      note: 'Recette signature Dominique Hybord',
-    },
-    {
-      title: 'Médaillons Délicats & Velouté d’Antan',
-      category: 'mains',
-      desc: 'Technique française de haute précision alliant générosité montagnarde et soleil d’Espagne.',
-      src: '/archives-cuisine/2015-09-16 11.01.56.jpg',
-      wine: 'Condrieu Guigal',
-      note: 'Tradition alpine réinventée',
-    },
-    {
-      title: 'Entrée Fraîcheur & Émulsion Agrumes',
-      category: 'mains',
-      desc: 'Équilibre parfait entre acidité vive des citrons de Malaga et douceur des produits nobles.',
-      src: '/archives-cuisine/2016-12-07 13.01.27.jpg',
-      wine: 'Chablis Premier Cru',
-      note: 'Agrumes bio de la vallée de Guadalhorce',
-    },
-    {
-      title: 'Délice Festif & Dressage Contemporain',
-      category: 'mains',
-      desc: 'Assiette sculptée pour un dîner de prestige sous la tonnelle d’une villa à Marbella.',
-      src: '/archives-cuisine/2017-11-29 13.03.41.jpg',
-      wine: 'Champagne Laurent-Perrier Brut',
-      note: 'Dressage minute en cuisine ouverte',
-    },
-    {
-      title: 'Menu Dégustation Saint-Valentin Privé',
-      category: 'desserts',
-      desc: 'Création sucrée-salée tout en volupté pour une soirée romantique inoubliable en villa.',
-      src: '/archives-cuisine/2019-02-14 21.11.08.jpg',
-      wine: 'Champagne Rosé Millésimé',
-      note: 'Chocolat Valrhona & framboises fraîches',
-    },
-    {
-      title: 'Palette Maraîchère & Fraîcheur du Terroir',
-      category: 'mains',
-      desc: 'Sélection des primeurs biologiques cultivés avec passion en Andalousie.',
-      src: '/archives-cuisine/2019-08-01 10.10.16-1.jpg',
-      wine: 'Sancerre Blanc Domaine Vacheron',
-      note: '100% végétal haute couture',
-    },
-    {
-      title: 'Gibier Noble & Châtaignes Grillées',
-      category: 'mains',
-      desc: 'Inspiration des grands chalets alpins mariée à la chaleur des intérieurs de Marbella.',
-      src: '/archives-cuisine/2019-11-20 13.10.51-1.jpg',
-      wine: 'Hermitage Rouge',
-      note: 'Héritage étoilé de Dominique Hybord',
-    },
-    {
-      title: 'L’Art de la Table en Villa Privée',
-      category: 'tables',
-      desc: 'Argenterie, verrerie en cristal, bougies et nappage de lin pour une ambiance de grande table chez vous.',
-      src: '/archives-cuisine/2018-01-21 08.25.03.jpg',
-      wine: 'Sélection Sommelier Dédiée',
-      note: 'Mise en scène complète incluse',
-    },
-    {
-      title: 'Dîner d’Été en Plein Air face à la Mer',
-      category: 'tables',
-      desc: 'Dégustation au crépuscule sur la terrasse avec vue imprenable sur la baie de Marbella.',
-      src: '/archives-cuisine/2016-07-21 21.02.39.jpg',
-      wine: 'Vins Blancs Méditerranéens',
-      note: 'Cadre idyllique au coucher de soleil',
-    },
-    {
-      title: 'Création Récente 2024 · Saveurs Sublimes',
-      category: 'mains',
-      desc: 'L’excellence continue d’une cuisine d’auteur vivante, généreuse et profondément raffinée.',
-      src: '/archives-cuisine/2024-01-23 16.31.12.jpg',
-      wine: 'Rioja Gran Reserva',
-      note: 'Dernière création de saison',
-    },
-    {
-      title: 'Apéritif Gourmand & Mignardises Salées',
-      category: 'desserts',
-      desc: 'Bouchées apéritives créatives servies au bord de la piscine lors des réceptions d’exception.',
-      src: '/archives-cuisine/2015-09-16 11.01.18.jpg',
-      wine: 'Cava Reserva Brut Nature',
-      note: 'Cocktail dînatoire au bord de l’eau',
-    },
+  // Galerie volontairement éditoriale : photos des assiettes, sans fiches de plats.
+  const culinaryGallery = [
+    '/archives-cuisine/2022-10-05 12.42.03.jpg',
+    '/archives-cuisine/2023-09-12 13.09.35.jpg',
+    '/archives-cuisine/2018-07-05 09.50.45.jpg',
+    '/archives-cuisine/2018-07-05 09.51.09.jpg',
+    '/archives-cuisine/2017-12-01 19.51.19.jpg',
+    '/archives-cuisine/2015-09-16 11.01.56.jpg',
+    '/archives-cuisine/2016-12-07 13.01.27.jpg',
+    '/archives-cuisine/2017-11-29 13.03.41.jpg',
+    '/archives-cuisine/2019-02-14 21.11.08.jpg',
+    '/archives-cuisine/2019-08-01 10.10.16-1.jpg',
+    '/archives-cuisine/2019-11-20 13.10.51-1.jpg',
+    '/archives-cuisine/2018-01-21 08.25.03.jpg',
+    '/archives-cuisine/2016-07-21 21.02.39.jpg',
+    '/archives-cuisine/2024-01-23 16.31.12.jpg',
+    '/archives-cuisine/2015-09-16 11.01.18.jpg',
   ];
 
-  const filteredDishes = allCulinaryDishes.filter((dish) => {
-    if (activeDishCategory === 'all') return true;
-    return dish.category === activeDishCategory;
-  });
+  const pressGallery = [
+    '/archives-cuisine/le dauphiné 5 fevrier 2015 001.jpg',
+    '/archives-cuisine/article de La Savoie 001.jpg',
+    '/archives-cuisine/pub schuss magazine 2011 001.jpg',
+    '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
+    '/archives-cuisine/infosnews 001.jpg',
+    '/archives-cuisine/la vie nouvelle 001.jpg',
+  ];
 
   return (
     <div className="w-full bg-[#fbf7f0] text-[#34271e] overflow-hidden relative">
