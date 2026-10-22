@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowRight, Check, KeyRound, Sparkles, ChefHat, MessageCircle, Phone, Mail, Play, ZoomIn, Utensils, X, Wine, Users, CalendarDays, Flame, Newspaper } from 'lucide-react';
+import { ArrowRight, Check, KeyRound, Sparkles, ChefHat, MessageCircle, Phone, Mail, ZoomIn, X, CalendarDays, Newspaper } from 'lucide-react';
 
 interface SectionsShowcaseProps {
   onSelectService: (serviceId: string) => void;
