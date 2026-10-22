@@ -436,7 +436,6 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 ))}
               </div>
             </div>
-          </div>
         </div>
       </section>
 
