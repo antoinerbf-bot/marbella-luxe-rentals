@@ -286,7 +286,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
     whatsappMessage: 'Bonjour Solveig, je souhaite optimiser la location saisonnière de ma villa à Marbella.',
     stats: [
       { value: '100%', label: 'Voyageurs contrôlés et vérifiés' },
-      { value: '5 ★', label: 'Standards hôteliers de blanchisserie' },
+      { value: 'VIP', label: 'Accueil et suivi des voyageurs' },
       { value: '2 Formules', label: 'Gestion sur place ou clé en main' },
       { value: '0', label: 'Contrainte logistique pour le propriétaire' },
     ],
@@ -298,7 +298,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
         details: [
           'Accueil physique soigné de vos voyageurs et remise en main propre des clés',
           'État des lieux d’entrée et de sortie minutieux avec reportage photo comparatif',
-          'Fourniture de linge hôtelier de qualité supérieure lavé et repassé aux normes 5 étoiles',
+          
           'Ménage de départ approfondi et remise en beauté complète de la villa avant chaque séjour',
         ],
       },
@@ -319,20 +319,17 @@ const servicesDatabase: Record<string, ServiceContent> = {
         icon: 'clock',
         details: [
           'Accueil physique chaleureux par l’équipe Solveig, visite guidée des équipements de la villa',
-          'Panier d’accueil raffiné aux saveurs locales andalouses',
+          
           'Assistance conciergerie locale dédiée aux locataires tout au long de leur séjour',
           'Disponibilité attentive en cas de besoin ou question durant le séjour',
         ],
       },
       {
-        title: 'Gouvernance & Blanchisserie Hôtelière 5 Étoiles',
+        title: 'Gouvernance & Entretien de la Propriété',
         desc: 'Une propriété rendue dans un état d’hygiène et d’éclat irréprochable.',
         icon: 'file',
         details: [
           'Équipes de ménage professionnelles formées aux exigences de la belle hôtellerie',
-          'Linge de maison haut de gamme en coton supérieur lavé et repassé avec minutie',
-          'Produits d’accueil soignés et éco-responsables dans les salles de bain',
-          'Réapprovisionnement des consommables indispensables pour le confort des hôtes',
         ],
       },
     ],
@@ -363,7 +360,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Sélection attentive et filtrage soigné des profils de voyageurs',
       'Gestion des cautions et formalités légales en Espagne',
       'Accueil physique personnalisé (Check-in VIP) et départ (Check-out)',
-      'Fourniture de linge hôtelier de qualité supérieure et blanchissage',
+      
       'Ménage de départ et contrôles d’état des lieux méticuleux',
       'Assistance conciergerie 24/7 pour les hôtes en séjour',
       'Rapport financier mensuel clair et transparent',
@@ -745,6 +742,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </section>
 
+      {serviceId !== 'rental-management' && (
       {/* PHOTO GALLERY */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#0c171b]">
         <div className="max-w-[1400px] mx-auto">
@@ -786,6 +784,8 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           </div>
         </div>
       </section>
+
+      )}
 
       {/* INCLUSIONS & FAQ */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#101e24]">
