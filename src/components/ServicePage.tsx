@@ -464,7 +464,6 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Sélection soignée des ingrédients nobles le matin même',
       'Préparation, cuissons minute et dressage dans votre cuisine',
       'Service à table assuré par le chef et une personne dédiée au service',
-      '',
       'Nettoyage et remise en état intégrale de la cuisine',
       '',
       '',
@@ -653,7 +652,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
               Standards d’Excellence
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium mt-1">
-              Les 4 Piliers de Notre Protocole
+              {serviceId === 'chef-a-domicile' ? 'Les 3 Piliers de Notre Protocole' : 'Les 4 Piliers de Notre Protocole'}
             </h2>
             <p className="text-xs sm:text-sm text-white/70 mt-2">
               Chaque détail est anticipé pour vous délivrer un accompagnement sur-mesure d’exception.
