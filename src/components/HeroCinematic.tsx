@@ -63,7 +63,7 @@ export const servicesData: ServiceItem[] = [
     number: '04',
     title: 'CHEF',
     subtitle: 'À DOMICILE',
-    description: 'Haute gastronomie sur-mesure préparée et servie directement dans votre villa. Menus raffinés et art de recevoir d’exception.',
+    description: 'Un chef privé cuisine directement dans votre villa : un menu imaginé avec vous, des produits frais de saison et un service attentionné autour de votre table.',
     icon: (
       <svg className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M11 27a13 13 0 1 1 26 0v4H11z" />
