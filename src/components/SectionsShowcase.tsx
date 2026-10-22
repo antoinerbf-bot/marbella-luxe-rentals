@@ -318,7 +318,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                   >
                     <img
                       src={src}
-                      alt="Archive de presse consacrée au parcours gastronomique de Dominique Hybord"
+                      alt="Archive de presse consacrée au parcours de chef de Dominique Hybord"
                       className="h-full w-full object-contain bg-[#f4f0e8] transition-transform duration-500 group-hover:scale-[1.02]"
                       loading="lazy"
                     />
