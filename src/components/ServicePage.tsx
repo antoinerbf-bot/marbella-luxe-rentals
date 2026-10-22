@@ -388,34 +388,34 @@ const servicesDatabase: Record<string, ServiceContent> = {
 
   'chef-a-domicile': {
     id: 'chef-a-domicile',
-    badge: 'Haute Gastronomie Privée · Dominique Hybord',
+    badge: 'Chef privé · Dominique Hybord',
     title: 'Chef à Domicile',
-    subtitle: 'La table d’un grand étoilé dans l’intimité exclusive de votre villa',
-    tagline: '« 30 ans d’exigence gastronomique, saluée par le Guide Michelin et Gault & Millau. »',
+    subtitle: 'Le savoir-faire d’un chef, dans l’intimité de votre villa',
+    tagline: '« 30 ans d’expérience, une cuisine sincère et le plaisir de recevoir chez soi. »',
     heroImage: '/chef-villa-gastro.jpg',
     heroDescription:
-      'Offrez à vos proches une parenthèse gastronomique inoubliable sans quitter votre terrasse face à la mer. Formé dans les plus illustres maisons étoilées de France, le Chef Dominique Hybord compose des menus sur-mesure d’inspiration méditerranéenne, mariant la noblesse des produits de la mer à la chaleur du terroir andalou.',
+      'Recevez vos proches sans quitter votre villa. Le Chef Dominique Hybord imagine avec vous un menu sur mesure, inspiré par la Méditerranée et les produits frais de saison, puis le prépare directement chez vous pour que vous profitiez pleinement de vos invités.',
     whatsappMessage: 'Bonjour Solveig, je souhaite organiser une expérience Chef à Domicile privée pour ma villa.',
     stats: [
-      { value: '30+', label: 'Ans d’expérience gastronomique' },
-      { value: 'Bib Michelin', label: 'Chef récompensé par le Guide Michelin' },
+      { value: '30+', label: 'Ans d’expérience' },
+      { value: 'Michelin', label: 'Une reconnaissance du Guide Michelin' },
       { value: '2 Toques', label: 'Distinction Gault & Millau' },
       { value: '100%', label: 'Cuisine remise en état impeccable' },
     ],
     pillars: [
       {
-        title: 'Menu Sur-Mesure en Dialogue Ouvert',
+        title: 'Un menu imaginé avec vous',
         desc: 'Un échange direct avec le Chef pour composer un menu adapté à vos goûts, vos envies et votre budget.',
         icon: 'star',
         details: [
           'Échange préalable pour définir le menu, vos goûts et le cadre de la prestation',
           'Inspiration terre-mer méditerranéenne alliant fraîcheur iodée et générosité d’auteur',
-          'Choix entre menu gastronomique 4 à 7 temps, déjeuner d’été décontracté ou réception festive',
+          'Choix du format du repas selon l’occasion : dîner, déjeuner ou réception privée',
         ],
       },
       {
-        title: 'Approvisionnement d’Exception & Produits Nobles',
-        desc: 'Une sélection attentive auprès des meilleurs producteurs et criées locales.',
+        title: 'Des produits frais et de saison',
+        desc: 'Une sélection attentive de produits frais, en privilégiant les producteurs et marchés locaux.',
         icon: 'shield',
         details: [
           'Pêche locale du jour débarquée à la criée (bar de ligne, dorade royale, gambas rouges)',
@@ -425,7 +425,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
         ],
       },
       {
-        title: 'Service Attentionné & Remise en État Complète',
+        title: 'Un service attentionné, une cuisine rangée',
         desc: 'Profitez de vos invités ; nous nous chargeons de tout, du premier toast au dernier éclat.',
         icon: 'file',
         details: [
@@ -449,7 +449,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
       {
         step: '20:30',
-        title: 'Service Gastronomique à l’Assiette',
+        title: 'Service à table dans votre villa',
         desc: 'Enchaînement harmonieux des plats, dressés minute sous vos yeux avec explications passionnées du chef.',
       },
       {
@@ -464,24 +464,23 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Préparation, cuissons minute et dressage dans votre cuisine',
       'Service à table assuré par le chef et une personne dédiée au service',
       'Nettoyage et remise en état intégrale de la cuisine',
-      '',
     ],
     galleryImages: [
-      { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Noisette d’agneau rôtie & jus corsé au thym' },
-      { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Dressage d’exception & finesse botanique' },
-      { url: '/archives-cuisine/2018-01-21 08.25.03.jpg', caption: 'L’Art de la table et ambiance festive' },
+      { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Une assiette du Chef' },
+      { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Le soin du dressage' },
+      { url: '/archives-cuisine/2018-01-21 08.25.03.jpg', caption: 'Une table prête à recevoir' },
       { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Création du Chef' },
-      { url: '/archives-cuisine/2015-09-16 11.01.18.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2015-09-16 11.01.18.jpg', caption: 'Cuisine de saison' },
       { url: '/archives-cuisine/2015-09-16 11.01.56.jpg', caption: 'Création du Chef' },
       { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Dressage à l’assiette' },
-      { url: '/archives-cuisine/2016-12-07 13.01.27.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2016-12-07 13.01.27.jpg', caption: 'Une création du Chef' },
       { url: '/archives-cuisine/2017-11-29 13.03.41.jpg', caption: 'Création du Chef' },
       { url: '/archives-cuisine/2018-01-14 13.48.44.jpg', caption: 'Dressage à l’assiette' },
       { url: '/archives-cuisine/2018-01-14 13.49.22-1-2.jpg', caption: 'Création du Chef' },
-      { url: '/archives-cuisine/2018-01-14 13.49.22-1-3.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2018-01-14 13.49.22-1-3.jpg', caption: 'Le plaisir des beaux produits' },
       { url: '/archives-cuisine/2018-07-05 09.54.41.jpg', caption: 'Création du Chef' },
       { url: '/archives-cuisine/2019-02-14 21.11.08.jpg', caption: 'Dressage à l’assiette' },
-      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Une assiette du Chef' },
     ],
     faqs: [
       {
@@ -650,7 +649,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
               Standards d’Excellence
             </span>
             <h2 className="font-serif text-3xl sm:text-4xl text-white font-medium mt-1">
-              {serviceId === 'chef-a-domicile' ? 'Les 3 Piliers de Notre Protocole' : 'Les 4 Piliers de Notre Protocole'}
+              {serviceId === 'chef-a-domicile' ? 'L’expérience du Chef, tout simplement' : 'Les 4 Piliers de Notre Protocole'}
             </h2>
             <p className="text-xs sm:text-sm text-white/70 mt-2">
               Chaque détail est anticipé pour vous délivrer un accompagnement sur-mesure d’exception.
