@@ -6,7 +6,6 @@ interface SectionsShowcaseProps {
 }
 
 export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectService }) => {
-  const [activeVideoTab, setActiveVideoTab] = useState<'cuisine' | 'convives' | 'plating'>('cuisine');
   const [zoomedDish, setZoomedDish] = useState<{ src: string; title: string } | null>(null);
 
   // Galerie volontairement éditoriale : photos des assiettes, sans fiches de plats.
@@ -182,13 +181,13 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             <div className="relative h-44 sm:h-60 overflow-hidden">
               <img
                 src="/chef-villa-gastro.jpg"
-                alt="Chef privé gastronomique en villa à Marbella"
+                alt="Chef privé en villa à Marbella"
                 className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-[#34241b]/85 backdrop-blur-md text-[#fbe8b5] text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-[#c29a52]/40">
-                04 · Gastronomie Privée
+                04 · Chef à domicile
               </span>
             </div>
             <div className="p-5 sm:p-6">
@@ -210,202 +209,98 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
         </div>
       </section>
 
-      {/* SECTION 2: CHEF SERVICE SPOTLIGHT — VIDÉOS IMMERSIVES & CONVIVES EN VILLA */}
-      <section id="chef" className="relative px-5 py-24 sm:px-8 lg:px-12 bg-gradient-to-b from-[#182a30] via-[#122227] to-[#0c181c] text-white">
-        <div className="mx-auto max-w-[1440px]">
-          {/* Section Header */}
-          <div className="text-center max-w-3xl mx-auto mb-14">
-            <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-gold-border/50 bg-[#c29a52]/10 text-[#fbe8b5] text-[11px] font-bold tracking-[0.25em] uppercase mb-4">
-              <Flame className="w-4 h-4 text-[#e5a872]" />
-              Haute Gastronomie Privée · Dominique Hybord
-            </span>
-            <h2 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.02] text-white">
-              Et si le chef venait chez vous ?
-            </h2>
-            <p className="mt-3 text-lg sm:text-xl font-serif italic text-[#edd088]">
-              L’expérience gastronomique privée dans l’intimité exclusive de votre villa
-            </p>
-            <p className="mt-4 text-sm sm:text-base text-white/80 leading-relaxed font-light">
-              Dans la cuisine ouverte de votre villa avec vue sur la mer, observez le chef élaborer des créations raffinées, dresser vos assiettes sous vos yeux et servir vos convives réunis autour d'une table d'exception. Vous profitez pleinement de vos proches ; nous orchestrons un service sur-mesure.
-            </p>
-          </div>
-
-          {/* Main Showcase Grid: Interactive Video Player with 3 Switchable Villa Moments */}
-          <div className="grid lg:grid-cols-2 gap-8 lg:gap-10 items-center rounded-3xl bg-[#15262c]/90 border border-gold-border/40 p-4 sm:p-8 lg:p-10 shadow-2xl backdrop-blur-xl">
-            {/* Video Player Box with 3 Tab Selectors */}
-            <div className="flex flex-col space-y-3">
-              {/* Video Tabs: Cuisine / Convives / Dressage */}
-              <div className="grid grid-cols-3 gap-1.5 sm:gap-2">
-                <button
-                  onClick={() => setActiveVideoTab('cuisine')}
-                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
-                    activeVideoTab === 'cuisine'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
-                  }`}
-                >
-                  <ChefHat className="w-3.5 h-3.5 shrink-0" />
-                  <span className="sm:hidden font-medium">Cuisine</span>
-                  <span className="hidden sm:inline">1. En Cuisine</span>
-                </button>
-                <button
-                  onClick={() => setActiveVideoTab('convives')}
-                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
-                    activeVideoTab === 'convives'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
-                  }`}
-                >
-                  <Users className="w-3.5 h-3.5 shrink-0" />
-                  <span className="sm:hidden font-medium">Convives</span>
-                  <span className="hidden sm:inline">2. Les Convives</span>
-                </button>
-                <button
-                  onClick={() => setActiveVideoTab('plating')}
-                  className={`flex items-center justify-center gap-1 sm:gap-2 px-2 py-2 sm:px-3 sm:py-2.5 rounded-xl text-[10px] sm:text-xs font-bold uppercase tracking-wider transition-all ${
-                    activeVideoTab === 'plating'
-                      ? 'bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black shadow-md'
-                      : 'bg-black/40 text-white/70 hover:text-white border border-white/10'
-                  }`}
-                >
-                  <Utensils className="w-3.5 h-3.5 shrink-0" />
-                  <span className="sm:hidden font-medium">Dressage</span>
-                  <span className="hidden sm:inline">3. Dressage</span>
-                </button>
-              </div>
-
-              {/* Video Player Viewport */}
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-white/15 group min-h-[260px] sm:min-h-[440px] bg-black">
-                {activeVideoTab === 'cuisine' && (
-                  <video
-                    key="video-cuisine"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    poster="/archives-cuisine/2022-10-05 12.42.03.jpg"
-                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
-                  >
-                    <source src="/videos/chefs-cuisine-pro.mp4" type="video/mp4" />
-                  </video>
-                )}
-                {activeVideoTab === 'convives' && (
-                  <video
-                    key="video-convives"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    poster="/archives-cuisine/2018-01-21 08.25.03.jpg"
-                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
-                  >
-                    <source src="/videos/champagne-convives.webm" type="video/webm" />
-                  </video>
-                )}
-                {activeVideoTab === 'plating' && (
-                  <video
-                    key="video-plating"
-                    autoPlay
-                    loop
-                    muted
-                    playsInline
-                    preload="auto"
-                    poster="/archives-cuisine/2023-09-12 13.09.35.jpg"
-                    className="w-full h-full object-cover min-h-[260px] sm:min-h-[440px]"
-                  >
-                    <source src="/videos/gourmet-plating-pro.mp4" type="video/mp4" />
-                  </video>
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
-                
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 flex items-center justify-between gap-2">
-                  <div className="min-w-0 pr-2">
-                    <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-[0.15em] sm:tracking-[0.2em] text-[#edd088] flex items-center gap-1.5 truncate">
-                      {activeVideoTab === 'cuisine' && <ChefHat className="w-3.5 h-3.5 text-[#edd088] shrink-0" />}
-                      {activeVideoTab === 'convives' && <Users className="w-3.5 h-3.5 text-[#edd088] shrink-0" />}
-                      {activeVideoTab === 'plating' && <Utensils className="w-3.5 h-3.5 text-[#edd088] shrink-0" />}
-                      {activeVideoTab === 'cuisine' && 'Cuisine Ouverte · Savoir-Faire'}
-                      {activeVideoTab === 'convives' && 'Les Convives · Art de Recevoir'}
-                      {activeVideoTab === 'plating' && 'Dressage Haute Couture'}
-                    </span>
-                    <h4 className="font-serif text-base sm:text-2xl text-white font-medium mt-0.5 line-clamp-1 sm:line-clamp-none">
-                      {activeVideoTab === 'cuisine' && 'Excellence & Savoir-Faire Culinaire en Villa'}
-                      {activeVideoTab === 'convives' && 'Moments Précieux Partagés en Villa'}
-                      {activeVideoTab === 'plating' && 'Précision et Esthétique dans l’Assiette'}
-                    </h4>
-                  </div>
-                  <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-black/60 border border-[#f1d291]/60 flex items-center justify-center text-[#f1d291] shrink-0">
-                    <Play className="w-3.5 h-3.5 sm:w-4 sm:h-4 fill-current ml-0.5" />
-                  </div>
+      {/* SECTION 2: UNE EXPÉRIENCE DE CHEF PRIVÉ, PAS UNE BRIGADE */}
+      <section id="chef" className="relative overflow-hidden bg-[#f6f0e6] px-5 py-16 text-[#29231c] sm:px-8 sm:py-24 lg:px-12">
+        <div className="pointer-events-none absolute -right-24 top-10 h-72 w-72 rounded-full bg-[#d9bd82]/20 blur-3xl" />
+        <div className="relative mx-auto max-w-[1440px]">
+          <div className="grid items-center gap-8 lg:grid-cols-[1.05fr_.95fr] lg:gap-14">
+            <div className="relative">
+              <div className="relative overflow-hidden rounded-[1.8rem] bg-[#ddd0ba] shadow-2xl shadow-[#34271e]/15">
+                <img
+                  src="/chef-villa-gastro.jpg"
+                  alt="Le chef Dominique Hybord préparant un dîner privé dans une villa"
+                  className="h-[340px] w-full object-cover object-center sm:h-[520px]"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1711]/80 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-5 sm:p-7">
+                  <span className="w-fit rounded-full border border-white/35 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f6dfaa] backdrop-blur">
+                    Marbella · Mijas · Costa del Sol
+                  </span>
+                  <p className="font-serif text-2xl text-white sm:text-3xl">Dominique Hybord</p>
+                  <p className="text-sm text-white/80">Chef privé · Cuisine réalisée chez vous</p>
                 </div>
+              </div>
+              <div className="absolute -bottom-5 right-4 hidden w-44 overflow-hidden rounded-2xl border-4 border-[#f6f0e6] shadow-xl sm:block lg:-right-5">
+                <img
+                  src="/archives-cuisine/2023-09-12 13.09.35.jpg"
+                  alt="Assiette préparée par le chef"
+                  className="h-36 w-full object-cover"
+                  loading="lazy"
+                />
               </div>
             </div>
 
-            {/* Content & Inclusions */}
-            <div className="flex flex-col justify-center space-y-5 sm:space-y-6">
-              <div className="space-y-3.5 sm:space-y-4">
-                <div className="flex items-start gap-3.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </div>
+            <div className="py-2 lg:py-8">
+              <span className="inline-flex items-center gap-2 text-[10px] font-bold uppercase tracking-[0.24em] text-[#987543] sm:text-xs">
+                <ChefHat className="h-4 w-4" />
+                Une table privée, à votre rythme
+              </span>
+              <h2 className="mt-4 max-w-xl font-serif text-4xl font-medium leading-[1.05] text-[#2b241d] sm:text-5xl lg:text-6xl">
+                Le plaisir d’un chef
+                <span className="block italic text-[#987543]">chez vous.</span>
+              </h2>
+              <p className="mt-5 max-w-xl text-sm leading-7 text-[#62564a] sm:text-base">
+                Le Chef Dominique Hybord imagine votre menu avec vous, puis cuisine directement dans votre villa. Des produits de saison, une inspiration méditerranéenne et le plaisir de profiter de vos proches pendant qu’il s’occupe du repas.
+              </p>
+
+              <div className="mt-7 space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e7d7b4] text-[#795d30]"><Check className="h-4 w-4" /></span>
                   <div>
-                    <h5 className="font-semibold text-white text-sm sm:text-base">Menu Dégustation Sur-Mesure</h5>
-                    <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
-                      Conçu exclusivement selon vos envies, le nombre de convives et vos exigences diététiques.
-                    </p>
+                    <h3 className="text-sm font-semibold text-[#30271e] sm:text-base">Un menu imaginé avec vous</h3>
+                    <p className="mt-1 text-xs leading-5 text-[#716355] sm:text-sm">Une proposition adaptée à l’occasion, à vos envies et à votre budget.</p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </div>
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e7d7b4] text-[#795d30]"><Check className="h-4 w-4" /></span>
                   <div>
-                    <h5 className="font-semibold text-white text-sm sm:text-base">Approvisionnement Haute Qualité</h5>
-                    <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
-                      Pêche locale du jour, primeurs bio d'Andalousie et viandes d'exception sélectionnées chez les meilleurs artisans.
-                    </p>
+                    <h3 className="text-sm font-semibold text-[#30271e] sm:text-base">Le chef cuisine dans votre villa</h3>
+                    <p className="mt-1 text-xs leading-5 text-[#716355] sm:text-sm">Préparation sur place et dressage des assiettes au moment du repas.</p>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-3.5">
-                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center shrink-0 mt-0.5 text-[#fbe8b5]">
-                    <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
-                  </div>
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#e7d7b4] text-[#795d30]"><Check className="h-4 w-4" /></span>
                   <div>
-                    <h5 className="font-semibold text-white text-sm sm:text-base">Service & Discrétion Absolue</h5>
-                    <p className="text-xs sm:text-sm text-white/75 mt-0.5 leading-relaxed">
-                      Dressage minute, service à l'assiette soigné et remise en état immaculée de votre cuisine en fin de réception.
-                    </p>
+                    <h3 className="text-sm font-semibold text-[#30271e] sm:text-base">Un moment à partager</h3>
+                    <p className="mt-1 text-xs leading-5 text-[#716355] sm:text-sm">De 6 à 15 convives, avec le chef et une personne dédiée au service.</p>
                   </div>
                 </div>
               </div>
 
-              {/* Action Buttons */}
-              <div className="pt-2 flex flex-col sm:flex-row gap-3 sm:gap-4">
+              <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <button
                   onClick={() => onSelectService('chef-a-domicile')}
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c29a52] to-[#edd088] text-black font-semibold text-xs sm:text-sm px-6 py-3.5 shadow-lg shadow-gold/25 hover:scale-105 active:scale-95 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#c29a52] to-[#edd088] px-6 py-3.5 text-sm font-semibold text-[#21180d] shadow-lg shadow-[#987543]/20 transition hover:-translate-y-0.5"
                 >
-                  <span>Découvrir l'Expérience Chef</span>
-                  <ArrowRight className="w-4 h-4" />
+                  Découvrir le service <ArrowRight className="h-4 w-4" />
                 </button>
                 <a
                   href="https://wa.me/34623626724?text=Bonjour%20Solveig,%20je%20souhaite%20organiser%20un%20d%C3%AEner%20priv%C3%A9%20avec%20le%20chef%20%C3%A0%20domicile."
                   target="_blank"
                   rel="noreferrer"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white text-xs sm:text-sm font-semibold px-6 py-3.5 transition-all"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-[#b9a98f] px-6 py-3.5 text-sm font-semibold text-[#403328] transition hover:bg-white/70"
                 >
-                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                  <span>Réserver sur WhatsApp</span>
+                  <MessageCircle className="h-4 w-4 text-[#2b9a63]" /> Échanger sur WhatsApp
                 </a>
+              </div>
+              <div className="mt-7 flex flex-wrap gap-x-6 gap-y-2 border-t border-[#cbbda7] pt-5 text-xs text-[#756653]">
+                <span>30 ans d’expérience</span>
+                <span>Produits frais de saison</span>
+                <span>Chez vous, à Marbella & Mijas</span>
               </div>
             </div>
           </div>
-
           {/* ARCHIVES ET RECONNAISSANCE PRESSE — conservées sur l’accueil */}
           <div className="mt-10 border-t border-white/10 pt-10">
               <div className="mb-6 flex items-center gap-3">
