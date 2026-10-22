@@ -739,7 +739,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
       </>
       )}
 
-      {serviceId !== 'rental-management' && (
+      {serviceId !== 'rental-management' && serviceId !== 'chef-a-domicile' && (
       <>
       {/* PHOTO GALLERY */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#0c171b]">
