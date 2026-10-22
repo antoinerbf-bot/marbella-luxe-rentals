@@ -406,45 +406,11 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             </div>
           </div>
 
-          {/* GALERIE ÉPURÉE — ASSIETTES & PRESSE */}
-          <div className="mt-20">
-            <div className="mb-8 border-b border-white/10 pb-5">
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
-                Galerie Inspirations Gastronomiques
-              </span>
-              <h3 className="mt-2 font-serif text-3xl sm:text-4xl font-medium text-white">
-                Les Créations Authentiques de Dominique Hybord
-              </h3>
-            </div>
-
-            <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3 xl:grid-cols-4">
-              {culinaryGallery.map((src, index) => (
-                <button
-                  key={src}
-                  type="button"
-                  onClick={() => setZoomedDish({ src, title: `Création culinaire ${index + 1}` })}
-                  aria-label="Agrandir la photographie"
-                  className="group relative aspect-[4/5] overflow-hidden rounded-xl sm:rounded-2xl border border-white/10 bg-black/30 text-left focus:outline-none focus-visible:ring-2 focus-visible:ring-[#edd088]"
-                >
-                  <img
-                    src={src}
-                    alt="Création culinaire de Dominique Hybord"
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                    loading="lazy"
-                  />
-                  <span className="absolute inset-0 flex items-center justify-center bg-black/0 transition-colors duration-300 group-hover:bg-black/25">
-                    <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 bg-black/40 text-white opacity-0 transition-opacity group-hover:opacity-100">
-                      <ZoomIn className="h-5 w-5" />
-                    </span>
-                  </span>
-                </button>
-              ))}
-            </div>
-
-            <div className="mt-16 border-t border-white/10 pt-10">
+          {/* ARCHIVES ET RECONNAISSANCE PRESSE — conservées sur l’accueil */}
+          <div className="mt-10 border-t border-white/10 pt-10">
               <div className="mb-6 flex items-center gap-3">
                 <Newspaper className="h-4 w-4 text-[#edd088]" />
-                <h4 className="font-serif text-2xl sm:text-3xl text-white">Articles de presse</h4>
+                <h4 className="font-serif text-2xl sm:text-3xl text-white">Archives et reconnaissance presse</h4>
               </div>
               <div className="grid grid-cols-2 gap-3 sm:gap-5 lg:grid-cols-3">
                 {pressGallery.map((src) => (
