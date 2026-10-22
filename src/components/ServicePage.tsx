@@ -408,10 +408,10 @@ const servicesDatabase: Record<string, ServiceContent> = {
         desc: 'Un échange direct avec le Chef pour composer un menu adapté à vos goûts, vos envies et votre budget.',
         icon: 'star',
         details: [
-          'Échange préalable pour définir vos goûts, restrictions alimentaires et souhaits de menu',
+          'Échange préalable pour définir le menu, vos goûts et le cadre de la prestation',
           'Inspiration terre-mer méditerranéenne alliant fraîcheur iodée et générosité d’auteur',
           'Choix entre menu gastronomique 4 à 7 temps, déjeuner d’été décontracté ou réception festive',
-          'Possibilité de menus enfants gourmets et options végétariennes créatives',
+          
         ],
       },
       {
@@ -423,17 +423,6 @@ const servicesDatabase: Record<string, ServiceContent> = {
           'Viandes maturées d’exception et agneau fermier élevé en plein air',
           'Légumes et herbes biologiques cueillis à maturité dans l’arrière-pays andalou',
           'Huiles d’olive extra vierge de première pression à froid et épices rares',
-        ],
-      },
-      {
-        title: 'Art de la Table & Dressage Minute',
-        desc: 'Une mise en scène élégante qui sublime chaque plat et émerveille vos convives.',
-        icon: 'clock',
-        details: [
-          'Nappage de lin délicat, argenterie étincelante et verrerie de cristal',
-          'Dressage minute à l’assiette alliant équilibre des textures et poésie visuelle',
-          'Présentation détaillée de chaque création par le chef au moment du service',
-          'Accords mets & vins millésimés suggérés par notre sommelier partenaire',
         ],
       },
       {
@@ -474,17 +463,28 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Conception d’un menu sur-mesure imaginé en direct avec le chef selon votre budget',
       'Sélection soignée des ingrédients nobles le matin même',
       'Préparation, cuissons minute et dressage dans votre cuisine',
-      'Service à table soigné par le chef (et maître d’hôtel selon convives)',
-      'Argenterie, verrerie et nappage sur demande',
+      'Service à table assuré par le chef et une personne dédiée au service',
+      '',
       'Nettoyage et remise en état intégrale de la cuisine',
-      'Conseils personnalisés d’accords mets et vins',
-      'Option brunch du lendemain matin en villa',
+      '',
+      '',
     ],
     galleryImages: [
       { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Noisette d’agneau rôtie & jus corsé au thym' },
       { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Dressage d’exception & finesse botanique' },
       { url: '/archives-cuisine/2018-01-21 08.25.03.jpg', caption: 'L’Art de la table et ambiance festive' },
-      { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Pièce de bœuf d’exception & mousseline truffée' },
+      { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Création du Chef' },
+      { url: '/archives-cuisine/2015-09-16 11.01.18.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2015-09-16 11.01.56.jpg', caption: 'Création du Chef' },
+      { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Dressage à l’assiette' },
+      { url: '/archives-cuisine/2016-12-07 13.01.27.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2017-11-29 13.03.41.jpg', caption: 'Création du Chef' },
+      { url: '/archives-cuisine/2018-01-14 13.48.44.jpg', caption: 'Dressage à l’assiette' },
+      { url: '/archives-cuisine/2018-01-14 13.49.22-1-2.jpg', caption: 'Création du Chef' },
+      { url: '/archives-cuisine/2018-01-14 13.49.22-1-3.jpg', caption: 'Cuisine gastronomique' },
+      { url: '/archives-cuisine/2018-07-05 09.54.41.jpg', caption: 'Création du Chef' },
+      { url: '/archives-cuisine/2019-02-14 21.11.08.jpg', caption: 'Dressage à l’assiette' },
+      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Cuisine gastronomique' },
     ],
     faqs: [
       {
@@ -493,11 +493,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
       },
       {
         q: 'Jusqu’à combien de convives le chef peut-il régaler ?',
-        a: 'Pour les dîners gastronomiques intimistes, de 2 à 12 convives avec le chef seul. Au-delà (jusqu’à 30 convives), nous intégrons un second de cuisine et un maître d’hôtel dédié pour garantir un rythme de service digne d’un 3 étoiles.',
-      },
-      {
-        q: 'Prenez-vous en charge les allergies et régimes spécifiques ?',
-        a: 'Absolument. Lors de la conception du menu, vous nous signalez toute allergie (gluten, lactose, fruits de mer...) ou préférence (végétarien, halal, casher friendly). Des alternatives gourmandes équivalentes sont prévues sans aucun compromis sur la finesse.',
+        a: 'Le Chef intervient pour des tables de 6 à 15 personnes, accompagné d’une personne dédiée au service.',
       },
     ],
   },
@@ -707,6 +703,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </section>
 
+      {serviceId !== 'chef-a-domicile' && (
       {/* PROCESS TIMELINE */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#101e24]">
         <div className="max-w-[1400px] mx-auto">
@@ -742,7 +739,10 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </section>
 
+      )}
+
       {serviceId !== 'rental-management' && (
+      <>
       {/* PHOTO GALLERY */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#0c171b]">
         <div className="max-w-[1400px] mx-auto">
@@ -784,7 +784,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           </div>
         </div>
       </section>
-
+      </>
       )}
 
       {/* INCLUSIONS & FAQ */}
