@@ -58,15 +58,15 @@ const serviceDetailsExtended: Record<
     imageUrl: '/rental-management-charm.jpg',
   },
   'chef-a-domicile': {
-    heroTag: 'Haute Gastronomie Privée · Dominique Hybord',
-    headline: 'L’expérience gastronomique privée dans l’intimité exclusive de votre villa',
+    heroTag: 'Chef privé · Dominique Hybord',
+    headline: 'Le plaisir d’un chef dans l’intimité de votre villa',
     points: [
-      'Conception d’un menu sur-mesure en échange direct avec le Chef selon vos envies et votre budget',
-      'Sélection soignée des produits nobles auprès des meilleurs producteurs et criées',
+      'Un menu imaginé avec vous, selon vos envies et votre budget',
+      'Sélection de produits frais et de saison auprès des producteurs et marchés locaux',
       'Préparation et dressage minute dans la cuisine de votre villa',
-      'Service élégant et attentionné digne d’un grand restaurant',
+      'Service à table attentionné, dans le confort de votre villa',
       'Remise en état impeccable de la cuisine à l’issue du service',
-      'Cuisine reconnue par la presse gastronomique (Le Dauphiné, InfosNews)',
+      'Un parcours culinaire remarqué par la presse régionale',
     ],
     whatsappText: 'Bonjour Solveig, je souhaite réserver une expérience Chef à Domicile privée pour ma villa.',
     imageUrl: '/chef-villa-gastro.jpg',
@@ -143,7 +143,7 @@ export const ServiceDetailModal: React.FC<ServiceDetailModalProps> = ({ serviceI
             </div>
             <div>
               <p className="text-xs font-bold text-white">Archives & Savoir-Faire Dominique Hybord</p>
-              <p className="text-[11px] text-white/70">Cuisine saluée par la presse gastronomique (Le Dauphiné, Schuss Magazine).</p>
+              <p className="text-[11px] text-white/70">Un parcours de chef reconnu par la presse régionale.</p>
             </div>
           </div>
         )}
