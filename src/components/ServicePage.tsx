@@ -703,6 +703,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
       </section>
 
       {serviceId !== 'chef-a-domicile' && (
+      <>
       {/* PROCESS TIMELINE */}
       <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#101e24]">
         <div className="max-w-[1400px] mx-auto">
@@ -737,7 +738,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           </div>
         </div>
       </section>
-
+      </>
       )}
 
       {serviceId !== 'rental-management' && (
