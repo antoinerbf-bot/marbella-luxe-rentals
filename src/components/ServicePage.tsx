@@ -411,7 +411,6 @@ const servicesDatabase: Record<string, ServiceContent> = {
           'Échange préalable pour définir le menu, vos goûts et le cadre de la prestation',
           'Inspiration terre-mer méditerranéenne alliant fraîcheur iodée et générosité d’auteur',
           'Choix entre menu gastronomique 4 à 7 temps, déjeuner d’été décontracté ou réception festive',
-          
         ],
       },
       {
@@ -465,7 +464,6 @@ const servicesDatabase: Record<string, ServiceContent> = {
       'Préparation, cuissons minute et dressage dans votre cuisine',
       'Service à table assuré par le chef et une personne dédiée au service',
       'Nettoyage et remise en état intégrale de la cuisine',
-      '',
       '',
     ],
     galleryImages: [
