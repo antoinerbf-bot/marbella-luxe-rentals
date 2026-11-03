@@ -329,7 +329,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 }
 .solveig-cinematic-backdrop {
   position:absolute; inset:0; z-index:0; pointer-events:none;
-  background-image:url("https://images.unsplash.com/photo-1759405198466-d7f97ef8b4a7?auto=format&fit=crop&w=3000&q=90");
+  background-image:url("https://kazggnufaoicopvmwhdl.supabase.co/storage/v1/render/image/public/article-images/article-ultimata-costa-del-sol-lyxlivsstils-guide--1769743305436-skgzqg.png?height=1800&quality=90&resize=cover&width=1800");
   background-position:center 53%; background-size:cover;
 }
 .solveig-cinematic-shade {
@@ -424,13 +424,13 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
 /* Hero art is a clean photograph; all brand copy is live, localized HTML. */
 .solveig-cinematic-backdrop {
   background-size:cover !important;
-  background-position:center 52% !important;
+  background-position:center 50% !important;
   background-repeat:no-repeat !important;
   transform:none !important;
   animation:none !important;
 }
 .solveig-cinematic-shade {
-  background:linear-gradient(180deg,rgba(8,22,31,.56) 0%,rgba(8,22,31,.15) 32%,rgba(8,22,31,.24) 65%,rgba(8,22,31,.7) 100%) !important;
+  background:linear-gradient(180deg,rgba(8,22,31,.32) 0%,rgba(8,22,31,.04) 32%,rgba(8,22,31,.12) 65%,rgba(8,22,31,.58) 100%) !important;
 }
 .solveig-cinematic-center {
   top:39% !important;
@@ -472,7 +472,7 @@ body:has(.solveig-cinematic-home) header.fixed.inset-x-0.top-0 { display:none !i
     padding:0 0 14px !important;
     overflow:hidden !important;
   }
-  .solveig-cinematic-backdrop {background-position:center center !important;background-size:cover !important}
+  .solveig-cinematic-backdrop {background-position:38% center !important;background-size:auto 100% !important}
   .solveig-cinematic-shade {display:block !important}
   .solveig-cinematic-header {
     display:flex !important;
