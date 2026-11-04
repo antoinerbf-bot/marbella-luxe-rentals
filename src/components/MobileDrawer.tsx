@@ -22,7 +22,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
                 SOLVEIG’S
               </span>
               <span className="text-[8px] tracking-[0.3em] text-[#edd088] uppercase font-medium">
-                PRESTIGE SERVICE
+                PRESTIGE SERVICES
               </span>
             </div>
 
@@ -48,10 +48,11 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
                 <span className="text-2xl">🐪</span>
                 <div className="text-left">
                   <span className="block text-[8px] font-bold uppercase tracking-[0.2em] text-[#edd088]">
-                    Découvrir l’autre univers
+                    Projet Horizon Fin 2027
                   </span>
-                  <span className="text-sm font-semibold tracking-wide">
+                  <span className="text-sm font-semibold tracking-wide flex items-center gap-2">
                     Univers Marocain
+                    <span className="text-[9px] px-1.5 py-0.2 rounded bg-[#f4cb99]/20 text-[#fbe8b5] border border-[#f4cb99]/30 font-medium">Fin 2027</span>
                   </span>
                 </div>
               </div>
@@ -156,7 +157,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose, onO
           </div>
 
           <p className="text-[10px] text-white/40 text-center mt-5 tracking-wider">
-            © 2026 Solveig’s Prestige Service · Marbella & Mijas
+            © 2026 Solveig’s Prestige Services · Marbella & Mijas
           </p>
         </div>
       </div>

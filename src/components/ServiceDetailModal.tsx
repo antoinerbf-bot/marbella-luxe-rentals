@@ -69,7 +69,7 @@ const serviceDetailsExtended: Record<
       'Un parcours culinaire remarqué par la presse régionale',
     ],
     whatsappText: 'Bonjour Solveig, je souhaite réserver une expérience Chef à Domicile privée pour ma villa.',
-    imageUrl: '/chef-villa-gastro.jpg',
+    imageUrl: '/chef-dominique-cepes.jpg',
     isChef: true,
   },
 };

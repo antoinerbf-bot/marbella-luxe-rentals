@@ -19,7 +19,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenMorocco }) => {
                 Solveig’s
               </span>
               <span className="text-[8px] font-bold tracking-[0.35em] text-[#edd088] uppercase mt-1">
-                PRESTIGE SERVICE
+                PRESTIGE SERVICES
               </span>
             </div>
 
@@ -65,7 +65,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenMorocco }) => {
               Gestion de propriété
             </a>
             <a href="#services" className="block text-white/75 hover:text-white transition-colors">
-              Conciergerie privée 24/7
+              Conciergerie privée 7/7
             </a>
             <a href="#services" className="block text-white/75 hover:text-white transition-colors">
               Location saisonnière VIP
@@ -79,6 +79,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenMorocco }) => {
                 className="block text-[#f4cb99] hover:text-[#ffd8b3] transition-colors font-semibold flex items-center gap-1.5"
               >
                 <span>Univers Marocain</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f4cb99]/20 text-[#fbe8b5] border border-[#f4cb99]/30 font-medium">Fin 2027</span>
                 <span className="text-xs">🐪 →</span>
               </button>
             )}
@@ -104,7 +105,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenMorocco }) => {
 
         {/* Bottom copyright line */}
         <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/40 tracking-wider">
-          <span>© 2026 Solveig’s Prestige Service. Tous droits réservés.</span>
+          <span>© 2026 Solveig’s Prestige Services. Tous droits réservés.</span>
           <span className="mt-2 sm:mt-0">Marbella · Mijas · Costa del Sol</span>
         </div>
       </div>

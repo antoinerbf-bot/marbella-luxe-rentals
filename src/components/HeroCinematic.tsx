@@ -34,7 +34,7 @@ export const servicesData: ServiceItem[] = [
     number: '02',
     title: 'CONCIERGE',
     subtitle: 'SERVICES',
-    description: 'Accueil personnalisé, réservations prioritaires (beach clubs, tables étoilées, yachts) et conciergerie privée 24/7.',
+    description: 'Accueil personnalisé, réservations prioritaires (beach clubs, tables étoilées, yachts) et conciergerie privée 7/7.',
     icon: (
       <svg className="w-7 h-7 sm:w-8 sm:h-8" viewBox="0 0 48 48" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
         <path d="M8 34h32l-4-6H12z" />
@@ -79,7 +79,7 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
     <section
       id="hero"
       className="relative w-full min-h-[100svh] lg:h-screen lg:max-h-[960px] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-6 sm:pb-8"
-      aria-label="Solveig’s Prestige Service — Marbella & Mijas"
+      aria-label="Solveig’s Prestige Services — Marbella & Mijas"
     >
       {/* Background Image: Cadrage Panoramique Fidèle (Palmier à droite et fleurs à gauche toujours visibles) */}
       <div className="absolute inset-0 z-0 overflow-hidden">
@@ -104,7 +104,7 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
 
         {/* Subtitle */}
         <p className="mt-1 sm:mt-2 text-[9px] min-[380px]:text-[10px] sm:text-[12px] md:text-[13px] font-bold tracking-[0.38em] text-[#f7e1a0] uppercase drop-shadow-md">
-          PRESTIGE SERVICE
+          PRESTIGE SERVICES
         </p>
 
         {/* Region Tag with Gold Accents */}

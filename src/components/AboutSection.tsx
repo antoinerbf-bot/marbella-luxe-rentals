@@ -91,7 +91,7 @@ export const AboutSection: React.FC = () => {
             </p>
 
             <p className="text-sm sm:text-base text-white/75 leading-relaxed font-light">
-              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie 24/7 et des expériences gastronomiques exclusives dans l’intimité de leur villa.
+              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie privée 7/7 et des expériences gastronomiques exclusives dans l’intimité de leur villa.
             </p>
 
             {/* 3 Minimalist Prestige Badges */}

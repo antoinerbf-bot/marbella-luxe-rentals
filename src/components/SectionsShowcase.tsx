@@ -106,7 +106,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
               <span className="absolute bottom-3 left-3 px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-bold tracking-widest uppercase border border-white/20">
-                02 · Conciergerie 24/7
+                02 · Conciergerie 7/7
               </span>
             </div>
             <div className="p-5 sm:p-6">
@@ -114,10 +114,10 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                 <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
               </div>
               <h3 className="text-lg sm:text-xl font-serif font-bold text-[#34271e] group-hover:text-[#987543] transition-colors">
-                Conciergerie privée
+                Conciergerie privée et lifestyle 7/7
               </h3>
               <p className="mt-2 text-xs sm:text-sm text-[#74665a] leading-relaxed">
-                Le sens du détail, sans jamais en faire trop. Une présence locale pour rendre les séjours plus fluides et les demandes plus simples, avec discrétion.
+                Une présence locale pour rendre les séjours plus fluides et les demandes plus simples avec discrétion. Tables d'exception, golf, mer ou chauffeur privé : Solveig’s Prestige Services anticipe chaque instant.
               </p>
               <div className="mt-4 sm:mt-5 inline-flex items-center gap-1.5 text-[10px] font-bold uppercase tracking-[0.2em] text-[#4f7f80] group-hover:text-[#2e8068]">
                 <span>Découvrir</span>
@@ -217,18 +217,18 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
             <div className="relative">
               <div className="relative overflow-hidden rounded-[1.8rem] bg-[#ddd0ba] shadow-2xl shadow-[#34271e]/15">
                 <img
-                  src="/chef-villa-gastro.jpg"
-                  alt="Le chef Dominique Hybord préparant un dîner privé dans une villa"
-                  className="h-[340px] w-full object-cover object-center sm:h-[520px]"
+                  src="/chef-dominique-cepes.jpg"
+                  alt="Le chef Dominique Hybord avec une caisse de cèpes d'exception"
+                  className="h-[360px] w-full object-cover object-[center_20%] sm:h-[530px]"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1711]/80 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-[#1c1711]/85 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 flex flex-col gap-2 p-5 sm:p-7">
-                  <span className="w-fit rounded-full border border-white/35 bg-black/35 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f6dfaa] backdrop-blur">
+                  <span className="w-fit rounded-full border border-white/35 bg-black/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#f6dfaa] backdrop-blur">
                     Marbella · Mijas · Costa del Sol
                   </span>
                   <p className="font-serif text-2xl text-white sm:text-3xl">Dominique Hybord</p>
-                  <p className="text-sm text-white/80">Chef privé · Cuisine réalisée chez vous</p>
+                  <p className="text-sm text-white/85">Chef privé · La passion des produits d’exception chez vous</p>
                 </div>
               </div>
               <div className="absolute -bottom-5 right-4 hidden w-44 overflow-hidden rounded-2xl border-4 border-[#f6f0e6] shadow-xl sm:block lg:-right-5">
@@ -471,7 +471,7 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
                   <option value="gestion">Gestion de propriété (Marbella / Mijas)</option>
                   <option value="conciergerie">Conciergerie privée & Lifestyle</option>
                   <option value="location">Location saisonnière & Intendance</option>
-                  <option value="maroc">Séjour Univers Marocain</option>
+                  <option value="maroc">Séjour Univers Marocain (Projet Horizon Fin 2027)</option>
                 </select>
               </div>
 

@@ -52,7 +52,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
     tagline: '« La tranquillité commence par savoir que quelqu’un veille réellement sur votre bien. »',
     heroImage: '/property-management-charm.jpg',
     heroDescription:
-      'Posséder une villa de prestige sur la Costa del Sol doit demeurer un privilège sans contrainte. Solveig’s Prestige Service prend en charge l’intendance complète, la surveillance attentive et la coordination des prestataires de votre bien. À chaque visite, un compte-rendu clair et détaillé avec photos HD vous est adressé directement sur WhatsApp ou email.',
+      'Posséder une villa de prestige sur la Costa del Sol doit demeurer un privilège sans contrainte. Solveig’s Prestige Services prend en charge l’intendance complète, la surveillance attentive et la coordination des prestataires de votre bien. À chaque visite, un compte-rendu clair et détaillé avec photos HD vous est adressé directement sur WhatsApp ou email.',
     whatsappMessage: 'Bonjour Solveig, je souhaite échanger à propos de la gestion de ma villa sur la Costa del Sol.',
     stats: [
       { value: '30+', label: 'Ans d’expérience et d’exigence' },
@@ -161,16 +161,16 @@ const servicesDatabase: Record<string, ServiceContent> = {
 
   'concierge-services': {
     id: 'concierge-services',
-    badge: 'Conciergerie Privée & Lifestyle 24/7 · Costa del Sol',
+    badge: 'Conciergerie privée et lifestyle 7/7 · Costa del Sol',
     title: 'Concierge Services',
     subtitle: 'Le sens du détail, sans jamais en faire trop',
     tagline: '« Le vrai luxe est souvent invisible : quelqu’un a déjà pensé au détail avant même que vous le demandiez. »',
     heroImage: '/candidates/option1_yacht.jpg',
     heroDescription:
-      'Une présence locale pour rendre les séjours plus fluides et les demandes plus simples, avec discrétion. Obtenir une table d’exception à Puente Romano, réserver un yacht privé pour une échappée en mer au crépuscule ou disposer d’un chauffeur d’élite dès la sortie de votre avion : Solveig’s Prestige Service anticipe chaque instant pour vous offrir une sérénité absolue.',
+      "Une présence locale pour rendre les séjours plus fluides et les demandes plus simples avec discrétion. Obtenir une table dans un restaurant de la Costa del Sol, réserver un golf, une échappée en mer ou disposer d'un chauffeur dès votre arrivée à l’aéroport. Solveig’s Prestige Services anticipe chaque instant pour vous offrir une sérénité absolue.",
     whatsappMessage: 'Bonjour Solveig, je souhaiterais solliciter vos services de conciergerie privée pour mon séjour à Marbella.',
     stats: [
-      { value: '24/7', label: 'Ligne directe propriétaire' },
+      { value: '7/7', label: 'Ligne directe propriétaire' },
       { value: '< 15 min', label: 'Temps moyen de réponse WhatsApp' },
       { value: '100%', label: 'Discrétion et secret professionnel' },
       { value: 'VIP', label: 'Accès privilégié aux tables & beach clubs' },
@@ -282,7 +282,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
     tagline: '« Valoriser votre bien tout en préservant son intégrité, avec des hôtes choisis avec soin. »',
     heroImage: '/rental-management-charm.jpg',
     heroDescription:
-      'Louer sa propriété d’exception sur la Costa del Sol doit s’accompagner d’une totale tranquillité d’esprit. Solveig’s Prestige Service vous propose deux formules modulables : soit la prise en charge exclusive sur place lorsque vous gérez vous-même vos réservations (accueil, état des lieux, blanchisserie et ménage 5 étoiles), soit une gestion locative intégrale clé en main avec sélection attentive des voyageurs, contrats et conciergerie dédiée.',
+      'Louer sa propriété d’exception sur la Costa del Sol doit s’accompagner d’une totale tranquillité d’esprit. Solveig’s Prestige Services vous propose deux formules modulables : soit la prise en charge exclusive sur place lorsque vous gérez vous-même vos réservations (accueil, état des lieux, blanchisserie et ménage 5 étoiles), soit une gestion locative intégrale clé en main avec sélection attentive des voyageurs, contrats et conciergerie dédiée.',
     whatsappMessage: 'Bonjour Solveig, je souhaite optimiser la location saisonnière de ma villa à Marbella.',
     stats: [
       { value: '100%', label: 'Voyageurs contrôlés et vérifiés' },
@@ -392,7 +392,7 @@ const servicesDatabase: Record<string, ServiceContent> = {
     title: 'Chef à Domicile',
     subtitle: 'Le savoir-faire d’un chef, dans l’intimité de votre villa',
     tagline: '« 30 ans d’expérience, une cuisine sincère et le plaisir de recevoir chez soi. »',
-    heroImage: '/chef-villa-gastro.jpg',
+    heroImage: '/chef-dominique-cepes.jpg',
     heroDescription:
       'Recevez vos proches sans quitter votre villa. Le Chef Dominique Hybord imagine avec vous un menu sur mesure, inspiré par la Méditerranée et les produits frais de saison, puis le prépare directement chez vous pour que vous profitiez pleinement de vos invités.',
     whatsappMessage: 'Bonjour Solveig, je souhaite organiser une expérience Chef à Domicile privée pour ma villa.',
@@ -526,7 +526,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
               SOLVEIG’S
             </span>
             <span className="text-[7px] sm:text-[8.5px] font-bold tracking-[0.3em] text-[#edd088] uppercase mt-0.5">
-              PRESTIGE SERVICE
+              PRESTIGE SERVICES
             </span>
           </div>
 
@@ -594,19 +594,21 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
               </a>
             </div>
 
-            {/* Stats Row */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-white/10">
-              {content.stats.map((s, idx) => (
-                <div key={idx} className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
-                  <div className="font-serif text-lg sm:text-2xl font-bold text-[#fbe8b5] leading-tight">
-                    {s.value}
+            {/* Stats Row (Hidden on concierge-services to stop cleanly right under CTAs) */}
+            {serviceId !== 'concierge-services' && (
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-4 border-t border-white/10">
+                {content.stats.map((s, idx) => (
+                  <div key={idx} className="p-3 sm:p-4 rounded-2xl bg-white/5 border border-white/10 text-center">
+                    <div className="font-serif text-lg sm:text-2xl font-bold text-[#fbe8b5] leading-tight">
+                      {s.value}
+                    </div>
+                    <div className="text-[10px] sm:text-[11px] text-white/70 mt-1 leading-snug">
+                      {s.label}
+                    </div>
                   </div>
-                  <div className="text-[10px] sm:text-[11px] text-white/70 mt-1 leading-snug">
-                    {s.label}
-                  </div>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            )}
           </div>
 
           {/* Right Visual Column */}
@@ -627,7 +629,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                     </div>
                     <div>
                       <p className="text-xs font-semibold text-white leading-tight">
-                        Excellence certifiée Solveig’s Prestige
+                        Excellence certifiée Solveig’s Prestige Services
                       </p>
                       <p className="text-[10px] text-white/70 mt-0.5">
                         Interventions discrètes & confidentielles à Marbella et Mijas.
@@ -641,8 +643,11 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </section>
 
-      {/* 4 CORE PILLARS / PRESTIGE DETAILS */}
-      <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#0c171b]">
+      {/* SECTIONS DETAILS (Hidden on concierge-services where content stops under CTAs) */}
+      {serviceId !== 'concierge-services' ? (
+        <>
+          {/* 4 CORE PILLARS / PRESTIGE DETAILS */}
+          <section className="py-20 px-4 sm:px-8 lg:px-12 bg-[#0c171b]">
         <div className="max-w-[1400px] mx-auto">
           <div className="text-center max-w-2xl mx-auto mb-14">
             <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088]">
@@ -887,6 +892,38 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           </div>
         </div>
       </section>
+      </>
+      ) : (
+      /* MINIMALIST CLEAN SECTION FOR CONCIERGE SERVICES (All pillars & sections below WhatsApp CTA removed) */
+      <section className="py-14 px-4 sm:px-8 lg:px-12 bg-[#0c171b] border-t border-white/10 text-center">
+        <div className="max-w-2xl mx-auto space-y-6">
+          <p className="text-xs sm:text-sm text-white/70 font-light">
+            Solveig’s Prestige Services · Présence confidentielle et discrète à Marbella & Mijas
+          </p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <button
+              onClick={onBack}
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 text-white font-medium text-xs sm:text-sm transition-all"
+            >
+              <ArrowLeft className="w-4 h-4 text-[#edd088]" />
+              <span>Retour à l’accueil</span>
+            </button>
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 rounded-full bg-[#25D366] text-black font-semibold text-xs sm:text-sm shadow-lg hover:scale-105 active:scale-95 transition-all"
+            >
+              <MessageCircle className="w-4 h-4" />
+              <span>WhatsApp : +34 623 626 724</span>
+            </a>
+          </div>
+          <p className="pt-4 text-[11px] text-white/40">
+            © 2026 Solveig’s Prestige Services. Tous droits réservés.
+          </p>
+        </div>
+      </section>
+      )}
 
       {/* LIGHTBOX MODAL */}
       {lightboxImg && (

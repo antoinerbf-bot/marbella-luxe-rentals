@@ -40,13 +40,13 @@ export const Header: React.FC<HeaderProps> = ({ onOpenMobileMenu, onOpenMoroccoU
           <a
             href="#hero"
             className="group flex flex-col text-left focus:outline-none"
-            aria-label="Solveig's Prestige Service"
+            aria-label="Solveig's Prestige Services"
           >
             <span className="font-serif text-lg sm:text-2xl font-normal tracking-[0.14em] text-white leading-none group-hover:text-[#f4dfa5] transition-colors">
               SOLVEIG’S
             </span>
             <span className="text-[7.5px] sm:text-[9.5px] font-bold tracking-[0.32em] text-[#edd088] uppercase mt-0.5 group-hover:text-white transition-colors">
-              PRESTIGE SERVICE
+              PRESTIGE SERVICES
             </span>
           </a>
         </div>

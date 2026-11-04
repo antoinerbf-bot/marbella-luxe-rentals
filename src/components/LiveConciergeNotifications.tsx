@@ -37,10 +37,10 @@ const notifications: NotificationItem[] = [
   },
   {
     id: 3,
-    icon: '🇲🇦',
+    icon: '🐪',
     category: 'Univers Marocain',
     location: 'Marrakech · Palmeraie',
-    action: 'Accueil privatisé en riad d’exception avec cuisinière et majordome.',
+    action: 'Suivi de chantier & sortie de terre des futures résidences (Livraison Fin 2027).',
     timeAgo: 'Il y a 28 min',
     type: 'maroc',
   },

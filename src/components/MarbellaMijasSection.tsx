@@ -155,7 +155,7 @@ export const MarbellaMijasSection: React.FC = () => {
                 Du check de votre villa au dernier détail d’un séjour.
               </h3>
               <p className="text-xs sm:text-sm text-white/75 leading-relaxed font-light max-w-3xl">
-                Que vous soyez propriétaire d’un domaine à Marbella, d’une maison de caractère à Mijas Pueblo ou d’une villa de vacances à La Cala, Solveig’s Prestige Service est votre relais de confiance sur place, réactif et disponible 365 jours par an.
+                Que vous soyez propriétaire d’un domaine à Marbella, d’une maison de caractère à Mijas Pueblo ou d’une villa de vacances à La Cala, Solveig’s Prestige Services est votre relais de confiance sur place, réactif et disponible 365 jours par an.
               </p>
             </div>
 

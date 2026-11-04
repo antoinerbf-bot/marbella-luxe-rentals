@@ -1,16 +1,3 @@
-# Solveig's Prestige Service — Marbella & Mijas
+# Solveig's Prestige Services â€” Marbella & Mijas
 
-Site web officiel de Solveig’s Prestige Service : conciergerie privée, gestion de propriétés d’exception, chef à domicile et univers marocain.
-
-## Technologies
-- React 18 + Vite
-- Tailwind CSS
-- Lucide React & Framer Motion
-- Déploiement Vercel
-
-## Commandes
-- Dev : 
-pm run dev
-- Build : 
-pm run build
-
+Site web officiel de Solveigâ€™s Prestige Services : conciergerie privÃ©e, gestion de propriÃ©tÃ©s dâ€™exception, chef Ã  domicile et univers marocain.

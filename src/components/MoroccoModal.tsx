@@ -27,7 +27,7 @@ export const MoroccoModal: React.FC<MoroccoModalProps> = ({ isOpen, onClose }) =
           <span className="text-3xl">🐪</span>
           <div>
             <span className="text-[10px] font-bold tracking-[0.25em] text-[#d39e6a] uppercase">
-              Échappée Privée
+              Horizon Fin 2027 · En cours de construction
             </span>
             <h3 className="font-serif text-3xl sm:text-4xl text-white font-semibold">
               L’Univers Marocain
@@ -36,8 +36,8 @@ export const MoroccoModal: React.FC<MoroccoModalProps> = ({ isOpen, onClose }) =
         </div>
 
         <p className="text-sm sm:text-base text-white/85 leading-relaxed mb-6 font-light">
-          Prolongez l’expérience de Solveig’s Prestige Service au-delà de la Méditerranée.
-          Découvrez notre collection confidentielle de riads privatifs, villas d’exception et séjours sur-mesure à Marrakech et sur les côtes atlantiques.
+          Prolongez l’expérience de Solveig’s Prestige Services au-delà de la Méditerranée.
+          Nos résidences et appartements privés au Maroc sortent actuellement de terre pour une livraison d'exception fin 2027.
         </p>
 
         <div className="grid sm:grid-cols-2 gap-3 mb-6">
