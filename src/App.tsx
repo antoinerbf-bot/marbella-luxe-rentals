@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
-import { HeroCinematic } from './components/HeroCinematic';
+import { HeroVideoCinematic } from './components/HeroVideoCinematic';
 import { SectionsShowcase } from './components/SectionsShowcase';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
@@ -54,8 +54,8 @@ export function App() {
         }}
       />
 
-      {/* Hero Cinematic Section */}
-      <HeroCinematic
+      {/* Hero Video Cinematic Section (3 Local Proposals A / B / C) */}
+      <HeroVideoCinematic
         onSelectService={(serviceId) => setActiveServiceId(serviceId)}
       />
 
