@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
-import { HeroVideoCinematic } from './components/HeroVideoCinematic';
-import { SectionsShowcase } from './components/SectionsShowcase';
+import { HeroEditorialResort } from './components/HeroEditorialResort';
+import { ContactSection } from './components/ContactSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
@@ -54,21 +54,19 @@ export function App() {
         }}
       />
 
-      {/* Hero Video Cinematic Section (3 Local Proposals A / B / C) */}
-      <HeroVideoCinematic
+      {/* Hero Minimaliste Confidentiel & 4 Prestations Éditoriales Resort (Mélange 1 & 2) */}
+      <HeroEditorialResort
         onSelectService={(serviceId) => setActiveServiceId(serviceId)}
       />
 
       {/* Dedicated Marbella, Mijas & Costa del Sol Section */}
       <MarbellaMijasSection />
 
-      {/* Showcase and Content Sections (Services, Chef, Contact) */}
-      <SectionsShowcase
-        onSelectService={(serviceId) => setActiveServiceId(serviceId)}
-      />
-
       {/* About Us & Dominique Hybord Legacy Section */}
       <AboutSection />
+
+      {/* Refined Confidential Contact Section */}
+      <ContactSection />
 
       {/* Footer */}
       <Footer
