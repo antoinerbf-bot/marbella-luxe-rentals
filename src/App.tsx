@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useRoute, serviceHref } from './lib/router';
 import { DEFAULT_WA_MESSAGE, ServiceId } from './lib/site';
+import { LanguageProvider } from './lib/LanguageContext';
 import { Header } from './components/Header';
 import { HeroSolaireVideo } from './components/HeroSolaireVideo';
 import { ChefHomeSection } from './components/ChefHomeSection';
@@ -13,7 +14,7 @@ import { MobileDrawer } from './components/MobileDrawer';
 import { ServicePage } from './components/ServicePage';
 import { MoroccoUniversePage } from './components/MoroccoUniversePage';
 
-export function App() {
+function AppContent() {
   const route = useRoute();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -43,7 +44,7 @@ export function App() {
   // Page d'Accueil Principale (Marbella & Mijas · Costa del Sol)
   return (
     <div className="min-h-screen bg-travertine text-ink flex flex-col selection:bg-bronze/20">
-      {/* En-tête avec variante overlay sur la vidéo d'accueil */}
+      {/* En-tête avec sélecteur de langue discret FR / EN / ES */}
       <Header
         variant="overlay"
         onOpenMenu={() => setMobileMenuOpen(true)}
@@ -72,7 +73,7 @@ export function App() {
       {/* Contact privilégié & Formulaire confidentiel */}
       <ContactSection />
 
-      {/* Pied de page */}
+      {/* Pied de page contrasté, prestigieux et complet */}
       <Footer />
 
       {/* Bouton d'action WhatsApp discret */}
@@ -84,6 +85,14 @@ export function App() {
         onClose={() => setMobileMenuOpen(false)}
       />
     </div>
+  );
+}
+
+export function App() {
+  return (
+    <LanguageProvider>
+      <AppContent />
+    </LanguageProvider>
   );
 }
 

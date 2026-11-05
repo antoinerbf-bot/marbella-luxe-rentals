@@ -3,21 +3,39 @@ import { Phone, Mail, Sparkles, Send } from 'lucide-react';
 import { EMAIL, PHONE_DISPLAY, PHONE_TEL, waLink } from '../lib/site';
 import { WhatsAppIcon } from './ui/WhatsAppIcon';
 import { Reveal } from './ui/Reveal';
+import { useLanguage } from '../lib/LanguageContext';
 
 export const ContactSection: React.FC = () => {
+  const { lang, t } = useLanguage();
+  const c = t.contactSection;
+
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    service: 'Intendance & Property Management',
+    service: 'property',
     message: '',
   });
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Bonjour Solveig, je souhaite vous contacter via le site Solveig's Prestige Services :
+    const serviceName = c.serviceOptions[formData.service] || formData.service;
+    const text =
+      lang === 'en'
+        ? `Hello Solveig, I am contacting you via Solveig's Prestige Services website:
+- Name: ${formData.name}
+- Phone: ${formData.phone}
+- Requested Service: ${serviceName}
+${formData.message ? `- Notes: ${formData.message}` : ''}`
+        : lang === 'es'
+        ? `Hola Solveig, me pongo en contacto a través de la web Solveig's Prestige Services:
+- Nombre: ${formData.name}
+- Teléfono: ${formData.phone}
+- Servicio solicitado: ${serviceName}
+${formData.message ? `- Observaciones: ${formData.message}` : ''}`
+        : `Bonjour Solveig, je souhaite vous contacter via le site Solveig's Prestige Services :
 - Nom : ${formData.name}
 - Téléphone : ${formData.phone}
-- Service souhaité : ${formData.service}
+- Service souhaité : ${serviceName}
 ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
 
     window.open(waLink(text), '_blank');
@@ -31,15 +49,15 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
           <Reveal className="space-y-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-bronze/30 bg-sand px-3.5 py-1 text-xs font-semibold text-bronze-deep">
               <Sparkles className="h-3.5 w-3.5 text-bronze" />
-              <span>Échange Privilégié & Confidentiel</span>
+              <span>{c.eyebrow}</span>
             </div>
 
             <h2 className="font-serif text-3xl font-medium leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              Votre propriété mérite une présence à sa hauteur.
+              {c.title}
             </h2>
 
             <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base max-w-xl">
-              Partagez-nous vos exigences, votre rythme de présence et la nature de vos besoins sur la Costa del Sol. Solveig Hybord vous répondra personnellement avec la plus stricte discrétion.
+              {c.description}
             </p>
 
             {/* Accès directs */}
@@ -51,12 +69,12 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                 className="btn-primary"
               >
                 <WhatsAppIcon />
-                <span>WhatsApp : {PHONE_DISPLAY}</span>
+                <span>{c.directWhatsApp} : {PHONE_DISPLAY}</span>
               </a>
 
               <a href={PHONE_TEL} className="btn-secondary">
                 <Phone className="h-4 w-4 text-bronze" />
-                <span>{PHONE_DISPLAY}</span>
+                <span>{c.directCall} : {PHONE_DISPLAY}</span>
               </a>
 
               <a href={`mailto:${EMAIL}`} className="btn-secondary">
@@ -67,76 +85,76 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
 
             <div className="pt-4 border-t border-ink/5">
               <p className="text-xs text-ink-muted">
-                Solveig’s Prestige Services · Marbella, Mijas et Costa del Sol · Réponse assurée 7j/7.
+                Solveig’s Prestige Services · Marbella & Mijas · {c.availability}
               </p>
             </div>
           </Reveal>
 
           {/* Colonne droite : Formulaire relié à WhatsApp */}
-          <Reveal className="rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-10 shadow-[0_16px_40px_rgba(28,26,23,0.06)]" delay={150}>
-            <p className="eyebrow">Formulaire Confidentiel</p>
+          <Reveal className="rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-10 shadow-[0_20px_45px_rgba(28,26,23,0.06)]" delay={150}>
+            <p className="eyebrow">{c.formEyebrow}</p>
             <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl mt-1 mb-2">
-              Demande d’accompagnement
+              {c.formTitle}
             </h3>
             <p className="text-xs font-light text-ink-soft mb-6">
-              Transmettez-nous vos coordonnées pour une prise de contact confidentielle sous 2 heures.
+              {c.formDesc}
             </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-[11px] font-semibold uppercase tracking-wider text-ink mb-1.5">
-                  Nom complet
+                  {c.nameLabel}
                 </label>
                 <input
                   type="text"
                   required
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                  placeholder="Votre nom et prénom"
+                  placeholder={c.namePlaceholder}
                   className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
                 <label className="block text-[11px] font-semibold uppercase tracking-wider text-ink mb-1.5">
-                  Numéro de téléphone (WhatsApp)
+                  {c.phoneLabel}
                 </label>
                 <input
                   type="tel"
                   required
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                  placeholder="+33 6 00 00 00 00"
+                  placeholder={c.phonePlaceholder}
                   className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
                 />
               </div>
 
               <div>
                 <label className="block text-[11px] font-semibold uppercase tracking-wider text-ink mb-1.5">
-                  Prestation souhaitée
+                  {c.serviceLabel}
                 </label>
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                   className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink focus:border-bronze focus:bg-white focus:outline-none transition-colors"
                 >
-                  <option value="Intendance & Property Management">01 · Intendance & Property Management</option>
-                  <option value="Conciergerie privée et lifestyle 7/7">02 · Conciergerie Privée & Lifestyle 7/7</option>
-                  <option value="Location saisonnière (Formule Sur-Place ou Clé en Main)">03 · Location Saisonnière (2 Formules)</option>
-                  <option value="Chef à domicile (Dominique Hybord)">04 · Chef à Domicile (Dominique Hybord)</option>
-                  <option value="Univers Marocain (Livraison fin 2027)">🐪 · Univers Marocain (Projet Horizon Fin 2027)</option>
+                  <option value="property">{c.serviceOptions.property}</option>
+                  <option value="concierge">{c.serviceOptions.concierge}</option>
+                  <option value="rental">{c.serviceOptions.rental}</option>
+                  <option value="chef">{c.serviceOptions.chef}</option>
+                  <option value="morocco">{c.serviceOptions.morocco}</option>
                 </select>
               </div>
 
               <div>
                 <label className="block text-[11px] font-semibold uppercase tracking-wider text-ink mb-1.5">
-                  Précisions / Attentes particulières
+                  {c.messageLabel}
                 </label>
                 <textarea
                   rows={3}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Localisation de la villa, dates envisagées, souhaits particuliers..."
+                  placeholder={c.messagePlaceholder}
                   className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
                 />
               </div>
@@ -146,7 +164,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                 className="btn-primary w-full py-4 text-xs tracking-wider uppercase mt-2"
               >
                 <Send className="h-4 w-4" />
-                <span>Transmettre ma demande sur WhatsApp</span>
+                <span>{c.submitCta}</span>
               </button>
             </form>
           </Reveal>

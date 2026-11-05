@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import { ArrowUpRight, Mail, Phone, X } from 'lucide-react';
-import { NAV_LINKS } from './Header';
-import { MAROC_HREF } from '../lib/router';
+import { MAROC_HREF, sectionHref } from '../lib/router';
 import { DEFAULT_WA_MESSAGE, EMAIL, PHONE_DISPLAY, PHONE_TEL, waLink } from '../lib/site';
 import { WhatsAppIcon } from './ui/WhatsAppIcon';
+import { LanguageSelector } from './ui/LanguageSelector';
+import { useLanguage } from '../lib/LanguageContext';
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -11,6 +12,8 @@ interface MobileDrawerProps {
 }
 
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) => {
+  const { t } = useLanguage();
+
   useEffect(() => {
     document.body.style.overflow = isOpen ? 'hidden' : '';
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && onClose();
@@ -20,6 +23,14 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
       document.removeEventListener('keydown', onKey);
     };
   }, [isOpen, onClose]);
+
+  const navLinks = [
+    { label: t.nav.services, href: sectionHref('services') },
+    { label: t.nav.chef, href: sectionHref('chef') },
+    { label: t.nav.territory, href: sectionHref('territoire') },
+    { label: t.nav.about, href: sectionHref('maison') },
+    { label: t.nav.contact, href: sectionHref('contact') },
+  ];
 
   return (
     <div
@@ -40,25 +51,31 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
         <div className="flex items-center justify-between">
           <div className="flex flex-col leading-none">
             <span className="font-serif text-2xl tracking-[0.12em] text-ink">SOLVEIG’S</span>
-            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.34em] text-bronze">Prestige Services</span>
+            <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.34em] text-bronze">
+              Prestige Services
+            </span>
           </div>
-          <button
-            type="button"
-            onClick={onClose}
-            aria-label="Fermer le menu"
-            className="flex h-11 w-11 items-center justify-center rounded-full text-ink hover:bg-ink/5"
-          >
-            <X className="h-6 w-6" />
-          </button>
+
+          <div className="flex items-center gap-2">
+            <LanguageSelector variant="light" />
+            <button
+              type="button"
+              onClick={onClose}
+              aria-label="Fermer le menu"
+              className="flex h-10 w-10 items-center justify-center rounded-full text-ink hover:bg-ink/5"
+            >
+              <X className="h-5 w-5" />
+            </button>
+          </div>
         </div>
 
-        <nav className="mt-12 flex flex-col" aria-label="Navigation mobile">
-          {NAV_LINKS.map((link) => (
+        <nav className="mt-10 flex flex-col" aria-label="Navigation mobile">
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={onClose}
-              className="flex items-center justify-between border-b border-ink/10 py-4 font-serif text-[28px] text-ink transition-colors hover:text-bronze"
+              className="flex items-center justify-between border-b border-ink/10 py-3.5 font-serif text-[24px] text-ink transition-colors hover:text-bronze"
             >
               {link.label}
             </a>
@@ -66,26 +83,36 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
           <a
             href={MAROC_HREF}
             onClick={onClose}
-            className="flex items-center justify-between py-4 text-sm font-medium text-ink-soft hover:text-bronze"
+            className="flex items-center justify-between py-4 text-sm font-semibold text-bronze-deep hover:text-bronze"
           >
-            Univers marocain · livraison fin 2027
+            <span>{t.nav.morocco}</span>
             <ArrowUpRight className="h-4 w-4" />
           </a>
         </nav>
 
-        <div className="mt-auto space-y-3">
-          <a href={waLink(DEFAULT_WA_MESSAGE)} target="_blank" rel="noopener noreferrer" className="btn-primary w-full">
-            <WhatsAppIcon /> Échanger avec Solveig
+        <div className="mt-auto space-y-3 pt-6">
+          <a
+            href={waLink(DEFAULT_WA_MESSAGE)}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary w-full"
+          >
+            <WhatsAppIcon />
+            <span>{t.nav.whatsappCta}</span>
           </a>
           <div className="grid grid-cols-2 gap-3">
             <a href={PHONE_TEL} className="btn-secondary px-3 text-[13px]">
-              <Phone className="h-4 w-4" /> Appeler
+              <Phone className="h-4 w-4" />
+              <span>{t.nav.callCta}</span>
             </a>
             <a href={`mailto:${EMAIL}`} className="btn-secondary px-3 text-[13px]">
-              <Mail className="h-4 w-4" /> E-mail
+              <Mail className="h-4 w-4" />
+              <span>E-mail</span>
             </a>
           </div>
-          <p className="pt-2 text-center text-xs text-ink-muted">{PHONE_DISPLAY} · Marbella & Mijas</p>
+          <p className="pt-2 text-center text-xs text-ink-muted">
+            {PHONE_DISPLAY} · Marbella & Mijas
+          </p>
         </div>
       </aside>
     </div>

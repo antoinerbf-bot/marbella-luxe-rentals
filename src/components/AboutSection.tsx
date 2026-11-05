@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Award, Newspaper, Star, ShieldCheck, ChevronRight, ChevronLeft, ZoomIn } from 'lucide-react';
 import { Reveal } from './ui/Reveal';
 import { Lightbox } from './ui/Lightbox';
+import { useLanguage } from '../lib/LanguageContext';
 
 interface PressArticle {
   title: string;
@@ -13,6 +14,8 @@ interface PressArticle {
 }
 
 export const AboutSection: React.FC = () => {
+  const { lang, t } = useLanguage();
+  const ab = t.aboutSection;
   const [selectedArticle, setSelectedArticle] = useState<PressArticle | null>(null);
 
   const pressArticles: PressArticle[] = [
@@ -22,7 +25,7 @@ export const AboutSection: React.FC = () => {
       date: 'Février 2015',
       headline: '« La Fleur de sel retrouve son Bib gourmand »',
       snippet: '« Le chef Dominique Hybord et sa compagne Solveig savourent. Le restaurant La Fleur de sel, qui vient de fêter ses 10 ans, a reçu un Bib Gourmand de la part du Guide Michelin. Passé par des restaurants étoilés parisiens, le chef s’appuie sur une brigade de huit personnes et des produits d’exception. »',
-      image: '/archives-cuisine/le dauphiné 5 fevrier 2015 001.jpg',
+      image: '/archives-cuisine/le-dauphine-5-fevrier-2015.jpg',
     },
     {
       title: 'La Savoie',
@@ -72,19 +75,19 @@ export const AboutSection: React.FC = () => {
         {/* Histoire des fondateurs */}
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
           <Reveal className="lg:col-span-7 space-y-6">
-            <p className="eyebrow">Héritage & Savoir-Faire</p>
+            <p className="eyebrow">{ab.eyebrow}</p>
 
             <h2 className="font-serif text-3xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
-              Trente ans d’exigence. <br />
-              <span className="italic text-bronze">Une présence confidentielle.</span>
+              {ab.titleMain} <br />
+              <span className="italic text-bronze">{ab.titleItalic}</span>
             </h2>
 
             <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
-              Des prestigieuses maisons étoilées parisiennes (Michel Rostang, 2★ Michelin) aux distinctions du <strong>Guide Michelin (Bib Gourmand)</strong> et de <strong>Gault & Millau (2 Toques)</strong>, Dominique et Solveig Hybord cultivent depuis plus de trois décennies un dévouement absolu au service d’hôtes exigeants.
+              {ab.paragraph1}
             </p>
 
             <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
-              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie privée 7/7, une gestion locative rigoureuse et des dîners d'exception en villa.
+              {ab.paragraph2}
             </p>
 
             {/* 3 Badges de réassurance */}
@@ -94,7 +97,13 @@ export const AboutSection: React.FC = () => {
                   <Award className="h-4 w-4" />
                   <span className="font-serif text-xl font-bold text-ink">30+ Ans</span>
                 </div>
-                <p className="text-xs font-light text-ink-soft">D’excellence hôtelière et gastronomique.</p>
+                <p className="text-xs font-light text-ink-soft">
+                  {lang === 'en'
+                    ? 'Hospitality & culinary excellence.'
+                    : lang === 'es'
+                    ? 'Excelencia hotelera y culinaria.'
+                    : 'D’excellence hôtelière et gastronomique.'}
+                </p>
               </div>
 
               <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
@@ -108,16 +117,24 @@ export const AboutSection: React.FC = () => {
               <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
                 <div className="flex items-center gap-2 text-bronze mb-1">
                   <ShieldCheck className="h-4 w-4" />
-                  <span className="font-serif text-xl font-bold text-ink">Discrétion</span>
+                  <span className="font-serif text-xl font-bold text-ink">
+                    {lang === 'en' ? 'Discretion' : lang === 'es' ? 'Discreción' : 'Discrétion'}
+                  </span>
                 </div>
-                <p className="text-xs font-light text-ink-soft">Confidentialité et secret professionnel.</p>
+                <p className="text-xs font-light text-ink-soft">
+                  {lang === 'en'
+                    ? 'Total confidentiality guaranteed.'
+                    : lang === 'es'
+                    ? 'Confidencialidad y secreto profesional.'
+                    : 'Confidentialité et secret professionnel.'}
+                </p>
               </div>
             </div>
           </Reveal>
 
           {/* Visuel Domaine & Citation */}
           <Reveal className="lg:col-span-5" delay={150}>
-            <div className="relative overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_16px_40px_rgba(28,26,23,0.08)]">
+            <div className="relative overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_20px_45px_rgba(28,26,23,0.08)]">
               <div className="relative h-72 overflow-hidden bg-linen sm:h-96">
                 <img
                   src="/about-villa-charm.jpg"
@@ -127,12 +144,12 @@ export const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
-                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/65 p-4 backdrop-blur-md text-white">
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/70 p-4 backdrop-blur-md text-white">
                   <p className="font-serif italic text-sm sm:text-base leading-snug">
-                    « Le véritable luxe ne s’impose pas : il se ressent dans la perfection invisible de chaque instant. »
+                    {ab.quote}
                   </p>
                   <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
-                    Solveig & Dominique Hybord · Fondateurs
+                    {ab.quoteAuthor}
                   </p>
                 </div>
               </div>
@@ -146,13 +163,13 @@ export const AboutSection: React.FC = () => {
             <div>
               <p className="eyebrow flex items-center gap-2">
                 <Newspaper className="h-3.5 w-3.5 text-bronze" />
-                Archives & Reconnaissance Presse
+                {ab.pressEyebrow}
               </p>
               <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl mt-1">
-                Trente ans de parcours dans la presse officielle
+                {ab.pressTitle}
               </h3>
               <p className="text-sm font-light text-ink-soft mt-1 max-w-xl">
-                Publications authentiques consacrées au Chef Dominique Hybord et à Solveig. Cliquez sur un article pour l'agrandir.
+                {ab.pressDesc}
               </p>
             </div>
 
@@ -236,7 +253,7 @@ export const AboutSection: React.FC = () => {
                     onClick={() => setSelectedArticle(art)}
                     className="text-xs font-semibold text-bronze hover:text-ink transition-colors"
                   >
-                    Lire l'article agrandi →
+                    {ab.readArticle}
                   </button>
                 </div>
               </div>
