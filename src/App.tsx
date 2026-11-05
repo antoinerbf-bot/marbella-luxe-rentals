@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Header } from './components/Header';
-import { HeroEditorialResort } from './components/HeroEditorialResort';
+import { HeroSolaireVideo } from './components/HeroSolaireVideo';
 import { ContactSection } from './components/ContactSection';
 import { AboutSection } from './components/AboutSection';
 import { Footer } from './components/Footer';
@@ -44,7 +44,7 @@ export function App() {
 
   // Costa del Sol Universe (Marbella & Mijas)
   return (
-    <div className="min-h-screen bg-[#15262c] text-white flex flex-col selection:bg-[#c29a52]/40 selection:text-white">
+    <div className="min-h-screen bg-[#FAF7F2] text-[#241A14] flex flex-col selection:bg-[#DFBC77]/40 selection:text-[#1F1813]">
       {/* Top Header */}
       <Header
         onOpenMobileMenu={() => setMobileMenuOpen(true)}
@@ -54,8 +54,8 @@ export function App() {
         }}
       />
 
-      {/* Hero Minimaliste Confidentiel & 4 Prestations Éditoriales Resort (Mélange 1 & 2) */}
-      <HeroEditorialResort
+      {/* Hero Drone Solaire & Grille Interactive Moderne */}
+      <HeroSolaireVideo
         onSelectService={(serviceId) => setActiveServiceId(serviceId)}
       />
 
