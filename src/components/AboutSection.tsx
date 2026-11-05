@@ -1,5 +1,7 @@
-import React, { useState, useRef } from 'react';
-import { Award, Newspaper, Star, CheckCircle2, ArrowRight, ShieldCheck, HeartHandshake, Eye, UtensilsCrossed, Sparkles, X, ChevronRight, ChevronLeft } from 'lucide-react';
+import React, { useState } from 'react';
+import { Award, Newspaper, Star, ShieldCheck, ChevronRight, ChevronLeft, ZoomIn } from 'lucide-react';
+import { Reveal } from './ui/Reveal';
+import { Lightbox } from './ui/Lightbox';
 
 interface PressArticle {
   title: string;
@@ -65,192 +67,177 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="about" className="relative px-5 py-20 sm:px-8 lg:px-12 bg-[#0e1a1f] text-white overflow-hidden">
-      {/* Background radial luxury glows */}
-      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-[#c29a52]/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-[#c29a52]/10 rounded-full blur-[120px] pointer-events-none" />
+    <section id="maison" className="relative border-t border-ink/5 bg-sand py-24 sm:py-32">
+      <div className="container-site">
+        {/* Histoire des fondateurs */}
+        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+          <Reveal className="lg:col-span-7 space-y-6">
+            <p className="eyebrow">Héritage & Savoir-Faire</p>
 
-      <div className="max-w-[1400px] mx-auto">
-        {/* Editorial 2-Column: Minimalist Story & Palace Villa Visual */}
-        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16">
-          
-          {/* Left: Refined, Light, Elegant Manifesto (7 Cols) */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-border/40 bg-[#c29a52]/10 text-[#fbe8b5] text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">
-              <Sparkles className="w-3.5 h-3.5 text-[#edd088]" />
-              Héritage & Savoir-Faire
-            </span>
-
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.08] text-white">
+            <h2 className="font-serif text-3xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
               Trente ans d’exigence. <br />
-              <span className="italic text-[#edd088]">Une présence confidentielle.</span>
+              <span className="italic text-bronze">Une présence confidentielle.</span>
             </h2>
 
-            <p className="text-sm sm:text-base text-white/85 leading-relaxed font-light">
-              Des prestigieuses maisons étoilées parisiennes (Michel Rostang 2★ Michelin) aux distinctions du <span className="text-[#fbe8b5] font-medium">Guide Michelin (Bib Gourmand)</span> et de <span className="text-[#fbe8b5] font-medium">Gault & Millau (2 Toques)</span>, Dominique et Solveig Hybord cultivent depuis plus de trois décennies un dévouement absolu au service d'hôtes exigeants.
+            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
+              Des prestigieuses maisons étoilées parisiennes (Michel Rostang, 2★ Michelin) aux distinctions du <strong>Guide Michelin (Bib Gourmand)</strong> et de <strong>Gault & Millau (2 Toques)</strong>, Dominique et Solveig Hybord cultivent depuis plus de trois décennies un dévouement absolu au service d’hôtes exigeants.
             </p>
 
-            <p className="text-sm sm:text-base text-white/75 leading-relaxed font-light">
-              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie privée 7/7 et des expériences gastronomiques exclusives dans l’intimité de leur villa.
+            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
+              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie privée 7/7, une gestion locative rigoureuse et des dîners d'exception en villa.
             </p>
 
-            {/* 3 Minimalist Prestige Badges */}
-            <div className="grid sm:grid-cols-3 gap-3 pt-2">
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                <div className="flex items-center gap-2 text-[#edd088] mb-1">
-                  <Award className="w-4 h-4" />
-                  <span className="font-serif text-lg font-bold text-white">30+ Ans</span>
+            {/* 3 Badges de réassurance */}
+            <div className="grid gap-4 sm:grid-cols-3 pt-2">
+              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+                <div className="flex items-center gap-2 text-bronze mb-1">
+                  <Award className="h-4 w-4" />
+                  <span className="font-serif text-xl font-bold text-ink">30+ Ans</span>
                 </div>
-                <p className="text-[11px] text-white/70 leading-snug">Au sommet de la gastronomie et de l’hôtellerie de luxe.</p>
+                <p className="text-xs font-light text-ink-soft">D’excellence hôtelière et gastronomique.</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                <div className="flex items-center gap-2 text-[#edd088] mb-1">
-                  <Star className="w-4 h-4" />
-                  <span className="font-serif text-lg font-bold text-white">Michelin</span>
+              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+                <div className="flex items-center gap-2 text-bronze mb-1">
+                  <Star className="h-4 w-4 fill-current" />
+                  <span className="font-serif text-xl font-bold text-ink">Michelin</span>
                 </div>
-                <p className="text-[11px] text-white/70 leading-snug">Distinction Bib Gourmand & 2 Toques Gault & Millau.</p>
+                <p className="text-xs font-light text-ink-soft">Bib Gourmand & 2 Toques Gault & Millau.</p>
               </div>
 
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                <div className="flex items-center gap-2 text-[#edd088] mb-1">
-                  <ShieldCheck className="w-4 h-4" />
-                  <span className="font-serif text-lg font-bold text-white">Discrétion</span>
+              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+                <div className="flex items-center gap-2 text-bronze mb-1">
+                  <ShieldCheck className="h-4 w-4" />
+                  <span className="font-serif text-xl font-bold text-ink">Discrétion</span>
                 </div>
-                <p className="text-[11px] text-white/70 leading-snug">Confidentialité absolue et rigueur de service 7j/7.</p>
+                <p className="text-xs font-light text-ink-soft">Confidentialité et secret professionnel.</p>
               </div>
             </div>
-          </div>
+          </Reveal>
 
-          {/* Right: Palace Architectural Visual with Clean Floating Card (5 Cols) */}
-          <div className="lg:col-span-5">
-            <div className="relative rounded-3xl overflow-hidden border border-gold-border/40 shadow-2xl bg-black/40">
-              <div className="relative h-[280px] sm:h-[440px] overflow-hidden">
+          {/* Visuel Domaine & Citation */}
+          <Reveal className="lg:col-span-5" delay={150}>
+            <div className="relative overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_16px_40px_rgba(28,26,23,0.08)]">
+              <div className="relative h-72 overflow-hidden bg-linen sm:h-96">
                 <img
                   src="/about-villa-charm.jpg"
-                  alt="Demeure andalouse historique et art de vivre d'exception à Marbella"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                  alt="Demeure andalouse de prestige sur la Costa del Sol"
+                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
-                
-                {/* Discrete Floating Signature Card */}
-                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 p-3 sm:p-5 rounded-2xl bg-black/75 backdrop-blur-md border border-[#c29a52]/40">
-                  <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center text-[#edd088] shrink-0">
-                      <UtensilsCrossed className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <p className="text-[11px] sm:text-sm font-serif italic text-white/95 leading-snug">
-                        « Le véritable luxe ne s’impose pas : il se ressent dans la perfection invisible de chaque instant. »
-                      </p>
-                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#edd088] mt-1 block">
-                        Solveig & Dominique Hybord · Fondateurs
-                      </span>
-                    </div>
-                  </div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
+
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/65 p-4 backdrop-blur-md text-white">
+                  <p className="font-serif italic text-sm sm:text-base leading-snug">
+                    « Le véritable luxe ne s’impose pas : il se ressent dans la perfection invisible de chaque instant. »
+                  </p>
+                  <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
+                    Solveig & Dominique Hybord · Fondateurs
+                  </p>
                 </div>
               </div>
             </div>
-          </div>
+          </Reveal>
         </div>
 
-        {/* Press Mentions: Sleek Horizontal Showcase with Parallax Cards */}
-        <div className="pt-12 border-t border-white/10">
-          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        {/* Revue de presse officielle */}
+        <div className="mt-20 border-t border-ink/10 pt-16">
+          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end mb-8">
             <div>
-              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088] flex items-center gap-2">
-                <Newspaper className="w-3.5 h-3.5 text-[#e5a872]" />
+              <p className="eyebrow flex items-center gap-2">
+                <Newspaper className="h-3.5 w-3.5 text-bronze" />
                 Archives & Reconnaissance Presse
-              </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-medium mt-1">
-                Trente Ans de Gastronomie dans la Presse
+              </p>
+              <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl mt-1">
+                Trente ans de parcours dans la presse officielle
               </h3>
-              <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-xl">
-                Articles authentiques consacrés au parcours d'excellence de Dominique et Solveig Hybord. Faites défiler horizontalement pour feuilleter les publications originales.
+              <p className="text-sm font-light text-ink-soft mt-1 max-w-xl">
+                Publications authentiques consacrées au Chef Dominique Hybord et à Solveig. Cliquez sur un article pour l'agrandir.
               </p>
             </div>
 
-            {/* Navigation Arrows */}
+            {/* Flèches de défilement horizontal */}
             <div className="flex items-center gap-2 shrink-0">
               <button
+                type="button"
                 onClick={() => {
                   const el = document.getElementById('press-shelf-container');
                   if (el) el.scrollBy({ left: -340, behavior: 'smooth' });
                 }}
-                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-bronze hover:bg-ink hover:text-white"
                 aria-label="Article précédent"
               >
-                <ChevronLeft className="w-5 h-5 text-[#fbe8b5]" />
+                <ChevronLeft className="h-5 w-5" />
               </button>
               <button
+                type="button"
                 onClick={() => {
                   const el = document.getElementById('press-shelf-container');
                   if (el) el.scrollBy({ left: 340, behavior: 'smooth' });
                 }}
-                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
+                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-bronze hover:bg-ink hover:text-white"
                 aria-label="Article suivant"
               >
-                <ChevronRight className="w-5 h-5 text-[#fbe8b5]" />
+                <ChevronRight className="h-5 w-5" />
               </button>
             </div>
           </div>
 
-          {/* Horizontal Scrolling Shelf with Natural 3:4 Vertical Newspaper Aspect Ratio */}
+          {/* Défilement horizontal des articles (format 3:4 journal authentique) */}
           <div
             id="press-shelf-container"
-            className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 pt-2 px-1 snap-x snap-mandatory"
+            className="flex gap-5 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth"
           >
-            {pressArticles.map((article, index) => (
+            {pressArticles.map((art, idx) => (
               <div
-                key={index}
-                onClick={() => setSelectedArticle(article)}
-                className="group relative cursor-pointer w-[270px] sm:w-[320px] shrink-0 rounded-3xl bg-gradient-to-b from-[#16272e] to-[#0e191d] border border-white/15 p-4 hover:border-[#edd088] hover:shadow-[0_20px_45px_rgba(241,210,145,0.2)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between snap-start"
+                key={idx}
+                className="w-[280px] sm:w-[320px] shrink-0 rounded-2xl border border-ink/10 bg-white p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
               >
-                {/* Vertical Magazine Card Header */}
                 <div>
-                  <div className="relative h-[340px] sm:h-[400px] rounded-2xl overflow-hidden bg-black/60 mb-4 border border-white/10 shadow-inner group-hover:border-[#edd088]/40 transition-colors">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedArticle(art)}
+                    className="group relative aspect-[3/4] w-full overflow-hidden rounded-xl border border-ink/10 bg-[#FAF7F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
+                    aria-label={`Agrandir l'article : ${art.title}`}
+                  >
                     <img
-                      src={article.image}
-                      alt={article.title}
-                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
+                      src={art.image}
+                      alt={`Article de presse : ${art.title}`}
+                      className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
                       loading="lazy"
                     />
-                    {/* Gradient shading */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
-
-                    {/* Source Badge on top */}
-                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[#edd088] text-[9.5px] font-bold tracking-widest uppercase border border-[#edd088]/40 shadow-lg">
-                      {article.source}
-                    </span>
-
-                    {/* Hover Zoom Prompt */}
-                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                      <span className="px-4 py-2 rounded-full bg-black/90 backdrop-blur-md border border-[#edd088] text-[#edd088] text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl scale-95 group-hover:scale-100 transition-transform">
-                        <Eye className="w-4 h-4" />
-                        Lire l'Article Original
+                    <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/20">
+                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-ink opacity-0 transition-opacity group-hover:opacity-100 shadow-md">
+                        <ZoomIn className="h-5 w-5" />
                       </span>
                     </div>
+                  </button>
 
-                    {/* Bottom overlay snippet */}
-                    <div className="absolute bottom-3 left-3 right-3">
-                      <span className="text-[10px] text-white/60 font-semibold tracking-wider block">
-                        {article.title} · {article.date}
-                      </span>
-                      <h4 className="font-serif text-sm sm:text-base text-white font-medium line-clamp-2 mt-0.5 group-hover:text-[#edd088] transition-colors leading-snug">
-                        {article.headline}
-                      </h4>
+                  <div className="mt-4">
+                    <div className="flex items-center justify-between text-[11px] text-ink-muted">
+                      <span className="font-semibold text-bronze">{art.source}</span>
+                      <span>{art.date}</span>
                     </div>
+                    <h4 className="font-serif text-lg font-medium text-ink mt-1 leading-snug">
+                      {art.title}
+                    </h4>
+                    <p className="text-xs font-semibold text-ink mt-1">
+                      {art.headline}
+                    </p>
+                    <p className="text-xs font-light text-ink-soft mt-2 line-clamp-3 leading-relaxed">
+                      {art.snippet}
+                    </p>
                   </div>
-
-                  <p className="text-xs text-white/70 line-clamp-3 leading-relaxed italic px-1">
-                    {article.snippet}
-                  </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-semibold text-[#edd088] px-1">
-                  <span>Feuilleter le scan original</span>
-                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <div className="mt-4 pt-3 border-t border-ink/5">
+                  <button
+                    type="button"
+                    onClick={() => setSelectedArticle(art)}
+                    className="text-xs font-semibold text-bronze hover:text-ink transition-colors"
+                  >
+                    Lire l'article agrandi →
+                  </button>
                 </div>
               </div>
             ))}
@@ -258,57 +245,11 @@ export const AboutSection: React.FC = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal for Press Articles with Detailed Transcripts */}
-      {selectedArticle && (
-        <div
-          onClick={() => setSelectedArticle(null)}
-          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-lg animate-in fade-in"
-        >
-          <div
-            onClick={(e) => e.stopPropagation()}
-            className="relative max-w-4xl max-h-[92vh] w-full overflow-hidden bg-[#15262c] rounded-3xl border border-gold-border/70 shadow-2xl flex flex-col"
-          >
-            {/* Modal Header */}
-            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-[#101c22]">
-              <div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088]">
-                  {selectedArticle.title} · {selectedArticle.date}
-                </span>
-                <h4 className="font-serif text-xl sm:text-2xl text-white font-semibold">
-                  {selectedArticle.headline}
-                </h4>
-              </div>
-              <button
-                onClick={() => setSelectedArticle(null)}
-                className="p-2 rounded-full border border-white/20 bg-black/40 text-white hover:border-[#edd088] hover:text-[#edd088] transition-colors"
-                aria-label="Fermer"
-              >
-                <X className="w-5 h-5" />
-              </button>
-            </div>
-
-            {/* Modal Body: Scanned Article Image & Extracted Quote */}
-            <div className="overflow-y-auto p-4 sm:p-6 space-y-4">
-              <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/60 max-h-[55vh] flex items-center justify-center">
-                <img
-                  src={selectedArticle.image}
-                  alt={selectedArticle.title}
-                  className="max-h-[55vh] w-auto object-contain mx-auto"
-                />
-              </div>
-
-              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
-                <p className="text-xs sm:text-sm text-white/90 leading-relaxed italic">
-                  {selectedArticle.snippet}
-                </p>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088] block mt-2">
-                  Source certifiée : {selectedArticle.source}
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
+      <Lightbox
+        src={selectedArticle ? selectedArticle.image : null}
+        alt={selectedArticle ? selectedArticle.headline : ''}
+        onClose={() => setSelectedArticle(null)}
+      />
     </section>
   );
 };

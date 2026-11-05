@@ -1,111 +1,87 @@
 import React, { useState } from 'react';
+import { useRoute, serviceHref } from './lib/router';
+import { DEFAULT_WA_MESSAGE, ServiceId } from './lib/site';
 import { Header } from './components/Header';
 import { HeroSolaireVideo } from './components/HeroSolaireVideo';
-import { ContactSection } from './components/ContactSection';
+import { ChefHomeSection } from './components/ChefHomeSection';
+import { MarbellaMijasSection } from './components/MarbellaMijasSection';
 import { AboutSection } from './components/AboutSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileDrawer } from './components/MobileDrawer';
-import { ServiceDetailModal } from './components/ServiceDetailModal';
-import { LiveConciergeNotifications } from './components/LiveConciergeNotifications';
-import { MoroccoUniversePage } from './components/MoroccoUniversePage';
 import { ServicePage } from './components/ServicePage';
-import { MarbellaMijasSection } from './components/MarbellaMijasSection';
+import { MoroccoUniversePage } from './components/MoroccoUniversePage';
 
 export function App() {
-  const [currentUniverse, setCurrentUniverse] = useState<'marbella' | 'maroc'>('marbella');
+  const route = useRoute();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
 
-  // If user is exploring a dedicated Service Page (full page view)
-  if (activeServiceId) {
+  // Vue dédiée pour chaque Service
+  if (route.name === 'service') {
     return (
       <ServicePage
-        serviceId={activeServiceId}
+        serviceId={route.id}
         onBack={() => {
-          setActiveServiceId(null);
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.location.hash = '#services';
         }}
       />
     );
   }
 
-  // If user is exploring the dedicated Moroccan Universe
-  if (currentUniverse === 'maroc') {
+  // Vue dédiée pour l'Univers Marocain (Livraison Fin 2027)
+  if (route.name === 'maroc') {
     return (
       <MoroccoUniversePage
         onBackToCostaDelSol={() => {
-          setCurrentUniverse('marbella');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.location.hash = '#/';
         }}
       />
     );
   }
 
-  // Costa del Sol Universe (Marbella & Mijas)
+  // Page d'Accueil Principale (Marbella & Mijas · Costa del Sol)
   return (
-    <div className="min-h-screen bg-[#FAF7F2] text-[#241A14] flex flex-col selection:bg-[#DFBC77]/40 selection:text-[#1F1813]">
-      {/* Top Header */}
+    <div className="min-h-screen bg-travertine text-ink flex flex-col selection:bg-bronze/20">
+      {/* En-tête avec variante overlay sur la vidéo d'accueil */}
       <Header
-        onOpenMobileMenu={() => setMobileMenuOpen(true)}
-        onOpenMoroccoUniverse={() => {
-          setCurrentUniverse('maroc');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+        variant="overlay"
+        onOpenMenu={() => setMobileMenuOpen(true)}
+      />
+
+      {/* Hero vidéo authentique Marbella & Grille des 4 services */}
+      <HeroSolaireVideo
+        onSelectService={(serviceId: ServiceId) => {
+          window.location.hash = serviceHref(serviceId);
         }}
       />
 
-      {/* Hero Drone Solaire & Grille Interactive Moderne */}
-      <HeroSolaireVideo
-        onSelectService={(serviceId) => setActiveServiceId(serviceId)}
+      {/* Focus Signature : Le Chef Dominique Hybord dans votre villa */}
+      <ChefHomeSection
+        onSelectService={(serviceId: ServiceId) => {
+          window.location.hash = serviceHref(serviceId);
+        }}
       />
 
-      {/* Dedicated Marbella, Mijas & Costa del Sol Section */}
+      {/* Ancrage territorial : Marbella, Mijas & Costa del Sol */}
       <MarbellaMijasSection />
 
-      {/* About Us & Dominique Hybord Legacy Section */}
+      {/* L'Histoire de la maison & Revue de presse officielle */}
       <AboutSection />
 
-      {/* Refined Confidential Contact Section */}
+      {/* Contact privilégié & Formulaire confidentiel */}
       <ContactSection />
 
-      {/* Footer */}
-      <Footer
-        onOpenMorocco={() => {
-          setCurrentUniverse('maroc');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      />
+      {/* Pied de page */}
+      <Footer />
 
-      {/* Floating WhatsApp Action Button */}
-      <FloatingWhatsApp />
+      {/* Bouton d'action WhatsApp discret */}
+      <FloatingWhatsApp message={DEFAULT_WA_MESSAGE} />
 
-      {/* Live Concierge Dynamic Toast Notifications */}
-      <LiveConciergeNotifications
-        onNavigateMorocco={() => {
-          setCurrentUniverse('maroc');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-        onNavigateChef={() => {
-          const el = document.getElementById('chef');
-          if (el) el.scrollIntoView({ behavior: 'smooth' });
-        }}
-      />
-
-      {/* Mobile Drawer Menu */}
+      {/* Menu tiroir mobile */}
       <MobileDrawer
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
-        onOpenMorocco={() => {
-          setMobileMenuOpen(false);
-          setCurrentUniverse('maroc');
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        }}
-      />
-
-      {/* Interactive Service Detail Modal */}
-      <ServiceDetailModal
-        serviceId={activeServiceId}
-        onClose={() => setActiveServiceId(null)}
       />
     </div>
   );
