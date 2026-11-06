@@ -92,7 +92,7 @@ export const AboutSection: React.FC = () => {
 
             {/* 3 Badges de réassurance */}
             <div className="grid gap-4 sm:grid-cols-3 pt-2">
-              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
                 <div className="flex items-center gap-2 text-bronze mb-1">
                   <Award className="h-4 w-4" />
                   <span className="font-serif text-xl font-bold text-ink">30+ Ans</span>
@@ -106,7 +106,7 @@ export const AboutSection: React.FC = () => {
                 </p>
               </div>
 
-              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
                 <div className="flex items-center gap-2 text-bronze mb-1">
                   <Star className="h-4 w-4 fill-current" />
                   <span className="font-serif text-xl font-bold text-ink">Michelin</span>
@@ -114,7 +114,7 @@ export const AboutSection: React.FC = () => {
                 <p className="text-xs font-light text-ink-soft">Bib Gourmand & 2 Toques Gault & Millau.</p>
               </div>
 
-              <div className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
                 <div className="flex items-center gap-2 text-bronze mb-1">
                   <ShieldCheck className="h-4 w-4" />
                   <span className="font-serif text-xl font-bold text-ink">
@@ -144,8 +144,8 @@ export const AboutSection: React.FC = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
 
-                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/70 p-4 backdrop-blur-md text-white">
-                  <p className="font-serif italic text-sm sm:text-base leading-snug">
+                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/75 p-5 backdrop-blur-xl text-white shadow-lg">
+                  <p className="font-serif italic text-sm sm:text-base leading-snug text-white/95">
                     {ab.quote}
                   </p>
                   <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
@@ -208,7 +208,7 @@ export const AboutSection: React.FC = () => {
             {pressArticles.map((art, idx) => (
               <div
                 key={idx}
-                className="w-[280px] sm:w-[320px] shrink-0 rounded-2xl border border-ink/10 bg-white p-4 shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+                className="card-luxury w-[285px] sm:w-[325px] shrink-0 p-4 flex flex-col justify-between"
               >
                 <div>
                   <button

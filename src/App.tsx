@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useRoute, serviceHref } from './lib/router';
 import { DEFAULT_WA_MESSAGE, ServiceId } from './lib/site';
-import { LanguageProvider } from './lib/LanguageContext';
+import { LanguageProvider, useLanguage } from './lib/LanguageContext';
 import { Header } from './components/Header';
 import { HeroSolaireVideo } from './components/HeroSolaireVideo';
 import { ChefHomeSection } from './components/ChefHomeSection';
@@ -17,6 +17,14 @@ import { MoroccoUniversePage } from './components/MoroccoUniversePage';
 function AppContent() {
   const route = useRoute();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { lang } = useLanguage();
+
+  const floatingWaMessage =
+    lang === 'en'
+      ? 'Hello Solveig, I would like to connect regarding my property on the Costa del Sol.'
+      : lang === 'es'
+      ? 'Hola Solveig, deseo hablar con usted sobre mi propiedad en la Costa del Sol.'
+      : DEFAULT_WA_MESSAGE;
 
   // Vue dédiée pour chaque Service
   if (route.name === 'service') {
@@ -77,7 +85,7 @@ function AppContent() {
       <Footer />
 
       {/* Bouton d'action WhatsApp discret */}
-      <FloatingWhatsApp message={DEFAULT_WA_MESSAGE} />
+      <FloatingWhatsApp message={floatingWaMessage} />
 
       {/* Menu tiroir mobile */}
       <MobileDrawer

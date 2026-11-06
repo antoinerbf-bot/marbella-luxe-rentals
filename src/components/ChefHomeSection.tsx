@@ -22,10 +22,14 @@ const dishes = [
 
 export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectService }) => {
   const [activePhoto, setActivePhoto] = useState<{ src: string; alt: string } | null>(null);
-  const { t } = useLanguage();
+  const { lang, t } = useLanguage();
 
   const chefWaMessage =
-    'Bonjour Solveig, je souhaite organiser un repas privé avec le Chef Dominique Hybord dans notre villa.';
+    lang === 'en'
+      ? 'Hello Solveig, I would like to arrange a private dining experience with Chef Dominique Hybord in our villa.'
+      : lang === 'es'
+      ? 'Hola Solveig, deseo organizar una comida o cena privada con el Chef Dominique Hybord en nuestra villa.'
+      : 'Bonjour Solveig, je souhaite organiser un repas privé avec le Chef Dominique Hybord dans notre villa.';
 
   return (
     <section id="chef" className="relative border-t border-ink/5 bg-sand py-24 sm:py-32">
@@ -86,7 +90,7 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
             {/* 3 piliers concrets */}
             <div className="grid gap-4 sm:grid-cols-3 pt-2">
               {t.chefSection.pillars.map((pillar, idx) => (
-                <div key={idx} className="rounded-2xl border border-ink/10 bg-white p-4 shadow-sm">
+                <div key={idx} className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
                   <p className="font-serif text-lg font-medium text-ink">{pillar.title}</p>
                   <p className="mt-1 text-xs font-light leading-relaxed text-ink-soft">
                     {pillar.desc}
@@ -128,9 +132,9 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
 
         {/* 4 Formules Gastronomiques Signature */}
         <div className="mt-20 border-t border-ink/10 pt-16">
-          <div className="text-center max-w-2xl mx-auto mb-12">
+          <div className="text-center max-w-2xl mx-auto mb-12 space-y-2">
             <span className="eyebrow">{t.chefSection.experiencesTitle}</span>
-            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-ink mt-2">
+            <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-ink">
               {t.chefSection.experiencesSubtitle}
             </h3>
           </div>
@@ -139,13 +143,15 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
             {t.chefSection.experiences.map((exp, idx) => (
               <div
                 key={idx}
-                className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
+                className="card-luxury p-6 flex flex-col justify-between"
               >
                 <div>
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-sand px-2.5 py-1 text-[11px] font-semibold text-bronze-deep mb-3">
-                    <Sparkles className="h-3 w-3 text-bronze" />
-                    <span>0{idx + 1}</span>
-                  </span>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="glass-pill-light px-3 py-1 text-[11px] font-bold text-bronze-deep">
+                      0{idx + 1}
+                    </span>
+                    <Sparkles className="h-3.5 w-3.5 text-bronze" />
+                  </div>
                   <h4 className="font-serif text-xl font-medium text-ink leading-snug mb-1">
                     {exp.title}
                   </h4>
@@ -154,8 +160,8 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
                     {exp.desc}
                   </p>
                 </div>
-                <div className="mt-5 pt-3 border-t border-ink/5 flex items-center justify-between text-[11px] text-ink-muted">
-                  <span>{exp.guests}</span>
+                <div className="mt-6 pt-3 border-t border-ink/5 flex items-center justify-between text-[11px] text-ink-muted">
+                  <span className="font-medium text-bronze-deep">{exp.guests}</span>
                 </div>
               </div>
             ))}

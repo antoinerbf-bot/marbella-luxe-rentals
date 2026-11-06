@@ -41,6 +41,13 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
     window.open(waLink(text), '_blank');
   };
 
+  const directWaMessage =
+    lang === 'en'
+      ? 'Hello Solveig, I would like to connect directly with you.'
+      : lang === 'es'
+      ? 'Hola Solveig, deseo hablar directamente con usted.'
+      : 'Bonjour Solveig, je souhaite échanger directement avec vous.';
+
   return (
     <section id="contact" className="relative border-t border-ink/5 bg-travertine py-24 sm:py-32">
       <div className="container-site">
@@ -63,7 +70,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
             {/* Accès directs */}
             <div className="flex flex-col sm:flex-row flex-wrap gap-3.5 pt-2">
               <a
-                href={waLink('Bonjour Solveig, je souhaite échanger directement avec vous.')}
+                href={waLink(directWaMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="btn-primary"
@@ -91,8 +98,16 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
           </Reveal>
 
           {/* Colonne droite : Formulaire relié à WhatsApp */}
-          <Reveal className="rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-10 shadow-[0_20px_45px_rgba(28,26,23,0.06)]" delay={150}>
-            <p className="eyebrow">{c.formEyebrow}</p>
+          <Reveal className="card-luxury p-7 sm:p-10 shadow-[0_24px_50px_rgba(28,26,23,0.08)]" delay={150}>
+            <div className="flex items-center justify-between mb-2">
+              <p className="eyebrow">{c.formEyebrow}</p>
+              <span className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-emerald-600 bg-emerald-50 border border-emerald-200 px-3 py-0.5 rounded-full">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                <span>
+                  {lang === 'en' ? 'Under 2h response' : lang === 'es' ? 'Respuesta < 2h' : 'Réponse < 2h'}
+                </span>
+              </span>
+            </div>
             <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl mt-1 mb-2">
               {c.formTitle}
             </h3>
@@ -111,7 +126,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                   value={formData.name}
                   onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                   placeholder={c.namePlaceholder}
-                  className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
+                  className="w-full rounded-xl border border-ink/15 bg-travertine/70 px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none focus:ring-2 focus:ring-bronze/15 transition-all"
                 />
               </div>
 
@@ -125,7 +140,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   placeholder={c.phonePlaceholder}
-                  className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
+                  className="w-full rounded-xl border border-ink/15 bg-travertine/70 px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none focus:ring-2 focus:ring-bronze/15 transition-all"
                 />
               </div>
 
@@ -136,7 +151,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                 <select
                   value={formData.service}
                   onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-                  className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink focus:border-bronze focus:bg-white focus:outline-none transition-colors"
+                  className="w-full rounded-xl border border-ink/15 bg-travertine/70 px-4 py-3 text-sm text-ink focus:border-bronze focus:bg-white focus:outline-none focus:ring-2 focus:ring-bronze/15 transition-all"
                 >
                   <option value="property">{c.serviceOptions.property}</option>
                   <option value="concierge">{c.serviceOptions.concierge}</option>
@@ -155,13 +170,13 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder={c.messagePlaceholder}
-                  className="w-full rounded-xl border border-ink/15 bg-travertine px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none transition-colors"
+                  className="w-full rounded-xl border border-ink/15 bg-travertine/70 px-4 py-3 text-sm text-ink placeholder-ink-muted/50 focus:border-bronze focus:bg-white focus:outline-none focus:ring-2 focus:ring-bronze/15 transition-all"
                 />
               </div>
 
               <button
                 type="submit"
-                className="btn-primary w-full py-4 text-xs tracking-wider uppercase mt-2"
+                className="btn-primary w-full py-4 text-xs tracking-wider uppercase mt-2 shadow-lg hover:shadow-xl"
               >
                 <Send className="h-4 w-4" />
                 <span>{c.submitCta}</span>

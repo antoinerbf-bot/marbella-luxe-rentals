@@ -45,6 +45,19 @@ export const MarbellaMijasSection: React.FC = () => {
       ? 'Hola Solveig, mi propiedad está en la Costa del Sol. Deseo consultar si se encuentra en su zona de cobertura.'
       : 'Bonjour Solveig, ma propriété est située sur la Costa del Sol. Je souhaite savoir si elle se situe dans votre zone d’intervention.';
 
+  const translateNeighborhood = (n: string) => {
+    if (lang === 'en') {
+      if (n === 'Village Historique') return 'Historic Village';
+      if (n === 'Cortijos Traditionnels') return 'Traditional Cortijos';
+      if (n === 'Front de Mer') return 'Beachfront';
+    } else if (lang === 'es') {
+      if (n === 'Village Historique') return 'Pueblo Histórico';
+      if (n === 'Cortijos Traditionnels') return 'Cortijos Tradicionales';
+      if (n === 'Front de Mer') return 'Primera Línea';
+    }
+    return n;
+  };
+
   return (
     <section id="territoire" className="relative border-t border-ink/5 bg-travertine py-24 sm:py-32">
       <div className="container-site">
@@ -77,7 +90,7 @@ export const MarbellaMijasSection: React.FC = () => {
 
             return (
               <Reveal key={zone.id} delay={idx * 100}>
-                <div className="group flex h-full flex-col justify-between overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_4px_24px_rgba(28,26,23,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:border-bronze hover:shadow-[0_20px_45px_rgba(28,26,23,0.09)]">
+                <div className="card-luxury group flex h-full flex-col justify-between overflow-hidden">
                   {/* Photo */}
                   <div className="relative h-56 overflow-hidden bg-sand sm:h-64">
                     <img
@@ -88,7 +101,7 @@ export const MarbellaMijasSection: React.FC = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
 
-                    <span className="absolute left-4 top-4 rounded-full border border-white/20 bg-black/60 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#F3DEB0] backdrop-blur-md">
+                    <span className="glass-pill absolute left-4 top-4 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-[#F3DEB0]">
                       {data.badge}
                     </span>
 
@@ -116,9 +129,9 @@ export const MarbellaMijasSection: React.FC = () => {
                         {zone.neighborhoods.map((n, i) => (
                           <span
                             key={i}
-                            className="rounded-md bg-sand px-2 py-0.5 text-[10px] text-ink-soft"
+                            className="rounded-full bg-sand border border-ink/5 px-2.5 py-0.5 text-[10px] text-ink-soft font-medium"
                           >
-                            {n}
+                            {translateNeighborhood(n)}
                           </span>
                         ))}
                       </div>
@@ -131,7 +144,7 @@ export const MarbellaMijasSection: React.FC = () => {
         </div>
 
         {/* Encadré d'engagement territorial */}
-        <Reveal className="mt-14 overflow-hidden rounded-[2.2rem] border border-ink/10 bg-sand p-8 sm:p-12 shadow-sm">
+        <Reveal className="mt-14 card-luxury overflow-hidden p-8 sm:p-12 shadow-[0_16px_40px_rgba(28,26,23,0.06)]">
           <div className="grid gap-8 items-center lg:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-3">
               <p className="eyebrow">{sec.manifestoEyebrow}</p>
@@ -148,7 +161,7 @@ export const MarbellaMijasSection: React.FC = () => {
                 href={waLink(territoryWaMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full sm:w-auto"
+                className="btn-primary w-full sm:w-auto shadow-md hover:shadow-lg"
               >
                 <WhatsAppIcon />
                 <span>{sec.manifestoCta}</span>

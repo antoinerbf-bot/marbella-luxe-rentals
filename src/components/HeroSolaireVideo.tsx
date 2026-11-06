@@ -118,6 +118,13 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
   const getCaption = (s: HeroSlide) =>
     lang === 'en' ? s.captionEn : lang === 'es' ? s.captionEs : s.captionFr;
 
+  const heroWaMessage =
+    lang === 'en'
+      ? 'Hello Solveig, I would like to make a confidential inquiry regarding my property on the Costa del Sol.'
+      : lang === 'es'
+      ? 'Hola Solveig, deseo realizar una consulta confidencial sobre mi propiedad en la Costa del Sol.'
+      : 'Bonjour Solveig, je souhaite vous adresser une demande confidentielle pour ma propriété sur la Costa del Sol.';
+
   return (
     <div className="relative w-full bg-travertine text-ink">
       {/* ========================================================================= */}
@@ -157,8 +164,8 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
 
         {/* Barre supérieure : Surtitre géographique discret */}
         <div className="relative z-10 flex items-center justify-between">
-          <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/40 px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FFF5E0] shadow-lg backdrop-blur-md sm:text-[11px]">
-            <Sparkles className="h-3.5 w-3.5 text-bronze-light" />
+          <div className="glass-pill px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FFF5E0] sm:text-[11px]">
+            <Sparkles className="h-3.5 w-3.5 text-[#C9A869]" />
             <span>{t.hero.locationTag}</span>
           </div>
 
@@ -166,21 +173,21 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
           <div className="hidden items-center gap-2 sm:flex">
             <button
               onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/80 backdrop-blur-md transition hover:border-bronze hover:text-white"
+              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
               aria-label={isAutoPlaying ? 'Pause' : 'Play'}
             >
-              {isAutoPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 text-bronze-light" />}
+              {isAutoPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 text-[#C9A869]" />}
             </button>
             <button
               onClick={prevSlide}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/80 backdrop-blur-md transition hover:border-bronze hover:text-white"
+              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
               aria-label="Image précédente"
             >
               <ChevronLeft className="h-4 w-4" />
             </button>
             <button
               onClick={nextSlide}
-              className="flex h-9 w-9 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white/80 backdrop-blur-md transition hover:border-bronze hover:text-white"
+              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
               aria-label="Image suivante"
             >
               <ChevronRight className="h-4 w-4" />
@@ -190,20 +197,32 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
 
         {/* Cœur Typographique Architectural : Marque parfaitement intégrée */}
         <div className="relative z-10 my-auto flex max-w-4xl flex-col items-center py-6 text-center mx-auto">
+          {/* Badge statut de disponibilité en direct */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3.5 py-1 text-[11px] font-medium text-white/90 backdrop-blur-md shadow-sm">
+            <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
+            <span>
+              {lang === 'en'
+                ? 'Immediate concierge access & 7/7 presence'
+                : lang === 'es'
+                ? 'Acceso directo a conserjería y presencia 7d/7'
+                : 'Accueil direct & présence locale 7j/7'}
+            </span>
+          </div>
+
           {/* Logo / Monogramme typographique majestueux */}
-          <h1 className="font-serif text-5xl font-normal leading-[0.9] tracking-[0.14em] uppercase text-white drop-shadow-[0_4px_30px_rgba(0,0,0,0.95)] sm:text-7xl md:text-8xl lg:text-[6.6rem]">
+          <h1 className="font-serif text-5xl font-medium leading-[0.92] tracking-[0.16em] uppercase text-white drop-shadow-[0_4px_35px_rgba(0,0,0,0.95)] sm:text-7xl md:text-8xl lg:text-[6.8rem]">
             {t.hero.brandName}
           </h1>
 
-          <p className="mt-2 text-xs font-bold uppercase tracking-[0.45em] text-[#F3DEB0] drop-shadow sm:mt-3 sm:text-sm md:text-base">
+          <p className="mt-2.5 text-xs font-semibold uppercase tracking-[0.48em] text-[#F3DEB0] drop-shadow sm:mt-3 sm:text-sm md:text-base">
             {t.hero.brandSubtitle}
           </p>
 
           {/* Ligne méditerranéenne bronze d'orfèvrerie */}
           <div className="mt-5 flex w-full max-w-xs items-center justify-center gap-4 sm:mt-6">
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-bronze-light/70 to-transparent" />
-            <span className="h-1.5 w-1.5 rotate-45 border border-bronze-light bg-bronze/50" />
-            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-bronze-light/70 to-transparent" />
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A869]/80 to-transparent" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-[#C9A869] bg-[#C9A869]/50" />
+            <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A869]/80 to-transparent" />
           </div>
 
           {/* Tagline éditoriale claire */}
@@ -212,19 +231,19 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
           </p>
 
           {/* Légende contextuelle dynamique du slide en cours */}
-          <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-4 py-1 text-xs text-[#F3DEB0] backdrop-blur-md">
+          <div className="mt-4 glass-pill px-4 py-1.5 text-xs text-[#F3DEB0]">
             <span className="font-semibold text-white">{getKicker(currentSlide)}</span>
             <span className="text-white/40">·</span>
-            <span className="text-white/85 font-light">{getCaption(currentSlide)}</span>
+            <span className="text-white/90 font-light">{getCaption(currentSlide)}</span>
           </div>
 
           {/* Double Call to Action */}
           <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3.5 px-4 sm:mt-9 sm:flex-row sm:gap-4">
             <a
-              href={waLink(t.contactSection.availability)}
+              href={waLink(heroWaMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-xs font-semibold uppercase tracking-wider text-ink shadow-2xl transition hover:bg-travertine sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-xs font-semibold uppercase tracking-wider text-ink shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all hover:bg-[#F3EEE4] hover:shadow-[0_12px_35px_rgba(201,168,105,0.4)] sm:w-auto"
             >
               <WhatsAppIcon className="h-4 w-4" />
               <span>{t.hero.whatsappCta}</span>
@@ -232,10 +251,10 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
 
             <a
               href="#services"
-              className="btn-ghost-light w-full sm:w-auto text-xs uppercase tracking-wider"
+              className="glass-pill px-7 py-4 text-xs font-semibold uppercase tracking-wider text-white transition-all hover:bg-white hover:text-ink w-full sm:w-auto justify-center"
             >
               <span>{t.hero.exploreCta}</span>
-              <ArrowDown className="h-3.5 w-3.5 text-bronze-light" />
+              <ArrowDown className="h-3.5 w-3.5 text-[#F3DEB0]" />
             </a>
           </div>
         </div>
@@ -254,7 +273,7 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
                   onClick={() => goToSlide(idx)}
                   className={`h-1.5 rounded-full transition-all duration-500 ${
                     idx === currentIdx
-                      ? 'w-8 bg-bronze-light'
+                      ? 'w-8 bg-[#C9A869]'
                       : 'w-2 bg-white/40 hover:bg-white/70'
                   }`}
                   aria-label={`Afficher la photo ${idx + 1}`}
@@ -269,59 +288,59 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
           {/* Défiler vers les services */}
           <a
             href="#services"
-            className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/75 transition hover:text-white"
+            className="group inline-flex items-center gap-2 text-[10px] font-semibold uppercase tracking-[0.25em] text-white/80 transition hover:text-white"
           >
             <span>{t.hero.scrollHint}</span>
             <div className="flex h-6 w-6 items-center justify-center rounded-full border border-white/30 transition-transform group-hover:translate-y-0.5">
-              <ArrowDown className="h-3 w-3 text-bronze-light" />
+              <ArrowDown className="h-3 w-3 text-[#F3DEB0]" />
             </div>
           </a>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. BANDEAU DE CRÉDIBILITÉ OFFICIEL                                        */}
+      {/* 2. BANDEAU DE CRÉDIBILITÉ OFFICIEL : ÉLÉGANCE ARCHITECTURALE              */}
       {/* ========================================================================= */}
-      <section className="border-y border-ink/5 bg-sand py-7">
-        <div className="container-site">
-          <div className="grid grid-cols-2 gap-6 sm:grid-cols-4 sm:gap-8">
-            <div className="text-center">
-              <p className="font-serif text-2xl font-normal text-ink sm:text-3xl">{t.reassurance.expValue}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">{t.reassurance.expLabel}</p>
+      <section className="relative z-20 -mt-6 sm:-mt-8 container-site">
+        <div className="rounded-3xl border border-ink/10 bg-white/95 backdrop-blur-xl p-6 sm:p-8 shadow-[0_16px_40px_rgba(28,26,23,0.07)]">
+          <div className="grid grid-cols-2 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-ink/10 lg:grid-cols-4 sm:gap-4">
+            <div className="text-center pt-2 sm:pt-0 sm:px-4">
+              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.expValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.expLabel}</p>
             </div>
-            <div className="text-center">
-              <p className="font-serif text-2xl font-normal text-ink sm:text-3xl">{t.reassurance.michelinValue}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">{t.reassurance.michelinLabel}</p>
+            <div className="text-center pt-2 sm:pt-0 sm:px-4">
+              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.michelinValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.michelinLabel}</p>
             </div>
-            <div className="text-center">
-              <p className="font-serif text-2xl font-normal text-ink sm:text-3xl">{t.reassurance.presenceValue}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">{t.reassurance.presenceLabel}</p>
+            <div className="text-center pt-2 sm:pt-0 sm:px-4">
+              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.presenceValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.presenceLabel}</p>
             </div>
-            <div className="text-center">
-              <p className="font-serif text-2xl font-normal text-ink sm:text-3xl">{t.reassurance.discretionValue}</p>
-              <p className="mt-1 text-[11px] uppercase tracking-wider text-ink-muted">{t.reassurance.discretionLabel}</p>
+            <div className="text-center pt-2 sm:pt-0 sm:px-4">
+              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.discretionValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.discretionLabel}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. GRILLE DES 4 SERVICES                                                  */}
+      {/* 3. GRILLE DES 4 SERVICES HAUT DE GAMME                                     */}
       {/* ========================================================================= */}
       <section id="services" className="py-24 sm:py-32">
         <div className="container-site">
-          <Reveal className="mx-auto max-w-3xl text-center">
+          <Reveal className="mx-auto max-w-3xl text-center space-y-3">
             <p className="eyebrow">{t.servicesSection.eyebrow}</p>
-            <h2 className="mt-2 font-serif text-3xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
+            <h2 className="font-serif text-3xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
               {t.servicesSection.titleMain} <br />
               <span className="italic text-bronze">{t.servicesSection.titleItalic}</span>
             </h2>
-            <p className="mt-4 text-sm font-light leading-relaxed text-ink-soft sm:text-base">
+            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base max-w-2xl mx-auto pt-1">
               {t.servicesSection.description}
             </p>
           </Reveal>
 
-          {/* Grille 2x2 grand format */}
+          {/* Grille 2x2 grand format avec cartes haute finition */}
           <div className="mt-14 grid gap-8 md:grid-cols-2 lg:gap-10 sm:mt-20">
             {Object.entries(t.servicesSection.items).map(([serviceId, item], idx) => {
               const imageMap: Record<string, string> = {
@@ -345,24 +364,24 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
                       e.preventDefault();
                       onSelectService(serviceId as ServiceId);
                     }}
-                    className="group flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-ink/10 bg-white shadow-[0_4px_24px_rgba(28,26,23,0.04)] transition-all duration-500 hover:-translate-y-1.5 hover:border-bronze hover:shadow-[0_16px_40px_rgba(28,26,23,0.09)]"
+                    className="card-luxury group flex h-full flex-col justify-between overflow-hidden"
                   >
                     {/* Cadre image soigné */}
                     <div className="relative h-64 overflow-hidden bg-sand sm:h-80">
                       <img
                         src={imageMap[serviceId]}
                         alt={item.title}
-                        className={`h-full w-full object-cover ${imagePos[serviceId]} transition-transform duration-700 group-hover:scale-105`}
+                        className={`h-full w-full object-cover ${imagePos[serviceId]} transition-transform duration-700 group-hover:scale-106`}
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/15 to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
 
                       {/* Numéro & Badge */}
                       <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
-                        <span className="rounded-full border border-white/25 bg-black/60 px-3.5 py-1 font-serif text-xs font-bold text-white backdrop-blur-md">
+                        <span className="glass-pill px-3.5 py-1 font-serif text-xs font-bold text-white">
                           0{idx + 1}
                         </span>
-                        <span className="rounded-full border border-bronze/40 bg-white/95 px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-ink backdrop-blur-md">
+                        <span className="rounded-full border border-[#C9A869]/40 bg-white/95 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ink backdrop-blur-md shadow-sm">
                           {item.badge}
                         </span>
                       </div>
@@ -379,11 +398,11 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
 
                     {/* Contenu textuel */}
                     <div className="flex flex-1 flex-col justify-between p-6 sm:p-8 space-y-4">
-                      <p className="font-serif italic text-base text-ink leading-snug">
+                      <p className="font-serif italic text-base sm:text-lg text-ink leading-snug">
                         « {item.tagline} »
                       </p>
 
-                      <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-[14.5px]">
+                      <p className="text-xs sm:text-sm font-light leading-relaxed text-ink-soft">
                         {item.summary}
                       </p>
 
@@ -391,7 +410,7 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
                         <span className="text-xs font-semibold uppercase tracking-wider text-bronze transition-colors group-hover:text-ink">
                           {t.servicesSection.discoverCta}
                         </span>
-                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-travertine">
+                        <div className="flex h-9 w-9 items-center justify-center rounded-full bg-sand text-ink transition-all duration-300 group-hover:bg-ink group-hover:text-white group-hover:translate-x-1">
                           <ArrowRight className="h-4 w-4" />
                         </div>
                       </div>

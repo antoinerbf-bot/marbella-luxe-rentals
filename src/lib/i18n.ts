@@ -145,6 +145,10 @@ export interface TranslationDictionary {
     preFooterDesc: string;
     preFooterWhatsApp: string;
     preFooterCall: string;
+    founderDirect: string;
+    areasCovered: string;
+    discretionNote: string;
+    directWhatsApp: string;
   };
   moroccoPage: {
     topBadge: string;
@@ -210,6 +214,10 @@ export const translations: Record<Language, TranslationDictionary> = {
         {
           title: 'Art de Vivre Méditerranéen',
           caption: 'Vues plongeantes entre mer et montagne',
+        },
+        {
+          title: 'Gestion Locative Haute Gamme',
+          caption: 'Accueil VIP et valorisation soignée de votre bien',
         },
       ],
     },
@@ -382,7 +390,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       phonePlaceholder: '+33 6 00 00 00 00',
       serviceLabel: 'Prestation souhaitée',
       serviceOptions: {
-        pm: '01 · Intendance & Property Management',
+        property: '01 · Intendance & Property Management',
         concierge: '02 · Conciergerie Privée & Lifestyle 7/7',
         rental: '03 · Location Saisonnière (2 Formules)',
         chef: '04 · Chef à Domicile (Dominique Hybord)',
@@ -406,6 +414,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       preFooterDesc: 'Une intendance attentive et une conciergerie dévouée 7 jours sur 7. Échangez dès aujourd’hui avec Solveig.',
       preFooterWhatsApp: 'Échanger sur WhatsApp 7/7',
       preFooterCall: 'Appeler la conciergerie',
+      founderDirect: 'Accueil direct par Solveig Hybord · Confidentialité garantie',
+      areasCovered: 'Interventions sur la Golden Mile, Nueva Andalucía, Puerto Banús, Sierra Blanca, La Cala de Mijas et environs.',
+      discretionNote: 'Discrétion & Secret Professionnel',
+      directWhatsApp: 'WhatsApp direct 7j/7',
     },
     moroccoPage: {
       topBadge: 'Projet en cours de réalisation · Sortie de terre & Livraison Fin 2027',
@@ -470,6 +482,10 @@ export const translations: Record<Language, TranslationDictionary> = {
         {
           title: 'Andalusian Art of Living',
           caption: 'Breathtaking panoramas between sea and mountain',
+        },
+        {
+          title: 'Luxury Vacation Rental Care',
+          caption: 'VIP personalized hosting and property yield enhancement',
         },
       ],
     },
@@ -642,7 +658,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       phonePlaceholder: '+44 7000 000000',
       serviceLabel: 'Service required',
       serviceOptions: {
-        pm: '01 · Property Management & Estate Oversight',
+        property: '01 · Property Management & Estate Oversight',
         concierge: '02 · Private Concierge & Lifestyle 7/7',
         rental: '03 · Vacation Rental Management (2 Formulas)',
         chef: '04 · Private Chef in Villa (Dominique Hybord)',
@@ -666,6 +682,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       preFooterDesc: 'Attentive property oversight and dedicated concierge services 7 days a week. Connect directly with Solveig today.',
       preFooterWhatsApp: 'Chat on WhatsApp 7/7',
       preFooterCall: 'Call our Concierge',
+      founderDirect: 'Personal consultation by Solveig Hybord · Complete confidentiality',
+      areasCovered: 'Serving the Golden Mile, Nueva Andalucía, Puerto Banús, Sierra Blanca, La Cala de Mijas, and surroundings.',
+      discretionNote: 'Absolute Discretion & Professional Secrecy',
+      directWhatsApp: 'Direct WhatsApp 7/7',
     },
     moroccoPage: {
       topBadge: 'Project currently breaking ground · Scheduled delivery late 2027',
@@ -730,6 +750,10 @@ export const translations: Record<Language, TranslationDictionary> = {
         {
           title: 'Arte de Vivir Mediterráneo',
           caption: 'Vistas panorámicas entre el mar y la montaña',
+        },
+        {
+          title: 'Gestión de Alquiler Vacacional VIP',
+          caption: 'Atención personalizada y revalorización de su propiedad',
         },
       ],
     },
@@ -902,7 +926,7 @@ export const translations: Record<Language, TranslationDictionary> = {
       phonePlaceholder: '+34 600 000 000',
       serviceLabel: 'Servicio deseado',
       serviceOptions: {
-        pm: '01 · Mantenimiento y Property Management',
+        property: '01 · Mantenimiento y Property Management',
         concierge: '02 · Conserjería Privada & Lifestyle 7/7',
         rental: '03 · Gestión de Alquiler Vacacional (2 Fórmulas)',
         chef: '04 · Chef Privado en Villa (Dominique Hybord)',
@@ -926,6 +950,10 @@ export const translations: Record<Language, TranslationDictionary> = {
       preFooterDesc: 'Atención personalizada y conserjería dedicada los 7 días de la semana. Hable directamente con Solveig hoy mismo.',
       preFooterWhatsApp: 'Escribir por WhatsApp 7/7',
       preFooterCall: 'Llamar a la conserjería',
+      founderDirect: 'Atención directa por Solveig Hybord · Confidencialidad absoluta',
+      areasCovered: 'Servicio en la Milla de Oro, Nueva Andalucía, Puerto Banús, Sierra Blanca, La Cala de Mijas y alrededores.',
+      discretionNote: 'Discreción y Secreto Profesional',
+      directWhatsApp: 'WhatsApp directo 7d/7',
     },
     moroccoPage: {
       topBadge: 'Proyecto en construcción · Obras en curso & Entrega Finales 2027',

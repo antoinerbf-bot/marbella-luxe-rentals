@@ -60,6 +60,60 @@
   color: #A8823F;
 }
 
+/* Accents Modernes & Finition Haute Horlogerie / Hôtellerie de Prestige */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FFF8E7 0%, #E8CF9B 50%, #C9A869 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-white {
+  background: linear-gradient(180deg, #FFFFFF 0%, #EDE6DA 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.glass-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(15, 18, 20, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.glass-pill-light {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(168, 130, 63, 0.25);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 2px 12px rgba(28, 26, 23, 0.04);
+}
+
+.card-luxury {
+  border-radius: 2rem;
+  border: 1px solid rgba(28, 26, 23, 0.08);
+  background-color: #FFFFFF;
+  box-shadow: 0 4px 24px rgba(28, 26, 23, 0.04);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-luxury:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 105, 0.6);
+  box-shadow: 0 20px 48px rgba(28, 26, 23, 0.1);
+}
+
+.gold-glow {
+  box-shadow: 0 0 40px rgba(201, 168, 105, 0.25);
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

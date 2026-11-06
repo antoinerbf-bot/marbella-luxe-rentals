@@ -78,7 +78,7 @@ export const Footer: React.FC = () => {
               <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
               <span>{t.contactSection.availability}</span>
             </p>
-            <p>Accueil direct par Solveig Hybord · Confidentialité garantie</p>
+            <p>{t.footer.founderDirect}</p>
           </div>
         </div>
 
@@ -167,7 +167,7 @@ export const Footer: React.FC = () => {
                   className="inline-flex items-center gap-2 text-[#EDE6DA]/85 transition hover:text-white"
                 >
                   <WhatsAppIcon className="h-4 w-4 text-[#C9A869]" />
-                  <span>WhatsApp direct 7j/7</span>
+                  <span>{t.footer.directWhatsApp}</span>
                 </a>
               </li>
               <li>
@@ -189,7 +189,7 @@ export const Footer: React.FC = () => {
                 </a>
               </li>
               <li className="pt-2 text-xs text-[#EDE6DA]/50">
-                Interventions sur la Golden Mile, Nueva Andalucía, Puerto Banús, Sierra Blanca, La Cala de Mijas et environs.
+                {t.footer.areasCovered}
               </li>
             </ul>
           </div>
@@ -205,7 +205,7 @@ export const Footer: React.FC = () => {
           <div className="flex flex-wrap items-center gap-4 text-[#EDE6DA]/60">
             <span>{t.footer.locationNote}</span>
             <span>·</span>
-            <span>Discrétion & Secret Professionnel</span>
+            <span>{t.footer.discretionNote}</span>
           </div>
         </div>
       </div>
