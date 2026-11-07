@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Pause, Play, Sparkles } from 'lucide-react';
+import { ArrowRight, ArrowDown, ChevronLeft, ChevronRight, Pause, Play, Sparkles, Volume2, VolumeX, Video, Images } from 'lucide-react';
 import { ServiceId, waLink } from '../lib/site';
 import { serviceHref } from '../lib/router';
 import { useLanguage } from '../lib/LanguageContext';
@@ -82,13 +82,18 @@ const slides: HeroSlide[] = [
 
 export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectService }) => {
   const { lang, t } = useLanguage();
+  const [heroMode, setHeroMode] = useState<'video' | 'gallery'>('video');
   const [currentIdx, setCurrentIdx] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [isVideoPlaying, setIsVideoPlaying] = useState(true);
+  const [isVideoMuted, setIsVideoMuted] = useState(true);
+
+  const videoRef = useRef<HTMLVideoElement>(null);
   const timerRef = useRef<number | null>(null);
 
-  // Défilement automatique fluide (6.5 secondes par image avec transition douce)
+  // Défilement automatique de la galerie (lorsque le mode galerie est actif)
   useEffect(() => {
-    if (!isAutoPlaying) return;
+    if (heroMode !== 'gallery' || !isAutoPlaying) return;
     timerRef.current = window.setInterval(() => {
       setCurrentIdx((prev) => (prev + 1) % slides.length);
     }, 6500);
@@ -96,7 +101,24 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
-  }, [isAutoPlaying]);
+  }, [heroMode, isAutoPlaying]);
+
+  const toggleVideoPlay = () => {
+    if (!videoRef.current) return;
+    if (isVideoPlaying) {
+      videoRef.current.pause();
+      setIsVideoPlaying(false);
+    } else {
+      videoRef.current.play();
+      setIsVideoPlaying(true);
+    }
+  };
+
+  const toggleVideoMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !isVideoMuted;
+    setIsVideoMuted(!isVideoMuted);
+  };
 
   const goToSlide = (idx: number) => {
     setCurrentIdx(idx);
@@ -126,90 +148,159 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
       : 'Bonjour Solveig, je souhaite vous adresser une demande confidentielle pour ma propriété sur la Costa del Sol.';
 
   return (
-    <div className="relative w-full bg-travertine text-ink">
+    <div className="relative w-full bg-[#FAF7F2] text-ink">
       {/* ========================================================================= */}
-      {/* 1. HERO : COMPOSITION ÉDITORIALE LUXE & DÉFILEMENT CINÉMATIQUE FLUIDE     */}
+      {/* 1. HERO VIDÉO CINÉMATIQUE MARBELLA (SOLAIRE, VIVANT & COULEURS DU SUD)    */}
       {/* ========================================================================= */}
       <section
         id="hero"
         className="relative flex min-h-[100svh] w-full flex-col justify-between overflow-hidden px-5 pb-8 pt-28 sm:px-10 sm:pb-12 sm:pt-36 lg:px-16"
         aria-label="Solveig’s Prestige Services — Accueil"
       >
-        {/* Galerie d'images en fondu-enchaîné GPU ultra-fluide */}
-        <div className="absolute inset-0 z-0 overflow-hidden bg-night">
-          {slides.map((slide, idx) => (
-            <div
-              key={slide.id}
-              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                idx === currentIdx ? 'opacity-100' : 'pointer-events-none opacity-0'
-              }`}
-              aria-hidden={idx !== currentIdx}
+        {/* FOND IMMERSIF : VIDÉO DRONE MARBELLA SOLAIRE OU GALERIE DE VILLAS */}
+        <div className="absolute inset-0 z-0 overflow-hidden bg-[#0A1418]">
+          {heroMode === 'video' ? (
+            <video
+              ref={videoRef}
+              autoPlay
+              loop
+              muted={isVideoMuted}
+              playsInline
+              poster="/hero-marbella.jpg"
+              className="h-full w-full object-cover object-center scale-[1.02] transition-transform duration-1000"
             >
-              <img
-                src={slide.image}
-                alt={slide.alt}
-                className={`h-full w-full object-cover object-center ${
-                  idx === currentIdx ? 'scale-105' : 'scale-100'
-                } transition-transform duration-[7000ms] ease-out`}
-                loading={idx === 0 ? 'eager' : 'lazy'}
-              />
-            </div>
-          ))}
+              <source src="/videos/marbella-solaire-hero.mp4" type="video/mp4" />
+            </video>
+          ) : (
+            slides.map((slide, idx) => (
+              <div
+                key={slide.id}
+                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                  idx === currentIdx ? 'opacity-100' : 'pointer-events-none opacity-0'
+                }`}
+                aria-hidden={idx !== currentIdx}
+              >
+                <img
+                  src={slide.image}
+                  alt={slide.alt}
+                  className={`h-full w-full object-cover object-center ${
+                    idx === currentIdx ? 'scale-105' : 'scale-100'
+                  } transition-transform duration-[7000ms] ease-out`}
+                  loading={idx === 0 ? 'eager' : 'lazy'}
+                />
+              </div>
+            ))
+          )}
 
-          {/* Double masque de contraste architectural */}
-          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/55" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_45%,rgba(201,168,105,0.18),transparent_75%)]" />
-          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-travertine via-travertine/30 to-transparent" />
+          {/* Dégradés d'ombrage solaire chaleureux pour une lisibilité parfaite */}
+          <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-[#0A1418]/90 via-black/35 to-black/60" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_50%_40%,rgba(201,168,105,0.24),transparent_75%)]" />
+          <div className="pointer-events-none absolute inset-x-0 bottom-0 h-44 bg-gradient-to-t from-[#FAF7F2] via-[#FAF7F2]/30 to-transparent" />
         </div>
 
-        {/* Barre supérieure : Surtitre géographique discret */}
-        <div className="relative z-10 flex items-center justify-between">
+        {/* Barre supérieure : Surtitre géographique + Sélecteur de Mode (Vidéo / Galerie) */}
+        <div className="relative z-10 flex flex-wrap items-center justify-between gap-3">
           <div className="glass-pill px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.28em] text-[#FFF5E0] sm:text-[11px]">
             <Sparkles className="h-3.5 w-3.5 text-[#C9A869]" />
             <span>{t.hero.locationTag}</span>
           </div>
 
-          {/* Boutons pause/lecture & flèches du carrousel */}
-          <div className="hidden items-center gap-2 sm:flex">
-            <button
-              onClick={() => setIsAutoPlaying(!isAutoPlaying)}
-              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
-              aria-label={isAutoPlaying ? 'Pause' : 'Play'}
-            >
-              {isAutoPlaying ? <Pause className="h-3.5 w-3.5" /> : <Play className="h-3.5 w-3.5 text-[#C9A869]" />}
-            </button>
-            <button
-              onClick={prevSlide}
-              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
-              aria-label="Image précédente"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </button>
-            <button
-              onClick={nextSlide}
-              className="glass-pill h-9 w-9 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
-              aria-label="Image suivante"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </button>
+          {/* Commutateur de Mode : Vidéo Solaire / Galerie */}
+          <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1 p-1 rounded-full bg-black/50 border border-white/20 backdrop-blur-md">
+              <button
+                type="button"
+                onClick={() => setHeroMode('video')}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider transition-all ${
+                  heroMode === 'video'
+                    ? 'bg-gradient-to-r from-[#C9A869] to-[#EAD49E] text-[#0E1315] shadow-md'
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                <Video className="h-3 w-3" />
+                <span>{t.hero.videoModeLabel}</span>
+              </button>
+
+              <button
+                type="button"
+                onClick={() => setHeroMode('gallery')}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-[10px] sm:text-[11px] font-bold uppercase tracking-wider transition-all ${
+                  heroMode === 'gallery'
+                    ? 'bg-gradient-to-r from-[#C9A869] to-[#EAD49E] text-[#0E1315] shadow-md'
+                    : 'text-white/70 hover:text-white'
+                }`}
+              >
+                <Images className="h-3 w-3" />
+                <span>{t.hero.galleryModeLabel}</span>
+              </button>
+            </div>
+
+            {/* Contrôles Vidéo (si en mode vidéo) */}
+            {heroMode === 'video' ? (
+              <div className="hidden items-center gap-1.5 sm:flex">
+                <button
+                  type="button"
+                  onClick={toggleVideoPlay}
+                  className="glass-pill h-8 w-8 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
+                  aria-label={isVideoPlaying ? 'Mettre en pause' : 'Lire la vidéo'}
+                >
+                  {isVideoPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 text-[#C9A869]" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={toggleVideoMute}
+                  className="glass-pill h-8 w-8 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
+                  aria-label={isVideoMuted ? 'Activer le son' : 'Couper le son'}
+                >
+                  {isVideoMuted ? <VolumeX className="h-3 w-3" /> : <Volume2 className="h-3 w-3 text-[#C9A869]" />}
+                </button>
+              </div>
+            ) : (
+              <div className="hidden items-center gap-1.5 sm:flex">
+                <button
+                  type="button"
+                  onClick={() => setIsAutoPlaying(!isAutoPlaying)}
+                  className="glass-pill h-8 w-8 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
+                  aria-label={isAutoPlaying ? 'Pause' : 'Play'}
+                >
+                  {isAutoPlaying ? <Pause className="h-3 w-3" /> : <Play className="h-3 w-3 text-[#C9A869]" />}
+                </button>
+                <button
+                  type="button"
+                  onClick={prevSlide}
+                  className="glass-pill h-8 w-8 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
+                  aria-label="Image précédente"
+                >
+                  <ChevronLeft className="h-3.5 w-3.5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={nextSlide}
+                  className="glass-pill h-8 w-8 justify-center text-white/80 transition hover:border-[#C9A869] hover:text-white"
+                  aria-label="Image suivante"
+                >
+                  <ChevronRight className="h-3.5 w-3.5" />
+                </button>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* Cœur Typographique Architectural : Marque parfaitement intégrée */}
+        {/* Cœur Typographique Architectural : Marque Majestueuse & Solaire */}
         <div className="relative z-10 my-auto flex max-w-4xl flex-col items-center py-6 text-center mx-auto">
-          {/* Badge statut de disponibilité en direct */}
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/45 px-3.5 py-1 text-[11px] font-medium text-white/90 backdrop-blur-md shadow-sm">
+          {/* Badge statut de présence */}
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/50 px-4 py-1 text-[11px] font-medium text-white/95 backdrop-blur-md shadow-lg">
             <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
             <span>
               {lang === 'en'
-                ? 'Immediate concierge access & 7/7 presence'
+                ? 'Immediate concierge access & 7/7 local presence'
                 : lang === 'es'
-                ? 'Acceso directo a conserjería y presencia 7d/7'
+                ? 'Atención inmediata y presencia local 7d/7'
                 : 'Accueil direct & présence locale 7j/7'}
             </span>
           </div>
 
-          {/* Logo / Monogramme typographique majestueux */}
+          {/* Logo / Nom de la marque */}
           <h1 className="font-serif text-5xl font-medium leading-[0.92] tracking-[0.16em] uppercase text-white drop-shadow-[0_4px_35px_rgba(0,0,0,0.95)] sm:text-7xl md:text-8xl lg:text-[6.8rem]">
             {t.hero.brandName}
           </h1>
@@ -218,10 +309,10 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
             {t.hero.brandSubtitle}
           </p>
 
-          {/* Ligne méditerranéenne bronze d'orfèvrerie */}
+          {/* Ligne méditerranéenne or */}
           <div className="mt-5 flex w-full max-w-xs items-center justify-center gap-4 sm:mt-6">
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A869]/80 to-transparent" />
-            <span className="h-1.5 w-1.5 rotate-45 border border-[#C9A869] bg-[#C9A869]/50" />
+            <span className="h-1.5 w-1.5 rotate-45 border border-[#C9A869] bg-[#C9A869]/60" />
             <span className="h-px flex-1 bg-gradient-to-r from-transparent via-[#C9A869]/80 to-transparent" />
           </div>
 
@@ -230,12 +321,14 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
             {t.hero.tagline}
           </p>
 
-          {/* Légende contextuelle dynamique du slide en cours */}
-          <div className="mt-4 glass-pill px-4 py-1.5 text-xs text-[#F3DEB0]">
-            <span className="font-semibold text-white">{getKicker(currentSlide)}</span>
-            <span className="text-white/40">·</span>
-            <span className="text-white/90 font-light">{getCaption(currentSlide)}</span>
-          </div>
+          {/* Légende contextuelle (en mode galerie) */}
+          {heroMode === 'gallery' && (
+            <div className="mt-4 glass-pill px-4 py-1.5 text-xs text-[#F3DEB0] animate-fadeUp">
+              <span className="font-semibold text-white">{getKicker(currentSlide)}</span>
+              <span className="text-white/40">·</span>
+              <span className="text-white/90 font-light">{getCaption(currentSlide)}</span>
+            </div>
+          )}
 
           {/* Double Call to Action */}
           <div className="mt-8 flex w-full max-w-md flex-col items-center justify-center gap-3.5 px-4 sm:mt-9 sm:flex-row sm:gap-4">
@@ -243,7 +336,7 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
               href={waLink(heroWaMessage)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-white px-7 py-4 text-xs font-semibold uppercase tracking-wider text-ink shadow-[0_10px_30px_rgba(0,0,0,0.35)] transition-all hover:bg-[#F3EEE4] hover:shadow-[0_12px_35px_rgba(201,168,105,0.4)] sm:w-auto"
+              className="inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r from-[#C9A869] via-[#EAD49E] to-[#C9A869] px-7 py-4 text-xs font-bold uppercase tracking-wider text-[#0E1315] shadow-[0_10px_30px_rgba(201,168,105,0.4)] transition-all hover:scale-105 sm:w-auto"
             >
               <WhatsAppIcon className="h-4 w-4" />
               <span>{t.hero.whatsappCta}</span>
@@ -259,31 +352,38 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
           </div>
         </div>
 
-        {/* Barre inférieure : Indicateur de slide interactif & défilement */}
+        {/* Barre inférieure : Défilement & Indicateur */}
         <div className="relative z-10 flex flex-col items-center justify-between gap-4 pt-4 sm:flex-row sm:items-end">
-          {/* Timeline / Progress dots */}
-          <div className="flex items-center gap-2.5">
-            <span className="font-serif text-xs font-semibold text-white/90">
-              0{currentIdx + 1}
-            </span>
-            <div className="flex items-center gap-2">
-              {slides.map((_, idx) => (
-                <button
-                  key={idx}
-                  onClick={() => goToSlide(idx)}
-                  className={`h-1.5 rounded-full transition-all duration-500 ${
-                    idx === currentIdx
-                      ? 'w-8 bg-[#C9A869]'
-                      : 'w-2 bg-white/40 hover:bg-white/70'
-                  }`}
-                  aria-label={`Afficher la photo ${idx + 1}`}
-                />
-              ))}
+          {heroMode === 'gallery' ? (
+            <div className="flex items-center gap-2.5">
+              <span className="font-serif text-xs font-semibold text-white/90">
+                0{currentIdx + 1}
+              </span>
+              <div className="flex items-center gap-2">
+                {slides.map((_, idx) => (
+                  <button
+                    key={idx}
+                    type="button"
+                    onClick={() => goToSlide(idx)}
+                    className={`h-1.5 rounded-full transition-all duration-500 ${
+                      idx === currentIdx
+                        ? 'w-8 bg-[#C9A869]'
+                        : 'w-2 bg-white/40 hover:bg-white/70'
+                    }`}
+                    aria-label={`Afficher la photo ${idx + 1}`}
+                  />
+                ))}
+              </div>
+              <span className="font-serif text-xs text-white/50">
+                0{slides.length}
+              </span>
             </div>
-            <span className="font-serif text-xs text-white/50">
-              0{slides.length}
-            </span>
-          </div>
+          ) : (
+            <div className="flex items-center gap-2 text-xs text-white/80">
+              <span className="h-2 w-2 rounded-full bg-[#C9A869] animate-pulse" />
+              <span className="font-light tracking-wide">Costa del Sol · Drone View 4K</span>
+            </div>
+          )}
 
           {/* Défiler vers les services */}
           <a
@@ -299,35 +399,35 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
       </section>
 
       {/* ========================================================================= */}
-      {/* 2. BANDEAU DE CRÉDIBILITÉ OFFICIEL : ÉLÉGANCE ARCHITECTURALE              */}
+      {/* 2. BANDEAU DE CRÉDIBILITÉ OFFICIEL : ÉLÉGANCE NOCTURNE & OR CHAUD        */}
       {/* ========================================================================= */}
       <section className="relative z-20 -mt-6 sm:-mt-8 container-site">
-        <div className="rounded-3xl border border-ink/10 bg-white/95 backdrop-blur-xl p-6 sm:p-8 shadow-[0_16px_40px_rgba(28,26,23,0.07)]">
-          <div className="grid grid-cols-2 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-ink/10 lg:grid-cols-4 sm:gap-4">
+        <div className="rounded-3xl border border-[#C9A869]/30 bg-[#16272E]/95 backdrop-blur-xl p-6 sm:p-8 shadow-2xl text-white">
+          <div className="grid grid-cols-2 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-white/10 lg:grid-cols-4 sm:gap-4">
             <div className="text-center pt-2 sm:pt-0 sm:px-4">
-              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.expValue}</p>
-              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.expLabel}</p>
+              <p className="font-serif text-2xl font-medium text-white sm:text-3xl lg:text-4xl">{t.reassurance.expValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-[#F3DEB0]">{t.reassurance.expLabel}</p>
             </div>
             <div className="text-center pt-2 sm:pt-0 sm:px-4">
-              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.michelinValue}</p>
-              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.michelinLabel}</p>
+              <p className="font-serif text-2xl font-medium text-white sm:text-3xl lg:text-4xl">{t.reassurance.michelinValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-[#F3DEB0]">{t.reassurance.michelinLabel}</p>
             </div>
             <div className="text-center pt-2 sm:pt-0 sm:px-4">
-              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.presenceValue}</p>
-              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.presenceLabel}</p>
+              <p className="font-serif text-2xl font-medium text-white sm:text-3xl lg:text-4xl">{t.reassurance.presenceValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-[#F3DEB0]">{t.reassurance.presenceLabel}</p>
             </div>
             <div className="text-center pt-2 sm:pt-0 sm:px-4">
-              <p className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">{t.reassurance.discretionValue}</p>
-              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-bronze">{t.reassurance.discretionLabel}</p>
+              <p className="font-serif text-2xl font-medium text-white sm:text-3xl lg:text-4xl">{t.reassurance.discretionValue}</p>
+              <p className="mt-1 text-[11px] font-semibold uppercase tracking-wider text-[#F3DEB0]">{t.reassurance.discretionLabel}</p>
             </div>
           </div>
         </div>
       </section>
 
       {/* ========================================================================= */}
-      {/* 3. GRILLE DES 4 SERVICES HAUT DE GAMME                                     */}
+      {/* 3. GRILLE DES 4 SERVICES HAUT DE GAMME (TEINTES MÉDITERRANÉENNES CHAUDES) */}
       {/* ========================================================================= */}
-      <section id="services" className="py-24 sm:py-32">
+      <section id="services" className="relative py-24 sm:py-32 bg-gradient-to-b from-[#FAF7F2] via-[#F4EEE4] to-[#EFE7D8]">
         <div className="container-site">
           <Reveal className="mx-auto max-w-3xl text-center space-y-3">
             <p className="eyebrow">{t.servicesSection.eyebrow}</p>
@@ -340,7 +440,7 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
             </p>
           </Reveal>
 
-          {/* Grille 2x2 grand format avec cartes haute finition */}
+          {/* Grille 2x2 avec cartes aux couleurs chaleureuses */}
           <div className="mt-14 grid gap-8 md:grid-cols-2 lg:gap-10 sm:mt-20">
             {Object.entries(t.servicesSection.items).map(([serviceId, item], idx) => {
               const imageMap: Record<string, string> = {
@@ -364,7 +464,7 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
                       e.preventDefault();
                       onSelectService(serviceId as ServiceId);
                     }}
-                    className="card-luxury group flex h-full flex-col justify-between overflow-hidden"
+                    className="group flex h-full flex-col justify-between overflow-hidden rounded-[2rem] border border-[#C9A869]/25 bg-white/95 shadow-[0_10px_30px_rgba(28,26,23,0.06)] hover:border-[#C9A869] hover:shadow-[0_20px_45px_rgba(201,168,105,0.2)] transition-all duration-500 hover:-translate-y-1.5"
                   >
                     {/* Cadre image soigné */}
                     <div className="relative h-64 overflow-hidden bg-sand sm:h-80">
@@ -374,14 +474,14 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
                         className={`h-full w-full object-cover ${imagePos[serviceId]} transition-transform duration-700 group-hover:scale-106`}
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-transparent pointer-events-none" />
 
                       {/* Numéro & Badge */}
                       <div className="absolute left-5 right-5 top-5 flex items-center justify-between">
                         <span className="glass-pill px-3.5 py-1 font-serif text-xs font-bold text-white">
                           0{idx + 1}
                         </span>
-                        <span className="rounded-full border border-[#C9A869]/40 bg-white/95 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-ink backdrop-blur-md shadow-sm">
+                        <span className="rounded-full border border-[#C9A869]/40 bg-[#16272E]/90 px-3.5 py-1 text-[10px] font-bold uppercase tracking-wider text-[#F3DEB0] backdrop-blur-md shadow-sm">
                           {item.badge}
                         </span>
                       </div>

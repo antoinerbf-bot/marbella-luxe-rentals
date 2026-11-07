@@ -59,7 +59,7 @@ export const MarbellaMijasSection: React.FC = () => {
   };
 
   return (
-    <section id="territoire" className="relative border-t border-ink/5 bg-travertine py-24 sm:py-32">
+    <section id="territoire" className="relative border-t border-[#C9A869]/20 bg-gradient-to-b from-[#FAF7F2] via-[#F4EEE4] to-[#EAE0CE] py-24 sm:py-32">
       <div className="container-site">
         {/* En-tête de section */}
         <Reveal className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
@@ -143,15 +143,15 @@ export const MarbellaMijasSection: React.FC = () => {
           })}
         </div>
 
-        {/* Encadré d'engagement territorial */}
-        <Reveal className="mt-14 card-luxury overflow-hidden p-8 sm:p-12 shadow-[0_16px_40px_rgba(28,26,23,0.06)]">
+        {/* Encadré d'engagement territorial avec contraste prestigieux */}
+        <Reveal className="mt-14 rounded-3xl overflow-hidden p-8 sm:p-12 border border-[#C9A869]/40 bg-[#16272E] shadow-2xl text-white">
           <div className="grid gap-8 items-center lg:grid-cols-[1.2fr_0.8fr]">
             <div className="space-y-3">
-              <p className="eyebrow">{sec.manifestoEyebrow}</p>
-              <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl">
+              <p className="eyebrow text-[#C9A869]">{sec.manifestoEyebrow}</p>
+              <h3 className="font-serif text-2xl font-medium text-white sm:text-3xl lg:text-4xl">
                 {sec.manifestoTitle}
               </h3>
-              <p className="text-sm font-light leading-relaxed text-ink-soft max-w-2xl">
+              <p className="text-sm font-light leading-relaxed text-[#EDE6DA]/80 max-w-2xl">
                 {sec.manifestoDesc}
               </p>
             </div>
@@ -161,9 +161,9 @@ export const MarbellaMijasSection: React.FC = () => {
                 href={waLink(territoryWaMessage)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="btn-primary w-full sm:w-auto shadow-md hover:shadow-lg"
+                className="btn-gold w-full sm:w-auto"
               >
-                <WhatsAppIcon />
+                <WhatsAppIcon className="h-4 w-4" />
                 <span>{sec.manifestoCta}</span>
               </a>
             </div>

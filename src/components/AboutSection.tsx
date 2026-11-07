@@ -70,7 +70,7 @@ export const AboutSection: React.FC = () => {
   ];
 
   return (
-    <section id="maison" className="relative border-t border-ink/5 bg-sand py-24 sm:py-32">
+    <section id="maison" className="relative border-t border-[#C9A869]/20 bg-gradient-to-b from-[#EAE0CE] via-[#F4EEE4] to-[#FAF7F2] py-24 sm:py-32">
       <div className="container-site">
         {/* Histoire des fondateurs */}
         <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">

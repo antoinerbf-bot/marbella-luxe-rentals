@@ -114,6 +114,42 @@
   box-shadow: 0 0 40px rgba(201, 168, 105, 0.25);
 }
 
+.card-luxury-dark {
+  border-radius: 2rem;
+  border: 1px solid rgba(201, 168, 105, 0.25);
+  background: rgba(22, 39, 46, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  color: #EDE6DA;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  transition: all 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.card-luxury-dark:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201, 168, 105, 0.65);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.55), 0 0 30px rgba(201, 168, 105, 0.2);
+}
+
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(135deg, #C9A869 0%, #EAD49E 50%, #C9A869 100%);
+  padding: 0.875rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #0E1315;
+  box-shadow: 0 4px 20px rgba(201, 168, 105, 0.35);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, #d8b77a 0%, #f3deb0 50%, #d8b77a 100%);
+  box-shadow: 0 8px 30px rgba(201, 168, 105, 0.5);
+  transform: translateY(-2px);
+}
+
 .btn-primary {
   display: inline-flex;
   align-items: center;

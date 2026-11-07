@@ -49,7 +49,7 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
       : 'Bonjour Solveig, je souhaite échanger directement avec vous.';
 
   return (
-    <section id="contact" className="relative border-t border-ink/5 bg-travertine py-24 sm:py-32">
+    <section id="contact" className="relative border-t border-[#C9A869]/20 bg-gradient-to-b from-[#FAF7F2] via-[#F3ECE0] to-[#EAE0CE] py-24 sm:py-32">
       <div className="container-site">
         <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-16 items-center">
           {/* Colonne gauche éditoriale */}

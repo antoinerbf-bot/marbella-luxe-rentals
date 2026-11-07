@@ -26,6 +26,8 @@ export interface TranslationDictionary {
     whatsappCta: string;
     exploreCta: string;
     scrollHint: string;
+    videoModeLabel: string;
+    galleryModeLabel: string;
     slides: {
       title: string;
       caption: string;
@@ -69,6 +71,18 @@ export interface TranslationDictionary {
       title: string;
       desc: string;
     }[];
+    videoTitle: string;
+    videoSubtitle: string;
+    videoTabs: {
+      cuisine: string;
+      convives: string;
+      plating: string;
+    };
+    videoCaptions: {
+      cuisine: string;
+      convives: string;
+      plating: string;
+    };
     experiencesTitle: string;
     experiencesSubtitle: string;
     experiences: {
@@ -80,6 +94,18 @@ export interface TranslationDictionary {
     galleryEyebrow: string;
     galleryTitle: string;
     galleryHint: string;
+    categories: {
+      all: string;
+      mains: string;
+      desserts: string;
+      tables: string;
+    };
+    menuBuilder: {
+      selectedBadge: string;
+      clearSelection: string;
+      bookMenuWhatsApp: string;
+      dishPlural: string;
+    };
     reserveCta: string;
     detailsCta: string;
     disclaimer: string;
@@ -198,6 +224,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       whatsappCta: 'Demande Confidentielle',
       exploreCta: 'Découvrir nos 4 services',
       scrollHint: 'Faites défiler pour explorer',
+      videoModeLabel: 'Vidéo Marbella Solaire',
+      galleryModeLabel: 'Villas & Domaines',
       slides: [
         {
           title: 'Villas d’Exception',
@@ -292,6 +320,18 @@ export const translations: Record<Language, TranslationDictionary> = {
           desc: 'Service à table discret et prévenant. La cuisine est entièrement nettoyée et remise à neuf.',
         },
       ],
+      videoTitle: 'L’Expérience en Direct dans Votre Villa',
+      videoSubtitle: 'Observez le Chef faire flamber les produits nobles, dresser vos assiettes sous vos yeux et servir vos convives.',
+      videoTabs: {
+        cuisine: '1. En Cuisine & Flammes',
+        convives: '2. Les Convives en Terrasse',
+        plating: '3. Le Dressage Minute',
+      },
+      videoCaptions: {
+        cuisine: 'Maîtrise du geste, flammes vives et produits nobles de saison saisis minute.',
+        convives: 'Moments d’exception partagés entre proches face au crépuscule méditerranéen.',
+        plating: 'Dressage artistique à l’assiette avec herbes botaniques et sauces réduites.',
+      },
       experiencesTitle: 'Les Formats Culinaires Proposés',
       experiencesSubtitle: 'Des prestations sur mesure pensées pour chaque moment de votre séjour sur la Costa del Sol.',
       experiences: [
@@ -322,7 +362,19 @@ export const translations: Record<Language, TranslationDictionary> = {
       ],
       galleryEyebrow: 'Dans l’assiette',
       galleryTitle: 'Les créations du Chef Dominique Hybord',
-      galleryHint: 'Cliquez sur une assiette pour l’agrandir en haute résolution.',
+      galleryHint: 'Cliquez sur une assiette pour l’agrandir en haute résolution ou composer votre menu.',
+      categories: {
+        all: 'Tous les Plats',
+        mains: 'Plats & Mer',
+        desserts: 'Douceurs',
+        tables: 'Art de la Table',
+      },
+      menuBuilder: {
+        selectedBadge: 'Votre Dégustation Personnalisée',
+        clearSelection: 'Effacer la sélection',
+        bookMenuWhatsApp: 'Réserver ce Menu sur WhatsApp',
+        dishPlural: 'plat(s) sélectionné(s)',
+      },
       reserveCta: 'Réserver un repas privé avec le Chef',
       detailsCta: 'Découvrir la prestation complète',
       disclaimer: 'Prestations sur mesure de 6 à 15 convives (ou sur devis). Réservation anticipée recommandée en haute saison.',
@@ -466,6 +518,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       whatsappCta: 'Confidential Inquiry',
       exploreCta: 'Explore our 4 services',
       scrollHint: 'Scroll to explore',
+      videoModeLabel: 'Marbella Drone Video',
+      galleryModeLabel: 'Estates & Villas',
       slides: [
         {
           title: 'Prime Mediterranean Estates',
@@ -560,6 +614,18 @@ export const translations: Record<Language, TranslationDictionary> = {
           desc: 'Attentive, quiet table service. The kitchen is thoroughly cleaned and restored to pristine condition.',
         },
       ],
+      videoTitle: 'The Live Villa Dining Experience',
+      videoSubtitle: 'Watch the Chef flambé noble ingredients, plate courses live, and serve your guests in complete intimacy.',
+      videoTabs: {
+        cuisine: '1. In the Kitchen & Flames',
+        convives: '2. Guests on the Terrace',
+        plating: '3. Precision Plating',
+      },
+      videoCaptions: {
+        cuisine: 'Culinary mastery, live fire, and prime seasonal Andalusian produce cooked to order.',
+        convives: 'Cherished moments shared with loved ones overlooking the Mediterranean sunset.',
+        plating: 'Artistic multi-course plating with wild botanical herbs and reduced glazes.',
+      },
       experiencesTitle: 'Culinary Experiences Offered',
       experiencesSubtitle: 'Tailor-made gastronomic formats designed for each moment of your stay on the Costa del Sol.',
       experiences: [
@@ -590,7 +656,19 @@ export const translations: Record<Language, TranslationDictionary> = {
       ],
       galleryEyebrow: 'On the plate',
       galleryTitle: 'Creations by Chef Dominique Hybord',
-      galleryHint: 'Click on any dish to view in high resolution.',
+      galleryHint: 'Click on any dish to view in high resolution or craft your bespoke menu.',
+      categories: {
+        all: 'All Dishes',
+        mains: 'Mains & Seafood',
+        desserts: 'Desserts',
+        tables: 'Private Tables',
+      },
+      menuBuilder: {
+        selectedBadge: 'Your Custom Tasting Menu',
+        clearSelection: 'Clear selection',
+        bookMenuWhatsApp: 'Book this Menu on WhatsApp',
+        dishPlural: 'dish(es) selected',
+      },
       reserveCta: 'Book a Private Chef Experience',
       detailsCta: 'Explore Complete Service',
       disclaimer: 'Bespoke service for 6 to 15 guests (or custom events). Advance booking highly recommended during high season.',
@@ -734,6 +812,8 @@ export const translations: Record<Language, TranslationDictionary> = {
       whatsappCta: 'Consulta Confidencial',
       exploreCta: 'Descubrir nuestros 4 servicios',
       scrollHint: 'Desplácese para explorar',
+      videoModeLabel: 'Vídeo Marbella Solar',
+      galleryModeLabel: 'Villas y Fincas',
       slides: [
         {
           title: 'Villas de Excepción',
@@ -828,6 +908,18 @@ export const translations: Record<Language, TranslationDictionary> = {
           desc: 'Servicio atento y discreto en mesa. La cocina queda completamente limpia e impecable al finalizar.',
         },
       ],
+      videoTitle: 'La Experiencia en Directo en su Villa',
+      videoSubtitle: 'Observe al Chef flambear ingredientes nobles, emplatar en directo y servir a sus invitados con discreción.',
+      videoTabs: {
+        cuisine: '1. En Cocina y Fuego',
+        convives: '2. Invitados en Terraza',
+        plating: '3. Emplatado de Precisión',
+      },
+      videoCaptions: {
+        cuisine: 'Maestría técnica, fuego vivo e ingredientes nobles preparados al momento.',
+        convives: 'Momentos inolvidables compartidos entre seres queridos frente al atardecer mediterráneo.',
+        plating: 'Emplatado artístico con hierbas aromáticas y salsas reducidas de autor.',
+      },
       experiencesTitle: 'Formatos Gastronómicos Disponibles',
       experiencesSubtitle: 'Experiencias personalizadas pensadas para cada momento de su estancia en la Costa del Sol.',
       experiences: [
@@ -858,7 +950,19 @@ export const translations: Record<Language, TranslationDictionary> = {
       ],
       galleryEyebrow: 'En el plato',
       galleryTitle: 'Creaciones del Chef Dominique Hybord',
-      galleryHint: 'Haga clic en un plato para ampliarlo en alta resolución.',
+      galleryHint: 'Haga clic en un plato para ampliarlo en alta resolución o diseñar su menú exclusivo.',
+      categories: {
+        all: 'Todos los Platos',
+        mains: 'Platos y Mar',
+        desserts: 'Postres',
+        tables: 'Mesas Privadas',
+      },
+      menuBuilder: {
+        selectedBadge: 'Su Menú Personalizado',
+        clearSelection: 'Borrar selección',
+        bookMenuWhatsApp: 'Reservar este Menú por WhatsApp',
+        dishPlural: 'plato(s) seleccionado(s)',
+      },
       reserveCta: 'Reservar un almuerzo o cena con el Chef',
       detailsCta: 'Descubrir el servicio en detalle',
       disclaimer: 'Servicio personalizado de 6 a 15 comensales (o eventos a medida). Se recomienda reserva anticipada en temporada alta.',
