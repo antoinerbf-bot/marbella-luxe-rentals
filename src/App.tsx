@@ -38,16 +38,8 @@ function AppContent() {
     );
   }
 
-  // Vue dédiée pour l'Univers Marocain (Livraison Fin 2027)
-  if (route.name === 'maroc') {
-    return (
-      <MoroccoUniversePage
-        onBackToCostaDelSol={() => {
-          window.location.hash = '#/';
-        }}
-      />
-    );
-  }
+  // Note : Le projet Maroc (livraison fin 2027) est temporairement en veille (Section 10).
+  // L'architecture technique (MoroccoUniversePage) est préservée pour une activation future sur validation client.
 
   // Page d'Accueil Principale (Marbella & Mijas · Costa del Sol)
   return (

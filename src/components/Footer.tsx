@@ -135,15 +135,6 @@ export const Footer: React.FC = () => {
               </li>
               <li>
                 <a
-                  href={MAROC_HREF}
-                  className="inline-flex items-center gap-1 text-[#F3DEB0] transition hover:text-white font-medium"
-                >
-                  <span>{t.nav.morocco}</span>
-                  <ArrowUpRight className="h-3.5 w-3.5" />
-                </a>
-              </li>
-              <li>
-                <a
                   href={sectionHref('contact')}
                   className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
                 >

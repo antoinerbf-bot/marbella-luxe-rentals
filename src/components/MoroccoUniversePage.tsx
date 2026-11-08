@@ -96,9 +96,9 @@ const previewResidences: MoroccanPreviewResidence[] = [
       es: 'Apartamento de alto standing entre Guéliz y el Hivernage, con amplia terraza ajardinada, zellige artesanal y prestaciones hoteleras.',
     },
     features: {
-      fr: ['Terrasse panoramique Atlas', 'Résidence sécurisée 24/7', 'Accueil personnalisé & transferts VIP'],
-      en: ['Panoramic Atlas terrace', '24/7 secure residence', 'Personal welcome & VIP transfers'],
-      es: ['Terraza panorámica al Atlas', 'Residencia segura 24/7', 'Recepción personalizada y traslados VIP'],
+      fr: ['Terrasse panoramique Atlas', 'Résidence sécurisée 7/7', 'Accueil personnalisé & transferts VIP'],
+      en: ['Panoramic Atlas terrace', '7/7 secure residence', 'Personal welcome & VIP transfers'],
+      es: ['Terraza panorámica al Atlas', 'Residencia segura 7/7', 'Recepción personalizada y traslados VIP'],
     },
   },
   {
@@ -254,7 +254,7 @@ export const MoroccoUniversePage: React.FC<MoroccoUniversePageProps> = ({ onBack
       highlights: [
         lang === 'en' ? 'Panoramic Atlas terraces' : lang === 'es' ? 'Terrazas panorámicas al Atlas' : 'Terrasses panoramiques Atlas',
         lang === 'en' ? 'Private landscaped pools' : lang === 'es' ? 'Piscinas privadas ajardinadas' : 'Piscines privées paysagées',
-        lang === 'en' ? '24/7 Solveig’s estate concierge' : lang === 'es' ? 'Conserjería 24/7 Solveig’s' : 'Intendance & conciergerie 24/7',
+        lang === 'en' ? '7/7 Solveig’s estate concierge' : lang === 'es' ? 'Conserjería 7/7 Solveig’s' : 'Intendance & conciergerie 7/7',
       ],
     },
     {

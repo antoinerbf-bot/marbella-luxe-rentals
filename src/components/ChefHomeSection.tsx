@@ -9,42 +9,18 @@ interface ChefHomeSectionProps {
 }
 
 const culinaryGallery = [
-  {
-    src: '/archives-cuisine/2023-09-12 13.09.35.jpg',
-    titleFr: 'Dressage d’auteur & herbes fraîches',
-    titleEn: 'Signature plating & fresh herbs',
-    titleEs: 'Emplatado de autor y hierbas frescas',
-  },
-  {
-    src: '/archives-cuisine/2022-10-05 12.42.03.jpg',
-    titleFr: 'Viande rôtie & légumes glacés du marché',
-    titleEn: 'Roasted meat & glazed market vegetables',
-    titleEs: 'Carne asada y verduras glaseadas del mercado',
-  },
-  {
-    src: '/archives-cuisine/2018-07-05 09.50.45.jpg',
-    titleFr: 'Pêche locale du jour & bouillon safrané',
-    titleEn: 'Fresh local catch & saffron bouillon',
-    titleEs: 'Pesca local del día y caldo al azafrán',
-  },
-  {
-    src: '/archives-cuisine/2017-12-01 19.51.19.jpg',
-    titleFr: 'Filet de bœuf saisi minute & mousseline truffée',
-    titleEn: 'Seared beef tenderloin & truffled purée',
-    titleEs: 'Solomillo marcado al momento y puré trufado',
-  },
-  {
-    src: '/archives-cuisine/2019-02-14 21.11.08.jpg',
-    titleFr: 'Douceur chocolat grand cru & framboises',
-    titleEn: 'Grand cru chocolate & fresh raspberries',
-    titleEs: 'Dulce de chocolate gran reserva y frambuesas',
-  },
-  {
-    src: '/archives-cuisine/2018-01-21 08.25.03.jpg',
-    titleFr: 'L’art de la table dressée dans votre villa',
-    titleEn: 'The art of table setting in your villa',
-    titleEs: 'El arte de la mesa en su villa',
-  },
+  '/archives-cuisine/2023-09-12 13.09.35.jpg',
+  '/archives-cuisine/2022-10-05 12.42.03.jpg',
+  '/archives-cuisine/2018-07-05 09.50.45.jpg',
+  '/archives-cuisine/2017-12-01 19.51.19.jpg',
+  '/archives-cuisine/2018-07-05 09.51.09.jpg',
+  '/archives-cuisine/2019-02-14 21.11.08.jpg',
+  '/archives-cuisine/2018-01-21 08.25.03.jpg',
+  '/archives-cuisine/2016-07-21 21.02.39.jpg',
+  '/archives-cuisine/2015-09-16 11.01.18.jpg',
+  '/archives-cuisine/2015-09-16 11.01.56.jpg',
+  '/archives-cuisine/2019-08-01 10.10.16-1.jpg',
+  '/archives-cuisine/2024-01-23 16.31.12.jpg',
 ];
 
 export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectService }) => {
@@ -276,16 +252,16 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
           </div>
         </div>
 
-        {/* Galerie épurée des assiettes du Chef */}
+        {/* Galerie épurée des créations authentiques de Dominique Hybord (sans noms de plats ni fiches produits) */}
         <div className="mt-16 border-t border-[#cbbda7]/60 pt-12">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-8">
             <div>
               <p className="text-[11px] font-bold uppercase tracking-[0.24em] text-[#987543]">
                 {lang === 'en'
-                  ? 'Culinary Creations'
+                  ? 'Authentic Creations by Dominique Hybord'
                   : lang === 'es'
-                  ? 'Creaciones Culinarias'
-                  : 'Quelques assiettes du Chef'}
+                  ? 'Las creaciones auténticas de Dominique Hybord'
+                  : 'Les créations authentiques de Dominique Hybord'}
               </p>
               <h3 className="font-serif text-2xl sm:text-3xl text-[#2b241d] mt-1">
                 {lang === 'en'
@@ -298,32 +274,32 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
           </div>
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
-            {culinaryGallery.map((dish, idx) => {
-              const title =
-                lang === 'en' ? dish.titleEn : lang === 'es' ? dish.titleEs : dish.titleFr;
-              return (
-                <button
-                  key={idx}
-                  type="button"
-                  onClick={() => setZoomedDish({ src: dish.src, alt: title })}
-                  className="group relative aspect-square overflow-hidden rounded-2xl border border-[#78664c]/15 bg-white shadow-sm focus:outline-none"
-                >
-                  <img
-                    src={dish.src}
-                    alt={title}
-                    className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-80 group-hover:opacity-100 transition-opacity" />
-                  <span className="absolute top-2.5 right-2.5 flex h-7 w-7 items-center justify-center rounded-full bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity">
-                    <ZoomIn className="h-3.5 w-3.5" />
+            {culinaryGallery.map((src, idx) => (
+              <button
+                key={idx}
+                type="button"
+                onClick={() =>
+                  setZoomedDish({
+                    src,
+                    alt: 'Création gastronomique du Chef Dominique Hybord',
+                  })
+                }
+                aria-label="Agrandir la photographie"
+                className="group relative aspect-square overflow-hidden rounded-2xl border border-[#78664c]/15 bg-white shadow-sm focus:outline-none"
+              >
+                <img
+                  src={src}
+                  alt="Création gastronomique du Chef Dominique Hybord"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ZoomIn className="h-4 w-4" />
                   </span>
-                  <p className="absolute bottom-2.5 left-2.5 right-2.5 text-left text-[11px] font-medium text-white leading-tight drop-shadow">
-                    {title}
-                  </p>
-                </button>
-              );
-            })}
+                </div>
+              </button>
+            ))}
           </div>
         </div>
       </div>

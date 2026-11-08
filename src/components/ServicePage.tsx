@@ -9,16 +9,14 @@ import {
   Sparkles,
   FileText,
   ChevronDown,
-  UtensilsCrossed,
-  KeyRound,
   ZoomIn,
 } from 'lucide-react';
-import { DEFAULT_WA_MESSAGE, EMAIL, PHONE_DISPLAY, PHONE_TEL, ServiceId, waLink } from '../lib/site';
+import { EMAIL, PHONE_DISPLAY, PHONE_TEL, ServiceId, waLink } from '../lib/site';
 import { WhatsAppIcon } from './ui/WhatsAppIcon';
 import { Lightbox } from './ui/Lightbox';
-import { Reveal } from './ui/Reveal';
 import { LanguageSelector } from './ui/LanguageSelector';
 import { useLanguage } from '../lib/LanguageContext';
+import { Footer } from './Footer';
 
 interface ServicePageProps {
   serviceId: ServiceId;
@@ -35,7 +33,7 @@ interface ServiceContent {
   heroImageAlt: string;
   heroDescription: string;
   whatsappMessage: string;
-  stats: { value: string; label: string }[];
+  stats?: { value: string; label: string }[];
   pillars?: {
     title: string;
     desc: string;
@@ -52,6 +50,27 @@ interface ServiceContent {
   faqs?: { q: string; a: string }[];
 }
 
+const chefInspirationalGallery: { url: string; caption: string }[] = [
+  { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2018-07-05 09.50.45.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2018-07-05 09.51.09.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2019-02-14 21.11.08.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2018-01-21 08.25.03.jpg', caption: 'Table dressée en villa' },
+  { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Table face à la mer' },
+  { url: '/archives-cuisine/2015-09-16 11.01.18.jpg', caption: 'Réception conviviale' },
+  { url: '/archives-cuisine/2015-09-16 11.01.56.jpg', caption: 'Table dressée pour vos convives' },
+  { url: '/archives-cuisine/2016-12-07 13.01.27.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2017-11-29 13.03.41.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2019-08-01 10.10.16-1.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2019-11-20 13.10.51-1.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2018-07-05 09.54.41.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2018-07-05 09.56.49.jpg', caption: 'Création du Chef Dominique Hybord' },
+  { url: '/archives-cuisine/2019-08-21 15.11.12.jpg', caption: 'Création du Chef Dominique Hybord' },
+];
+
 const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
   'property-management': {
     id: 'property-management',
@@ -62,7 +81,7 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
     heroImage: '/property-management-charm.jpg',
     heroImageAlt: 'Domaine de charme avec piscine et jardin méditerranéen',
     heroDescription:
-      'Posséder une villa de prestige sur la Costa del Sol doit demeurer un privilège sans contrainte. Solveig’s Prestige Services prend en charge l’intendance complète, la surveillance attentive et la coordination des prestataires de votre bien. À chaque visite, un compte-rendu clair et détaillé avec photos HD vous est adressé directement sur WhatsApp ou par email.',
+      'Posséder une villa sur la Costa del Sol doit demeurer un plaisir sans contrainte. Solveig’s Prestige Services prend en charge l’intendance complète, la surveillance attentive et la coordination des prestataires de votre bien. À chaque visite, un compte-rendu clair et détaillé avec photos HD vous est adressé directement sur WhatsApp ou par email.',
     whatsappMessage:
       'Bonjour Solveig, je souhaite échanger à propos de l’intendance et de la gestion de ma villa sur la Costa del Sol.',
     stats: [
@@ -74,13 +93,13 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
     pillars: [
       {
         title: 'Surveillance Attentive & Visites Régulières',
-        desc: 'Inspections périodiques approfondies de l’ensemble de vos espaces intérieurs et extérieurs.',
+        desc: 'Visites périodiques approfondies de l’ensemble de vos espaces intérieurs et extérieurs.',
         icon: 'shield',
         details: [
-          'Contrôle complet des systèmes de climatisation, chauffage et ventilation',
-          'Vérification de la plomberie, suppression des odeurs de siphons et détection précoce de fuites',
-          'Contrôle attentif du taux de sel, du pH et de la limpidité de la piscine',
-          'Vérification des fermetures de sécurité, portails et caméras',
+          'Vérification du bon fonctionnement de la climatisation, du chauffage et de la ventilation',
+          'Vérification de la plomberie et détection précoce d’anomalies ou de fuites',
+          'Suivi de l’équilibre de l’eau et de la propreté de la piscine',
+          'Vérification des fermetures de sécurité, portails et accès',
         ],
       },
       {
@@ -88,32 +107,32 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
         desc: 'Supervision directe de chaque intervenant pour une exécution soignée au juste prix.',
         icon: 'clock',
         details: [
-          'Sélection auprès des meilleurs artisans locaux de confiance (jardinage, électricité, toiture)',
-          'Présence physique sur place lors des interventions et contrôle des travaux finis',
-          'Vérification attentive des devis et factures pour vous éviter toute surfacturation',
-          'Planification préventive des révisions annuelles (pompes à chaleur, portails, arrosage)',
+          'Sélection auprès des artisans locaux de confiance (jardinage, électricité, toiture)',
+          'Présence physique sur place lors des interventions et suivi des travaux',
+          'Vérification attentive des devis et factures pour éviter toute surfacturation',
+          'Planification préventive des entretiens annuels (climatisation, portails, arrosage)',
         ],
       },
       {
-        title: 'Protocole d’Arrivée VIP Propriétaire',
-        desc: 'Votre villa prête à vous accueillir dans un confort absolu à chaque séjour.',
+        title: 'Préparation de la Villa Avant Votre Arrivée',
+        desc: 'Votre maison prête à vous accueillir sereinement lors de chacun de vos séjours.',
         icon: 'star',
         details: [
-          'Mise en température des pièces 24h avant votre arrivée (chauffage ou climatisation)',
-          'Aération complète et préparation des espaces de vie',
-          'Remplissage de votre réfrigérateur selon votre liste de courses personnalisée',
-          'Fleurs fraîches coupées, lits faits avec soin et linge de maison impeccable',
+          'Mise en température des pièces avant votre arrivée (chauffage ou climatisation)',
+          'Aération complète et ouverture des espaces de vie',
+          'Coordination du ménage et de la mise en ordre avant votre venue',
+          'Demandes particulières organisées sur mesure selon vos souhaits',
         ],
       },
       {
-        title: 'Hivernage & Sécurisation Lors de Vos Départs',
-        desc: 'Une fermeture méticuleuse pour protéger durablement la valeur de votre patrimoine.',
+        title: 'Fermeture & Sécurisation Lors de Vos Départs',
+        desc: 'Une fermeture soignée pour protéger durablement votre propriété en votre absence.',
         icon: 'file',
         details: [
-          'Fermeture raisonnée des vannes principales d’eau pour éviter tout sinistre silencieux',
-          'Protection des mobiliers d’extérieur face au vent marin et aux intempéries',
-          'Gestion du courrier et réception des livraisons en votre absence',
-          'Visite de contrôle renforcée après chaque épisode météorologique majeur',
+          'Fermeture raisonnée des arrivées d’eau pour prévenir tout incident en votre absence',
+          'Mise à l’abri du mobilier d’extérieur face au vent marin et aux intempéries',
+          'Relevé du courrier et réception ponctuelle des livraisons en votre absence',
+          'Visite de vérification supplémentaire après chaque épisode météorologique majeur',
         ],
       },
     ],
@@ -125,8 +144,8 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
       },
       {
         step: '02',
-        title: 'Cahier des Charges Personnalisé',
-        desc: 'Nous adaptons la fréquence des visites (hebdomadaire ou bi-mensuelle) à votre rythme de séjour.',
+        title: 'Rythme de Suivi Personnalisé',
+        desc: 'Nous adaptons la fréquence des visites (hebdomadaire ou bi-mensuelle) à vos besoins.',
       },
       {
         step: '03',
@@ -135,95 +154,82 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
       },
       {
         step: '04',
-        title: 'Accueil & Préparation Sur-Mesure',
-        desc: 'À chacun de vos séjours, vous posez vos valises dans une maison prête à vivre.',
+        title: 'Préparation Avant Séjour',
+        desc: 'À chacun de vos séjours, vous retrouvez une maison ouverte, aérée et prête à vivre.',
       },
     ],
     inclusions: [
-      'Visites d’inspection régulières avec compte-rendu photographique HD',
-      'Accès direct WhatsApp 7j/7 avec Solveig',
-      'Gestion et contrôle des interventions d’artisans au prix réel',
-      'Visite de contrôle systématique après intempéries',
-      'Mise en température et aération pré-séjour',
-      'Courses d’arrivée personnalisées sur demande',
-      'Coordination du pisciniste et des jardiniers paysagistes',
-      'Gardiennage et surveillance discrète',
+      'Visites régulières avec compte-rendu photographique HD',
+      'Accès direct WhatsApp 7/7 avec Solveig',
+      'Coordination et suivi des interventions d’artisans au prix réel',
+      'Visite de vérification systématique après intempéries',
+      'Mise en température et aération avant votre arrivée',
+      'Coordination du pisciniste et des jardiniers',
+      'Surveillance discrète et relevé du courrier',
     ],
     faqs: [
       {
-        q: 'À quelle fréquence les visites d’inspection sont-elles effectuées ?',
-        a: 'En fonction de la formule choisie, nous intervenons chaque semaine ou toutes les deux semaines. En cas d’intempéries ou d’alerte météo sur la Costa del Sol, une visite de contrôle supplémentaire est effectuée automatiquement et sans frais.',
+        q: 'À quelle fréquence les visites sont-elles effectuées ?',
+        a: 'En fonction de vos besoins, nous intervenons chaque semaine ou toutes les deux semaines. En cas d’intempéries ou d’alerte météo sur la Costa del Sol, une visite de vérification supplémentaire est effectuée automatiquement.',
       },
       {
         q: 'Comment nous informez-vous de l’état de la propriété ?',
-        a: 'Après chaque visite, vous recevez un rapport synthétique clair accompagné de photos et courtes vidéos sur WhatsApp ou par email, détaillant chaque point inspecté (jardin, piscine, toiture, compteurs, climatisation).',
+        a: 'Après chaque visite, vous recevez un rapport clair accompagné de photos et courtes vidéos sur WhatsApp ou par email, détaillant chaque point vérifié (jardin, piscine, toiture, compteurs, climatisation).',
       },
       {
         q: 'Pouvez-vous superviser des travaux ou des rénovations ?',
-        a: 'Absolument. Nous travaillons avec des artisans et entrepreneurs de confiance à Marbella et Mijas. Nous supervisons le planning des travaux, assurons le suivi de chantier et vous transmettons des photos d’avancement.',
+        a: 'Absolument. Nous travaillons avec des artisans et entrepreneurs de confiance à Marbella et Mijas. Nous supervisons l’avancement sur place et vous transmettons des photos régulières.',
       },
     ],
   },
 
   'concierge-services': {
     id: 'concierge-services',
-    badge: 'Conciergerie privée et lifestyle 7/7 · Costa del Sol',
-    title: 'Concierge Services',
-    subtitle: 'Conciergerie privée et lifestyle 7/7',
-    tagline: '« Le vrai luxe est souvent invisible : quelqu’un a déjà pensé au détail avec discrétion. »',
+    badge: 'Conciergerie privée et Lifestyle 7/7 · Costa del Sol',
+    title: 'Conciergerie privée et Lifestyle 7/7',
+    subtitle: 'Marbella & Mijas · Costa del Sol',
+    tagline: '« Une présence locale discrète pour vivre pleinement chaque instant. »',
     heroImage: '/concierge-yacht-vip.jpg',
     heroImageAlt: 'Coucher de soleil en mer à bord d’un yacht privé',
     heroDescription:
-      "Une présence locale pour rendre les séjours plus fluides et les demandes plus simples avec discretion. Obtenir une table dans un restaurant de la costa del sol, réserver un golf, une échappée en mer ou disposer d'un chauffeur dès votre arrivée à l’aéroport. Solveig’s Prestige services anticipe chaque instant pour vous offrir une sérenité absolue.",
+      "Une présence locale pour rendre les séjours plus fluides et les demandes plus simples avec discrétion.\n\nObtenir une table dans un restaurant de la Costa del Sol, réserver un golf, une échappée en mer ou disposer d'un chauffeur dès votre arrivée à l'aéroport.\n\nSolveig’s Prestige Services anticipe chaque instant pour vous offrir une sérénité absolue.",
     whatsappMessage:
-      'Bonjour Solveig, je souhaite solliciter vos services de conciergerie privée pour mon séjour sur la Costa del Sol.',
-    stats: [
-      { value: '7j / 7', label: 'Disponibilité & conciergerie' },
-      { value: 'VIP', label: 'Tables, golfs & yacht charter' },
-      { value: '100 %', label: 'Discrétion et secret professionnel' },
-      { value: 'Direct', label: 'Ligne réservée avec Solveig' },
-    ],
+      'Bonjour Solveig, je souhaite solliciter vos services de conciergerie privée 7/7 pour mon séjour sur la Costa del Sol.',
   },
 
   'rental-management': {
     id: 'rental-management',
-    badge: 'Gestion Locative Haute Gamme · Rendement & Sérénité',
+    badge: 'Gestion Locative · Marbella & Mijas',
     title: 'Rental Management',
     subtitle: 'Une expérience de séjour pensée avant même l’arrivée',
-    tagline: '« Valoriser votre bien tout en préservant son intégrité, avec des hôtes choisis avec soin. »',
+    tagline: '« Valoriser votre bien tout en préservant son intégrité, selon l’organisation qui vous convient. »',
     heroImage: '/rental-management-charm.jpg',
     heroImageAlt: 'Terrasse de villa avec vue mer panoramique',
     heroDescription:
-      'Louer sa propriété d’exception sur la Costa del Sol doit s’accompagner d’une totale tranquillité d’esprit. Solveig’s Prestige Services vous propose deux formules modulables : soit la prise en charge exclusive sur place lorsque vous gérez vous-même vos réservations (accueil physique personnalisé, état des lieux, blanchisserie et ménage 5 étoiles), soit une gestion locative intégrale clé en main avec sélection attentive des voyageurs, contrats et conciergerie dédiée.',
+      'Chaque propriétaire a sa propre façon de louer son bien sur la Costa del Sol. Solveig’s Prestige Services vous propose deux organisations possibles : soit les réservations sont gérées directement par vous et nous assurons l’accueil et le suivi sur place, soit les réservations sont gérées intégralement par Solveig’s Prestige Services.',
     whatsappMessage:
-      'Bonjour Solveig, je souhaite optimiser la location saisonnière de ma villa à Marbella.',
+      'Bonjour Solveig, je souhaite échanger au sujet de la gestion locative de ma propriété sur la Costa del Sol.',
     stats: [
-      { value: '100 %', label: 'Voyageurs contrôlés et vérifiés' },
-      { value: 'VIP', label: 'Accueil physique en personne' },
-      { value: '2 Formules', label: 'Sur place ou clé en main' },
-      { value: '0', label: 'Contrainte pour le propriétaire' },
+      { value: '2 Options', label: 'Gestion par vous ou par nous' },
+      { value: 'En personne', label: 'Accueil physique des voyageurs' },
+      { value: '7/7', label: 'Présence locale à Marbella & Mijas' },
+      { value: 'Sur-mesure', label: 'Organisation adaptée à votre bien' },
     ],
     inclusions: [
-      'Choix entre Formule Sur-Place (accueil & intendance) ou Formule Clé en Main',
-      'Filtrage strict et sélection soignée des profils de familles et voyageurs',
-      'Accueil physique en personne (Check-in VIP) et départ (Check-out)',
-      'État des lieux d’entrée et de sortie minutieux avec reportage photo comparatif',
-      'Ménage 5 étoiles et blanchisserie de qualité hôtelière',
-      'Assistance conciergerie pour les hôtes en séjour 7j/7',
-      'Rapport financier mensuel clair et transparent',
+      'Choix libre entre réservations gérées par le propriétaire ou gérées par Solveig’s Prestige Services',
+      'Accueil personnalisé en personne à l’arrivée des voyageurs et remise des clés',
+      'État des lieux d’entrée et de sortie attentif avec reportage photo',
+      'Coordination de la remise en ordre et du ménage entre chaque séjour',
+      'Interlocutrice locale disponible 7/7 sur place pour les voyageurs',
     ],
     faqs: [
       {
-        q: 'Puis-je continuer à profiter de ma villa quand je le souhaite ?',
-        a: 'Tout à fait. Vous conservez la priorité absolue sur votre calendrier. Vous nous indiquez simplement vos dates de présence personnelle, et nous préparons votre venue sans aucune contrainte.',
+        q: 'Puis-je continuer à gérer moi-même mon calendrier et mes réservations ?',
+        a: 'Oui, tout à fait. Avec la première option, vous conservez la gestion directe de vos annonces et de vos réservations, et nous intervenons uniquement sur place pour accueillir vos hôtes, effectuer l’état des lieux et coordonner la préparation de la maison.',
       },
       {
-        q: 'Que se passe-t-il en cas de dégradation par un locataire ?',
-        a: 'Notre sélection stricte limite fortement ce risque. En cas d’incident, il est immédiatement consigné lors de l’état des lieux de sortie avec photos, les frais sont retenus sur la caution bancaire et la remise en état est coordonnée sans délai.',
-      },
-      {
-        q: 'Quels sont vos honoraires de gestion locative ?',
-        a: 'Nos honoraires dépendent de la formule choisie (forfait d’intendance d’accueil ou commission au pourcentage des loyers encaissés). Vous n’avez aucune commission fixe si votre villa n’est pas louée : nos intérêts sont 100% alignés avec les vôtres.',
+        q: 'Pouvez-vous également prendre en charge l’ensemble des réservations ?',
+        a: 'Oui. Avec la seconde option, Solveig’s Prestige Services s’occupe des réservations ainsi que de l’ensemble du suivi sur place, tout en vous laissant la liberté de réserver vos propres dates de séjour personnel.',
       },
     ],
   },
@@ -237,62 +243,23 @@ const servicesDatabaseFr: Record<ServiceId, ServiceContent> = {
     heroImage: '/chef-dominique-cepes.jpg',
     heroImageAlt: 'Le Chef Dominique Hybord portant une caisse de cèpes frais',
     heroDescription:
-      'Recevez vos proches sans quitter votre villa. Le Chef Dominique Hybord imagine avec vous un menu sur mesure, inspiré par la Méditerranée et les produits frais de saison, puis le prépare directement chez vous pour que vous profitiez pleinement de vos invités.',
+      'Recevez vos proches sans quitter votre villa. Le Chef Dominique Hybord imagine avec vous un menu sur mesure, inspiré par la Méditerranée et les produits frais de saison, selon vos goûts, votre budget et les possibilités de votre cuisine.',
     whatsappMessage:
-      'Bonjour Solveig, je souhaite organiser une expérience Chef à Domicile privée pour ma villa.',
+      'Bonjour Solveig, je souhaite organiser un repas privé avec le Chef Dominique Hybord dans notre villa.',
     stats: [
       { value: '30+', label: 'Ans d’expérience gastronomique' },
       { value: 'Michelin', label: 'Bib Gourmand Guide Michelin' },
       { value: '2 Toques', label: 'Distinction Gault & Millau' },
-      { value: '100 %', label: 'Cuisine remise en état impeccable' },
-    ],
-    processSteps: [
-      {
-        step: '17:00',
-        title: 'Arrivée Discrète & Mise en Place',
-        desc: 'Le chef arrive dans votre villa avec les produits frais du jour et prend possession des lieux en toute discrétion.',
-      },
-      {
-        step: '19:30',
-        title: 'Dressage de la Table & Premières Bouchées',
-        desc: 'Mise en place soignée de la table et premières bouchées apéritives servies à vos convives.',
-      },
-      {
-        step: '20:30',
-        title: 'Service à Table dans Votre Villa',
-        desc: 'Enchaînement harmonieux des plats, dressés minute sous vos yeux avec présentation passionnée du Chef.',
-      },
-      {
-        step: '23:00',
-        title: 'Cuisine Étincelante & Départ',
-        desc: 'La cuisine est entièrement nettoyée et briquée. Vous poursuivez votre soirée dans la sérénité la plus totale.',
-      },
+      { value: '6 à 15', label: 'Convives autour de votre table' },
     ],
     inclusions: [
-      'Conception d’un menu sur-mesure imaginé en direct avec le chef selon vos goûts',
-      'Sélection soignée des ingrédients nobles le matin même sur les marchés locaux',
-      'Préparation, cuissons minute et dressage raffiné dans votre cuisine',
-      'Service à table attentionné assuré par le chef et une personne dédiée au service',
-      'Nettoyage et remise en état intégrale de la cuisine en fin de prestation',
+      'De 6 à 15 personnes, avec le chef et une personne au service.',
+      'Menu imaginé directement avec vous selon vos envies, vos goûts et votre budget',
+      'Sélection des produits frais de saison sur les marchés locaux',
+      'Préparation sur place dans votre villa et dressage des assiettes au moment du repas',
+      'Remise en ordre complète de la cuisine à la fin du repas',
     ],
-    galleryImages: [
-      { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Dressage gastronomique du Chef Dominique Hybord' },
-      { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Création du Chef aux saveurs marines' },
-      { url: '/archives-cuisine/2018-07-05 09.50.45.jpg', caption: 'Le plaisir des produits de saison' },
-      { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Assiette d’auteur dressée minute' },
-      { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Cuisine méditerranéenne en villa' },
-      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Le soin du détail et l’élégance du dressage' },
-    ],
-    faqs: [
-      {
-        q: 'Ma cuisine de villa est-elle adaptée pour une prestation de chef ?',
-        a: 'Oui, tout à fait. Le Chef Dominique Hybord apporte son propre matériel professionnel (couteaux d’orfèvre, casseroles adaptées, mandolines). Une plaque de cuisson, un four et un réfrigérateur standard suffisent amplement.',
-      },
-      {
-        q: 'Jusqu’à combien de convives le chef peut-il régaler ?',
-        a: 'Le Chef intervient pour des tables de 6 à 15 personnes, accompagné d’une personne dédiée au service à table.',
-      },
-    ],
+    galleryImages: chefInspirationalGallery,
   },
 };
 
@@ -302,306 +269,254 @@ const servicesDatabaseEn: Record<ServiceId, ServiceContent> = {
     badge: 'Private Estate Care · Marbella & Mijas',
     title: 'Property Management',
     subtitle: 'Your home, in trustworthy hands even when you are away',
-    tagline: '“Peace of mind begins with knowing someone is truly caring for your estate.”',
+    tagline: '“Peace of mind begins with knowing someone is truly caring for your property.”',
     heroImage: '/property-management-charm.jpg',
     heroImageAlt: 'Luxury villa estate with private pool and garden',
     heroDescription:
-      'Owning an exceptional villa on the Costa del Sol must remain an effortless pleasure. Solveig’s Prestige Services provides comprehensive estate care, watchful surveillance, and contractor coordination. After each inspection, a crystal-clear report with HD photos is sent directly to your WhatsApp or email.',
+      'Owning a villa on the Costa del Sol should remain an effortless pleasure. Solveig’s Prestige Services provides attentive property care, regular visits, and contractor coordination. After each visit, a clear report with HD photos is sent directly to your WhatsApp or email.',
     whatsappMessage:
-      'Hello Solveig, I would like to discuss property management and estate care for my villa on the Costa del Sol.',
+      'Hello Solveig, I would like to discuss property management for my villa on the Costa del Sol.',
     stats: [
-      { value: '30+', label: 'Years of exacting standards' },
-      { value: '100%', label: 'Inspection reports with HD photos' },
-      { value: '7/7', label: 'Availability & vigilant presence' },
+      { value: '30+', label: 'Years of experience' },
+      { value: '100%', label: 'Visit reports with HD photos' },
+      { value: '7/7', label: 'Availability & local presence' },
       { value: '€0', label: 'Hidden contractor markups' },
     ],
     pillars: [
       {
-        title: 'Watchful Surveillance & Routine Inspections',
-        desc: 'Thorough, regular checks across all interior and exterior spaces.',
+        title: 'Watchful Care & Regular Visits',
+        desc: 'Periodic walkthroughs across all interior and exterior spaces of your property.',
         icon: 'shield',
         details: [
-          'Full check of air conditioning, heating, and ventilation systems',
-          'Plumbing inspection, drain trap maintenance, and early leak detection',
-          'Pool salt level, pH balance, and water clarity monitoring',
-          'Perimeter security, gates, alarms, and camera verification',
+          'Checking air conditioning, heating, and ventilation systems',
+          'Plumbing checks and early detection of any leaks or anomalies',
+          'Monitoring pool water balance and cleanliness',
+          'Checking perimeter locks, gates, and access points',
         ],
       },
       {
-        title: 'Contractor & Vendor Coordination',
-        desc: 'Direct on-site supervision of trusted artisans at fair, verified rates.',
+        title: 'Contractor & Craftsman Coordination',
+        desc: 'Direct on-site supervision of trusted local professionals at fair, verified rates.',
         icon: 'clock',
         details: [
-          'Curated local craftsmen (landscaping, electrical, roofing, plumbing)',
-          'Physical presence during interventions and quality verification',
-          'Strict invoice and quote review to prevent any overcharging',
-          'Preventive scheduling of annual equipment maintenance',
+          'Trusted local craftsmen (gardening, electrical, roofing, plumbing)',
+          'Physical presence on-site during works and interventions',
+          'Careful review of quotes and invoices to avoid overcharging',
+          'Scheduling of annual maintenance checks',
         ],
       },
       {
-        title: 'VIP Owner Arrival Protocol',
-        desc: 'Your villa perfectly prepped for seamless, immediate comfort upon arrival.',
+        title: 'Preparing Your Villa Before Arrival',
+        desc: 'Your house ready to welcome you smoothly for every personal stay.',
         icon: 'star',
         details: [
-          'Climate control pre-set 24h prior to arrival (cooling or heating)',
-          'Complete airing out and preparation of living spaces',
-          'Refrigerator stocking according to your custom grocery list',
-          'Fresh cut flowers, turned-down beds, and crisp hotel-grade linens',
+          'Room temperature set prior to arrival (cooling or heating)',
+          'Complete airing out and opening of living spaces',
+          'Coordination of housekeeping prior to your arrival',
+          'Bespoke preparations arranged individually upon request',
         ],
       },
       {
-        title: 'Departure Winterization & Estate Protection',
-        desc: 'Meticulous shutdown procedures to safeguard long-term estate value.',
+        title: 'Securing the Property Upon Departure',
+        desc: 'Careful closing procedures to protect your home during your absence.',
         icon: 'file',
         details: [
-          'Main water shutoff to prevent silent catastrophic water damage',
-          'Outdoor furniture storm-proofing against coastal winds',
-          'Mail collection and secure package receiving during your absence',
-          'Emergency post-storm inspection after severe weather events',
+          'Main water shutoff to prevent leaks while the house is unoccupied',
+          'Securing outdoor furniture against coastal winds and weather',
+          'Mail collection and package reception during your absence',
+          'Additional check visit following major weather events',
         ],
       },
     ],
     processSteps: [
       {
         step: '01',
-        title: 'Initial Estate Walkthrough',
-        desc: 'We explore your property, understand your exact standards, and build a tailored checklist.',
+        title: 'Initial Property Walkthrough',
+        desc: 'We visit your property, listen to your expectations, and define a tailored follow-up plan.',
       },
       {
         step: '02',
-        title: 'Custom Care Schedule',
-        desc: 'We adapt visit frequencies (weekly or bi-weekly) to your residence calendar.',
+        title: 'Tailored Visit Schedule',
+        desc: 'We adapt visit frequencies (weekly or bi-weekly) to your needs.',
       },
       {
         step: '03',
-        title: 'Active Estate Care & HD Reports',
+        title: 'Regular Care & HD Reports',
         desc: 'After every visit, you receive a concise HD photo summary directly via WhatsApp.',
       },
       {
         step: '04',
-        title: 'Turnkey Arrival Readiness',
-        desc: 'Whenever you return, you step straight into a pristine, welcoming home.',
+        title: 'Pre-Stay Preparation',
+        desc: 'Whenever you return, you step into a freshly aired, welcoming home.',
       },
     ],
     inclusions: [
-      'Routine inspection visits with photographic HD reports',
-      'Direct WhatsApp 7/7 access with Solveig',
-      'Artisan and contractor oversight at genuine cost',
-      'Automatic post-storm emergency inspections',
-      'Pre-arrival ventilation and climate setting',
-      'Custom pre-arrival grocery stocking on demand',
-      'Coordination of pool maintenance and landscape gardeners',
-      'Discreet property custody and care',
+      'Regular visits with photographic HD reports',
+      'Direct WhatsApp 7/7 contact with Solveig',
+      'Artisan and contractor coordination at genuine cost',
+      'Post-storm property checks',
+      'Pre-arrival airing and temperature setting',
+      'Coordination of pool and garden professionals',
+      'Discreet property care and mail collection',
     ],
     faqs: [
       {
-        q: 'How frequently are inspection visits conducted?',
-        a: 'Depending on your selected plan, we inspect your estate weekly or bi-weekly. Following heavy storms or regional weather alerts on the Costa del Sol, a special inspection is performed promptly at no additional fee.',
+        q: 'How frequently are visits conducted?',
+        a: 'Depending on your needs, we visit your property weekly or bi-weekly. Following heavy storms or weather alerts on the Costa del Sol, an additional check is performed promptly.',
       },
       {
-        q: 'How do you keep us updated on the estate condition?',
-        a: 'After every walkthrough, you receive a structured report with photos and brief videos on WhatsApp or email, detailing inspected areas (pool, grounds, roof, meters, HVAC).',
+        q: 'How do you keep us updated on the property condition?',
+        a: 'After every visit, you receive a clear report with photos and brief videos on WhatsApp or email covering all checked areas (pool, garden, roof, meters, air conditioning).',
       },
       {
         q: 'Can you supervise renovation or maintenance works?',
-        a: 'Yes. We collaborate with vetted, trusted craftsmen across Marbella and Mijas. We coordinate timelines, monitor progress on-site, and share regular photo updates.',
+        a: 'Yes. We collaborate with trusted craftsmen across Marbella and Mijas, monitor progress on-site, and share regular photo updates.',
       },
     ],
   },
 
   'concierge-services': {
     id: 'concierge-services',
-    badge: 'Private Concierge & Lifestyle 7/7 · Costa del Sol',
-    title: 'Concierge Services',
-    subtitle: 'Private concierge & lifestyle 7/7',
-    tagline: '“True luxury is often invisible: someone has already considered every detail with discretion.”',
+    badge: 'Private Concierge and Lifestyle 7/7 · Costa del Sol',
+    title: 'Private Concierge and Lifestyle 7/7',
+    subtitle: 'Marbella & Mijas · Costa del Sol',
+    tagline: '“A discreet local presence so you can enjoy every moment with complete peace of mind.”',
     heroImage: '/concierge-yacht-vip.jpg',
     heroImageAlt: 'Sunset cruise aboard a private yacht',
     heroDescription:
-      'A discreet local presence to make your stays seamless and requests effortless. Securing a coveted restaurant reservation on the Costa del Sol, booking private golf tee times, arranging a coastal yacht charter, or providing private chauffeur transfers from the airport. Solveig’s Prestige Services anticipates every moment for absolute peace of mind.',
+      'A local presence to make stays smoother and requests simpler with discretion.\n\nSecuring a table at a restaurant on the Costa del Sol, booking a golf course, a sea excursion, or having a chauffeur waiting upon your arrival at the airport.\n\nSolveig’s Prestige Services anticipates every moment to offer you absolute peace of mind.',
     whatsappMessage:
-      'Hello Solveig, I would like to request private concierge services for my upcoming stay on the Costa del Sol.',
-    stats: [
-      { value: '7/7', label: 'Availability & concierge' },
-      { value: 'VIP', label: 'Dining, golf & yacht charters' },
-      { value: '100%', label: 'Discretion & confidentiality' },
-      { value: 'Direct', label: 'Dedicated line with Solveig' },
-    ],
+      'Hello Solveig, I would like to inquire about your 7/7 private concierge services on the Costa del Sol.',
   },
 
   'rental-management': {
     id: 'rental-management',
-    badge: 'High-End Vacation Rental Management · Revenue & Peace of Mind',
+    badge: 'Rental Management · Marbella & Mijas',
     title: 'Rental Management',
-    subtitle: 'A bespoke guest stay crafted well before arrival',
-    tagline: '“Maximizing your estate yield while safeguarding its integrity with carefully vetted guests.”',
+    subtitle: 'A stay experience thoughtfully prepared before arrival',
+    tagline: '“Valuing your property while preserving its integrity, according to the arrangement that suits you best.”',
     heroImage: '/rental-management-charm.jpg',
     heroImageAlt: 'Panoramic sea-view villa terrace',
     heroDescription:
-      'Renting out your prestige property on the Costa del Sol should always come with complete peace of mind. Solveig’s Prestige Services offers two flexible options: either dedicated on-site support when you handle your own bookings (VIP in-person meet & greet, inventory, 5-star cleaning and laundry), or end-to-end turnkey rental management with guest screening, contracts, and 7/7 guest concierge.',
+      'Every property owner has their own preferred way of managing seasonal rentals on the Costa del Sol. Solveig’s Prestige Services offers two clear arrangements: either reservations are managed directly by you while we handle on-site guest reception and follow-up, or reservations are managed directly by Solveig’s Prestige Services.',
     whatsappMessage:
-      'Hello Solveig, I would like to optimize seasonal rentals for my villa in Marbella.',
+      'Hello Solveig, I would like to discuss rental management for my property on the Costa del Sol.',
     stats: [
-      { value: '100%', label: 'Vetted and verified guests' },
-      { value: 'VIP', label: 'In-person meet & greet' },
-      { value: '2 Plans', label: 'On-site care or turnkey' },
-      { value: '0', label: 'Hassle for the owner' },
+      { value: '2 Options', label: 'Managed by you or by us' },
+      { value: 'In Person', label: 'Personal guest welcome' },
+      { value: '7/7', label: 'Local presence in Marbella & Mijas' },
+      { value: 'Tailored', label: 'Adapted to your property' },
     ],
     inclusions: [
-      'Choice between On-Site Support Plan or Full Turnkey Management',
-      'Strict guest screening and verification of visiting families',
-      'Warm in-person VIP check-in and structured check-out walkthrough',
-      'Detailed entry and exit inventories with comparative photo records',
-      '5-star deep cleaning and luxury hotel-grade linen care',
-      'Dedicated 7/7 guest assistance throughout their stay',
-      'Clear, transparent monthly financial reporting',
+      'Choice between reservations managed by the owner or managed by Solveig’s Prestige Services',
+      'Personal in-person guest welcome and key handover upon arrival',
+      'Thorough check-in and check-out walkthroughs with photo reports',
+      'Coordination of cleaning and property preparation between stays',
+      'Dedicated 7/7 local point of contact for guests during their stay',
     ],
     faqs: [
       {
-        q: 'Can I still enjoy my villa whenever I wish?',
-        a: 'Absolutely. You retain total priority over your calendar. Simply notify us of your planned dates, and we prepare the property exclusively for your personal stay.',
+        q: 'Can I continue to manage my own calendar and reservations?',
+        a: 'Yes, absolutely. With Option 1, you manage your own bookings and calendar directly, while we handle the on-site guest welcome, walkthroughs, and preparation of the property.',
       },
       {
-        q: 'What happens in the event of guest damage?',
-        a: 'Our strict screening significantly minimizes risks. If an incident occurs, it is recorded immediately during the exit inspection with photo evidence, costs are deducted from the security deposit, and repairs are coordinated right away.',
-      },
-      {
-        q: 'How are your management fees structured?',
-        a: 'Fees depend on your chosen model (flat on-site hospitality fee or percentage commission on collected rental income). If your villa is not rented, there is no fixed commission: our interests remain 100% aligned with yours.',
+        q: 'Can Solveig’s Prestige Services also manage the reservations?',
+        a: 'Yes. With Option 2, Solveig’s Prestige Services handles the reservations as well as the complete on-site follow-up, while you retain full freedom to reserve your personal stay dates.',
       },
     ],
   },
 
   'chef-a-domicile': {
     id: 'chef-a-domicile',
-    badge: 'Private In-Villa Chef · Dominique Hybord',
-    title: 'Private Chef in Villa',
-    subtitle: 'The mastery of an acclaimed chef in the privacy of your home',
-    tagline: '“30 years of culinary passion, honest terroir cuisine, and the joy of hosting at home.”',
+    badge: 'Private Chef in Villa · Dominique Hybord',
+    title: 'Private Chef',
+    subtitle: 'The craftsmanship of an experienced chef in the privacy of your villa',
+    tagline: '“30 years of experience, genuine cuisine, and the pleasure of hosting at home.”',
     heroImage: '/chef-dominique-cepes.jpg',
-    heroImageAlt: 'Chef Dominique Hybord carrying a crate of fresh wild mushrooms',
+    heroImageAlt: 'Chef Dominique Hybord carrying a crate of fresh porcini mushrooms',
     heroDescription:
-      'Host your loved ones without ever leaving your villa. Chef Dominique Hybord crafts a bespoke menu inspired by Mediterranean seafood and seasonal morning market produce, preparing every course directly in your kitchen so you can fully enjoy your guests.',
+      'Host your loved ones without leaving your villa. Chef Dominique Hybord designs a bespoke menu with you, inspired by the Mediterranean and seasonal produce, adapted to your tastes, your budget, and the practical possibilities of your villa’s kitchen.',
     whatsappMessage:
-      'Hello Solveig, I would like to book a private in-villa chef experience with Chef Dominique Hybord.',
+      'Hello Solveig, I would like to arrange a private meal with Chef Dominique Hybord in our villa.',
     stats: [
-      { value: '30+', label: 'Years of culinary mastery' },
+      { value: '30+', label: 'Years of culinary experience' },
       { value: 'Michelin', label: 'Bib Gourmand Michelin Guide' },
       { value: '2 Toques', label: 'Gault & Millau Distinction' },
-      { value: '100%', label: 'Kitchen left spotless' },
-    ],
-    processSteps: [
-      {
-        step: '17:00',
-        title: 'Discreet Arrival & Prep',
-        desc: 'The Chef arrives at your villa with fresh market delicacies and quietly begins preparation.',
-      },
-      {
-        step: '19:30',
-        title: 'Table Styling & Amuse-Bouches',
-        desc: 'Refined table setting and initial gourmet appetizers served to your guests poolside or in the lounge.',
-      },
-      {
-        step: '20:30',
-        title: 'Artful Seated Dinner',
-        desc: 'Harmonious multi-course service, plated minute before your eyes with passionate dish introductions.',
-      },
-      {
-        step: '23:00',
-        title: 'Sparkling Clean Kitchen & Departure',
-        desc: 'Your kitchen is meticulously cleaned, polished, and restored. You enjoy the rest of your evening with zero hassle.',
-      },
+      { value: '6 to 15', label: 'Guests around your table' },
     ],
     inclusions: [
-      'Tailored menu consultation designed directly with the Chef to suit your palate',
-      'Daily morning selection of noble ingredients from premier local Andalusian markets',
-      'Live minute cooking, plating artistry, and dedicated tableside service',
-      'Attentive service by the Chef and dedicated hospitality staff',
-      'Complete kitchen cleanup, scrubbing, and spotless restoration after service',
+      'From 6 to 15 guests, with the chef and one service person.',
+      'Bespoke menu designed directly with you according to your tastes and budget',
+      'Selection of fresh seasonal produce from local markets',
+      'On-site preparation in your villa kitchen and plating at mealtime',
+      'Complete kitchen cleanup and restoration after the meal',
     ],
-    galleryImages: [
-      { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Signature gastronomic plating by Chef Dominique Hybord' },
-      { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Chef’s delicate seafood inspiration' },
-      { url: '/archives-cuisine/2018-07-05 09.50.45.jpg', caption: 'Seasonal market produce and noble meats' },
-      { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Minute artful dish composed tableside' },
-      { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Mediterranean summer dining in villa' },
-      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Exacting attention to textures and elegance' },
-    ],
-    faqs: [
-      {
-        q: 'Is my villa kitchen suitable for a private chef dinner?',
-        a: 'Yes, absolutely. Chef Dominique Hybord brings his own professional tools (knives, specialized cookware, mandolines). Standard induction/gas hobs, an oven, and refrigeration are all that is required.',
-      },
-      {
-        q: 'What is the guest capacity for private dinners?',
-        a: 'The Chef caters for intimate gatherings of 6 to 15 guests, accompanied by a dedicated butler for seamless table service.',
-      },
-    ],
+    galleryImages: chefInspirationalGallery,
   },
 };
 
 const servicesDatabaseEs: Record<ServiceId, ServiceContent> = {
   'property-management': {
     id: 'property-management',
-    badge: 'Mantenimiento y Gestión de Fincas · Marbella y Mijas',
+    badge: 'Gestión de Propiedad · Marbella y Mijas',
     title: 'Property Management',
-    subtitle: 'Su propiedad en las mejores manos, incluso cuando usted está lejos',
-    tagline: '«La tranquilidad comienza sabiendo que alguien cuida de verdad de su hogar.»',
+    subtitle: 'Su casa, en buenas manos incluso cuando está lejos',
+    tagline: '«La tranquilidad comienza sabiendo que alguien vela realmente por su propiedad.»',
     heroImage: '/property-management-charm.jpg',
-    heroImageAlt: 'Finca mediterránea de lujo con piscina y jardín',
+    heroImageAlt: 'Villa mediterránea con piscina y jardín',
     heroDescription:
-      'Tener una villa de prestigio en la Costa del Sol debe ser un privilegio sin preocupaciones. Solveig’s Prestige Services asume la intendencia integral, la vigilancia atenta y la coordinación de proveedores. Tras cada visita, le enviamos un informe detallado con fotografías en alta definición por WhatsApp o correo electrónico.',
+      'Poseer una villa en la Costa del Sol debe ser un placer sin preocupaciones. Solveig’s Prestige Services se encarga de la supervisión atenta, las visitas periódicas y la coordinación de profesionales. Tras cada visita, recibirá un informe claro con fotografías en alta definición por WhatsApp o correo electrónico.',
     whatsappMessage:
-      'Hola Solveig, deseo información sobre la intendencia y gestión de mi villa en la Costa del Sol.',
+      'Hola Solveig, deseo hablar sobre la gestión y el cuidado de mi propiedad en la Costa del Sol.',
     stats: [
-      { value: '30+', label: 'Años de exigencia y experiencia' },
-      { value: '100 %', label: 'Informes con fotografías en HD' },
-      { value: '7d / 7', label: 'Disponibilidad y vigilancia activa' },
+      { value: '30+', label: 'Años de experiencia' },
+      { value: '100 %', label: 'Informes con fotografías HD' },
+      { value: '7/7', label: 'Disponibilidad y presencia local' },
       { value: '0 €', label: 'Sin sobrecostes en profesionales' },
     ],
     pillars: [
       {
-        title: 'Vigilancia Atenta e Inspecciones Periódicas',
-        desc: 'Revisiones minuciosas de todos los espacios interiores y exteriores de su villa.',
+        title: 'Supervisión Atenta y Visitas Periódicas',
+        desc: 'Revisiones periódicas de todos los espacios interiores y exteriores de su propiedad.',
         icon: 'shield',
         details: [
-          'Control exhaustivo de climatización, calefacción y ventilación',
-          'Comprobación de fontanería, sifones y detección temprana de fugas',
-          'Control de salinidad, pH y transparencia del agua de la piscina',
-          'Revisión de cierres perimetrales, portones, alarmas y cámaras',
+          'Comprobación del buen funcionamiento de la climatización, calefacción y ventilación',
+          'Revisión de fontanería y detección temprana de fugas o anomalías',
+          'Seguimiento del estado del agua y limpieza de la piscina',
+          'Verificación de cierres de seguridad, portones y accesos',
         ],
       },
       {
-        title: 'Coordinación Cuidadosa de Profesionales',
-        desc: 'Supervisión presencial de cada técnico para un trabajo impecable al precio justo.',
+        title: 'Coordinación de Profesionales de Confianza',
+        desc: 'Supervisión presencial de cada profesional para un trabajo cuidado al precio justo.',
         icon: 'clock',
         details: [
-          'Selección de los mejores artesanos locales (jardinería, electricidad, tejados)',
-          'Presencia física en la finca durante las obras e intervenciones',
-          'Revisión minuciosa de presupuestos y facturas para evitar sobrecostes',
-          'Programación preventiva de revisiones anuales de maquinaria',
+          'Selección de artesanos locales de confianza (jardinería, electricidad, tejados)',
+          'Presencia en la propiedad durante las intervenciones y seguimiento de obras',
+          'Revisión atenta de presupuestos y facturas para evitar sobrecostes',
+          'Planificación preventiva del mantenimiento anual',
         ],
       },
       {
-        title: 'Protocolo de Llegada VIP para Propietarios',
-        desc: 'Su villa lista para recibirle en el máximo confort desde el primer instante.',
+        title: 'Preparación de la Villa Antes de su Llegada',
+        desc: 'Su casa lista para recibirle con total comodidad en cada estancia.',
         icon: 'star',
         details: [
-          'Climatización programada 24h antes de su llegada (frío o calor)',
-          'Ventilación completa y acondicionamiento de las estancias',
-          'Nevera surtida según su lista de la compra personalizada',
-          'Flores frescas cortadas, camas preparadas y ropa de cama impecable',
+          'Puesta en temperatura de las estancias antes de su llegada (frío o calor)',
+          'Ventilación completa y apertura de los espacios de vida',
+          'Coordinación de la limpieza y puesta a punto antes de su llegada',
+          'Solicitudes particulares organizadas a medida según sus deseos',
         ],
       },
       {
-        title: 'Invernaje y Protección en sus Salidas',
-        desc: 'Un cierre meticuloso para preservar el valor de su patrimonio a largo plazo.',
+        title: 'Cierre y Protección en sus Salidas',
+        desc: 'Un cierre cuidadoso para proteger su propiedad durante su ausencia.',
         icon: 'file',
         details: [
-          'Cierre preventivo de llaves de paso para evitar fugas silenciosas',
-          'Protección del mobiliario exterior frente a la brisa marina y tormentas',
-          'Recogida de correspondencia y recepción segura de paquetes en su ausencia',
-          'Inspección de urgencia tras episodios meteorológicos intensos',
+          'Cierre preventivo de llaves de agua para evitar incidencias en su ausencia',
+          'Protección del mobiliario exterior frente al viento marino y las lluvias',
+          'Recogida de correo y recepción puntual de entregas en su ausencia',
+          'Visita de verificación adicional tras episodios meteorológicos importantes',
         ],
       },
     ],
@@ -609,109 +524,96 @@ const servicesDatabaseEs: Record<ServiceId, ServiceContent> = {
       {
         step: '01',
         title: 'Visita Inicial y Toma de Contacto',
-        desc: 'Conocemos su propiedad y sus expectativas para diseñar un protocolo a medida.',
+        desc: 'Conocemos su propiedad y sus expectativas para establecer un seguimiento a medida.',
       },
       {
         step: '02',
-        title: 'Pliego de Condiciones Personalizado',
-        desc: 'Ajustamos la frecuencia de visitas (semanal o quincenal) a su calendario de estancia.',
+        title: 'Frecuencia de Visitas Personalizada',
+        desc: 'Adaptamos la frecuencia de las visitas (semanal o quincenal) a sus necesidades.',
       },
       {
         step: '03',
-        title: 'Supervisión Activa e Informes HD',
-        desc: 'Tras cada inspección, recibe un informe claro con fotos HD directo en WhatsApp.',
+        title: 'Seguimiento Activo e Informes HD',
+        desc: 'Tras cada visita, recibe un informe claro con fotos HD directamente en su WhatsApp.',
       },
       {
         step: '04',
-        title: 'Bienvenida Llave en Mano',
-        desc: 'En cada llegada a Marbella, encuentra su hogar cálido, perfecto y listo para disfrutar.',
+        title: 'Preparación Antes de cada Estancia',
+        desc: 'En cada visita a la Costa del Sol, encuentra su casa aireada y lista para disfrutar.',
       },
     ],
     inclusions: [
-      'Inspecciones periódicas con informe fotográfico HD',
-      'Contacto directo por WhatsApp 7d/7 con Solveig',
-      'Gestión y control de artesanos a precio de coste real',
-      'Visita de control sistemática tras temporales meteorológicos',
-      'Climatización y ventilación previa a cada estancia',
-      'Compra de víveres a su llegada bajo petición',
-      'Coordinación de mantenimiento de piscina y paisajismo',
-      'Custodia discreta y seguridad de su patrimonio',
+      'Visitas periódicas con informe fotográfico HD',
+      'Contacto directo por WhatsApp 7/7 con Solveig',
+      'Coordinación y seguimiento de profesionales a precio real',
+      'Visita de verificación sistemática tras temporales meteorológicos',
+      'Climatización y ventilación previa a su llegada',
+      'Coordinación del mantenimiento de piscina y jardín',
+      'Vigilancia discreta y recogida de correspondencia',
     ],
     faqs: [
       {
-        q: '¿Con qué frecuencia se realizan las inspecciones?',
-        a: 'Según la modalidad elegida, acudimos semanal o quincenalmente. Tras alertas meteorológicas o tormentas en la Costa del Sol, realizamos una visita de control adicional de inmediato y sin coste.',
+        q: '¿Con qué frecuencia se realizan las visitas?',
+        a: 'Según sus necesidades, acudimos cada semana o cada dos semanas. En caso de tormenta o alerta meteorológica en la Costa del Sol, realizamos una visita de verificación adicional.',
       },
       {
-        q: '¿Cómo nos informan del estado de la finca?',
-        a: 'Tras cada visita, recibe un informe sintético con fotos y vídeos breves por WhatsApp o email, detallando cada punto inspeccionado (jardín, piscina, tejado, climatización).',
+        q: '¿Cómo nos informan del estado de la propiedad?',
+        a: 'Tras cada visita, recibe un informe claro con fotos y vídeos breves por WhatsApp o email, detallando cada punto revisado (jardín, piscina, tejado, contadores, climatización).',
       },
       {
-        q: '¿Pueden supervisar reformas o reparaciones mayores?',
-        a: 'Por supuesto. Colaboramos con profesionales contrastados en Marbella y Mijas. Supervisamos el calendario, controlamos la ejecución y le enviamos fotos de progreso.',
+        q: '¿Pueden supervisar obras o reformas?',
+        a: 'Por supuesto. Colaboramos con profesionales de confianza en Marbella y Mijas, supervisamos el avance en el lugar y le enviamos fotografías periódicas.',
       },
     ],
   },
 
   'concierge-services': {
     id: 'concierge-services',
-    badge: 'Conserjería privada y estilo de vida 7/7 · Costa del Sol',
-    title: 'Concierge Services',
-    subtitle: 'Conserjería privada y estilo de vida 7/7',
-    tagline: '«El auténtico lujo suele ser invisible: alguien ya pensó en el detalle con absoluta discreción.»',
+    badge: 'Conserjería privada y Lifestyle 7/7 · Costa del Sol',
+    title: 'Conserjería privada y Lifestyle 7/7',
+    subtitle: 'Marbella y Mijas · Costa del Sol',
+    tagline: '«Una presencia local discreta para disfrutar plenamente de cada instante.»',
     heroImage: '/concierge-yacht-vip.jpg',
     heroImageAlt: 'Atardecer en el mar a bordo de un yate privado',
     heroDescription:
-      'Una presencia local para que sus estancias sean más fluidas y cada deseo más sencillo con discreción. Reservar mesa en los mejores restaurantes de la Costa del Sol, acceder a campos de golf exclusivos, organizar una jornada en barco o disponer de chófer privado desde el aeropuerto. Solveig’s Prestige Services se anticipa a cada momento para brindarle una serenidad absoluta.',
+      'Una presencia local para hacer que las estancias sean más fluidas y las solicitudes más sencillas con discreción.\n\nConseguir una mesa en un restaurante de la Costa del Sol, reservar un campo de golf, una escapada al mar o disponer de un chófer desde su llegada al aeropuerto.\n\nSolveig’s Prestige Services anticipa cada instante para ofrecerle una serenidad absoluta.',
     whatsappMessage:
-      'Hola Solveig, deseo solicitar sus servicios de conserjería privada para mi estancia en la Costa del Sol.',
-    stats: [
-      { value: '7d / 7', label: 'Disponibilidad y conserjería' },
-      { value: 'VIP', label: 'Mesas, golf y chárter de yates' },
-      { value: '100 %', label: 'Discreción y secreto profesional' },
-      { value: 'Directo', label: 'Línea exclusiva con Solveig' },
-    ],
+      'Hola Solveig, deseo solicitar sus servicios de conserjería privada 7/7 para mi estancia en la Costa del Sol.',
   },
 
   'rental-management': {
     id: 'rental-management',
-    badge: 'Gestión de Alquiler Vacacional de Lujo · Rendimiento y Serenidad',
+    badge: 'Gestión de Alquiler · Marbella y Mijas',
     title: 'Rental Management',
-    subtitle: 'Una experiencia de estancia cuidada antes incluso de la llegada',
-    tagline: '«Revalorizar su propiedad preservando su integridad con huéspedes seleccionados minuciosamente.»',
+    subtitle: 'Una experiencia de estancia pensada antes incluso de la llegada',
+    tagline: '«Valorizar su propiedad preservando su integridad, según la modalidad que mejor le convenga.»',
     heroImage: '/rental-management-charm.jpg',
     heroImageAlt: 'Terraza de villa con vistas panorámicas al mar',
     heroDescription:
-      'Alquilar su villa de excepción en la Costa del Sol debe ir acompañado de total tranquilidad. Solveig’s Prestige Services le ofrece dos modalidades flexibles: bien la atención presencial integral cuando gestiona usted mismo sus reservas (bienvenida VIP en persona, inventario minucioso, limpieza 5 estrellas y lencería), o bien una gestión vacacional llave en mano con selección rigurosa de viajeros, contratos y conserjería.',
+      'Cada propietario tiene su propia manera de gestionar el alquiler de su vivienda en la Costa del Sol. Solveig’s Prestige Services le ofrece dos opciones claras: bien las reservas son gestionadas directamente por usted y nosotros nos ocupamos de la recepción y el seguimiento en el lugar, o bien las reservas son gestionadas directamente por Solveig’s Prestige Services.',
     whatsappMessage:
-      'Hola Solveig, deseo optimizar el alquiler vacacional de mi villa en Marbella.',
+      'Hola Solveig, deseo hablar sobre la gestión de alquiler de mi propiedad en la Costa del Sol.',
     stats: [
-      { value: '100 %', label: 'Huéspedes filtrados y verificados' },
-      { value: 'VIP', label: 'Bienvenida presencial en persona' },
-      { value: '2 Planes', label: 'Asistencia in situ o llave en mano' },
-      { value: '0', label: 'Preocupaciones para el propietario' },
+      { value: '2 Opciones', label: 'Gestionado por usted o por nosotros' },
+      { value: 'En persona', label: 'Bienvenida presencial de huéspedes' },
+      { value: '7/7', label: 'Presencia local en Marbella y Mijas' },
+      { value: 'A medida', label: 'Adaptado a su propiedad' },
     ],
     inclusions: [
-      'Elección entre Fórmula In Situ o Gestión Integral Llave en Mano',
-      'Filtrado riguroso y selección de perfiles de familias y huéspedes',
-      'Recepción presencial (Check-in VIP) y despedida (Check-out)',
-      'Inventario minucioso de entrada y salida con reportaje fotográfico comparativo',
-      'Limpieza 5 estrellas y lavandería de calidad hotelera',
-      'Asistencia de conserjería 7d/7 para los huéspedes durante la estancia',
-      'Informe financiero mensual claro, transparente y puntual',
+      'Elección entre reservas gestionadas por el propietario o gestionadas por Solveig’s Prestige Services',
+      'Recepción personalizada en persona a la llegada de los viajeros y entrega de llaves',
+      'Revisión de entrada y salida con reportaje fotográfico',
+      'Coordinación de la limpieza y preparación de la vivienda entre estancias',
+      'Interlocutora local disponible 7/7 para los viajeros durante su estancia',
     ],
     faqs: [
       {
-        q: '¿Puedo seguir disfrutando de mi villa cuando lo desee?',
-        a: 'Absolutamente. Mantiene la prioridad total sobre su calendario. Nos indica sus fechas personales y preparamos la casa para su disfrute exclusivo.',
+        q: '¿Puedo seguir gestionando directamente mi calendario y mis reservas?',
+        a: 'Sí, por supuesto. Con la primera opción, usted gestiona directamente sus anuncios y reservas, y nosotros intervenimos en el lugar para recibir a sus huéspedes, realizar la revisión de entrada y salida y coordinar la preparación de la casa.',
       },
       {
-        q: '¿Qué ocurre en caso de desperfectos causados por huéspedes?',
-        a: 'Nuestra selección estricta minimiza este riesgo. Si surge una incidencia, se documenta fotográficamente en el check-out, se descuenta de la fianza y se repara sin demora.',
-      },
-      {
-        q: '¿Cuáles son sus honorarios de gestión de alquiler?',
-        a: 'Dependen de la fórmula elegida (tarifa fija de bienvenida e intendencia o comisión porcentual sobre alquileres). Si su villa no se alquila, no paga comisión: nuestros intereses van al 100% de la mano.',
+        q: '¿Puede Solveig’s Prestige Services encargarse también de las reservas?',
+        a: 'Sí. Con la segunda opción, Solveig’s Prestige Services gestiona las reservas así como todo el seguimiento presencial, manteniendo usted siempre la libertad de reservar sus fechas personales.',
       },
     ],
   },
@@ -720,72 +622,33 @@ const servicesDatabaseEs: Record<ServiceId, ServiceContent> = {
     id: 'chef-a-domicile',
     badge: 'Chef Privado en Villa · Dominique Hybord',
     title: 'Chef a Domicilio',
-    subtitle: 'El talento de un gran chef en la intimidad de su villa',
-    tagline: '«30 años de experiencia, cocina sincera y el placer de recibir en su propio hogar.»',
+    subtitle: 'La experiencia de un gran chef, en la intimidad de su villa',
+    tagline: '«30 años de experiencia, una cocina sincera y el placer de recibir en casa.»',
     heroImage: '/chef-dominique-cepes.jpg',
-    heroImageAlt: 'El Chef Dominique Hybord con una caja de setas frescas silvestres',
+    heroImageAlt: 'El Chef Dominique Hybord con una caja de boletus frescos',
     heroDescription:
-      'Reciba a los suyos sin salir de su villa. El Chef Dominique Hybord diseña con usted un menú a medida, inspirado en el Mediterráneo y los productos frescos del mercado, cocinando en directo en su propia cocina para que disfrute plenamente de sus invitados.',
+      'Reciba a sus seres queridos sin salir de su villa. El Chef Dominique Hybord diseña con usted un menú a medida, inspirado en el Mediterráneo y en los productos frescos de temporada, adaptándose a sus gustos, a su presupuesto y a las posibilidades prácticas de la cocina de su propiedad.',
     whatsappMessage:
-      'Hola Solveig, deseo reservar una experiencia privada de Chef a Domicilio en mi villa.',
+      'Hola Solveig, deseo organizar una comida o cena privada con el Chef Dominique Hybord en nuestra villa.',
     stats: [
-      { value: '30+', label: 'Años de trayectoria gastronómica' },
+      { value: '30+', label: 'Años de experiencia gastronómica' },
       { value: 'Michelin', label: 'Bib Gourmand Guía Michelin' },
       { value: '2 Toques', label: 'Distinción Gault & Millau' },
-      { value: '100 %', label: 'Cocina entregada reluciente' },
-    ],
-    processSteps: [
-      {
-        step: '17:00',
-        title: 'Llegada Discreta y Preparación',
-        desc: 'El Chef llega a su villa con los productos frescos del mercado e inicia los preparativos con máxima discreción.',
-      },
-      {
-        step: '19:30',
-        title: 'Montaje de Mesa y Primeros Bocados',
-        desc: 'Montaje cuidado de mesa y primeros aperitivos gourmet servidos en la terraza o salón.',
-      },
-      {
-        step: '20:30',
-        title: 'Servicio en Mesa en su Villa',
-        desc: 'Pase armonioso de platos emplatados al minuto ante sus ojos, con presentación cercana del Chef.',
-      },
-      {
-        step: '23:00',
-        title: 'Cocina Reluciente y Despedida',
-        desc: 'La cocina queda impecablemente limpia y pulida. Usted continúa su velada con total serenidad.',
-      },
+      { value: '6 a 15', label: 'Comensales en su mesa' },
     ],
     inclusions: [
-      'Diseño de un menú a medida adaptado a sus gustos y preferencias',
-      'Selección de ingredientes nobles el mismo día en mercados locales andaluces',
-      'Cocinado en directo al minuto y emplatado de alta cocina',
-      'Servicio de mesa atento y discreto con personal dedicado',
-      'Limpieza completa y entrega de la cocina en estado impecable',
+      'De 6 a 15 personas, con el chef y una persona de servicio.',
+      'Menú diseñado directamente con usted según sus gustos, deseos y presupuesto',
+      'Selección de productos frescos de temporada en los mercados locales',
+      'Preparación en la cocina de su villa y emplatado en el momento de servir',
+      'Limpieza y puesta en orden completa de la cocina al finalizar',
     ],
-    galleryImages: [
-      { url: '/archives-cuisine/2022-10-05 12.42.03.jpg', caption: 'Emplatado gastronómico de autor por el Chef Dominique Hybord' },
-      { url: '/archives-cuisine/2023-09-12 13.09.35.jpg', caption: 'Inspiración marinera del Chef con pesca del día' },
-      { url: '/archives-cuisine/2018-07-05 09.50.45.jpg', caption: 'Productos nobles de temporada y carnes selectas' },
-      { url: '/archives-cuisine/2017-12-01 19.51.19.jpg', caption: 'Plato de autor emplatado al minuto en villa' },
-      { url: '/archives-cuisine/2016-07-21 21.02.39.jpg', caption: 'Cocina mediterránea veraniega en villa privada' },
-      { url: '/archives-cuisine/2024-01-23 16.31.12.jpg', caption: 'Atención al detalle y elegancia en cada plato' },
-    ],
-    faqs: [
-      {
-        q: '¿Es adecuada la cocina de mi villa para un servicio de chef privado?',
-        a: 'Sí, totalmente. El Chef Dominique Hybord aporta su propio instrumental profesional (cuchillería especializada, sartenes técnicas, mandolinas). Con placas estándar, horno y nevera es suficiente.',
-      },
-      {
-        q: '¿Para cuántos comensales puede cocinar el chef?',
-        a: 'El Chef cocina para grupos de 6 a 15 comensales, acompañado de un camarero dedicado al servicio de mesa.',
-      },
-    ],
+    galleryImages: chefInspirationalGallery,
   },
 };
 
 export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) => {
-  const { lang, t } = useLanguage();
+  const { lang } = useLanguage();
   const db = lang === 'en' ? servicesDatabaseEn : lang === 'es' ? servicesDatabaseEs : servicesDatabaseFr;
   const content = db[serviceId] || db['property-management'];
   const [openFaqIdx, setOpenFaqIdx] = useState<number | null>(0);
@@ -795,8 +658,15 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [serviceId]);
 
+  const whatsappButtonLabel =
+    lang === 'en'
+      ? 'Chat with Solveig on WhatsApp'
+      : lang === 'es'
+      ? 'Hablar con Solveig por WhatsApp'
+      : 'Échanger avec Solveig sur WhatsApp';
+
   return (
-    <div className="min-h-screen bg-travertine text-ink selection:bg-bronze/20">
+    <div className="min-h-screen bg-travertine text-ink selection:bg-bronze/20 flex flex-col">
       {/* Barre de navigation supérieure fixe */}
       <nav className="sticky top-0 z-50 border-b border-ink/5 bg-travertine/95 backdrop-blur-md py-3.5 px-4 sm:px-8">
         <div className="container-site flex items-center justify-between gap-4">
@@ -806,7 +676,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           >
             <ArrowLeft className="h-4 w-4 text-bronze" />
             <span className="hidden sm:inline">
-              {lang === 'en' ? 'Back to all services' : lang === 'es' ? 'Volver a todos los servicios' : 'Retour aux services'}
+              {lang === 'en' ? 'Back to all services' : lang === 'es' ? 'Volver a los servicios' : 'Retour aux services'}
             </span>
             <span className="sm:hidden">
               {lang === 'en' ? 'Services' : lang === 'es' ? 'Servicios' : 'Services'}
@@ -835,309 +705,223 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </nav>
 
-      {/* HERO SECTION DU SERVICE */}
-      <section className="relative overflow-hidden py-14 sm:py-20">
-        <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          {/* Colonne texte gauche */}
-          <div className="lg:col-span-7 space-y-6">
-            <span className="inline-flex items-center gap-2 rounded-full border border-bronze/30 bg-sand px-3.5 py-1 text-xs font-semibold text-bronze-deep">
-              <Sparkles className="h-3.5 w-3.5 text-bronze" />
-              {content.badge}
-            </span>
-
-            <h1 className="font-serif text-4xl font-medium leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
-              {content.title} <br />
-              <span className="italic text-bronze text-3xl sm:text-4xl lg:text-5xl">
-                {content.subtitle}
+      {/* ========================================================================= */}
+      {/* CAS SPÉCIFIQUE SECTION 5 : CONCIERGERIE PRIVÉE ET LIFESTYLE 7/7           */}
+      {/* S'arrête immédiatement après le CTA "Échanger avec Solveig sur WhatsApp"  */}
+      {/* ========================================================================= */}
+      {serviceId === 'concierge-services' ? (
+        <section className="relative overflow-hidden py-16 sm:py-24 flex-1">
+          <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+            <div className="lg:col-span-7 space-y-6">
+              <span className="inline-flex items-center gap-2 rounded-full border border-bronze/30 bg-sand px-3.5 py-1 text-xs font-semibold text-bronze-deep">
+                <Sparkles className="h-3.5 w-3.5 text-bronze" />
+                {content.badge}
               </span>
-            </h1>
 
-            <p className="font-serif italic text-base sm:text-lg text-ink-soft">
-              {content.tagline}
-            </p>
+              <h1 className="font-serif text-4xl font-medium leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
+                {content.title}
+              </h1>
 
-            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
-              {content.heroDescription}
-            </p>
+              <div className="space-y-4 text-sm sm:text-base font-light leading-relaxed text-ink-soft max-w-2xl">
+                {content.heroDescription.split('\n\n').map((para, i) => (
+                  <p key={i}>{para}</p>
+                ))}
+              </div>
 
-            {/* CTAs */}
-            <div className="flex flex-col sm:flex-row gap-3 pt-2">
-              <a
-                href={waLink(content.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary"
-              >
-                <WhatsAppIcon />
-                <span>
-                  {lang === 'en'
-                    ? 'Connect on WhatsApp'
-                    : lang === 'es'
-                    ? 'Contactar por WhatsApp'
-                    : 'Échanger avec Solveig sur WhatsApp'}
-                </span>
-              </a>
-
-              <a href={PHONE_TEL} className="btn-secondary">
-                <Phone className="h-4 w-4 text-bronze" />
-                <span>{PHONE_DISPLAY}</span>
-              </a>
+              <div className="pt-4">
+                <a
+                  href={waLink(content.whatsappMessage)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-primary"
+                >
+                  <WhatsAppIcon />
+                  <span>{whatsappButtonLabel}</span>
+                </a>
+              </div>
             </div>
 
-            {/* Rangée de statistiques / réassurance */}
-            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-ink/5">
-              {content.stats.map((s, idx) => (
-                <div key={idx} className="rounded-2xl border border-ink/10 bg-white p-3.5 text-center shadow-sm">
-                  <p className="font-serif text-xl font-bold text-ink">{s.value}</p>
-                  <p className="mt-1 text-[11px] font-light text-ink-soft leading-snug">{s.label}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Colonne visuelle droite */}
-          <div className="lg:col-span-5">
-            <div className="overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_20px_45px_rgba(28,26,23,0.08)]">
-              <div
-                className={`relative overflow-hidden bg-sand ${
-                  serviceId === 'chef-a-domicile' ? 'aspect-[3/4]' : 'h-80 sm:h-[460px]'
-                }`}
-              >
-                <img
-                  src={content.heroImage}
-                  alt={content.heroImageAlt}
-                  className={`h-full w-full object-cover ${
-                    serviceId === 'chef-a-domicile' ? 'object-[center_20%]' : 'object-center'
-                  } transition-transform duration-700 hover:scale-105`}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-black/70 p-4 backdrop-blur-md text-white">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/30 text-[#F3DEB0]">
-                      <Star className="h-4 w-4 fill-current" />
-                    </div>
-                    <div>
-                      <p className="text-xs font-semibold leading-tight">
-                        Solveig’s Prestige Services
-                      </p>
-                      <p className="mt-0.5 text-[11px] font-light text-white/85">
-                        Marbella & Mijas · Costa del Sol
-                      </p>
+            <div className="lg:col-span-5">
+              <div className="overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_20px_45px_rgba(28,26,23,0.08)]">
+                <div className="relative h-80 sm:h-[460px] overflow-hidden bg-sand">
+                  <img
+                    src={content.heroImage}
+                    alt={content.heroImageAlt}
+                    className="h-full w-full object-cover object-center transition-transform duration-700 hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-black/70 p-4 backdrop-blur-md text-white">
+                    <div className="flex items-center gap-3">
+                      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/30 text-[#F3DEB0]">
+                        <Star className="h-4 w-4 fill-current" />
+                      </div>
+                      <div>
+                        <p className="text-xs font-semibold leading-tight">
+                          Solveig’s Prestige Services
+                        </p>
+                        <p className="mt-0.5 text-[11px] font-light text-white/85">
+                          Marbella & Mijas · 7/7
+                        </p>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CAS 1 : CONCIERGERIE PRIVÉE 7/7 — EXPÉRIENCE ÉDITORIALE & LIFESTYLE */}
-      {serviceId === 'concierge-services' ? (
-        <section className="border-t border-ink/5 bg-sand py-20 sm:py-24">
-          <div className="container-site space-y-16">
-            <div className="max-w-3xl mx-auto text-center space-y-4">
-              <p className="eyebrow">
-                {lang === 'en' ? 'Discretion & 7/7 Availability' : lang === 'es' ? 'Discreción y Disponibilidad 7d/7' : 'Discrétion & Disponibilité 7/7'}
-              </p>
-              <h3 className="font-serif text-3xl font-medium text-ink sm:text-4xl lg:text-5xl">
-                {lang === 'en'
-                  ? 'Anticipating every moment to grant you absolute peace of mind.'
-                  : lang === 'es'
-                  ? 'Anticipar cada instante para brindarle una serenidad absoluta.'
-                  : 'Anticiper chaque instant pour vous offrir une sérénité absolue.'}
-              </h3>
-              <p className="text-sm sm:text-base font-light leading-relaxed text-ink-soft">
-                {lang === 'en'
-                  ? 'Securing a priority table at an exclusive restaurant, chartering a private yacht from Puerto Banús, preparing your residence before arrival, or coordinating VIP airport transfers: Solveig remains personally at your disposal 7 days a week.'
-                  : lang === 'es'
-                  ? 'Conseguir mesa prioritaria en un restaurante de excepción, fletar un yate privado desde Puerto Banús, preparar su villa antes de su llegada o coordinar traslados VIP desde el aeropuerto: Solveig está a su escucha los 7 días de la semana.'
-                  : 'Obtenir une table d’exception, affréter un yacht privé depuis Puerto Banús, préparer votre résidence avant votre arrivée ou coordonner vos transferts VIP dès l’aéroport : Solveig reste personnellement à votre écoute 7 jours sur 7.'}
-              </p>
-            </div>
-
-            {/* Triptyque Photographique Lifestyle & Conciergerie */}
-            <div className="grid gap-6 md:grid-cols-3">
-              {[
-                {
-                  img: '/concierge-yacht-vip.jpg',
-                  badge: lang === 'en' ? 'Mediterranean Sea' : lang === 'es' ? 'Mar Mediterráneo' : 'Mer Méditerranée',
-                  title:
-                    lang === 'en'
-                      ? 'Private Yachting & Beach Clubs'
-                      : lang === 'es'
-                      ? 'Yates Privados y Beach Clubs'
-                      : 'Yachting Privé & Beach Clubs',
-                  desc:
-                    lang === 'en'
-                      ? 'Bespoke boat charters from Puerto Banús and Marbella Marina, Sunset cruises, and priority reservations at the finest coastal addresses.'
-                      : lang === 'es'
-                      ? 'Salidas privadas en barco desde Puerto Banús y Marbella, cruceros al atardecer y reservas prioritarias en los mejores Beach Clubs.'
-                      : 'Sorties en mer privatives depuis Puerto Banús, croisières au coucher du soleil et réservations prioritaires dans les adresses les plus prisées.',
-                },
-                {
-                  img: '/candidates/option2_majordome.jpg',
-                  badge: lang === 'en' ? 'At Your Villa' : lang === 'es' ? 'En su Villa' : 'Au Cœur de Votre Villa',
-                  title:
-                    lang === 'en'
-                      ? 'Pre-Arrival Provisioning & Wellness'
-                      : lang === 'es'
-                      ? 'Preparación de Villa y Bienestar'
-                      : 'Préparation de Villa & Bien-Être',
-                  desc:
-                    lang === 'en'
-                      ? 'Fine grocery & cellar pre-stocking before your arrival, fresh floral arrangements, in-villa massages, yoga instructors, and private events.'
-                      : lang === 'es'
-                      ? 'Abastecimiento gourmet y bodega antes de su llegada, flores frescas, masajes en la villa, profesores de yoga y eventos privados.'
-                      : 'Approvisionnement gourmet et cave avant votre arrivée, bouquets frais, massages à domicile, coachs privés et réception sur mesure.',
-                },
-                {
-                  img: '/candidates/option3_chauffeur.jpg',
-                  badge: lang === 'en' ? 'Seamless Mobility' : lang === 'es' ? 'Movilidad VIP' : 'Mobilité & Golf',
-                  title:
-                    lang === 'en'
-                      ? 'VIP Chauffeurs & Golf Green Fees'
-                      : lang === 'es'
-                      ? 'Chófer Privado y Green Fees de Golf'
-                      : 'Chauffeurs VIP & Green Fees Golf',
-                  desc:
-                    lang === 'en'
-                      ? 'Private airport transfers from Málaga AGP, luxury vehicles at disposal, and tee-time bookings on the finest Golf Valley courses.'
-                      : lang === 'es'
-                      ? 'Traslados privados desde el aeropuerto de Málaga, vehículos con chófer y reserva de salidas en los mejores campos del Valle del Golf.'
-                      : 'Transferts privés depuis l’aéroport de Málaga, véhicules avec chauffeur et réservations de parcours dans les golfs prestigieux de Marbella.',
-                },
-              ].map((item, idx) => (
-                <div
-                  key={idx}
-                  className="group rounded-[2rem] border border-ink/10 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
-                >
-                  <div className="relative h-64 overflow-hidden bg-ink">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
-                    <span className="absolute top-4 left-4 rounded-full bg-black/60 backdrop-blur-md border border-[#C9A869]/40 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
-                      {item.badge}
-                    </span>
-                  </div>
-                  <div className="p-6 sm:p-7 space-y-2.5 flex-1">
-                    <h4 className="font-serif text-2xl font-medium text-ink">{item.title}</h4>
-                    <p className="text-xs sm:text-sm font-light leading-relaxed text-ink-soft">
-                      {item.desc}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
-              <a
-                href={waLink(content.whatsappMessage)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary w-full sm:w-auto"
-              >
-                <WhatsAppIcon />
-                <span>WhatsApp Conciergerie 7/7</span>
-              </a>
-              <button onClick={onBack} className="btn-secondary w-full sm:w-auto">
-                <ArrowLeft className="h-4 w-4" />
-                <span>{lang === 'en' ? 'Back to all services' : lang === 'es' ? 'Volver a servicios' : 'Retour aux services'}</span>
-              </button>
             </div>
           </div>
         </section>
       ) : (
         <>
-          {/* CAS CHEF À DOMICILE : LES 4 EXPÉRIENCES GASTRONOMIQUES SIGNATURE */}
-          {serviceId === 'chef-a-domicile' && (
-            <section className="border-t border-ink/5 bg-sand py-20">
-              <div className="container-site">
-                <div className="text-center max-w-2xl mx-auto mb-14">
-                  <p className="eyebrow">{t.chefSection.experiencesTitle}</p>
-                  <h2 className="font-serif text-3xl font-medium text-ink sm:text-4xl mt-1">
-                    {t.chefSection.experiencesSubtitle}
-                  </h2>
+          {/* HERO SECTION POUR PROPERTY MANAGEMENT, RENTAL MANAGEMENT & CHEF À DOMICILE */}
+          <section className="relative overflow-hidden py-14 sm:py-20">
+            <div className="container-site grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
+              <div className="lg:col-span-7 space-y-6">
+                <span className="inline-flex items-center gap-2 rounded-full border border-bronze/30 bg-sand px-3.5 py-1 text-xs font-semibold text-bronze-deep">
+                  <Sparkles className="h-3.5 w-3.5 text-bronze" />
+                  {content.badge}
+                </span>
+
+                <h1 className="font-serif text-4xl font-medium leading-[1.05] text-ink sm:text-5xl lg:text-6xl">
+                  {content.title} <br />
+                  <span className="italic text-bronze text-3xl sm:text-4xl lg:text-5xl">
+                    {content.subtitle}
+                  </span>
+                </h1>
+
+                <p className="font-serif italic text-base sm:text-lg text-ink-soft">
+                  {content.tagline}
+                </p>
+
+                <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
+                  {content.heroDescription}
+                </p>
+
+                {/* Mention obligatoire capacité convives pour Chef à domicile (Section 8) */}
+                {serviceId === 'chef-a-domicile' && (
+                  <div className="rounded-2xl border border-bronze/35 bg-sand/70 px-5 py-4">
+                    <p className="font-serif text-lg sm:text-xl font-medium text-ink">
+                      {lang === 'en'
+                        ? 'From 6 to 15 guests, with the chef and one service person.'
+                        : lang === 'es'
+                        ? 'De 6 a 15 personas, con el chef y una persona de servicio.'
+                        : 'De 6 à 15 personnes, avec le chef et une personne au service.'}
+                    </p>
+                  </div>
+                )}
+
+                {/* CTAs */}
+                <div className="flex flex-col sm:flex-row gap-3 pt-2">
+                  <a
+                    href={waLink(content.whatsappMessage)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-primary"
+                  >
+                    <WhatsAppIcon />
+                    <span>{whatsappButtonLabel}</span>
+                  </a>
+
+                  <a href={PHONE_TEL} className="btn-secondary">
+                    <Phone className="h-4 w-4 text-bronze" />
+                    <span>{PHONE_DISPLAY}</span>
+                  </a>
                 </div>
 
-                <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4 max-w-6xl mx-auto">
-                  {t.chefSection.experiences.map((exp, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm hover:shadow-md transition-all flex flex-col justify-between"
-                    >
-                      <div>
-                        <span className="inline-flex items-center gap-1.5 rounded-full bg-sand px-2.5 py-1 text-[11px] font-semibold text-bronze-deep mb-3">
-                          <Sparkles className="h-3 w-3 text-bronze" />
-                          <span>0{idx + 1}</span>
-                        </span>
-                        <h3 className="font-serif text-xl font-medium text-ink leading-snug mb-1">
-                          {exp.title}
-                        </h3>
-                        <p className="text-xs font-semibold text-bronze mb-3">{exp.subtitle}</p>
-                        <p className="text-xs font-light text-ink-soft leading-relaxed">
-                          {exp.desc}
-                        </p>
+                {/* Rangée de repères */}
+                {content.stats && (
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-ink/5">
+                    {content.stats.map((s, idx) => (
+                      <div key={idx} className="rounded-2xl border border-ink/10 bg-white p-3.5 text-center shadow-sm">
+                        <p className="font-serif text-xl font-bold text-ink">{s.value}</p>
+                        <p className="mt-1 text-[11px] font-light text-ink-soft leading-snug">{s.label}</p>
                       </div>
-                      <div className="mt-5 pt-3 border-t border-ink/5 flex items-center justify-between text-[11px] text-ink-muted">
-                        <span>{exp.guests}</span>
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Colonne visuelle droite */}
+              <div className="lg:col-span-5">
+                <div className="overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_20px_45px_rgba(28,26,23,0.08)]">
+                  <div
+                    className={`relative overflow-hidden bg-sand ${
+                      serviceId === 'chef-a-domicile' ? 'aspect-[3/4]' : 'h-80 sm:h-[460px]'
+                    }`}
+                  >
+                    <img
+                      src={content.heroImage}
+                      alt={content.heroImageAlt}
+                      className={`h-full w-full object-cover ${
+                        serviceId === 'chef-a-domicile' ? 'object-[center_20%]' : 'object-center'
+                      } transition-transform duration-700 hover:scale-105`}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-transparent to-transparent pointer-events-none" />
+
+                    <div className="absolute bottom-4 left-4 right-4 rounded-2xl border border-white/20 bg-black/70 p-4 backdrop-blur-md text-white">
+                      <div className="flex items-center gap-3">
+                        <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-bronze/30 text-[#F3DEB0]">
+                          <Star className="h-4 w-4 fill-current" />
+                        </div>
+                        <div>
+                          <p className="text-xs font-semibold leading-tight">
+                            Solveig’s Prestige Services
+                          </p>
+                          <p className="mt-0.5 text-[11px] font-light text-white/85">
+                            Marbella & Mijas · Costa del Sol
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  ))}
+                  </div>
                 </div>
               </div>
-            </section>
-          )}
+            </div>
+          </section>
 
-          {/* CAS LOCATION SAISONNIÈRE : COMPARAISON DES 2 FORMULES */}
-          {serviceId === 'rental-management' && (
+          {/* LES 2 OPTIONS DE GESTION LOCATIVE (AFFICHÉES SUR PROPERTY MANAGEMENT ET RENTAL MANAGEMENT — SECTION 7) */}
+          {(serviceId === 'rental-management' || serviceId === 'property-management') && (
             <section className="border-t border-ink/5 bg-sand py-20">
               <div className="container-site">
                 <div className="max-w-2xl mx-auto text-center mb-14">
                   <p className="eyebrow">
-                    {lang === 'en' ? 'Two Flexible Formats' : lang === 'es' ? 'Dos Planes Modulares' : 'Deux Formules Modulables'}
+                    {lang === 'en' ? 'Two Reservation Options' : lang === 'es' ? 'Dos Modalidades de Reserva' : 'Deux Organisations de Réservation'}
                   </p>
                   <h2 className="font-serif text-3xl font-medium text-ink sm:text-4xl mt-1">
                     {lang === 'en'
-                      ? 'Choose the care tailored to your lifestyle'
+                      ? 'Choose the arrangement tailored to your property'
                       : lang === 'es'
-                      ? 'Elija el plan adaptado a su forma de gestión'
-                      : 'Choisissez la formule adaptée à votre gestion'}
+                      ? 'Elija la modalidad adaptada a su propiedad'
+                      : 'Deux modalités claires selon votre organisation'}
                   </h2>
                   <p className="text-sm font-light text-ink-soft mt-2">
                     {lang === 'en'
-                      ? 'Whether you wish to retain calendar control or delegate end-to-end rental operations.'
+                      ? 'Whether you prefer to manage your reservations yourself or entrust them to Solveig’s Prestige Services.'
                       : lang === 'es'
-                      ? 'Tanto si desea conservar el control de su calendario como delegar la gestión al completo.'
-                      : 'Que vous souhaitiez conserver la maîtrise de votre calendrier ou déléguer l’intégralité de vos réservations.'}
+                      ? 'Tanto si prefiere gestionar directamente sus reservas como si desea confiarlas a Solveig’s Prestige Services.'
+                      : 'Que vous souhaitiez gérer directement vos réservations ou les confier à Solveig’s Prestige Services.'}
                   </p>
                 </div>
 
                 <div className="grid gap-8 md:grid-cols-2 max-w-5xl mx-auto">
-                  {/* Formule 1 */}
+                  {/* Option 1 */}
                   <div className="rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-9 shadow-sm flex flex-col justify-between space-y-6">
                     <div className="space-y-4">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-sand px-3 py-1 text-[11px] font-semibold text-ink-soft">
-                        {lang === 'en' ? 'Plan 01' : lang === 'es' ? 'Plan 01' : 'Formule 01'}
+                        Option 01
                       </span>
                       <h3 className="font-serif text-2xl font-medium text-ink">
                         {lang === 'en'
-                          ? 'Bookings Managed by You (Owner)'
+                          ? 'Reservations Managed Directly by the Owner'
                           : lang === 'es'
-                          ? 'Reservas Gestionadas por Usted (Propietario)'
-                          : 'Réservations Gérées par Vous (Propriétaire)'}
+                          ? 'Reservas Gestionadas Directamente por el Propietario'
+                          : 'Réservations Gérées Directement par le Propriétaire'}
                       </h3>
                       <p className="text-xs sm:text-sm font-light text-ink-soft leading-relaxed">
                         {lang === 'en'
-                          ? 'You oversee your listings and reservations: we provide 5-star on-site hospitality and turnover care.'
+                          ? 'You manage your own calendar and guest bookings directly: we step in on site in Marbella and Mijas for guest welcome and property follow-up.'
                           : lang === 'es'
-                          ? 'Usted gestiona sus anuncios y reservas: nosotros garantizamos una bienvenida 5 estrellas y un cuidado minucioso en la villa.'
-                          : 'Vous pilotez vous-même vos annonces et réservations : nous assurons une intendance et un accueil physique 5 étoiles sur place.'}
+                          ? 'Usted gestiona directamente su calendario y sus reservas: nosotros intervenimos en el lugar para recibir a sus huéspedes y cuidar de la propiedad.'
+                          : 'Vous conservez la gestion directe de vos annonces et de votre calendrier : nous intervenons sur place à Marbella et Mijas pour accueillir vos hôtes et veiller sur votre bien.'}
                       </p>
 
                       <ul className="space-y-3 pt-3 border-t border-ink/5 text-xs sm:text-sm text-ink-soft">
@@ -1145,40 +929,30 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'In-person VIP meet & greet (no lockbox ever)'
+                              ? 'In-person guest welcome and key handover upon arrival'
                               : lang === 'es'
-                              ? 'Recepción física en persona y entrega de llaves (nunca cajas de llaves)'
-                              : 'Accueil physique en personne et remise des clés (jamais de boîte à clés)'}
+                              ? 'Recepción presencial y entrega de llaves a la llegada'
+                              : 'Accueil physique en personne et remise des clés à l’arrivée'}
                           </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'Meticulous entry and exit inventories with comparative photos'
+                              ? 'Attentive check-in and check-out inspection with photos'
                               : lang === 'es'
-                              ? 'Inventario de entrada y salida detallado con reportaje fotográfico'
-                              : 'État des lieux d’entrée et de sortie minutieux avec reportage photo comparatif'}
+                              ? 'Revisión de entrada y salida con reportaje fotográfico'
+                              : 'État des lieux d’entrée et de sortie attentif avec photos'}
                           </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'Deep post-stay cleaning and complete villa refreshment'
+                              ? 'Coordination of departure cleaning and property preparation'
                               : lang === 'es'
-                              ? 'Limpieza profunda de salida y puesta a punto integral de la villa'
-                              : 'Ménage de départ approfondi et remise en beauté complète de la villa'}
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2.5">
-                          <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
-                          <span>
-                            {lang === 'en'
-                              ? 'Hotel-grade laundry service with crisp luxury linens'
-                              : lang === 'es'
-                              ? 'Lavandería de alta calidad hotelera y lencería impecable'
-                              : 'Blanchisserie hôtelière soignée et mise en place du linge frais'}
+                              ? 'Coordinación de la limpieza de salida y preparación de la villa'
+                              : 'Coordination du ménage de départ et remise en ordre de la villa'}
                           </span>
                         </li>
                       </ul>
@@ -1187,43 +961,39 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                     <a
                       href={waLink(
                         lang === 'en'
-                          ? 'Hello Solveig, I am interested in Plan 1 (On-site care for my own bookings).'
+                          ? 'Hello Solveig, I would like to discuss Option 1 (Reservations managed by the owner).'
                           : lang === 'es'
-                          ? 'Hola Solveig, deseo elegir el Plan 1 (Intendencia in situ para mis propias reservas).'
-                          : 'Bonjour Solveig, je souhaite opter pour la Formule 1 (Intendance sur place pour mes réservations).'
+                          ? 'Hola Solveig, deseo información sobre la Opción 1 (Reservas gestionadas por el propietario).'
+                          : 'Bonjour Solveig, je souhaite échanger sur l’Option 1 (Réservations gérées par le propriétaire).'
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-secondary w-full"
                     >
                       <WhatsAppIcon />
-                      <span>{lang === 'en' ? 'Select On-Site Plan' : lang === 'es' ? 'Elegir Plan In Situ' : 'Choisir la Formule Sur-Place'}</span>
+                      <span>{lang === 'en' ? 'Inquire about Option 1' : lang === 'es' ? 'Consultar Opción 1' : 'Échanger sur l’Option 1'}</span>
                     </a>
                   </div>
 
-                  {/* Formule 2 */}
+                  {/* Option 2 */}
                   <div className="rounded-[2.2rem] border-2 border-bronze bg-white p-7 sm:p-9 shadow-md flex flex-col justify-between space-y-6 relative">
-                    <span className="absolute -top-3.5 right-6 rounded-full bg-bronze px-3 py-1 text-[10px] font-bold uppercase tracking-wider text-white shadow-sm">
-                      {lang === 'en' ? 'Full Turnkey' : lang === 'es' ? 'Gestión Integral' : 'Délégation Totale'}
-                    </span>
-
                     <div className="space-y-4">
                       <span className="inline-flex items-center gap-1.5 rounded-full bg-sand px-3 py-1 text-[11px] font-semibold text-bronze-deep">
-                        {lang === 'en' ? 'Plan 02' : lang === 'es' ? 'Plan 02' : 'Formule 02'}
+                        Option 02
                       </span>
                       <h3 className="font-serif text-2xl font-medium text-ink">
                         {lang === 'en'
-                          ? 'Turnkey Vacation Rental Management'
+                          ? 'Reservations Managed by Solveig’s Prestige Services'
                           : lang === 'es'
-                          ? 'Gestión Integral Llave en Mano'
-                          : 'Gestion Locative Intégrale (Clé en Main)'}
+                          ? 'Reservas Gestionadas por Solveig’s Prestige Services'
+                          : 'Réservations Gérées par Solveig’s Prestige Services'}
                       </h3>
                       <p className="text-xs sm:text-sm font-light text-ink-soft leading-relaxed">
                         {lang === 'en'
-                          ? 'Total peace of mind: we handle premier marketing, strict guest vetting, and full operations from A to Z.'
+                          ? 'You entrust your seasonal rental reservations to Solveig’s Prestige Services: we coordinate both the bookings and the complete on-site follow-up.'
                           : lang === 'es'
-                          ? 'Serenidad total: asumimos la comercialización de lujo, el filtrado de viajeros y la intendencia de principio a fin.'
-                          : 'Sérénité absolue : nous prenons en charge la commercialisation, le filtrage des voyageurs et l’intendance complète de A à Z.'}
+                          ? 'Usted confía las reservas de su propiedad a Solveig’s Prestige Services: coordinamos tanto las reservas como el seguimiento completo en el lugar.'
+                          : 'Vous confiez la gestion de vos réservations à Solveig’s Prestige Services : nous coordonnons les séjours ainsi que l’ensemble de l’accueil et du suivi sur place.'}
                       </p>
 
                       <ul className="space-y-3 pt-3 border-t border-ink/5 text-xs sm:text-sm text-ink-soft">
@@ -1231,40 +1001,30 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'Professional photography and luxury positioning'
+                              ? 'Presentation of your property and careful selection of guests'
                               : lang === 'es'
-                              ? 'Fotografía profesional y difusión en canales de alta gama'
-                              : 'Shooting photo professionnel et valorisation sur les canaux haut de gamme'}
+                              ? 'Presentación de su propiedad y selección cuidadosa de los viajeros'
+                              : 'Présentation soignée de votre bien et sélection attentive des voyageurs'}
                           </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'Strict guest screening of families and verified visitors'
+                              ? 'Coordination of reservations while preserving your personal dates'
                               : lang === 'es'
-                              ? 'Filtrado riguroso y selección de familias y huéspedes de confianza'
-                              : 'Filtrage strict et sélection rigoureuse des profils de familles et invités'}
+                              ? 'Organización de las reservas respetando siempre sus fechas personales'
+                              : 'Organisation des réservations tout en préservant vos dates personnelles'}
                           </span>
                         </li>
                         <li className="flex items-start gap-2.5">
                           <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
                           <span>
                             {lang === 'en'
-                              ? 'Rental contracts, bank deposit security, and dynamic pricing'
+                              ? 'In-person welcome, check-in/check-out, and 7/7 guest assistance'
                               : lang === 'es'
-                              ? 'Contratos de alquiler, fianzas bancarias y tarificación dinámica'
-                              : 'Gestion des contrats, dépôts de garantie bancaires et tarification dynamique'}
-                          </span>
-                        </li>
-                        <li className="flex items-start gap-2.5">
-                          <Check className="h-4 w-4 text-bronze shrink-0 mt-0.5" />
-                          <span>
-                            {lang === 'en'
-                              ? 'VIP meet & greet, 7/7 guest concierge, and prompt monthly payouts'
-                              : lang === 'es'
-                              ? 'Bienvenida VIP, conserjería para huéspedes 7d/7 y liquidación mensual'
-                              : 'Accueil VIP, conciergerie séjour 7j/7 et virement mensuel des loyers'}
+                              ? 'Bienvenida en persona, revisión de entrada/salida y asistencia 7/7'
+                              : 'Accueil en personne, états des lieux et accompagnement 7/7 des hôtes'}
                           </span>
                         </li>
                       </ul>
@@ -1273,17 +1033,17 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                     <a
                       href={waLink(
                         lang === 'en'
-                          ? 'Hello Solveig, I am interested in Plan 2 (Full turnkey rental management).'
+                          ? 'Hello Solveig, I would like to discuss Option 2 (Reservations managed by Solveig’s Prestige Services).'
                           : lang === 'es'
-                          ? 'Hola Solveig, deseo elegir el Plan 2 (Gestión integral llave en mano).'
-                          : 'Bonjour Solveig, je souhaite opter pour la Formule 2 (Gestion locative intégrale clé en main).'
+                          ? 'Hola Solveig, deseo información sobre la Opción 2 (Reservas gestionadas por Solveig’s Prestige Services).'
+                          : 'Bonjour Solveig, je souhaite échanger sur l’Option 2 (Réservations gérées par Solveig’s Prestige Services).'
                       )}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="btn-primary w-full"
                     >
                       <WhatsAppIcon />
-                      <span>{lang === 'en' ? 'Select Turnkey Plan' : lang === 'es' ? 'Elegir Gestión Integral' : 'Choisir la Gestion Intégrale'}</span>
+                      <span>{lang === 'en' ? 'Inquire about Option 2' : lang === 'es' ? 'Consultar Opción 2' : 'Échanger sur l’Option 2'}</span>
                     </a>
                   </div>
                 </div>
@@ -1293,17 +1053,17 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
 
           {/* CAS PROPERTY MANAGEMENT : LES 4 PILIERS DE L'INTENDANCE */}
           {content.pillars && (
-            <section className="border-t border-ink/5 bg-sand py-20">
+            <section className="border-t border-ink/5 bg-travertine py-20">
               <div className="container-site">
                 <div className="text-center max-w-2xl mx-auto mb-14">
                   <p className="eyebrow">
-                    {lang === 'en' ? 'Standard of Excellence' : lang === 'es' ? 'Protocolo de Excelencia' : 'Protocole d’Excellence'}
+                    {lang === 'en' ? 'Property Care' : lang === 'es' ? 'Cuidado de su Propiedad' : 'Intendance sur Mesure'}
                   </p>
                   <h2 className="font-serif text-3xl font-medium text-ink sm:text-4xl mt-1">
                     {lang === 'en'
                       ? 'The 4 Pillars of Our Estate Care'
                       : lang === 'es'
-                      ? 'Los 4 Pilares de Nuestra Intendencia'
+                      ? 'Los 4 Pilares de Nuestra Gestión'
                       : 'Les 4 Piliers de Notre Intendance'}
                   </h2>
                 </div>
@@ -1350,83 +1110,40 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
             </section>
           )}
 
-          {/* DÉROULEMENT / TIMELINE (CHEF OU PROPERTY MANAGEMENT) */}
-          {content.processSteps && (
-            <section className="border-t border-ink/5 bg-travertine py-20">
-              <div className="container-site">
-                <div className="text-center max-w-2xl mx-auto mb-14">
-                  <p className="eyebrow">
-                    {lang === 'en' ? 'Timeline & Process' : lang === 'es' ? 'Cronograma y Proceso' : 'Déroulement'}
-                  </p>
-                  <h2 className="font-serif text-3xl font-medium text-ink sm:text-4xl mt-1">
-                    {serviceId === 'chef-a-domicile'
-                      ? (lang === 'en'
-                          ? 'The rhythm of a private gastronomic evening in villa'
-                          : lang === 'es'
-                          ? 'El ritmo de una velada gastronómica en villa'
-                          : 'Le rythme d’une soirée gastronomique en villa')
-                      : (lang === 'en'
-                          ? 'How our estate care unfolds'
-                          : lang === 'es'
-                          ? 'Cómo se desarrolla nuestro acompañamiento'
-                          : 'Comment se déroule notre accompagnement')}
-                  </h2>
-                </div>
-
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                  {content.processSteps.map((step, idx) => (
-                    <div
-                      key={idx}
-                      className="rounded-2xl border border-ink/10 bg-white p-6 shadow-sm flex flex-col justify-between"
-                    >
-                      <div>
-                        <div className="font-serif text-3xl sm:text-4xl font-normal text-bronze mb-3">
-                          {step.step}
-                        </div>
-                        <h4 className="font-serif text-lg font-medium text-ink mb-2">
-                          {step.title}
-                        </h4>
-                        <p className="text-xs sm:text-sm font-light text-ink-soft leading-relaxed">
-                          {step.desc}
-                        </p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </section>
-          )}
-
-          {/* GALERIE CULINAIRE DÉDIÉE DU CHEF */}
-          {content.galleryImages && (
+          {/* GALERIE PHOTOGRAPHIQUE INSPIRATIONNELLE DU CHEF (SANS BOUTONS DE COMMANDE NI PRIX NI FICHES PRODUITS) */}
+          {serviceId === 'chef-a-domicile' && content.galleryImages && (
             <section className="border-t border-ink/5 bg-sand py-20">
               <div className="container-site">
                 <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-10 gap-4">
                   <div>
                     <p className="eyebrow">
-                      {lang === 'en' ? 'Culinary Gallery' : lang === 'es' ? 'Galería Culinaria' : 'Galerie photographique'}
+                      {lang === 'en' ? 'Photographic Gallery' : lang === 'es' ? 'Galería Fotográfica' : 'Galerie Photographique'}
                     </p>
                     <h2 className="font-serif text-3xl font-medium text-ink sm:text-4xl mt-1">
                       {lang === 'en'
-                        ? 'Creations by Chef Dominique Hybord'
+                        ? 'Authentic Creations & Private Tables by Dominique Hybord'
                         : lang === 'es'
-                        ? 'Creaciones del Chef Dominique Hybord'
-                        : 'Les créations du Chef Dominique Hybord'}
+                        ? 'Creaciones Auténticas y Mesas Privadas de Dominique Hybord'
+                        : 'Les créations authentiques et tables dressées de Dominique Hybord'}
                     </h2>
                   </div>
                   <p className="text-xs text-ink-muted">
-                    {lang === 'en' ? 'Click to enlarge dishes.' : lang === 'es' ? 'Haga clic para ampliar los platos.' : 'Cliquez pour agrandir les assiettes.'}
+                    {lang === 'en'
+                      ? 'Click any photograph to enlarge.'
+                      : lang === 'es'
+                      ? 'Haga clic en cualquier fotografía para ampliar.'
+                      : 'Cliquez sur une photographie pour l’agrandir.'}
                   </p>
                 </div>
 
-                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4">
                   {content.galleryImages.map((img, idx) => (
                     <button
                       key={idx}
                       type="button"
                       onClick={() => setLightboxImg(img.url)}
                       className="group relative aspect-square overflow-hidden rounded-2xl border border-ink/10 bg-white focus:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                      aria-label={`Agrandir : ${img.caption}`}
+                      aria-label={img.caption}
                     >
                       <img
                         src={img.url}
@@ -1434,7 +1151,7 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                         className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-108"
                         loading="lazy"
                       />
-                      <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/30">
+                      <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/25">
                         <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white/90 text-ink opacity-0 transition-opacity group-hover:opacity-100 shadow-md">
                           <ZoomIn className="h-4 w-4" />
                         </span>
@@ -1446,22 +1163,21 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
             </section>
           )}
 
-          {/* PRESTATIONS INCLUSES & FAQS */}
+          {/* PRESTATIONS & FAQS */}
           {(content.inclusions || content.faqs) && (
             <section className="border-t border-ink/5 bg-travertine py-20">
               <div className="container-site grid lg:grid-cols-12 gap-12 items-start">
-                {/* Inclusions */}
                 {content.inclusions && (
-                  <div className="lg:col-span-5 rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-9 shadow-sm">
+                  <div className={content.faqs ? 'lg:col-span-5 rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-9 shadow-sm' : 'lg:col-span-8 lg:col-start-3 rounded-[2.2rem] border border-ink/10 bg-white p-7 sm:p-9 shadow-sm'}>
                     <p className="eyebrow">
-                      {lang === 'en' ? 'Included Services' : lang === 'es' ? 'Servicios Incluidos' : 'Prestations Incluses'}
+                      {lang === 'en' ? 'Tailored Approach' : lang === 'es' ? 'Acompañamiento a Medida' : 'Accompagnement sur Mesure'}
                     </p>
                     <h3 className="font-serif text-2xl font-medium text-ink mt-1 mb-6">
                       {lang === 'en'
-                        ? 'Everything included in our care'
+                        ? 'Key points of our service'
                         : lang === 'es'
-                        ? 'Todo lo que comprende nuestro servicio'
-                        : 'Ce qui est compris dans l’accompagnement'}
+                        ? 'Puntos clave de nuestro servicio'
+                        : 'Les points essentiels de l’accompagnement'}
                     </h3>
                     <ul className="space-y-3.5">
                       {content.inclusions.map((item, idx) => (
@@ -1476,7 +1192,6 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                   </div>
                 )}
 
-                {/* FAQ Accordion */}
                 {content.faqs && (
                   <div className={content.inclusions ? 'lg:col-span-7' : 'lg:col-span-12'}>
                     <p className="eyebrow">
@@ -1532,24 +1247,24 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
             <div className="container-site max-w-3xl mx-auto space-y-6">
               <p className="eyebrow">
                 {lang === 'en'
-                  ? 'Your Estate Deserves Excellence'
+                  ? 'Privileged Contact'
                   : lang === 'es'
-                  ? 'Su Finca Merece la Excelencia'
-                  : 'Votre Villa Mérite l’Excellence'}
+                  ? 'Contacto Privilegiado'
+                  : 'Premier Échange Privilégié'}
               </p>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium text-ink">
                 {lang === 'en'
-                  ? 'Grant your property the care it deserves.'
+                  ? 'Discuss your needs directly with Solveig.'
                   : lang === 'es'
-                  ? 'Brinde a su propiedad la atención que se merece.'
-                  : 'Offrez à votre domaine l’attention qu’il mérite.'}
+                  ? 'Hable directamente de sus necesidades con Solveig.'
+                  : 'Échangez directement de vos besoins avec Solveig.'}
               </h2>
               <p className="text-sm sm:text-base font-light text-ink-soft leading-relaxed max-w-xl mx-auto">
                 {lang === 'en'
-                  ? 'Contact Solveig Hybord today for a confidential, non-binding discussion regarding your estate in Marbella or Mijas.'
+                  ? 'Contact Solveig Hybord for a confidential discussion regarding your property or stay in Marbella and Mijas.'
                   : lang === 'es'
-                  ? 'Contacte con Solveig Hybord hoy mismo para una consulta confidencial y sin compromiso sobre su propiedad en Marbella o Mijas.'
-                  : 'Contactez Solveig Hybord dès aujourd’hui pour une étude confidentielle et sans engagement de vos besoins sur Marbella ou Mijas.'}
+                  ? 'Contacte con Solveig Hybord para una conversación confidencial sobre su propiedad o estancia en Marbella y Mijas.'
+                  : 'Contactez Solveig Hybord pour un échange confidentiel et personnalisé autour de votre propriété ou de votre séjour à Marbella et Mijas.'}
               </p>
 
               <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -1560,23 +1275,17 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
                   className="btn-primary w-full sm:w-auto"
                 >
                   <WhatsAppIcon />
-                  <span>
-                    {lang === 'en'
-                      ? 'Contact Solveig on WhatsApp'
-                      : lang === 'es'
-                      ? 'Contactar con Solveig por WhatsApp'
-                      : 'Contacter Solveig sur WhatsApp'}
-                  </span>
+                  <span>{whatsappButtonLabel}</span>
                 </a>
 
                 <button onClick={onBack} className="btn-secondary w-full sm:w-auto">
                   <ArrowLeft className="h-4 w-4" />
                   <span>
                     {lang === 'en'
-                      ? 'Back to all 4 services'
+                      ? 'Back to all services'
                       : lang === 'es'
-                      ? 'Volver a los 4 servicios'
-                      : 'Retour aux 4 services'}
+                      ? 'Volver a los servicios'
+                      : 'Retour aux services'}
                   </span>
                 </button>
               </div>
@@ -1584,6 +1293,9 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
           </section>
         </>
       )}
+
+      {/* Pied de page global du site */}
+      <Footer />
 
       <Lightbox
         src={lightboxImg}

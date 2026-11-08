@@ -80,14 +80,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
               {link.label}
             </a>
           ))}
-          <a
-            href={MAROC_HREF}
-            onClick={onClose}
-            className="flex items-center justify-between py-4 text-sm font-semibold text-bronze-deep hover:text-bronze"
-          >
-            <span>{t.nav.morocco}</span>
-            <ArrowUpRight className="h-4 w-4" />
-          </a>
         </nav>
 
         <div className="mt-auto space-y-3 pt-6">

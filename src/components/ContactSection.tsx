@@ -350,7 +350,6 @@ ${formData.message ? `- Précisions : ${formData.message}` : ''}`;
                     <option value="concierge">{c.serviceOptions.concierge}</option>
                     <option value="rental">{c.serviceOptions.rental}</option>
                     <option value="chef">{c.serviceOptions.chef}</option>
-                    <option value="morocco">{c.serviceOptions.morocco}</option>
                   </select>
                 </div>
 

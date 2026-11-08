@@ -17,16 +17,16 @@ const LanguageContext = createContext<LanguageContextType>({
 
 const titlesByLang: Record<Language, { title: string; desc: string }> = {
   fr: {
-    title: 'Solveig’s Prestige Services — Conciergerie de prestige à Marbella & Mijas',
-    desc: 'Une présence locale discrète pour des propriétés exceptionnelles sur la Costa del Sol. Conciergerie privée 7/7, gestion de propriété, intendance locative et chef à domicile.',
+    title: 'Solveig’s Prestige Services — Conciergerie, Gestion immobilière & Chef à domicile à Marbella & Mijas',
+    desc: 'Une présence locale discrète pour des propriétés d’exception sur la Costa del Sol. Conciergerie privée 7/7, gestion immobilière et de propriété, et chef à domicile à Marbella et Mijas.',
   },
   en: {
-    title: 'Solveig’s Prestige Services — Luxury Estate Care & Concierge in Marbella',
-    desc: 'A discreet local presence for exceptional estates on the Costa del Sol. 7/7 private concierge, property management, luxury vacation rental care, and private chef.',
+    title: 'Solveig’s Prestige Services — Private Concierge, Property Management & Private Chef in Marbella & Mijas',
+    desc: 'A discreet local presence for exceptional properties on the Costa del Sol. 7/7 private concierge, property management, and private chef in Marbella and Mijas.',
   },
   es: {
-    title: 'Solveig’s Prestige Services — Conserjería de prestigio en Marbella y Mijas',
-    desc: 'Una presencia local discreta para propiedades excepcionales en la Costa del Sol. Conserjería privada 7/7, gestión de fincas, alquiler vacacional y chef privado.',
+    title: 'Solveig’s Prestige Services — Conserjería, Gestión inmobiliaria y Chef privado en Marbella y Mijas',
+    desc: 'Una presencia local discreta para propiedades excepcionales en la Costa del Sol. Conserjería privada 7/7, gestión inmobiliaria y chef privado en Marbella y Mijas.',
   },
 };
 

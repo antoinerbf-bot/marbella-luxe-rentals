@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://marbella-luxe-rentals.antoinerbf.workers.dev/sitemap.xml
+Sitemap: https://solveigconciergeriemarbella.vercel.app/sitemap.xml
