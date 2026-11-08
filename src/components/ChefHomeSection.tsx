@@ -23,6 +23,15 @@ const culinaryGallery = [
   '/archives-cuisine/2024-01-23 16.31.12.jpg',
 ];
 
+const pressClippingsGallery = [
+  '/archives-cuisine/le-dauphine-5-fevrier-2015.jpg',
+  '/archives-cuisine/article de La Savoie 001.jpg',
+  '/archives-cuisine/pub schuss magazine 2011 001.jpg',
+  '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
+  '/archives-cuisine/infosnews 001.jpg',
+  '/archives-cuisine/la vie nouvelle 001.jpg',
+];
+
 export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectService }) => {
   const { lang } = useLanguage();
   const [zoomedDish, setZoomedDish] = useState<{ src: string; alt: string } | null>(null);
@@ -291,6 +300,33 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
                   src={src}
                   alt="Création gastronomique du Chef Dominique Hybord"
                   className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">
+                  <span className="flex h-9 w-9 items-center justify-center rounded-full bg-black/55 text-white opacity-0 group-hover:opacity-100 transition-opacity">
+                    <ZoomIn className="h-4 w-4" />
+                  </span>
+                </div>
+              </button>
+            ))}
+
+            {pressClippingsGallery.map((src, idx) => (
+              <button
+                key={`press-${idx}`}
+                type="button"
+                onClick={() =>
+                  setZoomedDish({
+                    src,
+                    alt: 'Archive de presse officielle — Chef Dominique Hybord',
+                  })
+                }
+                aria-label="Agrandir l'article de presse"
+                className="group relative aspect-square overflow-hidden rounded-2xl border border-[#78664c]/20 bg-[#FAF7F2] p-1.5 shadow-sm focus:outline-none"
+              >
+                <img
+                  src={src}
+                  alt="Archive de presse officielle — Chef Dominique Hybord"
+                  className="h-full w-full object-contain transition-transform duration-700 group-hover:scale-105"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors flex items-center justify-center">

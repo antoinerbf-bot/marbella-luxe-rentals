@@ -64,11 +64,11 @@ function AppContent() {
         }}
       />
 
-      {/* Ancrage territorial : Marbella, Mijas & Costa del Sol */}
-      <MarbellaMijasSection />
-
       {/* L'Histoire de la maison & Revue de presse officielle */}
       <AboutSection />
+
+      {/* Ancrage territorial : Marbella, Mijas & Costa del Sol (suivi directement par Contact) */}
+      <MarbellaMijasSection />
 
       {/* Contact privilégié & Formulaire confidentiel */}
       <ContactSection />

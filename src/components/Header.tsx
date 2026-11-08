@@ -28,8 +28,8 @@ export const Header: React.FC<HeaderProps> = ({ variant, onOpenMenu }) => {
   const navLinks = [
     { label: t.nav.services, href: sectionHref('services') },
     { label: t.nav.chef, href: sectionHref('chef') },
-    { label: t.nav.territory, href: sectionHref('territoire') },
     { label: t.nav.about, href: sectionHref('maison') },
+    { label: t.nav.territory, href: sectionHref('territoire') },
     { label: t.nav.contact, href: sectionHref('contact') },
   ];
 

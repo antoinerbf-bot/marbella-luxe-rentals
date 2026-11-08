@@ -27,8 +27,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({ isOpen, onClose }) =
   const navLinks = [
     { label: t.nav.services, href: sectionHref('services') },
     { label: t.nav.chef, href: sectionHref('chef') },
-    { label: t.nav.territory, href: sectionHref('territoire') },
     { label: t.nav.about, href: sectionHref('maison') },
+    { label: t.nav.territory, href: sectionHref('territoire') },
     { label: t.nav.contact, href: sectionHref('contact') },
   ];
 
