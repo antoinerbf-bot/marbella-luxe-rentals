@@ -1,203 +1,112 @@
 import React from 'react';
-import { ArrowUpRight, Mail, Phone, ShieldCheck } from 'lucide-react';
-import { MAROC_HREF, sectionHref, serviceHref } from '../lib/router';
-import { BRAND, DEFAULT_WA_MESSAGE, EMAIL, PHONE_DISPLAY, PHONE_TEL, SERVICES, waLink } from '../lib/site';
-import { WhatsAppIcon } from './ui/WhatsAppIcon';
-import { useLanguage } from '../lib/LanguageContext';
+import { MessageCircle, Phone, Mail, Globe, ArrowRight } from 'lucide-react';
 
-export const Footer: React.FC = () => {
-  const { t } = useLanguage();
+interface FooterProps {
+  onOpenMorocco?: () => void;
+}
 
+export const Footer: React.FC<FooterProps> = ({ onOpenMorocco }) => {
   return (
-    <footer className="relative bg-[#0E1315] text-[#EDE6DA] overflow-hidden border-t border-[#C9A869]/20">
-      {/* Halo architectural d'ambiance doré subtil */}
-      <div
-        className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 w-[900px] h-[350px] bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-[#C9A869]/15 via-transparent to-transparent opacity-60"
-        aria-hidden="true"
-      />
+    <footer className="relative bg-[#0d181c] text-white/80 border-t border-white/10 overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_10%,rgba(214,174,92,0.15),transparent_40%)] pointer-events-none" />
 
-      {/* BANNIÈRE PRÉ-FOOTER : APPEL À L'ACTION HAUT DE GAMME */}
-      <div className="relative border-b border-white/10 bg-white/[0.02]">
-        <div className="container-site py-12 sm:py-16">
-          <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
-            <div className="lg:col-span-7 space-y-2">
-              <span className="inline-flex items-center gap-2 rounded-full border border-[#C9A869]/30 bg-[#C9A869]/10 px-3.5 py-1 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#F3DEB0]">
-                <ShieldCheck className="h-3.5 w-3.5 text-[#C9A869]" />
-                Marbella & Mijas · Costa del Sol
+      <div className="max-w-[1440px] mx-auto px-5 py-16 sm:px-8 lg:px-12">
+        <div className="grid gap-12 lg:grid-cols-[1.3fr_0.8fr_0.9fr]">
+          {/* Col 1: Brand Info */}
+          <div>
+            <div className="flex flex-col items-start">
+              <span className="font-serif text-3xl sm:text-4xl text-white font-semibold tracking-wider">
+                Solveig’s
               </span>
-              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl font-medium text-white leading-tight">
-                {t.footer.preFooterTitle}
-              </h3>
-              <p className="text-sm font-light leading-relaxed text-[#EDE6DA]/75 max-w-xl">
-                {t.footer.preFooterDesc}
-              </p>
+              <span className="text-[8px] font-bold tracking-[0.35em] text-[#edd088] uppercase mt-1">
+                PRESTIGE SERVICES
+              </span>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col sm:flex-row gap-3 lg:justify-end">
+            <p className="mt-5 text-sm leading-relaxed text-white/70 max-w-md">
+              Gestion de propriété, conciergerie privée et location saisonnière haut de gamme pour les propriétaires exigeants qui recherchent une présence locale de confiance sur la Costa del Sol.
+            </p>
+
+            <div className="mt-6 flex flex-wrap gap-2.5">
               <a
-                href={waLink(DEFAULT_WA_MESSAGE)}
+                href="https://wa.me/34623626724"
                 target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-[#C9A869] px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-[#0E1315] transition-all hover:bg-[#d8b77a] hover:shadow-[0_4px_20px_rgba(201,168,105,0.35)]"
+                rel="noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-3.5 py-2 text-xs text-white transition-colors"
               >
-                <WhatsAppIcon className="h-4 w-4" />
-                <span>{t.footer.preFooterWhatsApp}</span>
+                <MessageCircle className="w-3.5 h-3.5 text-[#25D366]" />
+                <span>WhatsApp</span>
               </a>
 
               <a
-                href={PHONE_TEL}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 bg-white/5 px-6 py-3.5 text-xs font-semibold uppercase tracking-wider text-white transition-colors hover:border-[#C9A869] hover:bg-white/10"
+                href="tel:+34623626724"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-3.5 py-2 text-xs text-white transition-colors"
               >
-                <Phone className="h-3.5 w-3.5 text-[#C9A869]" />
-                <span>{t.footer.preFooterCall}</span>
+                <Phone className="w-3.5 h-3.5 text-[#edd088]" />
+                <span>+34 623 626 724</span>
+              </a>
+
+              <a
+                href="mailto:solveighybord@gmail.com"
+                className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 px-3.5 py-2 text-xs text-white transition-colors"
+              >
+                <Mail className="w-3.5 h-3.5 text-[#edd088]" />
+                <span>solveighybord@gmail.com</span>
               </a>
             </div>
           </div>
-        </div>
-      </div>
 
-      {/* CORPS PRINCIPAL DU FOOTER */}
-      <div className="container-site grid gap-12 py-16 sm:py-20 lg:grid-cols-12">
-        {/* Colonne 1 : Identité de marque et promesse */}
-        <div className="lg:col-span-5 space-y-5">
-          <div className="flex flex-col leading-none">
-            <span className="font-serif text-3xl sm:text-4xl tracking-[0.14em] font-medium text-white">
-              SOLVEIG’S
-            </span>
-            <span className="mt-1.5 text-[10px] font-semibold uppercase tracking-[0.38em] text-[#C9A869]">
-              Prestige Services
-            </span>
+          {/* Col 2: Services Quick Links */}
+          <div className="space-y-3 text-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#edd088] mb-4">
+              Prestations
+            </p>
+            <a href="#services" className="block text-white/75 hover:text-white transition-colors">
+              Gestion de propriété
+            </a>
+            <a href="#services" className="block text-white/75 hover:text-white transition-colors">
+              Conciergerie privée 7/7
+            </a>
+            <a href="#services" className="block text-white/75 hover:text-white transition-colors">
+              Location saisonnière VIP
+            </a>
+            <a href="#chef" className="block text-white/75 hover:text-white transition-colors">
+              Chef à domicile d’exception
+            </a>
+            {onOpenMorocco && (
+              <button
+                onClick={onOpenMorocco}
+                className="block text-[#f4cb99] hover:text-[#ffd8b3] transition-colors font-semibold flex items-center gap-1.5"
+              >
+                <span>Univers Marocain</span>
+                <span className="text-[10px] px-1.5 py-0.5 rounded bg-[#f4cb99]/20 text-[#fbe8b5] border border-[#f4cb99]/30 font-medium">Fin 2027</span>
+                <span className="text-xs">🐪 →</span>
+              </button>
+            )}
+            <a href="#services" className="block text-white/75 hover:text-white transition-colors">
+              Housekeeping & Intendance
+            </a>
           </div>
 
-          <p className="max-w-md text-sm font-light leading-relaxed text-[#EDE6DA]/75">
-            {t.footer.brandTagline}
-          </p>
-
-          <div className="pt-2 text-xs text-[#EDE6DA]/60 space-y-1">
-            <p className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full bg-emerald-400 animate-pulse" />
-              <span>{t.contactSection.availability}</span>
+          {/* Col 3: Zones d'intervention */}
+          <div className="space-y-3 text-sm">
+            <p className="text-xs font-bold uppercase tracking-[0.2em] text-[#edd088] mb-4">
+              Zones d'intervention
             </p>
-            <p>{t.footer.founderDirect}</p>
-          </div>
-        </div>
-
-        {/* Colonnes 2, 3, 4 : Navigation structurée */}
-        <div className="grid grid-cols-2 gap-8 sm:grid-cols-3 lg:col-span-7">
-          {/* Services */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C9A869]">
-              {t.footer.servicesColTitle}
+            <p className="text-xs text-white/70 leading-relaxed">
+              Marbella · Puerto Banús · Golden Mile · Nueva Andalucía · Benahavís · Mijas Pueblo · La Cala · Calahonda · Riviera del Sol
             </p>
-            <ul className="mt-5 space-y-3 text-sm">
-              {SERVICES.map((s) => (
-                <li key={s.id}>
-                  <a
-                    href={serviceHref(s.id)}
-                    className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
-                  >
-                    {t.servicesSection.items[s.id]?.title || s.title}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* La Maison */}
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C9A869]">
-              {t.footer.houseColTitle}
-            </p>
-            <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <a
-                  href={sectionHref('territoire')}
-                  className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
-                >
-                  Marbella & Mijas
-                </a>
-              </li>
-              <li>
-                <a
-                  href={sectionHref('chef')}
-                  className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
-                >
-                  Chef Dominique Hybord
-                </a>
-              </li>
-              <li>
-                <a
-                  href={sectionHref('maison')}
-                  className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
-                >
-                  {t.nav.about}
-                </a>
-              </li>
-              <li>
-                <a
-                  href={sectionHref('contact')}
-                  className="text-[#EDE6DA]/75 transition hover:text-[#C9A869]"
-                >
-                  {t.nav.contact}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact privilégié */}
-          <div className="col-span-2 sm:col-span-1">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#C9A869]">
-              {t.footer.contactColTitle}
-            </p>
-            <ul className="mt-5 space-y-3 text-sm">
-              <li>
-                <a
-                  href={waLink(DEFAULT_WA_MESSAGE)}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-[#EDE6DA]/85 transition hover:text-white"
-                >
-                  <WhatsAppIcon className="h-4 w-4 text-[#C9A869]" />
-                  <span>{t.footer.directWhatsApp}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={PHONE_TEL}
-                  className="inline-flex items-center gap-2 text-[#EDE6DA]/85 transition hover:text-white"
-                >
-                  <Phone className="h-4 w-4 text-[#C9A869]" />
-                  <span>{PHONE_DISPLAY}</span>
-                </a>
-              </li>
-              <li>
-                <a
-                  href={`mailto:${EMAIL}`}
-                  className="inline-flex items-center gap-2 break-all text-[#EDE6DA]/85 transition hover:text-white"
-                >
-                  <Mail className="h-4 w-4 text-[#C9A869]" />
-                  <span>{EMAIL}</span>
-                </a>
-              </li>
-              <li className="pt-2 text-xs text-[#EDE6DA]/50">
-                {t.footer.areasCovered}
-              </li>
-            </ul>
+            <div className="pt-2 flex items-center gap-2 text-xs text-[#edd088]">
+              <Globe className="w-4 h-4" />
+              <span>Service multilingue : FR · EN · ES · AR</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      {/* LIGNE INFÉRIEURE : MENTIONS LÉGALES & COPYRIGHT */}
-      <div className="border-t border-white/10 bg-black/30">
-        <div className="container-site flex flex-col gap-3 py-6 text-xs text-[#EDE6DA]/60 sm:flex-row sm:items-center sm:justify-between">
-          <p>
-            © {new Date().getFullYear()} {BRAND}. {t.footer.rightsReserved}
-          </p>
-          <div className="flex flex-wrap items-center gap-4 text-[#EDE6DA]/60">
-            <span>{t.footer.locationNote}</span>
-            <span>·</span>
-            <span>{t.footer.discretionNote}</span>
-          </div>
+        {/* Bottom copyright line */}
+        <div className="mt-14 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between text-[11px] text-white/40 tracking-wider">
+          <span>© 2026 Solveig’s Prestige Services. Tous droits réservés.</span>
+          <span className="mt-2 sm:mt-0">Marbella · Mijas · Costa del Sol</span>
         </div>
       </div>
     </footer>

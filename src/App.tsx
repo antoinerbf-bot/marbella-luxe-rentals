@@ -1,98 +1,115 @@
 import React, { useState } from 'react';
-import { useRoute, serviceHref } from './lib/router';
-import { DEFAULT_WA_MESSAGE, ServiceId } from './lib/site';
-import { LanguageProvider, useLanguage } from './lib/LanguageContext';
 import { Header } from './components/Header';
-import { HeroSolaireVideo } from './components/HeroSolaireVideo';
-import { ChefHomeSection } from './components/ChefHomeSection';
-import { MarbellaMijasSection } from './components/MarbellaMijasSection';
+import { HeroCinematic } from './components/HeroCinematic';
+import { SectionsShowcase } from './components/SectionsShowcase';
 import { AboutSection } from './components/AboutSection';
-import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { MobileDrawer } from './components/MobileDrawer';
-import { ServicePage } from './components/ServicePage';
+import { ServiceDetailModal } from './components/ServiceDetailModal';
+import { LiveConciergeNotifications } from './components/LiveConciergeNotifications';
 import { MoroccoUniversePage } from './components/MoroccoUniversePage';
+import { ServicePage } from './components/ServicePage';
+import { MarbellaMijasSection } from './components/MarbellaMijasSection';
 
-function AppContent() {
-  const route = useRoute();
+export function App() {
+  const [currentUniverse, setCurrentUniverse] = useState<'marbella' | 'maroc'>('marbella');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const { lang } = useLanguage();
+  const [activeServiceId, setActiveServiceId] = useState<string | null>(null);
 
-  const floatingWaMessage =
-    lang === 'en'
-      ? 'Hello Solveig, I would like to connect regarding my property on the Costa del Sol.'
-      : lang === 'es'
-      ? 'Hola Solveig, deseo hablar con usted sobre mi propiedad en la Costa del Sol.'
-      : DEFAULT_WA_MESSAGE;
-
-  // Vue dédiée pour chaque Service
-  if (route.name === 'service') {
+  // If user is exploring a dedicated Service Page (full page view)
+  if (activeServiceId) {
     return (
       <ServicePage
-        serviceId={route.id}
+        serviceId={activeServiceId}
         onBack={() => {
-          window.location.hash = '#services';
+          setActiveServiceId(null);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
     );
   }
 
-  // Note : Le projet Maroc (livraison fin 2027) est temporairement en veille (Section 10).
-  // L'architecture technique (MoroccoUniversePage) est préservée pour une activation future sur validation client.
+  // If user is exploring the dedicated Moroccan Universe
+  if (currentUniverse === 'maroc') {
+    return (
+      <MoroccoUniversePage
+        onBackToCostaDelSol={() => {
+          setCurrentUniverse('marbella');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+    );
+  }
 
-  // Page d'Accueil Principale (Marbella & Mijas · Costa del Sol)
+  // Costa del Sol Universe (Marbella & Mijas)
   return (
-    <div className="min-h-screen bg-travertine text-ink flex flex-col selection:bg-bronze/20">
-      {/* En-tête avec sélecteur de langue discret FR / EN / ES */}
+    <div className="min-h-screen bg-[#15262c] text-white flex flex-col selection:bg-[#c29a52]/40 selection:text-white">
+      {/* Top Header */}
       <Header
-        variant="overlay"
-        onOpenMenu={() => setMobileMenuOpen(true)}
-      />
-
-      {/* Hero vidéo authentique Marbella & Grille des 4 services */}
-      <HeroSolaireVideo
-        onSelectService={(serviceId: ServiceId) => {
-          window.location.hash = serviceHref(serviceId);
+        onOpenMobileMenu={() => setMobileMenuOpen(true)}
+        onOpenMoroccoUniverse={() => {
+          setCurrentUniverse('maroc');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       />
 
-      {/* Focus Signature : Le Chef Dominique Hybord dans votre villa */}
-      <ChefHomeSection
-        onSelectService={(serviceId: ServiceId) => {
-          window.location.hash = serviceHref(serviceId);
-        }}
+      {/* Hero Cinematic Section */}
+      <HeroCinematic
+        onSelectService={(serviceId) => setActiveServiceId(serviceId)}
       />
 
-      {/* L'Histoire de la maison & Revue de presse officielle */}
-      <AboutSection />
-
-      {/* Ancrage territorial : Marbella, Mijas & Costa del Sol (suivi directement par Contact) */}
+      {/* Dedicated Marbella, Mijas & Costa del Sol Section */}
       <MarbellaMijasSection />
 
-      {/* Contact privilégié & Formulaire confidentiel */}
-      <ContactSection />
+      {/* Showcase and Content Sections (Services, Chef, Contact) */}
+      <SectionsShowcase
+        onSelectService={(serviceId) => setActiveServiceId(serviceId)}
+      />
 
-      {/* Pied de page contrasté, prestigieux et complet */}
-      <Footer />
+      {/* About Us & Dominique Hybord Legacy Section */}
+      <AboutSection />
 
-      {/* Bouton d'action WhatsApp discret */}
-      <FloatingWhatsApp message={floatingWaMessage} />
+      {/* Footer */}
+      <Footer
+        onOpenMorocco={() => {
+          setCurrentUniverse('maroc');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
 
-      {/* Menu tiroir mobile */}
+      {/* Floating WhatsApp Action Button */}
+      <FloatingWhatsApp />
+
+      {/* Live Concierge Dynamic Toast Notifications */}
+      <LiveConciergeNotifications
+        onNavigateMorocco={() => {
+          setCurrentUniverse('maroc');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+        onNavigateChef={() => {
+          const el = document.getElementById('chef');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
+      />
+
+      {/* Mobile Drawer Menu */}
       <MobileDrawer
         isOpen={mobileMenuOpen}
         onClose={() => setMobileMenuOpen(false)}
+        onOpenMorocco={() => {
+          setMobileMenuOpen(false);
+          setCurrentUniverse('maroc');
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      />
+
+      {/* Interactive Service Detail Modal */}
+      <ServiceDetailModal
+        serviceId={activeServiceId}
+        onClose={() => setActiveServiceId(null)}
       />
     </div>
-  );
-}
-
-export function App() {
-  return (
-    <LanguageProvider>
-      <AppContent />
-    </LanguageProvider>
   );
 }
 

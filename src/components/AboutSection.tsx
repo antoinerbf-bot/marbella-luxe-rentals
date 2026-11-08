@@ -1,8 +1,5 @@
-import React, { useState } from 'react';
-import { Award, Newspaper, Star, ShieldCheck, ChevronRight, ChevronLeft, ZoomIn } from 'lucide-react';
-import { Reveal } from './ui/Reveal';
-import { Lightbox } from './ui/Lightbox';
-import { useLanguage } from '../lib/LanguageContext';
+import React, { useState, useRef } from 'react';
+import { Award, Newspaper, Star, CheckCircle2, ArrowRight, ShieldCheck, HeartHandshake, Eye, UtensilsCrossed, Sparkles, X, ChevronRight, ChevronLeft } from 'lucide-react';
 
 interface PressArticle {
   title: string;
@@ -14,351 +11,246 @@ interface PressArticle {
 }
 
 export const AboutSection: React.FC = () => {
-  const { lang, t } = useLanguage();
-  const ab = t.aboutSection;
   const [selectedArticle, setSelectedArticle] = useState<PressArticle | null>(null);
 
-  const pressArticlesByLang: Record<'fr' | 'en' | 'es', PressArticle[]> = {
-    fr: [
-      {
-        title: 'Le Dauphiné Libéré',
-        source: 'Guide Michelin',
-        date: 'Février 2015',
-        headline: '« La Fleur de sel retrouve son Bib gourmand »',
-        snippet: '« Le chef Dominique Hybord et sa compagne Solveig savourent. Le restaurant La Fleur de sel, qui vient de fêter ses 10 ans, a reçu un Bib Gourmand de la part du Guide Michelin. Passé par des restaurants étoilés parisiens, le chef s’appuie sur une brigade de huit personnes et des produits d’exception. »',
-        image: '/archives-cuisine/le-dauphine-5-fevrier-2015.jpg',
-      },
-      {
-        title: 'La Savoie',
-        source: 'Gault & Millau 2 Toques',
-        date: 'Édition Gastronomie',
-        headline: '« Une cuisine de la mer... à la montagne »',
-        snippet: '« Apprenti à 14 ans à Aix-les-Bains chez le père Lille, puis formé chez Michel Rostang (2 étoiles à Paris) et à l’Auberge du Père Bise à Talloires, Dominique Hybord sublime les poissons nobles et les coquillages de Normandie, en hommage à son épouse Solveig. »',
-        image: '/archives-cuisine/article de La Savoie 001.jpg',
-      },
-      {
-        title: 'Schuss Magazine',
-        source: 'Recette de Chefs',
-        date: 'Courchevel & Savoie',
-        headline: '« Dominique Hybord : Haute Cuisine d’Auteur »',
-        snippet: '« Filet de pigeon rôti, navet farci à la crème de courge et éclats de marrons, cannelloni d’abats et tuile châtaigne foie gras : la virtuosité technique et le raffinement au sommet des Alpes. »',
-        image: '/archives-cuisine/pub schuss magazine 2011 001.jpg',
-      },
-      {
-        title: 'Tarentaise Hebdo',
-        source: 'Chronique du Terroir',
-        date: 'Janvier 2015',
-        headline: '« Dominique et Solveig Hybord, l’excellence partagée »',
-        snippet: '« Le succès de leur table repose sur une alliance terre-mer passionnée et un sens inné de l’hospitalité. Dominique et Solveig innovent sans cesse : service traiteur d’exception, foies gras maison et réception privée sur-mesure. »',
-        image: '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
-      },
-      {
-        title: 'InfosNews Prestige',
-        source: 'Magazine Art de Vivre',
-        date: 'Courchevel & Tarentaise',
-        headline: '« L’Art de la Table en Chalets Privés »',
-        snippet: '« Une présence discrète et des dîners d’exception orchestrés dans les plus beaux intérieurs alpins : un savoir-faire aujourd’hui déployé sous le soleil de la Costa del Sol. »',
-        image: '/archives-cuisine/infosnews 001.jpg',
-      },
-      {
-        title: 'La Vie Nouvelle',
-        source: 'Actualité Gourmande',
-        date: 'Revue de Presse',
-        headline: '« Rigueur et Générosité Gastronomique »',
-        snippet: '« Une exigence forgée par plus de 20 ans d’institutions gastronomiques parisiennes et savoyardes, mise au service d’une clientèle internationale exigeante. »',
-        image: '/archives-cuisine/la vie nouvelle 001.jpg',
-      },
-    ],
-    en: [
-      {
-        title: 'Le Dauphiné Libéré',
-        source: 'Michelin Guide',
-        date: 'February 2015',
-        headline: '“La Fleur de Sel regains its Bib Gourmand”',
-        snippet: '“Chef Dominique Hybord and his partner Solveig celebrate. Restaurant La Fleur de Sel, marking its 10th anniversary, was awarded a Bib Gourmand by the Michelin Guide. Trained in Michelin-starred Parisian houses, the chef leads a brigade of eight around exceptional produce.”',
-        image: '/archives-cuisine/le-dauphine-5-fevrier-2015.jpg',
-      },
-      {
-        title: 'La Savoie',
-        source: 'Gault & Millau 2 Toques',
-        date: 'Gastronomy Edition',
-        headline: '“Seafood cuisine... in the heart of the mountains”',
-        snippet: '“An apprentice at 14 in Aix-les-Bains, then trained at Michel Rostang (2 Michelin stars in Paris) and Auberge du Père Bise in Talloires, Dominique Hybord elevates noble fish and Normandy shellfish in tribute to his wife Solveig.”',
-        image: '/archives-cuisine/article de La Savoie 001.jpg',
-      },
-      {
-        title: 'Schuss Magazine',
-        source: 'Chefs’ Signature Recipes',
-        date: 'Courchevel & Savoy',
-        headline: '“Dominique Hybord: Signature Haute Cuisine”',
-        snippet: '“Roasted pigeon fillet, turnip stuffed with squash cream and chestnut shards, foie gras chestnut tuile: technical mastery and culinary refinement at the summit of the Alps.”',
-        image: '/archives-cuisine/pub schuss magazine 2011 001.jpg',
-      },
-      {
-        title: 'Tarentaise Hebdo',
-        source: 'Culinary Feature',
-        date: 'January 2015',
-        headline: '“Dominique and Solveig Hybord, shared excellence”',
-        snippet: '“The success of their table rests on a passionate land-and-sea alliance and an innate sense of hospitality. Dominique and Solveig continually innovate with bespoke private dining and house-made delicacies.”',
-        image: '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
-      },
-      {
-        title: 'InfosNews Prestige',
-        source: 'Lifestyle Magazine',
-        date: 'Courchevel & Tarentaise',
-        headline: '“The Art of Dining in Private Chalets”',
-        snippet: '“A discreet presence and exceptional dinners orchestrated in the finest private interiors: a savoir-faire now brought to the sun-drenched villas of the Costa del Sol.”',
-        image: '/archives-cuisine/infosnews 001.jpg',
-      },
-      {
-        title: 'La Vie Nouvelle',
-        source: 'Gastronomic News',
-        date: 'Press Review',
-        headline: '“Gastronomic Precision and Generosity”',
-        snippet: '“Exacting standards forged over more than twenty years in Parisian and Savoyard culinary institutions, dedicated to a discerning international clientele.”',
-        image: '/archives-cuisine/la vie nouvelle 001.jpg',
-      },
-    ],
-    es: [
-      {
-        title: 'Le Dauphiné Libéré',
-        source: 'Guía Michelin',
-        date: 'Febrero de 2015',
-        headline: '«La Fleur de Sel recupera su Bib Gourmand»',
-        snippet: '«El chef Dominique Hybord y su compañera Solveig celebran este reconocimiento. El restaurante La Fleur de Sel, en su décimo aniversario, ha recibido el Bib Gourmand de la Guía Michelin. Formado en restaurantes parisinos con estrellas Michelin, trabaja con productos de excepción.»',
-        image: '/archives-cuisine/le-dauphine-5-fevrier-2015.jpg',
-      },
-      {
-        title: 'La Savoie',
-        source: 'Gault & Millau 2 Toques',
-        date: 'Edición Gastronomía',
-        headline: '«Cocina del mar... en el corazón de la montaña»',
-        snippet: '«Aprendiz a los 14 años en Aix-les-Bains y formado junto a Michel Rostang (2 estrellas en París) y en L’Auberge du Père Bise en Talloires, Dominique Hybord sublima los pescados nobles y mariscos de Normandía en homenaje a su esposa Solveig.»',
-        image: '/archives-cuisine/article de La Savoie 001.jpg',
-      },
-      {
-        title: 'Schuss Magazine',
-        source: 'Recetas de Autor',
-        date: 'Courchevel y Saboya',
-        headline: '«Dominique Hybord: Alta Cocina de Autor»',
-        snippet: '«Filete de pichón asado, nabo relleno de crema de calabaza y castañas, teja de castaña y foie gras: virtuosismo técnico y refinamiento en la cumbre de los Alpes.»',
-        image: '/archives-cuisine/pub schuss magazine 2011 001.jpg',
-      },
-      {
-        title: 'Tarentaise Hebdo',
-        source: 'Crónica Gastronómica',
-        date: 'Enero de 2015',
-        headline: '«Dominique y Solveig Hybord, la excelencia compartida»',
-        snippet: '«El éxito de su mesa reside en una apasionada alianza entre mar y tierra y un sentido innato de la hospitalidad. Dominique y Solveig crean recepciones privadas a medida con total dedicación.»',
-        image: '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
-      },
-      {
-        title: 'InfosNews Prestige',
-        source: 'Revista Estilo de Vida',
-        date: 'Courchevel y Tarentaise',
-        headline: '«El Arte de la Mesa en Residencias Privadas»',
-        snippet: '«Una presencia discreta y cenas excepcionales orquestadas en las residencias más exclusivas: un saber hacer que hoy brilla bajo el sol de la Costa del Sol.»',
-        image: '/archives-cuisine/infosnews 001.jpg',
-      },
-      {
-        title: 'La Vie Nouvelle',
-        source: 'Actualidad Gourmet',
-        date: 'Revista de Prensa',
-        headline: '«Rigor y Generosidad Gastronómica»',
-        snippet: '«Una exigencia forjada durante más de veinte años en prestigiosas instituciones gastronómicas de París y Saboya, al servicio de una clientela internacional.»',
-        image: '/archives-cuisine/la vie nouvelle 001.jpg',
-      },
-    ],
-  };
-
-  const pressArticles = pressArticlesByLang[lang] || pressArticlesByLang.fr;
+  const pressArticles: PressArticle[] = [
+    {
+      title: 'Le Dauphiné Libéré',
+      source: 'Guide Michelin',
+      date: 'Février 2015',
+      headline: '« La Fleur de sel retrouve son Bib gourmand »',
+      snippet: '« Le chef Dominique Hybord et sa compagne Solveig savourent. Le restaurant La Fleur de sel, qui vient de fêter ses 10 ans, a reçu un Bib Gourmand de la part du Guide Michelin. Passé par des restaurants étoilés parisiens, le chef s’appuie sur une brigade de huit personnes et des produits d’exception. »',
+      image: '/archives-cuisine/le dauphiné 5 fevrier 2015 001.jpg',
+    },
+    {
+      title: 'La Savoie',
+      source: 'Gault & Millau 2 Toques',
+      date: 'Édition Gastronomie',
+      headline: '« Une cuisine de la mer... à la montagne »',
+      snippet: '« Apprenti à 14 ans à Aix-les-Bains chez le père Lille, puis formé chez Michel Rostang (2 étoiles à Paris) et à l’Auberge du Père Bise à Talloires, Dominique Hybord sublime les poissons nobles et les coquillages de Normandie, en hommage à son épouse Solveig. »',
+      image: '/archives-cuisine/article de La Savoie 001.jpg',
+    },
+    {
+      title: 'Schuss Magazine',
+      source: 'Recette de Chefs',
+      date: 'Courchevel & Savoie',
+      headline: '« Dominique Hybord : Haute Cuisine d’Auteur »',
+      snippet: '« Filet de pigeon rôti, navet farci à la crème de courge et éclats de marrons, cannelloni d’abats et tuile châtaigne foie gras : la virtuosité technique et le raffinement au sommet des Alpes. »',
+      image: '/archives-cuisine/pub schuss magazine 2011 001.jpg',
+    },
+    {
+      title: 'Tarentaise Hebdo',
+      source: 'Chronique du Terroir',
+      date: 'Janvier 2015',
+      headline: '« Dominique et Solveig Hybord, l’excellence partagée »',
+      snippet: '« Le succès de leur table repose sur une alliance terre-mer passionnée et un sens inné de l’hospitalité. Dominique et Solveig innovent sans cesse : service traiteur d’exception, foies gras maison et réception privée sur-mesure. »',
+      image: '/archives-cuisine/tarentaise hebdo du 29 janvier 2015 001.jpg',
+    },
+    {
+      title: 'InfosNews Prestige',
+      source: 'Magazine Art de Vivre',
+      date: 'Courchevel & Tarentaise',
+      headline: '« L’Art de la Table en Chalets Privés »',
+      snippet: '« Une présence discrète et des dîners d’exception orchestrés dans les plus beaux intérieurs alpins : un savoir-faire aujourd’hui déployé sous le soleil de la Costa del Sol. »',
+      image: '/archives-cuisine/infosnews 001.jpg',
+    },
+    {
+      title: 'La Vie Nouvelle',
+      source: 'Actualité Gourmande',
+      date: 'Revue de Presse',
+      headline: '« Rigueur et Générosité Gastronomique »',
+      snippet: '« Une exigence forgée par plus de 20 ans d’institutions gastronomiques parisiennes et savoyardes, mise au service d’une clientèle internationale exigeante. »',
+      image: '/archives-cuisine/la vie nouvelle 001.jpg',
+    },
+  ];
 
   return (
-    <section id="maison" className="relative border-t border-[#C9A869]/20 bg-gradient-to-b from-[#EAE0CE] via-[#F4EEE4] to-[#FAF7F2] py-24 sm:py-32">
-      <div className="container-site">
-        {/* Histoire des fondateurs */}
-        <div className="grid items-center gap-10 lg:grid-cols-12 lg:gap-14">
-          <Reveal className="lg:col-span-7 space-y-6">
-            <p className="eyebrow">{ab.eyebrow}</p>
+    <section id="about" className="relative px-5 py-20 sm:px-8 lg:px-12 bg-[#0e1a1f] text-white overflow-hidden">
+      {/* Background radial luxury glows */}
+      <div className="absolute top-1/4 -left-40 w-96 h-96 bg-[#c29a52]/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-40 w-96 h-96 bg-[#c29a52]/10 rounded-full blur-[120px] pointer-events-none" />
 
-            <h2 className="font-serif text-3xl font-medium leading-[1.08] text-ink sm:text-5xl lg:text-6xl">
-              {ab.titleMain} <br />
-              <span className="italic text-bronze">{ab.titleItalic}</span>
+      <div className="max-w-[1400px] mx-auto">
+        {/* Editorial 2-Column: Minimalist Story & Palace Villa Visual */}
+        <div className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center mb-16">
+          
+          {/* Left: Refined, Light, Elegant Manifesto (7 Cols) */}
+          <div className="lg:col-span-7 space-y-6">
+            <span className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-gold-border/40 bg-[#c29a52]/10 text-[#fbe8b5] text-[10px] sm:text-[11px] font-bold tracking-[0.25em] uppercase">
+              <Sparkles className="w-3.5 h-3.5 text-[#edd088]" />
+              Héritage & Savoir-Faire
+            </span>
+
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-medium leading-[1.08] text-white">
+              Trente ans d’exigence. <br />
+              <span className="italic text-[#edd088]">Une présence confidentielle.</span>
             </h2>
 
-            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
-              {ab.paragraph1}
+            <p className="text-sm sm:text-base text-white/85 leading-relaxed font-light">
+              Des prestigieuses maisons étoilées parisiennes (Michel Rostang 2★ Michelin) aux distinctions du <span className="text-[#fbe8b5] font-medium">Guide Michelin (Bib Gourmand)</span> et de <span className="text-[#fbe8b5] font-medium">Gault & Millau (2 Toques)</span>, Dominique et Solveig Hybord cultivent depuis plus de trois décennies un dévouement absolu au service d'hôtes exigeants.
             </p>
 
-            <p className="text-sm font-light leading-relaxed text-ink-soft sm:text-base">
-              {ab.paragraph2}
+            <p className="text-sm sm:text-base text-white/75 leading-relaxed font-light">
+              Aujourd’hui installés entre Marbella et Mijas, ils orchestrent pour les propriétaires de domaines privés une intendance irréprochable, une conciergerie privée 7/7 et des expériences gastronomiques exclusives dans l’intimité de leur villa.
             </p>
 
-            {/* 3 Badges de réassurance */}
-            <div className="grid gap-4 sm:grid-cols-3 pt-2">
-              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
-                <div className="flex items-center gap-2 text-bronze mb-1">
-                  <Award className="h-4 w-4" />
-                  <span className="font-serif text-xl font-bold text-ink">30+ Ans</span>
+            {/* 3 Minimalist Prestige Badges */}
+            <div className="grid sm:grid-cols-3 gap-3 pt-2">
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-2 text-[#edd088] mb-1">
+                  <Award className="w-4 h-4" />
+                  <span className="font-serif text-lg font-bold text-white">30+ Ans</span>
                 </div>
-                <p className="text-xs font-light text-ink-soft">
-                  {lang === 'en'
-                    ? 'Hospitality & culinary excellence.'
-                    : lang === 'es'
-                    ? 'Excelencia hotelera y culinaria.'
-                    : 'D’excellence hôtelière et gastronomique.'}
-                </p>
+                <p className="text-[11px] text-white/70 leading-snug">Au sommet de la gastronomie et de l’hôtellerie de luxe.</p>
               </div>
 
-              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
-                <div className="flex items-center gap-2 text-bronze mb-1">
-                  <Star className="h-4 w-4 fill-current" />
-                  <span className="font-serif text-xl font-bold text-ink">Michelin</span>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-2 text-[#edd088] mb-1">
+                  <Star className="w-4 h-4" />
+                  <span className="font-serif text-lg font-bold text-white">Michelin</span>
                 </div>
-                <p className="text-xs font-light text-ink-soft">Bib Gourmand & 2 Toques Gault & Millau.</p>
+                <p className="text-[11px] text-white/70 leading-snug">Distinction Bib Gourmand & 2 Toques Gault & Millau.</p>
               </div>
 
-              <div className="rounded-2xl border border-ink/10 bg-white/95 p-4 shadow-sm hover:border-[#C9A869]/60 transition-colors">
-                <div className="flex items-center gap-2 text-bronze mb-1">
-                  <ShieldCheck className="h-4 w-4" />
-                  <span className="font-serif text-xl font-bold text-ink">
-                    {lang === 'en' ? 'Discretion' : lang === 'es' ? 'Discreción' : 'Discrétion'}
-                  </span>
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <div className="flex items-center gap-2 text-[#edd088] mb-1">
+                  <ShieldCheck className="w-4 h-4" />
+                  <span className="font-serif text-lg font-bold text-white">Discrétion</span>
                 </div>
-                <p className="text-xs font-light text-ink-soft">
-                  {lang === 'en'
-                    ? 'Total confidentiality guaranteed.'
-                    : lang === 'es'
-                    ? 'Confidencialidad y secreto profesional.'
-                    : 'Confidentialité et secret professionnel.'}
-                </p>
+                <p className="text-[11px] text-white/70 leading-snug">Confidentialité absolue et rigueur de service 7j/7.</p>
               </div>
             </div>
-          </Reveal>
+          </div>
 
-          {/* Visuel Domaine & Citation */}
-          <Reveal className="lg:col-span-5" delay={150}>
-            <div className="relative overflow-hidden rounded-[2.2rem] border border-ink/10 bg-white shadow-[0_20px_45px_rgba(28,26,23,0.08)]">
-              <div className="relative h-72 overflow-hidden bg-linen sm:h-96">
+          {/* Right: Palace Architectural Visual with Clean Floating Card (5 Cols) */}
+          <div className="lg:col-span-5">
+            <div className="relative rounded-3xl overflow-hidden border border-gold-border/40 shadow-2xl bg-black/40">
+              <div className="relative h-[280px] sm:h-[440px] overflow-hidden">
                 <img
                   src="/about-villa-charm.jpg"
-                  alt="Demeure andalouse de prestige sur la Costa del Sol"
-                  className="h-full w-full object-cover transition-transform duration-700 hover:scale-105"
+                  alt="Demeure andalouse historique et art de vivre d'exception à Marbella"
+                  className="w-full h-full object-cover object-center transition-transform duration-700 hover:scale-105"
                   loading="lazy"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent pointer-events-none" />
-
-                <div className="absolute bottom-5 left-5 right-5 rounded-2xl border border-white/20 bg-black/75 p-5 backdrop-blur-xl text-white shadow-lg">
-                  <p className="font-serif italic text-sm sm:text-base leading-snug text-white/95">
-                    {ab.quote}
-                  </p>
-                  <p className="mt-2 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
-                    {ab.quoteAuthor}
-                  </p>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent" />
+                
+                {/* Discrete Floating Signature Card */}
+                <div className="absolute bottom-3 left-3 right-3 sm:bottom-5 sm:left-5 sm:right-5 p-3 sm:p-5 rounded-2xl bg-black/75 backdrop-blur-md border border-[#c29a52]/40">
+                  <div className="flex items-center gap-3">
+                    <div className="w-8 h-8 sm:w-9 sm:h-9 rounded-full bg-[#c29a52]/20 border border-[#c29a52]/50 flex items-center justify-center text-[#edd088] shrink-0">
+                      <UtensilsCrossed className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <p className="text-[11px] sm:text-sm font-serif italic text-white/95 leading-snug">
+                        « Le véritable luxe ne s’impose pas : il se ressent dans la perfection invisible de chaque instant. »
+                      </p>
+                      <span className="text-[9px] sm:text-[10px] font-bold uppercase tracking-widest text-[#edd088] mt-1 block">
+                        Solveig & Dominique Hybord · Fondateurs
+                      </span>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
-          </Reveal>
+          </div>
         </div>
 
-        {/* Revue de presse officielle */}
-        <div className="mt-20 border-t border-ink/10 pt-16">
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end mb-8">
+        {/* Press Mentions: Sleek Horizontal Showcase with Parallax Cards */}
+        <div className="pt-12 border-t border-white/10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
             <div>
-              <p className="eyebrow flex items-center gap-2">
-                <Newspaper className="h-3.5 w-3.5 text-bronze" />
-                {ab.pressEyebrow}
-              </p>
-              <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl lg:text-4xl mt-1">
-                {ab.pressTitle}
+              <span className="text-[10px] font-bold uppercase tracking-[0.25em] text-[#edd088] flex items-center gap-2">
+                <Newspaper className="w-3.5 h-3.5 text-[#e5a872]" />
+                Archives & Reconnaissance Presse
+              </span>
+              <h3 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-white font-medium mt-1">
+                Trente Ans de Gastronomie dans la Presse
               </h3>
-              <p className="text-sm font-light text-ink-soft mt-1 max-w-xl">
-                {ab.pressDesc}
+              <p className="text-xs sm:text-sm text-white/70 mt-1 max-w-xl">
+                Articles authentiques consacrés au parcours d'excellence de Dominique et Solveig Hybord. Faites défiler horizontalement pour feuilleter les publications originales.
               </p>
             </div>
 
-            {/* Flèches de défilement horizontal */}
+            {/* Navigation Arrows */}
             <div className="flex items-center gap-2 shrink-0">
               <button
-                type="button"
                 onClick={() => {
                   const el = document.getElementById('press-shelf-container');
                   if (el) el.scrollBy({ left: -340, behavior: 'smooth' });
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-bronze hover:bg-ink hover:text-white"
+                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
                 aria-label="Article précédent"
               >
-                <ChevronLeft className="h-5 w-5" />
+                <ChevronLeft className="w-5 h-5 text-[#fbe8b5]" />
               </button>
               <button
-                type="button"
                 onClick={() => {
                   const el = document.getElementById('press-shelf-container');
                   if (el) el.scrollBy({ left: 340, behavior: 'smooth' });
                 }}
-                className="flex h-10 w-10 items-center justify-center rounded-full border border-ink/15 bg-white text-ink transition hover:border-bronze hover:bg-ink hover:text-white"
+                className="w-10 h-10 rounded-full border border-white/20 bg-white/5 hover:bg-[#c29a52]/20 hover:border-[#edd088] text-white flex items-center justify-center transition-all shadow-md active:scale-95"
                 aria-label="Article suivant"
               >
-                <ChevronRight className="h-5 w-5" />
+                <ChevronRight className="w-5 h-5 text-[#fbe8b5]" />
               </button>
             </div>
           </div>
 
-          {/* Défilement horizontal des articles (format 3:4 journal authentique) */}
+          {/* Horizontal Scrolling Shelf with Natural 3:4 Vertical Newspaper Aspect Ratio */}
           <div
             id="press-shelf-container"
-            className="flex gap-5 overflow-x-auto pb-4 pt-1 no-scrollbar scroll-smooth"
+            className="flex gap-5 sm:gap-6 overflow-x-auto no-scrollbar scroll-smooth pb-6 pt-2 px-1 snap-x snap-mandatory"
           >
-            {pressArticles.map((art, idx) => (
+            {pressArticles.map((article, index) => (
               <div
-                key={idx}
-                className="card-luxury w-[285px] sm:w-[325px] shrink-0 p-4 flex flex-col justify-between"
+                key={index}
+                onClick={() => setSelectedArticle(article)}
+                className="group relative cursor-pointer w-[270px] sm:w-[320px] shrink-0 rounded-3xl bg-gradient-to-b from-[#16272e] to-[#0e191d] border border-white/15 p-4 hover:border-[#edd088] hover:shadow-[0_20px_45px_rgba(241,210,145,0.2)] hover:-translate-y-2 transition-all duration-500 flex flex-col justify-between snap-start"
               >
+                {/* Vertical Magazine Card Header */}
                 <div>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedArticle(art)}
-                    className="group relative aspect-[3/4] w-full overflow-hidden rounded-xl border border-ink/10 bg-[#FAF7F2] focus:outline-none focus-visible:ring-2 focus-visible:ring-bronze"
-                    aria-label={`Agrandir l'article : ${art.title}`}
-                  >
+                  <div className="relative h-[340px] sm:h-[400px] rounded-2xl overflow-hidden bg-black/60 mb-4 border border-white/10 shadow-inner group-hover:border-[#edd088]/40 transition-colors">
                     <img
-                      src={art.image}
-                      alt={`Article de presse : ${art.title}`}
-                      className="h-full w-full object-contain p-2 transition-transform duration-500 group-hover:scale-105"
+                      src={article.image}
+                      alt={article.title}
+                      className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-108"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 flex items-center justify-center bg-ink/0 transition-colors group-hover:bg-ink/20">
-                      <span className="flex h-10 w-10 items-center justify-center rounded-full bg-white/95 text-ink opacity-0 transition-opacity group-hover:opacity-100 shadow-md">
-                        <ZoomIn className="h-5 w-5" />
+                    {/* Gradient shading */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+
+                    {/* Source Badge on top */}
+                    <span className="absolute top-3 left-3 px-3 py-1 rounded-full bg-black/75 backdrop-blur-md text-[#edd088] text-[9.5px] font-bold tracking-widest uppercase border border-[#edd088]/40 shadow-lg">
+                      {article.source}
+                    </span>
+
+                    {/* Hover Zoom Prompt */}
+                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                      <span className="px-4 py-2 rounded-full bg-black/90 backdrop-blur-md border border-[#edd088] text-[#edd088] text-xs font-bold uppercase tracking-wider flex items-center gap-2 shadow-2xl scale-95 group-hover:scale-100 transition-transform">
+                        <Eye className="w-4 h-4" />
+                        Lire l'Article Original
                       </span>
                     </div>
-                  </button>
 
-                  <div className="mt-4">
-                    <div className="flex items-center justify-between text-[11px] text-ink-muted">
-                      <span className="font-semibold text-bronze">{art.source}</span>
-                      <span>{art.date}</span>
+                    {/* Bottom overlay snippet */}
+                    <div className="absolute bottom-3 left-3 right-3">
+                      <span className="text-[10px] text-white/60 font-semibold tracking-wider block">
+                        {article.title} · {article.date}
+                      </span>
+                      <h4 className="font-serif text-sm sm:text-base text-white font-medium line-clamp-2 mt-0.5 group-hover:text-[#edd088] transition-colors leading-snug">
+                        {article.headline}
+                      </h4>
                     </div>
-                    <h4 className="font-serif text-lg font-medium text-ink mt-1 leading-snug">
-                      {art.title}
-                    </h4>
-                    <p className="text-xs font-semibold text-ink mt-1">
-                      {art.headline}
-                    </p>
-                    <p className="text-xs font-light text-ink-soft mt-2 line-clamp-3 leading-relaxed">
-                      {art.snippet}
-                    </p>
                   </div>
+
+                  <p className="text-xs text-white/70 line-clamp-3 leading-relaxed italic px-1">
+                    {article.snippet}
+                  </p>
                 </div>
 
-                <div className="mt-4 pt-3 border-t border-ink/5">
-                  <button
-                    type="button"
-                    onClick={() => setSelectedArticle(art)}
-                    className="text-xs font-semibold text-bronze hover:text-ink transition-colors"
-                  >
-                    {ab.readArticle}
-                  </button>
+                <div className="mt-4 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-semibold text-[#edd088] px-1">
+                  <span>Feuilleter le scan original</span>
+                  <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
             ))}
@@ -366,11 +258,57 @@ export const AboutSection: React.FC = () => {
         </div>
       </div>
 
-      <Lightbox
-        src={selectedArticle ? selectedArticle.image : null}
-        alt={selectedArticle ? selectedArticle.headline : ''}
-        onClose={() => setSelectedArticle(null)}
-      />
+      {/* Lightbox Modal for Press Articles with Detailed Transcripts */}
+      {selectedArticle && (
+        <div
+          onClick={() => setSelectedArticle(null)}
+          className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/90 backdrop-blur-lg animate-in fade-in"
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative max-w-4xl max-h-[92vh] w-full overflow-hidden bg-[#15262c] rounded-3xl border border-gold-border/70 shadow-2xl flex flex-col"
+          >
+            {/* Modal Header */}
+            <div className="flex items-center justify-between p-4 sm:p-6 border-b border-white/10 bg-[#101c22]">
+              <div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088]">
+                  {selectedArticle.title} · {selectedArticle.date}
+                </span>
+                <h4 className="font-serif text-xl sm:text-2xl text-white font-semibold">
+                  {selectedArticle.headline}
+                </h4>
+              </div>
+              <button
+                onClick={() => setSelectedArticle(null)}
+                className="p-2 rounded-full border border-white/20 bg-black/40 text-white hover:border-[#edd088] hover:text-[#edd088] transition-colors"
+                aria-label="Fermer"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+
+            {/* Modal Body: Scanned Article Image & Extracted Quote */}
+            <div className="overflow-y-auto p-4 sm:p-6 space-y-4">
+              <div className="rounded-2xl overflow-hidden border border-white/15 bg-black/60 max-h-[55vh] flex items-center justify-center">
+                <img
+                  src={selectedArticle.image}
+                  alt={selectedArticle.title}
+                  className="max-h-[55vh] w-auto object-contain mx-auto"
+                />
+              </div>
+
+              <div className="p-4 rounded-2xl bg-white/5 border border-white/10">
+                <p className="text-xs sm:text-sm text-white/90 leading-relaxed italic">
+                  {selectedArticle.snippet}
+                </p>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-[#edd088] block mt-2">
+                  Source certifiée : {selectedArticle.source}
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };
