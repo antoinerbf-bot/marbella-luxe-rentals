@@ -373,9 +373,9 @@ export const HeroSolaireVideo: React.FC<HeroSolaireVideoProps> = ({ onSelectServ
             <div>
               <div className="relative h-48 sm:h-60 overflow-hidden">
                 <img
-                  src="/chef-villa-gastro.jpg"
-                  alt="Chef privé en villa à Marbella"
-                  className="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-108"
+                  src="/chef-dominique-cepes.jpg"
+                  alt="Le Chef Dominique Hybord à domicile à Marbella"
+                  className="w-full h-full object-cover object-[center_20%] transition-transform duration-700 group-hover:scale-108"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
