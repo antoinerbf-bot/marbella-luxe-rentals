@@ -933,28 +933,109 @@ export const ServicePage: React.FC<ServicePageProps> = ({ serviceId, onBack }) =
         </div>
       </section>
 
-      {/* CAS 1 : CONCIERGERIE PRIVÉE 7/7 (RESPECT STRICT DE LA DEMANDE DE LA CLIENTE) */}
+      {/* CAS 1 : CONCIERGERIE PRIVÉE 7/7 — EXPÉRIENCE ÉDITORIALE & LIFESTYLE */}
       {serviceId === 'concierge-services' ? (
-        <section className="border-t border-ink/5 bg-sand py-20">
-          <div className="container-site max-w-3xl text-center space-y-6">
-            <p className="eyebrow">
-              {lang === 'en' ? 'Discretion & 7/7 Availability' : lang === 'es' ? 'Discreción y Disponibilidad 7d/7' : 'Discrétion & Disponibilité 7/7'}
-            </p>
-            <h3 className="font-serif text-2xl font-medium text-ink sm:text-3xl">
-              {lang === 'en'
-                ? 'Anticipating every moment to grant you absolute peace of mind.'
-                : lang === 'es'
-                ? 'Anticipar cada instante para brindarle una serenidad absoluta.'
-                : 'Anticiper chaque instant pour vous offrir une sérénité absolue.'}
-            </h3>
-            <p className="text-sm font-light leading-relaxed text-ink-soft">
-              {lang === 'en'
-                ? 'Securing a table at an exclusive table, arranging a private day at sea, or coordinating airport transfers: Solveig remains at your disposal 7 days a week.'
-                : lang === 'es'
-                ? 'Conseguir mesa en un restaurante de excepción, organizar una jornada en el mar o coordinar sus traslados desde el aeropuerto: Solveig está a su escucha los 7 días de la semana.'
-                : 'Obtenir une table d’exception, organiser une journée en mer ou coordonner vos déplacements dès l’aéroport : Solveig reste à votre écoute 7 jours sur 7.'}
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+        <section className="border-t border-ink/5 bg-sand py-20 sm:py-24">
+          <div className="container-site space-y-16">
+            <div className="max-w-3xl mx-auto text-center space-y-4">
+              <p className="eyebrow">
+                {lang === 'en' ? 'Discretion & 7/7 Availability' : lang === 'es' ? 'Discreción y Disponibilidad 7d/7' : 'Discrétion & Disponibilité 7/7'}
+              </p>
+              <h3 className="font-serif text-3xl font-medium text-ink sm:text-4xl lg:text-5xl">
+                {lang === 'en'
+                  ? 'Anticipating every moment to grant you absolute peace of mind.'
+                  : lang === 'es'
+                  ? 'Anticipar cada instante para brindarle una serenidad absoluta.'
+                  : 'Anticiper chaque instant pour vous offrir une sérénité absolue.'}
+              </h3>
+              <p className="text-sm sm:text-base font-light leading-relaxed text-ink-soft">
+                {lang === 'en'
+                  ? 'Securing a priority table at an exclusive restaurant, chartering a private yacht from Puerto Banús, preparing your residence before arrival, or coordinating VIP airport transfers: Solveig remains personally at your disposal 7 days a week.'
+                  : lang === 'es'
+                  ? 'Conseguir mesa prioritaria en un restaurante de excepción, fletar un yate privado desde Puerto Banús, preparar su villa antes de su llegada o coordinar traslados VIP desde el aeropuerto: Solveig está a su escucha los 7 días de la semana.'
+                  : 'Obtenir une table d’exception, affréter un yacht privé depuis Puerto Banús, préparer votre résidence avant votre arrivée ou coordonner vos transferts VIP dès l’aéroport : Solveig reste personnellement à votre écoute 7 jours sur 7.'}
+              </p>
+            </div>
+
+            {/* Triptyque Photographique Lifestyle & Conciergerie */}
+            <div className="grid gap-6 md:grid-cols-3">
+              {[
+                {
+                  img: '/concierge-yacht-vip.jpg',
+                  badge: lang === 'en' ? 'Mediterranean Sea' : lang === 'es' ? 'Mar Mediterráneo' : 'Mer Méditerranée',
+                  title:
+                    lang === 'en'
+                      ? 'Private Yachting & Beach Clubs'
+                      : lang === 'es'
+                      ? 'Yates Privados y Beach Clubs'
+                      : 'Yachting Privé & Beach Clubs',
+                  desc:
+                    lang === 'en'
+                      ? 'Bespoke boat charters from Puerto Banús and Marbella Marina, Sunset cruises, and priority reservations at the finest coastal addresses.'
+                      : lang === 'es'
+                      ? 'Salidas privadas en barco desde Puerto Banús y Marbella, cruceros al atardecer y reservas prioritarias en los mejores Beach Clubs.'
+                      : 'Sorties en mer privatives depuis Puerto Banús, croisières au coucher du soleil et réservations prioritaires dans les adresses les plus prisées.',
+                },
+                {
+                  img: '/candidates/option2_majordome.jpg',
+                  badge: lang === 'en' ? 'At Your Villa' : lang === 'es' ? 'En su Villa' : 'Au Cœur de Votre Villa',
+                  title:
+                    lang === 'en'
+                      ? 'Pre-Arrival Provisioning & Wellness'
+                      : lang === 'es'
+                      ? 'Preparación de Villa y Bienestar'
+                      : 'Préparation de Villa & Bien-Être',
+                  desc:
+                    lang === 'en'
+                      ? 'Fine grocery & cellar pre-stocking before your arrival, fresh floral arrangements, in-villa massages, yoga instructors, and private events.'
+                      : lang === 'es'
+                      ? 'Abastecimiento gourmet y bodega antes de su llegada, flores frescas, masajes en la villa, profesores de yoga y eventos privados.'
+                      : 'Approvisionnement gourmet et cave avant votre arrivée, bouquets frais, massages à domicile, coachs privés et réception sur mesure.',
+                },
+                {
+                  img: '/candidates/option3_chauffeur.jpg',
+                  badge: lang === 'en' ? 'Seamless Mobility' : lang === 'es' ? 'Movilidad VIP' : 'Mobilité & Golf',
+                  title:
+                    lang === 'en'
+                      ? 'VIP Chauffeurs & Golf Green Fees'
+                      : lang === 'es'
+                      ? 'Chófer Privado y Green Fees de Golf'
+                      : 'Chauffeurs VIP & Green Fees Golf',
+                  desc:
+                    lang === 'en'
+                      ? 'Private airport transfers from Málaga AGP, luxury vehicles at disposal, and tee-time bookings on the finest Golf Valley courses.'
+                      : lang === 'es'
+                      ? 'Traslados privados desde el aeropuerto de Málaga, vehículos con chófer y reserva de salidas en los mejores campos del Valle del Golf.'
+                      : 'Transferts privés depuis l’aéroport de Málaga, véhicules avec chauffeur et réservations de parcours dans les golfs prestigieux de Marbella.',
+                },
+              ].map((item, idx) => (
+                <div
+                  key={idx}
+                  className="group rounded-[2rem] border border-ink/10 bg-white overflow-hidden shadow-sm hover:shadow-xl transition-all flex flex-col justify-between"
+                >
+                  <div className="relative h-64 overflow-hidden bg-ink">
+                    <img
+                      src={item.img}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+                    <span className="absolute top-4 left-4 rounded-full bg-black/60 backdrop-blur-md border border-[#C9A869]/40 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-[#F3DEB0]">
+                      {item.badge}
+                    </span>
+                  </div>
+                  <div className="p-6 sm:p-7 space-y-2.5 flex-1">
+                    <h4 className="font-serif text-2xl font-medium text-ink">{item.title}</h4>
+                    <p className="text-xs sm:text-sm font-light leading-relaxed text-ink-soft">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
               <a
                 href={waLink(content.whatsappMessage)}
                 target="_blank"

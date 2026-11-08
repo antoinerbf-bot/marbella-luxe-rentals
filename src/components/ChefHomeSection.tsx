@@ -643,12 +643,12 @@ export const ChefHomeSection: React.FC<ChefHomeSectionProps> = ({ onSelectServic
                       {isSelected ? (
                         <>
                           <CheckCircle2 className="h-3.5 w-3.5" />
-                          <span>Sélectionné</span>
+                          <span>{lang === 'en' ? 'Selected' : lang === 'es' ? 'Seleccionado' : 'Sélectionné'}</span>
                         </>
                       ) : (
                         <>
                           <Plus className="h-3.5 w-3.5 text-[#C9A869]" />
-                          <span>Ajouter au menu</span>
+                          <span>{lang === 'en' ? 'Add to menu' : lang === 'es' ? 'Añadir al menú' : 'Ajouter au menu'}</span>
                         </>
                       )}
                     </button>

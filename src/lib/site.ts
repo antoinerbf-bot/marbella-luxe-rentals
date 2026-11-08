@@ -4,6 +4,7 @@ export const BRAND = 'Solveig’s Prestige Services';
 export const PHONE_DISPLAY = '+34 623 626 724';
 export const PHONE_TEL = 'tel:+34623626724';
 export const EMAIL = 'solveighybord@gmail.com';
+export const MAROC_HREF = '#/maroc';
 
 export const waLink = (message: string) =>
   `https://wa.me/34623626724?text=${encodeURIComponent(message)}`;
