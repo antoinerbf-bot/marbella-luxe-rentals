@@ -71,3 +71,46 @@ button, a {
 ::-webkit-scrollbar-thumb:hover {
   background: #c29a52;
 }
+
+/* Smooth 60fps Aerial Drone Camera Movements */
+@keyframes droneGlideForward {
+  0% {
+    transform: scale(1.01) translate3d(0%, 0%, 0);
+  }
+  100% {
+    transform: scale(1.12) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+@keyframes dronePanRight {
+  0% {
+    transform: scale(1.08) translate3d(-2%, 0.5%, 0);
+  }
+  100% {
+    transform: scale(1.02) translate3d(1.5%, -0.8%, 0);
+  }
+}
+
+@keyframes dronePanLeft {
+  0% {
+    transform: scale(1.02) translate3d(1.5%, 0%, 0);
+  }
+  100% {
+    transform: scale(1.11) translate3d(-1.5%, -1%, 0);
+  }
+}
+
+.animate-drone-1 {
+  will-change: transform;
+  animation: droneGlideForward 9s ease-out forwards;
+}
+
+.animate-drone-2 {
+  will-change: transform;
+  animation: dronePanRight 9s ease-out forwards;
+}
+
+.animate-drone-3 {
+  will-change: transform;
+  animation: dronePanLeft 9s ease-out forwards;
+}

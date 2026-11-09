@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight, Play, Pause, Sparkles, Compass, MessageCircle } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 interface ServiceItem {
   id: string;
@@ -10,61 +10,60 @@ interface ServiceItem {
   icon: React.ReactNode;
 }
 
-interface DroneViewpoint {
+interface AndalusianView {
   id: string;
   code: string;
-  label: string;
+  name: string;
   location: string;
-  caption: string;
-  video: string;
-  mimeType: string;
-  poster: string;
+  image: string;
+  motionClass: string;
 }
 
 interface HeroCinematicProps {
   onSelectService: (serviceId: string) => void;
 }
 
-const droneViewpoints: DroneViewpoint[] = [
+// 5 Points de vue 100% authentiques Andalousie, Marbella & Mijas (mouvement cinématique continu)
+const andalusianViews: AndalusianView[] = [
   {
-    id: 'horizon',
+    id: 'golden-mile',
     code: '01',
-    label: 'Survol Côtier & Horizon',
-    location: 'Marbella · Golden Mile',
-    caption: 'Lumière dorée sur le littoral méditerranéen et les domaines de bord de mer',
-    video: '/videos/marbella-solaire-hero.mp4',
-    mimeType: 'video/mp4',
-    poster: '/property-management-charm.jpg',
+    name: 'Golden Mile & La Concha',
+    location: 'Marbella',
+    image: '/marbella-golden-mile.jpg',
+    motionClass: 'animate-drone-1',
   },
   {
-    id: 'estates',
+    id: 'villa-andalouse',
     code: '02',
-    label: 'Domaines & Jardins Privés',
-    location: 'Sierra Blanca & Mijas',
-    caption: 'Vue aérienne au-dessus des demeures andalouses, palmeraies et jardins paysagers',
-    video: '/videos/aerial-villa-resort.mp4',
-    mimeType: 'video/mp4',
-    poster: '/rental-management-charm.jpg',
+    name: 'Demeure Andalouse',
+    location: 'Marbella & Mijas',
+    image: '/property-management-charm.jpg',
+    motionClass: 'animate-drone-2',
   },
   {
-    id: 'terrace',
+    id: 'panorama-mer',
     code: '03',
-    label: 'Terrasses & Piscines',
-    location: 'La Cala & Nueva Andalucía',
-    caption: 'Immersion au cœur des terrasses ensoleillées et piscines à débordement',
-    video: '/videos/luxury-villa-terrace.mp4',
-    mimeType: 'video/mp4',
-    poster: '/cortijo-charme-marbella.jpg',
+    name: 'Terrasses sur la Méditerranée',
+    location: 'Costa del Sol',
+    image: '/rental-management-charm.jpg',
+    motionClass: 'animate-drone-3',
   },
   {
-    id: 'lifestyle',
+    id: 'cortijo',
     code: '04',
-    label: 'Art de Recevoir en Villa',
-    location: 'Costa del Sol · 7j/7',
-    caption: 'Moments privilégiés, table privée et sérénité absolue pour vos proches',
-    video: '/videos/champagne-convives.webm',
-    mimeType: 'video/webm',
-    poster: '/candidates/option1_yacht.jpg',
+    name: 'Cortijo & Patio Fleuri',
+    location: 'Sierra Blanca',
+    image: '/cortijo-charme-marbella.jpg',
+    motionClass: 'animate-drone-2',
+  },
+  {
+    id: 'mijas-pueblo',
+    code: '05',
+    name: 'Village Blanc & Horizon',
+    location: 'Mijas Pueblo',
+    image: '/mijas-pueblo-charme.jpg',
+    motionClass: 'animate-drone-1',
   },
 ];
 
@@ -78,7 +77,7 @@ export const servicesData: ServiceItem[] = [
       'Surveillance attentive, visites régulières, coordination des prestataires et préparation soignée avant chaque séjour.',
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-5 h-5 sm:w-6 sm:h-6"
         viewBox="0 0 48 48"
         fill="none"
         stroke="currentColor"
@@ -101,7 +100,7 @@ export const servicesData: ServiceItem[] = [
       'Accueil personnalisé, réservations prioritaires (beach clubs, tables prisées, yachts) et conciergerie privée 7/7.',
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-5 h-5 sm:w-6 sm:h-6"
         viewBox="0 0 48 48"
         fill="none"
         stroke="currentColor"
@@ -125,7 +124,7 @@ export const servicesData: ServiceItem[] = [
       'Suivi sur place de vos propres réservations ou gestion intégrale clé en main pour valoriser votre propriété.',
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-5 h-5 sm:w-6 sm:h-6"
         viewBox="0 0 48 48"
         fill="none"
         stroke="currentColor"
@@ -145,10 +144,10 @@ export const servicesData: ServiceItem[] = [
     title: 'Chef à Domicile',
     subtitle: 'Chef Dominique Hybord',
     description:
-      'Un chef privé cuisine directement dans votre villa : menu imaginé avec vous, produits frais et service à table.',
+      'Un chef privé cuisine directement dans votre villa : un menu imaginé avec vous, des produits frais de saison et un service attentionné.',
     icon: (
       <svg
-        className="w-6 h-6"
+        className="w-5 h-5 sm:w-6 sm:h-6"
         viewBox="0 0 48 48"
         fill="none"
         stroke="currentColor"
@@ -165,241 +164,125 @@ export const servicesData: ServiceItem[] = [
 ];
 
 export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService }) => {
-  const [activeViewIdx, setActiveViewIdx] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
+  const [activeIdx, setActiveIdx] = useState(0);
 
-  // Rotation fluide automatique entre les 4 points de vue drone toutes les 8.5 secondes
+  // Transition fluide automatique toutes les 6.5 secondes entre les 5 vues d'Andalousie
   useEffect(() => {
-    if (!isPlaying) return;
     const timer = window.setInterval(() => {
-      setActiveViewIdx((prev) => (prev + 1) % droneViewpoints.length);
-    }, 8500);
+      setActiveIdx((prev) => (prev + 1) % andalusianViews.length);
+    }, 6500);
     return () => window.clearInterval(timer);
-  }, [isPlaying]);
-
-  // Lecture synchronisée lors du changement de point de vue
-  useEffect(() => {
-    videoRefs.current.forEach((video, idx) => {
-      if (!video) return;
-      if (idx === activeViewIdx) {
-        if (isPlaying) {
-          video.currentTime = 0;
-          video.play().catch(() => {});
-        } else {
-          video.pause();
-        }
-      } else {
-        video.pause();
-      }
-    });
-  }, [activeViewIdx, isPlaying]);
-
-  const togglePlayPause = () => {
-    const activeVideo = videoRefs.current[activeViewIdx];
-    if (!activeVideo) return;
-    if (isPlaying) {
-      activeVideo.pause();
-      setIsPlaying(false);
-    } else {
-      activeVideo.play().catch(() => {});
-      setIsPlaying(true);
-    }
-  };
-
-  const currentView = droneViewpoints[activeViewIdx];
+  }, []);
 
   return (
     <section
       id="hero"
-      className="relative w-full min-h-[100svh] flex flex-col justify-between overflow-hidden pt-24 sm:pt-28 pb-6 sm:pb-8 bg-[#0b161b]"
+      className="relative w-full min-h-[100svh] lg:h-screen lg:max-h-[980px] flex flex-col justify-end overflow-hidden pt-28 pb-6 sm:pb-8 bg-[#0b161b]"
       aria-label="Solveig’s Prestige Services — Marbella & Mijas"
     >
       {/* ========================================================================= */}
-      {/* FOND VIDÉO DRONE MULTI-ANGLES (FONDU ENCHAÎNÉ CINÉMATIQUE FLUIDE)          */}
+      {/* ARRIÈRE-PLAN CINÉMATIQUE MULTI-VUES ANDALOUSIE (MOUVEMENT DRONE FLUIDE)   */}
       {/* ========================================================================= */}
-      <div className="absolute inset-0 z-0 overflow-hidden bg-[#081217]">
-        {droneViewpoints.map((view, idx) => {
-          const isActive = idx === activeViewIdx;
+      <div className="absolute inset-0 z-0 overflow-hidden bg-[#0a1418]">
+        {andalusianViews.map((view, idx) => {
+          const isActive = idx === activeIdx;
           return (
             <div
               key={view.id}
-              className={`absolute inset-0 transition-opacity duration-[1400ms] ease-out ${
+              className={`absolute inset-0 transition-opacity duration-[1800ms] ease-in-out ${
                 isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
               }`}
               aria-hidden={!isActive}
             >
-              <video
-                ref={(el) => {
-                  videoRefs.current[idx] = el;
-                }}
-                autoPlay={idx === 0}
-                muted
-                loop
-                playsInline
-                preload={idx === 0 ? 'auto' : 'metadata'}
-                poster={view.poster}
-                className={`w-full h-full object-cover object-center transition-transform duration-[9000ms] ease-out ${
-                  isActive ? 'scale-105' : 'scale-100'
+              <img
+                src={view.image}
+                alt={`${view.name} — ${view.location}`}
+                loading={idx === 0 ? 'eager' : 'lazy'}
+                className={`w-full h-full object-cover object-center ${
+                  isActive ? view.motionClass : 'scale-105'
                 }`}
-              >
-                <source src={view.video} type={view.mimeType} />
-              </video>
+              />
             </div>
           );
         })}
 
-        {/* Voile directionnel moderne : protège la lisibilité à gauche tout en laissant la vidéo lumineuse et dégagée */}
-        <div className="absolute inset-0 z-20 bg-gradient-to-r from-[#071116]/90 via-[#071116]/45 to-transparent pointer-events-none" />
-        <div className="absolute inset-0 z-20 bg-gradient-to-t from-[#081318] via-transparent to-black/45 pointer-events-none" />
-        <div className="absolute inset-0 z-20 bg-[radial-gradient(circle_at_70%_35%,rgba(241,210,145,0.12),transparent_60%)] pointer-events-none" />
+        {/* Dégradé subtil : laisse les 65% supérieurs de l'image totalement purs et lumineux */}
+        <div className="absolute inset-0 z-20 bg-gradient-to-b from-black/45 via-transparent to-[#071116]/95 pointer-events-none" />
+        <div className="absolute bottom-0 left-0 right-0 h-80 z-20 bg-gradient-to-t from-[#071116] via-[#071116]/75 to-transparent pointer-events-none" />
       </div>
 
       {/* ========================================================================= */}
-      {/* CONTENU ÉDITORIAL MODERNE (ALIGNÉ À GAUCHE POUR NE PAS CASSER LA VIDÉO)   */}
+      {/* BLOC INFÉRIEUR INTÉGRÉ : ÉDITORIAL ÉPURÉ + SÉLECTEUR DE VUES + DOCK       */}
       {/* ========================================================================= */}
-      <div className="relative z-30 w-full max-w-[1480px] mx-auto px-4 sm:px-8 lg:px-12 my-auto py-6 sm:py-10">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-10 items-end">
-          {/* Colonne Gauche : Typographie Éditoriale Contemporaine */}
-          <div className="lg:col-span-7 xl:col-span-7 flex flex-col items-start text-left">
-            {/* Pill Géographique & Signature */}
-            <div className="inline-flex items-center gap-2.5 rounded-full border border-[#f1d291]/35 bg-[#0c1a20]/70 backdrop-blur-md px-4 py-1.5 shadow-lg">
+      <div className="relative z-30 w-full max-w-[1440px] mx-auto px-4 sm:px-8 lg:px-12 mt-auto">
+        {/* Ligne Éditoriale & Sélecteur de Vues Discret */}
+        <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 pb-6 sm:pb-7">
+          {/* Gauche : Titre élégant et accroche raffinée (sans surcharger l'image) */}
+          <div className="max-w-2xl">
+            <div className="inline-flex items-center gap-2 text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.28em] text-[#f1d291] mb-2.5 drop-shadow">
               <Sparkles className="w-3.5 h-3.5 text-[#f1d291]" />
-              <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-[0.26em] text-[#fbe8b5]">
-                Marbella · Mijas · Costa del Sol
-              </span>
+              <span>Marbella & Mijas · Costa del Sol</span>
             </div>
 
-            {/* Titre Principal Moderne & Élégant */}
-            <h1 className="mt-5 font-serif text-4xl sm:text-5xl md:text-6xl xl:text-[4.15rem] font-normal leading-[1.03] tracking-tight text-white drop-shadow-[0_4px_24px_rgba(0,0,0,0.65)]">
-              L’art de veiller sur <br className="hidden sm:inline" />
-              votre demeure,{' '}
-              <span className="italic font-light text-gold-gradient block sm:inline">
-                la sérénité en plus.
+            <h1 className="font-serif text-3xl sm:text-5xl lg:text-[3.5rem] font-normal text-white leading-[1.06] tracking-wide drop-shadow-[0_4px_20px_rgba(0,0,0,0.8)]">
+              L’élégance d’une présence discrète,{' '}
+              <span className="italic font-light text-[#f4dfa5] block sm:inline">
+                au cœur de l’Andalousie.
               </span>
             </h1>
 
-            {/* Sous-titre fluide et lisible */}
-            <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base md:text-[17px] text-white/90 font-light leading-relaxed drop-shadow">
-              Avec <strong className="font-medium text-[#fbe8b5]">Solveig’s Prestige Services</strong>, profitez d’une présence locale de confiance toute l’année : intendance de propriété, conciergerie privée 7/7, location saisonnière et chef à domicile.
+            <p className="mt-2.5 text-xs sm:text-sm md:text-[15px] text-white/85 font-light leading-relaxed max-w-xl drop-shadow">
+              Intendance de propriété à l’année, conciergerie privée 7/7, gestion locative sur-mesure et table privée du Chef Dominique Hybord.
             </p>
-
-            {/* Boutons d'Action Modernes */}
-            <div className="mt-7 sm:mt-8 flex flex-wrap items-center gap-3.5 sm:gap-4 w-full sm:w-auto">
-              <a
-                href="#services"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full bg-gradient-to-r from-[#c29a52] via-[#e2bf78] to-[#c29a52] px-7 py-3.5 text-xs sm:text-sm font-bold uppercase tracking-[0.16em] text-[#0c161a] shadow-[0_10px_28px_rgba(194,154,82,0.35)] hover:brightness-110 hover:scale-[1.02] transition-all duration-300"
-              >
-                <span>Découvrir nos services</span>
-                <ArrowRight className="w-4 h-4" />
-              </a>
-
-              <a
-                href="https://wa.me/34623626724?text=Bonjour%20Solveig,%20je%20souhaite%20%C3%A9changer%20avec%20vous%20au%20sujet%20de%20vos%20services%20%C3%A0%20Marbella%20et%20Mijas."
-                target="_blank"
-                rel="noreferrer"
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 rounded-full border border-white/30 bg-[#0d1c22]/65 hover:bg-white/15 hover:border-[#f1d291] backdrop-blur-md px-6 py-3.5 text-xs sm:text-sm font-semibold tracking-[0.12em] uppercase text-white transition-all duration-300"
-              >
-                <MessageCircle className="w-4 h-4 text-[#25D366]" />
-                <span>WhatsApp Direct 7/7</span>
-              </a>
-            </div>
           </div>
 
-          {/* Colonne Droite : Sélecteur Interactif des 4 Points de Vue Drone */}
-          <div className="lg:col-span-5 xl:col-span-5 flex flex-col lg:items-end">
-            <div className="w-full max-w-md rounded-2xl sm:rounded-3xl border border-[#f1d291]/25 bg-[#0a161b]/75 backdrop-blur-xl p-4 sm:p-5 shadow-[0_20px_50px_rgba(0,0,0,0.55)]">
-              {/* En-tête du contrôleur drone */}
-              <div className="flex items-center justify-between gap-3 pb-3 mb-3 border-b border-white/10">
-                <div className="flex items-center gap-2">
-                  <Compass className="w-4 h-4 text-[#f1d291] animate-pulse" />
-                  <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-[#fbe8b5]">
-                    Exploration Drone · 4 Points de Vue
-                  </span>
-                </div>
+          {/* Droite : Sélecteur minimaliste des 5 panoramas andalous */}
+          <div className="flex flex-col items-start lg:items-end gap-2 shrink-0">
+            <div className="flex items-center gap-2 text-[10px] uppercase tracking-[0.22em] text-[#f1d291]/90 font-semibold">
+              <span>{andalusianViews[activeIdx].location}</span>
+              <span className="text-white/30">—</span>
+              <span className="text-white/90 font-light">{andalusianViews[activeIdx].name}</span>
+            </div>
 
-                <button
-                  type="button"
-                  onClick={togglePlayPause}
-                  className="inline-flex items-center gap-1.5 rounded-full border border-white/20 bg-white/5 hover:border-[#f1d291] px-2.5 py-1 text-[10px] font-semibold uppercase tracking-wider text-white/85 transition-colors"
-                  aria-label={isPlaying ? 'Mettre la vidéo en pause' : 'Relancer la vidéo'}
-                >
-                  {isPlaying ? (
-                    <>
-                      <Pause className="w-3 h-3 text-[#f1d291]" />
-                      <span>Pause</span>
-                    </>
-                  ) : (
-                    <>
-                      <Play className="w-3 h-3 text-[#f1d291]" />
-                      <span>Lecture</span>
-                    </>
-                  )}
-                </button>
-              </div>
-
-              {/* Description de la caméra active */}
-              <div className="mb-3.5">
-                <div className="flex items-center justify-between text-[11px] text-[#f1d291] font-medium">
-                  <span>{currentView.location}</span>
-                  <span className="font-mono text-[10px] text-white/60">
-                    VUE {currentView.code} / 04
-                  </span>
-                </div>
-                <p className="mt-1 text-xs sm:text-[13px] text-white/85 font-light leading-snug">
-                  {currentView.caption}
-                </p>
-              </div>
-
-              {/* Grille des 4 boutons de caméras drone */}
-              <div className="grid grid-cols-2 gap-2">
-                {droneViewpoints.map((view, idx) => {
-                  const active = idx === activeViewIdx;
-                  return (
-                    <button
-                      key={view.id}
-                      type="button"
-                      onClick={() => setActiveViewIdx(idx)}
-                      className={`group relative overflow-hidden rounded-xl px-3 py-2.5 text-left transition-all duration-300 border ${
-                        active
-                          ? 'bg-[#c29a52]/25 border-[#f1d291] shadow-[0_0_15px_rgba(194,154,82,0.25)]'
-                          : 'bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/25'
+            {/* Barre de sélection fine et épurée */}
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              {andalusianViews.map((view, idx) => {
+                const active = idx === activeIdx;
+                return (
+                  <button
+                    key={view.id}
+                    type="button"
+                    onClick={() => setActiveIdx(idx)}
+                    aria-label={`Voir ${view.name}`}
+                    className="group py-1.5 focus:outline-none flex items-center gap-1.5"
+                  >
+                    <span
+                      className={`text-[9.5px] font-bold tracking-widest transition-colors ${
+                        active ? 'text-[#f1d291]' : 'text-white/40 group-hover:text-white/75'
                       }`}
                     >
-                      <div className="flex items-center justify-between gap-1">
-                        <span
-                          className={`text-[9px] font-bold uppercase tracking-[0.18em] ${
-                            active ? 'text-[#fbe8b5]' : 'text-white/50 group-hover:text-white/80'
-                          }`}
-                        >
-                          Caméra {view.code}
-                        </span>
-                        {active && (
-                          <span className="h-1.5 w-1.5 rounded-full bg-[#f1d291] animate-ping" />
-                        )}
-                      </div>
-                      <p
-                        className={`mt-0.5 text-[11px] sm:text-xs font-medium truncate ${
-                          active ? 'text-white' : 'text-white/75 group-hover:text-white'
-                        }`}
-                      >
-                        {view.label}
-                      </p>
-                    </button>
-                  );
-                })}
-              </div>
+                      {view.code}
+                    </span>
+                    <span
+                      className={`h-[2px] rounded-full transition-all duration-500 ${
+                        active
+                          ? 'w-7 sm:w-9 bg-[#f1d291]'
+                          : 'w-2.5 sm:w-3.5 bg-white/25 group-hover:bg-white/50'
+                      }`}
+                    />
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
-      </div>
 
-      {/* ========================================================================= */}
-      {/* DOCK ARCHITECTURAL DES 4 SERVICES EN BAS DE L'ÉCRAN                       */}
-      {/* ========================================================================= */}
-      <div className="relative z-30 w-full max-w-[1480px] mx-auto px-4 sm:px-8 lg:px-12 mt-auto pt-2">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3.5">
-          {servicesData.map((service) => (
+        {/* Filet d'or horizontal */}
+        <div className="w-full h-px bg-gradient-to-r from-[#f1d291]/50 via-[#f1d291]/25 to-transparent mb-4" />
+
+        {/* Dock unifié des 4 Prestations (1 seul bandeau vitré fluide et épuré) */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 rounded-2xl overflow-hidden bg-[#0a151a]/70 backdrop-blur-xl border border-[#f1d291]/25 shadow-[0_15px_40px_rgba(0,0,0,0.5)]">
+          {servicesData.map((service, index) => (
             <div
               key={service.id}
               onClick={() => onSelectService(service.id)}
@@ -410,31 +293,25 @@ export const HeroCinematic: React.FC<HeroCinematicProps> = ({ onSelectService })
                   onSelectService(service.id);
                 }
               }}
-              className="group cursor-pointer rounded-2xl border border-[#f1d291]/25 bg-[#0a161b]/80 hover:bg-[#12252d]/90 hover:border-[#f1d291]/70 backdrop-blur-xl p-3.5 sm:p-4 lg:p-5 transition-all duration-300 flex items-center justify-between gap-3 shadow-lg hover:-translate-y-0.5"
+              className={`group cursor-pointer p-3.5 sm:p-4 lg:px-6 lg:py-4.5 transition-all duration-300 flex items-center justify-between gap-3 hover:bg-white/[0.06] ${
+                index !== 0 ? 'border-t sm:border-t-0 lg:border-l border-[#f1d291]/15' : ''
+              } ${index % 2 !== 0 ? 'border-l border-[#f1d291]/15' : ''}`}
             >
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl bg-[#c29a52]/15 border border-[#f1d291]/30 text-[#f1d291] group-hover:bg-[#c29a52] group-hover:text-[#0a161b] flex items-center justify-center shrink-0 transition-all duration-300">
+                <div className="text-[#f1d291] group-hover:text-white transition-colors duration-300 shrink-0">
                   {service.icon}
                 </div>
                 <div className="min-w-0">
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[9px] font-bold uppercase tracking-[0.2em] text-[#edd088]">
-                      {service.number}
-                    </span>
-                    <span className="hidden sm:inline text-[9px] text-white/40">•</span>
-                    <span className="hidden sm:inline text-[9.5px] font-medium text-white/70 truncate">
-                      {service.subtitle}
-                    </span>
-                  </div>
-                  <h2 className="font-serif text-sm sm:text-lg font-semibold text-white group-hover:text-[#fbe8b5] transition-colors truncate mt-0.5">
+                  <p className="text-[9px] font-bold uppercase tracking-[0.18em] text-[#edd088]/80 truncate">
+                    {service.number} · {service.subtitle}
+                  </p>
+                  <h2 className="font-serif text-sm sm:text-[17px] font-medium text-white group-hover:text-[#f4dfa5] transition-colors truncate mt-0.5">
                     {service.title}
                   </h2>
                 </div>
               </div>
 
-              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full border border-[#f1d291]/40 bg-white/5 group-hover:bg-[#f1d291] group-hover:border-[#f1d291] flex items-center justify-center shrink-0 transition-all duration-300">
-                <ArrowRight className="w-3.5 h-3.5 text-[#f1d291] group-hover:text-[#0a161b] transition-transform duration-300 group-hover:translate-x-0.5" />
-              </div>
+              <ArrowRight className="w-3.5 h-3.5 text-[#f1d291]/70 group-hover:text-[#f1d291] shrink-0 transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           ))}
         </div>
