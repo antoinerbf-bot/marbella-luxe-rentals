@@ -406,9 +406,9 @@ export const SectionsShowcase: React.FC<SectionsShowcaseProps> = ({ onSelectServ
         {/* Luxury Twilight Panoramic Background Image with Velvety Dark Shading */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           <img
-            src="/hero-marbella.png"
-            alt="Vue panoramique crépuscule sur Marbella et la Méditerranée"
-            className="w-full h-full object-cover object-[center_65%] scale-105 filter brightness-70 contrast-105"
+            src="/property-management-charm.jpg"
+            alt="Domaine de prestige sur la Costa del Sol à Marbella et Mijas"
+            className="w-full h-full object-cover object-center scale-105 filter brightness-70 contrast-105"
             loading="lazy"
           />
           {/* Deep Dark Velvet Gradient Overlay for 100% legibility */}
